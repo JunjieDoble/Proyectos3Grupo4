@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -153,8 +154,18 @@ namespace _Code.Scripts.Character
         {
             if (_grounded)
             {
-                _crouching = crouching;
-                return;
+                if (crouching)
+                {
+                    _crouching = true;
+                    return;
+                }
+                Vector3 headPosition = transform.position + Vector3.up * (_crouching ? parameters.crouchHeight/2 : parameters.walkHeight/2);
+                Ray headCheckRay = new Ray(headPosition, Vector3.up);
+                if (Physics.Raycast(headCheckRay, parameters.walkHeight - parameters.crouchHeight))
+                {
+                    _crouching = true;
+                    return;
+                }
             }
             _crouching = false;
         }
