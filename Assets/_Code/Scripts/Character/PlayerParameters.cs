@@ -14,5 +14,9 @@ namespace _Code.Scripts.Character
         [Header("Heights")]
         public float walkHeight = 2f;       
         public float crouchHeight = 1f;
+        
+        [Header("Control")]
+        public float airControl = 0.5f;
+        public float jumpStopMultiplier = 0.5f;
     }
 }
