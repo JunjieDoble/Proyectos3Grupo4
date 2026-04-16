@@ -18,5 +18,10 @@ namespace _Code.Scripts.Character
         [Header("Control")]
         public float airControl = 0.5f;
         public float jumpStopMultiplier = 0.5f;
+        
+        [Header("Camera")]
+        public float mouseSensitivity = 1f;
+        public float minPitch = -89f;
+        public float maxPitch = 89f;
     }
 }
