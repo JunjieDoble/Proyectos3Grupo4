@@ -4,5 +4,6 @@ namespace Interactions
     {
         bool CanInteract();
         void Interact();
+        void CancelInteract();
     }
 }

@@ -14,7 +14,7 @@ namespace Rooms
 
         public void RotateRoom()
         {
-            targetRoom?.Rotate();
+            targetRoom?.StartRotate();
         }
 
         public void Interact()
@@ -25,6 +25,11 @@ namespace Rooms
         public bool CanInteract()
         {
             return true; //TODO: afegir condicions més endavant
+        }
+
+        public void CancelInteract()
+        {
+            targetRoom?.CancelRotate();
         }
     }
 }

@@ -12,6 +12,8 @@ namespace Interactions
         [SerializeField] private float maxDistance = 3f;
         [SerializeField] private LayerMask interactableMask;
 
+        private IInteractable _currentInteractable;
+
         private void Awake()
         {
             if (viewOrigin == null)
@@ -24,7 +26,9 @@ namespace Interactions
 
         public void OnInteract(InputAction.CallbackContext context)
         {
-            if (context.performed) TryRaycastInteract();
+            if (context.started) TryRaycastInteract();
+            if (context.performed) ObjectInteract();
+            if (context.canceled) CancelInteraction();
         }
 
         private bool TryRaycastInteract()
@@ -35,12 +39,25 @@ namespace Interactions
             {
                 var interactable = hit.collider.GetComponentInParent<IInteractable>();
                 if (interactable == null) return false;
-                if (!interactable.CanInteract()) return false;             
+                if (!interactable.CanInteract()) return false;
                 interactable.Interact();
+                _currentInteractable = interactable;
                 return true;
             }
 
             return false;
+        }
+
+        private void ObjectInteract()
+        {
+            Debug.Log("Hold Finished");
+            _currentInteractable = null;
+        }
+
+        private void CancelInteraction()
+        {
+            _currentInteractable?.CancelInteract();
+            _currentInteractable = null;
         }
     }
 }
