@@ -1,24 +1,30 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
+using Interactions;
 
 namespace Rooms
 {
-    public class RoomRotator : MonoBehaviour
+    public class RoomRotator : MonoBehaviour, IInteractable
     {
         [SerializeField] private Room targetRoom;
 
-        void Update()
+        public void Awake()
         {
-            //TODO: per debugar. s'ha de fer amb la interacció del player
-            if (Keyboard.current != null && Keyboard.current.rKey.wasPressedThisFrame)
-            {
-                RotateRoom();
-            }
+            if (targetRoom == null) Debug.LogWarning("RoomRotator does not have a targetRoom", this);
         }
 
         public void RotateRoom()
         {
             targetRoom?.Rotate();
+        }
+
+        public void Interact()
+        {
+            RotateRoom();
+        }
+
+        public bool CanInteract()
+        {
+            return true; //TODO: afegir condicions més endavant
         }
     }
 }
