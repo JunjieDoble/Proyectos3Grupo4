@@ -91,39 +91,25 @@ namespace Rooms
         {
             Direction opposite = (Direction)(((int)dirFromA + 2) % 4);
 
-            Door doorAUp = a.GetDoor((int)Layer.Up, dirFromA);
-            Door doorADown = a.GetDoor((int)Layer.Down, dirFromA);
+            for (int layer = 0; layer < 2; layer++)
+            {
+                Layer l = (Layer)layer;
 
-            if (b == null)
-            {
-                if (doorAUp != null) doorAUp.OpenDoor(false);
-                if (doorADown != null) doorADown.OpenDoor(false);
-                return;
-            }
+                Door doorA = a.GetDoor(l, dirFromA);
 
-            Door doorBUp = b.GetDoor((int)Layer.Up, opposite);
-            Door doorBDown = b.GetDoor((int)Layer.Down, opposite);
+                if (b == null)
+                {
+                    if (doorA != null) doorA.OpenDoor(false);
+                    continue;
+                }
 
-            if (doorAUp != null && doorBUp != null)
-            {
-                doorAUp.OpenDoor(true);
-                doorBUp.OpenDoor(true);
-            }
-            else
-            {
-                if (doorAUp != null) doorAUp.OpenDoor(false);
-                if (doorBUp != null) doorBUp.OpenDoor(false);
-            }
+                Door doorB = b.GetDoor(l, opposite);
 
-            if (doorADown != null && doorBDown != null)
-            {
-                doorADown.OpenDoor(true);
-                doorBDown.OpenDoor(true);
-            }
-            else
-            {
-                if (doorADown != null) doorADown.OpenDoor(false);
-                if (doorBDown != null) doorBDown.OpenDoor(false);
+                bool shouldOpen = doorA != null && doorB != null;
+
+                if (doorA != null) doorA.OpenDoor(shouldOpen);
+
+                if (doorB != null) doorB.OpenDoor(shouldOpen);
             }
         }
 

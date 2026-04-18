@@ -43,9 +43,7 @@ namespace Rooms
         private Quaternion _startRotation; //before hold
         private int _currentAbsRotation; //0, 90, 180, 270
 
-        [SerializeField] private LayerDoors upperLayerDoors;
-        [SerializeField] private LayerDoors lowerLayerDoors;
-
+        [SerializeField] private LayerDoors[] editorDoors = new LayerDoors[2]; //0 down, 1 up. per l'inspector, però després es treballa amb la matriu de sota per facilitar l'accés
         private Door[,] _doors = new Door[2, 4]; //[layer, direction]
 
         private void Awake()
@@ -69,11 +67,10 @@ namespace Rooms
             OnRotationChanged?.Invoke(this); //quan l'altre es faci al final, aquest potser ni cal
         }        
 
-        public Door GetDoor(int layer, Direction dir) //Em demanen per la north del món
+        public Door GetDoor(Layer layer, Direction dir) //Em demanen per la north del món
         {
             Direction realDir = GetRotatedDirection(dir); //Però si està rotada 90 graus, el que volen és la meva west
-            if (layer < 0 || layer > 1) return null;
-            return _doors[layer, (int)realDir];
+            return _doors[(int)layer, (int)realDir];
         }
 
         private Direction GetRotatedDirection(Direction dir)
@@ -84,15 +81,15 @@ namespace Rooms
 
         private void CacheDoors()
         {
-            if (upperLayerDoors == null) upperLayerDoors = new LayerDoors();
-            if (lowerLayerDoors == null) lowerLayerDoors = new LayerDoors();
+            if (editorDoors[0] == null) editorDoors[0] = new LayerDoors();
+            if (editorDoors[1] == null) editorDoors[1] = new LayerDoors();
 
             for (int i = 0; i < 4; i++)
             {
                 Direction direction = (Direction)i;
-                _doors[(int)Layer.Up, i] = upperLayerDoors.GetDoor(direction);
-                _doors[(int)Layer.Down, i] = lowerLayerDoors.GetDoor(direction);
-            }
+                _doors[(int)Layer.Up, i] = editorDoors[1].GetDoor(direction);
+                _doors[(int)Layer.Down, i] = editorDoors[0].GetDoor(direction);
+            }   
         }
 
         private void OnDestroy()

@@ -5201,16 +5201,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
-  upperLayerDoors:
-    North: {fileID: 770753958}
-    East: {fileID: 2008533306}
-    South: {fileID: 994519574}
-    West: {fileID: 612140250}
-  lowerLayerDoors:
-    North: {fileID: 1260533750}
+  editorDoors:
+  - North: {fileID: 1260533750}
     East: {fileID: 158902413}
     South: {fileID: 210925278}
     West: {fileID: 388957140}
+  - North: {fileID: 770753958}
+    East: {fileID: 2008533306}
+    South: {fileID: 994519574}
+    West: {fileID: 612140250}
 --- !u!4 &380274258
 Transform:
   m_ObjectHideFlags: 0
@@ -5972,16 +5971,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
-  upperLayerDoors:
-    North: {fileID: 371409870}
-    East: {fileID: 544782870}
-    South: {fileID: 0}
-    West: {fileID: 2085820381}
-  lowerLayerDoors:
-    North: {fileID: 524475310}
+  editorDoors:
+  - North: {fileID: 524475310}
     East: {fileID: 1261414472}
     South: {fileID: 0}
     West: {fileID: 660567303}
+  - North: {fileID: 371409870}
+    East: {fileID: 544782870}
+    South: {fileID: 0}
+    West: {fileID: 2085820381}
 --- !u!4 &455024038
 Transform:
   m_ObjectHideFlags: 0
@@ -6302,16 +6300,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
-  upperLayerDoors:
-    North: {fileID: 1541273844}
-    East: {fileID: 266881784}
-    South: {fileID: 1369504190}
-    West: {fileID: 306815499}
-  lowerLayerDoors:
-    North: {fileID: 98992962}
+  editorDoors:
+  - North: {fileID: 98992962}
     East: {fileID: 1869679736}
     South: {fileID: 322805126}
     West: {fileID: 977370419}
+  - North: {fileID: 1541273844}
+    East: {fileID: 266881784}
+    South: {fileID: 1369504190}
+    West: {fileID: 306815499}
 --- !u!1 &524475309
 GameObject:
   m_ObjectHideFlags: 0
@@ -7178,16 +7175,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
-  upperLayerDoors:
-    North: {fileID: 1172186350}
-    East: {fileID: 168124385}
-    South: {fileID: 885821539}
-    West: {fileID: 1264381880}
-  lowerLayerDoors:
-    North: {fileID: 1075967652}
+  editorDoors:
+  - North: {fileID: 1075967652}
     East: {fileID: 239474214}
     South: {fileID: 1793241528}
     West: {fileID: 1091133432}
+  - North: {fileID: 1172186350}
+    East: {fileID: 168124385}
+    South: {fileID: 885821539}
+    West: {fileID: 1264381880}
 --- !u!4 &569243784
 Transform:
   m_ObjectHideFlags: 0
@@ -9597,16 +9593,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
-  upperLayerDoors:
-    North: {fileID: 150300973}
-    East: {fileID: 222763533}
-    South: {fileID: 0}
-    West: {fileID: 1136979360}
-  lowerLayerDoors:
-    North: {fileID: 1818049886}
+  editorDoors:
+  - North: {fileID: 1818049886}
     East: {fileID: 41031628}
     South: {fileID: 0}
     West: {fileID: 1357900595}
+  - North: {fileID: 150300973}
+    East: {fileID: 222763533}
+    South: {fileID: 0}
+    West: {fileID: 1136979360}
 --- !u!4 &760771381
 Transform:
   m_ObjectHideFlags: 0
@@ -11197,16 +11192,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
-  upperLayerDoors:
-    North: {fileID: 813881901}
-    East: {fileID: 0}
-    South: {fileID: 0}
-    West: {fileID: 1771128746}
-  lowerLayerDoors:
-    North: {fileID: 563156389}
+  editorDoors:
+  - North: {fileID: 563156389}
     East: {fileID: 1945231325}
     South: {fileID: 0}
     West: {fileID: 0}
+  - North: {fileID: 813881901}
+    East: {fileID: 0}
+    South: {fileID: 0}
+    West: {fileID: 1771128746}
 --- !u!4 &886940415
 Transform:
   m_ObjectHideFlags: 0
@@ -14970,16 +14964,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
-  upperLayerDoors:
-    North: {fileID: 1955633918}
-    East: {fileID: 1779237038}
-    South: {fileID: 0}
-    West: {fileID: 1176409464}
-  lowerLayerDoors:
-    North: {fileID: 851852005}
+  editorDoors:
+  - North: {fileID: 851852005}
     East: {fileID: 602389638}
     South: {fileID: 0}
     West: {fileID: 1609460268}
+  - North: {fileID: 1955633918}
+    East: {fileID: 1779237038}
+    South: {fileID: 0}
+    West: {fileID: 1176409464}
 --- !u!4 &1132918096
 Transform:
   m_ObjectHideFlags: 0
@@ -15977,16 +15970,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
-  upperLayerDoors:
-    North: {fileID: 2067624813}
-    East: {fileID: 1730952355}
-    South: {fileID: 0}
-    West: {fileID: 2010425605}
-  lowerLayerDoors:
-    North: {fileID: 1241264006}
+  editorDoors:
+  - North: {fileID: 1241264006}
     East: {fileID: 1270540006}
     South: {fileID: 0}
     West: {fileID: 951393216}
+  - North: {fileID: 2067624813}
+    East: {fileID: 1730952355}
+    South: {fileID: 0}
+    West: {fileID: 2010425605}
 --- !u!4 &1201615161
 Transform:
   m_ObjectHideFlags: 0
@@ -17609,16 +17601,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
-  upperLayerDoors:
-    North: {fileID: 346964866}
-    East: {fileID: 0}
-    South: {fileID: 0}
-    West: {fileID: 1695359825}
-  lowerLayerDoors:
-    North: {fileID: 2006014648}
+  editorDoors:
+  - North: {fileID: 2006014648}
     East: {fileID: 1020455440}
     South: {fileID: 0}
     West: {fileID: 0}
+  - North: {fileID: 346964866}
+    East: {fileID: 0}
+    South: {fileID: 0}
+    West: {fileID: 1695359825}
 --- !u!4 &1394892512
 Transform:
   m_ObjectHideFlags: 0
@@ -19637,16 +19628,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
-  upperLayerDoors:
-    North: {fileID: 1985332128}
-    East: {fileID: 681264862}
-    South: {fileID: 1922984380}
-    West: {fileID: 425235585}
-  lowerLayerDoors:
-    North: {fileID: 1792448706}
+  editorDoors:
+  - North: {fileID: 1792448706}
     East: {fileID: 862791244}
     South: {fileID: 1911774164}
     West: {fileID: 22955112}
+  - North: {fileID: 1985332128}
+    East: {fileID: 681264862}
+    South: {fileID: 1922984380}
+    West: {fileID: 425235585}
 --- !u!4 &1685566143
 Transform:
   m_ObjectHideFlags: 0
@@ -22016,16 +22006,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
-  upperLayerDoors:
-    North: {fileID: 1353008229}
-    East: {fileID: 1539208431}
-    South: {fileID: 84718067}
-    West: {fileID: 2098670922}
-  lowerLayerDoors:
-    North: {fileID: 2144246743}
+  editorDoors:
+  - North: {fileID: 2144246743}
     East: {fileID: 1520470421}
     South: {fileID: 2107680890}
     West: {fileID: 2085601925}
+  - North: {fileID: 1353008229}
+    East: {fileID: 1539208431}
+    South: {fileID: 84718067}
+    West: {fileID: 2098670922}
 --- !u!4 &1859744326
 Transform:
   m_ObjectHideFlags: 0
