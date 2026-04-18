@@ -1,13 +1,23 @@
 using UnityEngine;
+using System.Collections.Generic;
+using Doors;
 
-//De moment no serveix per a res. Més endavant pot servir per mirar connexions entre rooms, portes obertes o tancades...
 namespace Rooms
 {
     public class RoomManager : MonoBehaviour
     {
         [SerializeField] private int gridSize; //2 si serà 2x2...
         [SerializeField] private float roomSize;
+        private Dictionary<Room, Vector2Int> _roomDictionary = new(); //for faster lookup of rooms
         private Room[,] _rooms;
+
+        private static readonly Vector2Int[] Offsets = new Vector2Int[]
+        {
+            new Vector2Int(0, 1), //North
+            new Vector2Int(1, 0), //East
+            new Vector2Int(0, -1), //South
+            new Vector2Int(-1, 0) //West
+        };
         private void Start()
         {
             InitializeRooms();
@@ -17,12 +27,22 @@ namespace Rooms
         {
             _rooms = new Room[gridSize, gridSize];
             var rooms = RoomRegistry.GetRooms();
+            if (rooms == null) return;
+
             foreach (var room in rooms)
             {
                 var gridPosition = WorldToGridPosition(room.transform.position);
                 if (IsValidGridPosition(gridPosition))
                 {
+                    if (_rooms[gridPosition.x, gridPosition.y] != null)
+                    {
+                        Debug.LogWarning($"Two rooms in same grid position {gridPosition}");
+                        continue;
+                    }
+
                     _rooms[gridPosition.x, gridPosition.y] = room;
+                    room.OnRotationChanged += HandleRoomRotated;
+                    _roomDictionary.Add(room, gridPosition);
                 }
                 else
                 {
@@ -30,7 +50,8 @@ namespace Rooms
                 }
             }
 
-            DebugGrid();
+            //DebugGrid();
+            SyncAllDoors();
         }
 
         private Vector2Int WorldToGridPosition(Vector3 worldPosition)
@@ -44,6 +65,82 @@ namespace Rooms
         {
             return gridPosition.x >= 0 && gridPosition.x < gridSize &&
                     gridPosition.y >=0 && gridPosition.y < gridSize;
+        }
+
+        private void HandleRoomRotated(Room room)
+        {
+            if (!_roomDictionary.TryGetValue(room, out Vector2Int roomPosition)) return;
+            
+            for (int i = 0; i < 4; i++)
+            {
+                Vector2Int dirOffset = Offsets[i];
+                Vector2Int neighborPos = roomPosition + dirOffset;
+
+                Room neighbor = GetRoom(neighborPos);
+                SyncDoors(room, neighbor, (Direction)i);
+            }
+        }
+
+        private Room GetRoom(Vector2Int pos)
+        {
+            if (pos.x < 0 || pos.y < 0 || pos.x >= gridSize || pos.y >= gridSize) return null;
+            return _rooms[pos.x, pos.y];
+        }
+
+        private void SyncDoors(Room a, Room b, Direction dirFromA)
+        {
+            Direction opposite = (Direction)(((int)dirFromA + 2) % 4);
+
+            Door doorAUp = a.GetDoor((int)Layer.Up, dirFromA);
+            Door doorADown = a.GetDoor((int)Layer.Down, dirFromA);
+
+            if (b == null)
+            {
+                if (doorAUp != null) doorAUp.OpenDoor(false);
+                if (doorADown != null) doorADown.OpenDoor(false);
+                return;
+            }
+
+            Door doorBUp = b.GetDoor((int)Layer.Up, opposite);
+            Door doorBDown = b.GetDoor((int)Layer.Down, opposite);
+
+            if (doorAUp != null && doorBUp != null)
+            {
+                doorAUp.OpenDoor(true);
+                doorBUp.OpenDoor(true);
+            }
+            else
+            {
+                if (doorAUp != null) doorAUp.OpenDoor(false);
+                if (doorBUp != null) doorBUp.OpenDoor(false);
+            }
+
+            if (doorADown != null && doorBDown != null)
+            {
+                doorADown.OpenDoor(true);
+                doorBDown.OpenDoor(true);
+            }
+            else
+            {
+                if (doorADown != null) doorADown.OpenDoor(false);
+                if (doorBDown != null) doorBDown.OpenDoor(false);
+            }
+        }
+
+        private void SyncAllDoors()
+        {
+            foreach (var room in _roomDictionary.Keys)
+            {
+                HandleRoomRotated(room);
+            }
+        }
+
+        private void OnDestroy()
+        {
+            foreach (var room in _roomDictionary.Keys)
+            {
+                room.OnRotationChanged -= HandleRoomRotated;
+            }
         }
 
         private void DebugGrid()
