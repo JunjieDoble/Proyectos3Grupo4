@@ -16,6 +16,7 @@ public partial class CheckNextPointDistanceCondition : Condition
         if (DistanceToNextPoint == null || Condition == null || MinimDistance == null)
             return false;
 
+        Debug.Log(DistanceToNextPoint.Value <= MinimDistance.Value);
         return DistanceToNextPoint.Value <= MinimDistance.Value;
     }
 
