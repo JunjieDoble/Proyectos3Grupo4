@@ -164,8 +164,6 @@ GameObject:
   - component: {fileID: 690824268}
   - component: {fileID: 690824266}
   - component: {fileID: 690824272}
-  - component: {fileID: 690824271}
-  - component: {fileID: 690824274}
   - component: {fileID: 690824273}
   m_Layer: 0
   m_Name: Enemy
@@ -291,64 +289,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 690824264}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &690824271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690824264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Behavior::Unity.Behavior.BehaviorGraphAgent
-  m_Graph: {fileID: -7912610600035412192, guid: 56bb1b02ae5d9ea46a5c77e9ffe48758, type: 2}
-  m_BlackboardVariableOverridesList:
-  - rid: 4634062573874708682
-  - rid: 4634062573874708729
-  - rid: 4634062619787395915
-  - rid: 4634062623298027906
-  m_OriginalGraph: {fileID: -7912610600035412192, guid: 56bb1b02ae5d9ea46a5c77e9ffe48758, type: 2}
-  m_IsInitialised: 0
-  m_IsStarted: 0
-  references:
-    version: 2
-    RefIds:
-    - rid: 4634062573874708682
-      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 1
-          m_Value1: 0
-        Name: Self
-        m_Value: {fileID: 690824264}
-    - rid: 4634062573874708729
-      type: {class: 'BlackboardVariable`1[[System.Collections.Generic.List`1[[UnityEngine.GameObject, UnityEngine.CoreModule]], mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 5592448508490266055
-          m_Value1: 12892351191567888557
-        Name: PatrolPoints
-        m_Value:
-        - {fileID: 1926006921}
-        - {fileID: 322060230}
-    - rid: 4634062619787395915
-      type: {class: 'BlackboardVariable`1[[RangeDetector, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 15556383151601806405
-          m_Value1: 7125025321884354984
-        Name: RangeDetector
-        m_Value: {fileID: 690824274}
-    - rid: 4634062623298027906
-      type: {class: 'BlackboardVariable`1[[LineOfSightDetector, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 13281141718118653608
-          m_Value1: 10748718691196725477
-        Name: LineOfSightDetector
-        m_Value: {fileID: 690824273}
 --- !u!195 &690824272
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -380,32 +320,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 690824264}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ffd928ad8dba5a46aa68c97ae6f6295, type: 3}
+  m_Script: {fileID: 11500000, guid: f809d1a33b60b9244b3e7ad6c658ab62, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LineOfSightDetector
-  detectionRange: 5
-  detectionAngle: 90
-  playerLayerMask:
-    serializedVersion: 2
-    m_Bits: 8
-  showDebugVisuals: 1
---- !u!114 &690824274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690824264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa37fb5dbf070cd42986ea7336767e74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RangeDetector
-  detectionRange: 5
-  detectionMask:
-    serializedVersion: 2
-    m_Bits: 8
-  showDebugVisuals: 1
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyBehaviour
+  patrolPoints:
+  - {fileID: 1926006922}
+  - {fileID: 322060231}
+  speed: 2
+  detectionRadius: 10
 --- !u!1 &707644680
 GameObject:
   m_ObjectHideFlags: 0
