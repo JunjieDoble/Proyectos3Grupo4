@@ -99,17 +99,15 @@ namespace Rooms
 
                 if (b == null)
                 {
-                    if (doorA != null) doorA.OpenDoor(false);
+                    doorA?.OpenDoor(false);
                     continue;
                 }
 
                 Door doorB = b.GetDoor(l, opposite);
 
                 bool shouldOpen = doorA != null && doorB != null;
-
-                if (doorA != null) doorA.OpenDoor(shouldOpen);
-
-                if (doorB != null) doorB.OpenDoor(shouldOpen);
+                doorA?.OpenDoor(shouldOpen);
+                doorB?.OpenDoor(shouldOpen);
             }
         }
 
