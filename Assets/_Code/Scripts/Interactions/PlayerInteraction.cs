@@ -33,7 +33,7 @@ namespace Interactions
 
         private bool TryRaycastInteract()
         {
-            //Debug.DrawRay(viewOrigin.position, viewOrigin.forward * maxDistance, Color.red, 1f);
+            Debug.DrawRay(viewOrigin.position, viewOrigin.forward * maxDistance, Color.red, 1f);
 
             if (Physics.Raycast(viewOrigin.position, viewOrigin.forward, out var hit, maxDistance, interactableMask))
             {
