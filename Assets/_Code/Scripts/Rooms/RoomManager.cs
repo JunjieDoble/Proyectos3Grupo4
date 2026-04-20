@@ -8,6 +8,8 @@ namespace Rooms
     {
         [SerializeField] private int gridSize; //2 si serà 2x2...
         [SerializeField] private float roomSize;
+        [Header("Debug")]
+		[SerializeField] private bool showGrid  = false;
         private Dictionary<Room, Vector2Int> _roomDictionary = new(); //for faster lookup of rooms
         private Room[,] _rooms;
 
@@ -49,8 +51,9 @@ namespace Rooms
                     Debug.LogWarning("Room out of grid bounds: " + room.transform.position + " (Grid Position: " + gridPosition + ")");
                 }
             }
-
-            //DebugGrid();
+            
+            if(showGrid)
+                DebugGrid();
             SyncAllDoors();
         }
 
