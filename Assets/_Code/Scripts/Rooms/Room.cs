@@ -41,6 +41,7 @@ namespace Rooms
 
         public Action<Room> OnRotationChanged;
         private Quaternion _startRotation; //before hold
+        private bool _isRotating;
         private int _currentAbsRotation; //0, 90, 180, 270
 
         [SerializeField] private LayerDoors[] editorDoors = new LayerDoors[2]; //0 down, 1 up. per l'inspector, però després es treballa amb la matriu de sota per facilitar l'accés
@@ -52,20 +53,41 @@ namespace Rooms
             CacheDoors();
         }
 
+        private void Update()
+        {
+            RotateRoom();
+        }
+
         public void StartRotate()
         {
             _currentAbsRotation = (_currentAbsRotation + 90) % 360;
             _startRotation = transform.rotation;
-            transform.Rotate(0, 90, 0); //TODO: això és de mentres, fer-ho visual...
-            OnRotationChanged?.Invoke(this); //TODO: quan es faci visual s'hauria de fer al final de la rotació, quan ja no es pugui cancel·lar
+            _isRotating = true;
         }
 
         public void CancelRotate()
         {
+            if (!_isRotating) return;
             _currentAbsRotation = (_currentAbsRotation - 90 + 360) % 360;
             transform.rotation = _startRotation;
-            OnRotationChanged?.Invoke(this); //quan l'altre es faci al final, aquest potser ni cal
-        }        
+            _isRotating = false;
+        }
+
+        private void RotateRoom()
+        {
+            Quaternion targetRotation = Quaternion.Euler(0, _startRotation.eulerAngles.y + 90, 0);
+            float rotationSpeed = 90 / 1.2f;
+            if(_isRotating)
+            {
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+                if (Quaternion.Angle(transform.rotation, targetRotation) < 0.1f)
+                {
+                    transform.rotation = targetRotation;
+                    _isRotating = false;
+                    OnRotationChanged?.Invoke(this);
+                }
+            }
+        }     
 
         public Door GetDoor(Layer layer, Direction dir) //Em demanen per la north del món
         {

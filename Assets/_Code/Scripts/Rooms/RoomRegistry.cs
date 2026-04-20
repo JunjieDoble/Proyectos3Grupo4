@@ -13,24 +13,26 @@ namespace Rooms
         }
 
         private static RoomRegistry s_instance;
-        public HashSet<Room> Rooms { get; private set; } = new();
+        private readonly HashSet<Room> _rooms = new();
 
-        public static HashSet<Room> GetRooms()
+        public static IReadOnlyCollection<Room> GetRooms()
         {
-            if (s_instance == null) return null;
-            return s_instance.Rooms;
+            Initialize();
+            return s_instance._rooms;
         }
 
         public static void AddRoom(Room room)
         {
-            if (s_instance == null) return;
-            s_instance.Rooms.Add(room);
+            if (room == null) return;
+            Initialize();
+            s_instance._rooms.Add(room);
         }
 
         public static void RemoveRoom(Room room)
         {
+            if (room == null) return;
             if (s_instance == null) return;
-            s_instance.Rooms.Remove(room);
+            s_instance._rooms.Remove(room);
         }
         
     }
