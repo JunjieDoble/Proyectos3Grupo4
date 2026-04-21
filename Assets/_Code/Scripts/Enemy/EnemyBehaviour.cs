@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
@@ -6,27 +6,27 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] public Transform[] patrolPoints;
     [SerializeField] public float speed = 2f;
     [SerializeField] private float detectionRadius = 10f;
+    [SerializeField] private float detectionAngle = 180f;
 
     private Animator _animator;
     private GameObject _player;
     private bool _isDead = false;
+    private Color _gizmosColor = Color.green;
 
     private void Start()
     {
         _player = GameObject.Find("Player");
         _animator = GetComponent<Animator>();
-
-        // _animator.SetBool("Patrol", true);
     }
 
     private void Update()
     {
         if (_isDead) return;
 
-        DistanceToPlayer();
+        DistanceAndVisionToPlayer();
     }
 
-    private void DistanceToPlayer()
+    private void DistanceAndVisionToPlayer()
     {
         Vector3 playerPos = _player.transform.position;
         Vector3 enemyPos = transform.position;
@@ -36,13 +36,20 @@ public class EnemyBehaviour : MonoBehaviour
         float HorizontalDistance = Vector2.Distance(playerXZ, EnemyXZ);
         _animator.SetFloat("DistanceToPlayer", HorizontalDistance);
 
-        Vector3 directionToPlayer = transform.position - _player.transform.position;
+        Vector3 directionToPlayer = _player.transform.position - transform.position;
         Vector3 directionForward = transform.forward;
         float angleToPlayer = Vector3.Angle(directionForward, directionToPlayer);
-        _animator.SetFloat("AngleToPlayer", angleToPlayer);
 
-        /*RaycastHit hit;
-        Physics.Raycast(transform.position, directionToPlayer, out hit, detectionRadius);*/
+        if (HorizontalDistance <= detectionRadius && angleToPlayer <= detectionAngle / 2f)
+        {
+            _animator.SetBool("SeePlayer", true);
+            _gizmosColor = Color.red;
+        }
+        else
+        {
+            _animator.SetBool("SeePlayer", false);
+            _gizmosColor = Color.green;
+        }
     }
 
     private void OnTriggerEnter(Collider collider)
@@ -53,9 +60,9 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
-        Gizmos.color = Color.green;
+        Gizmos.color = _gizmosColor;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
     }
 }

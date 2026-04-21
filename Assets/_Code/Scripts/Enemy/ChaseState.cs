@@ -1,19 +1,21 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public class ChaseState : StateMachineBehaviour
 {
     private NavMeshAgent _agent;
+    private EnemyBehaviour _enemyBehaviour;
     private GameObject _player;
     private float _stoppingDistance = 1.2f;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _agent = animator.transform.GetComponent<NavMeshAgent>();
+        _enemyBehaviour = animator.transform.GetComponent<EnemyBehaviour>();
         _player = GameObject.Find("Player");
 
         _agent.isStopped = false;
-        _agent.speed = 5f;
+        _agent.speed = _enemyBehaviour.speed;
         _agent.stoppingDistance = _stoppingDistance;
     }
 
