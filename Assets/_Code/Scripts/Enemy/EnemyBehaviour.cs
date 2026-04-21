@@ -64,5 +64,6 @@ public class EnemyBehaviour : MonoBehaviour
     {
         Gizmos.color = _gizmosColor;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
+        Gizmos.DrawRay(transform.position, transform.forward * detectionRadius);
     }
 }
