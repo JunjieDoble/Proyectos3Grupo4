@@ -1,3 +1,4 @@
+using _Code.Scripts.Pickupables;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,14 +6,18 @@ namespace Interactions
 {
     [RequireComponent(typeof(PlayerInput))]
     [DisallowMultipleComponent]
-    public class PlayerInteraction : MonoBehaviour, IInteractor
+    public class PlayerInteractor : MonoBehaviour, IInteractor
     {
         [Header("Raycast")]
         [SerializeField] private Transform viewOrigin;
         [SerializeField] private float maxDistance = 3f;
         [SerializeField] private LayerMask interactableMask;
+        
+        [Header("Refs")]
+        public Transform handTransform;
 
         private IInteractable _currentInteractable;
+        private HoldablePickup _currentPickupable;
         
         public Transform Transform => transform;
         public GameObject GameObject => gameObject;
@@ -36,7 +41,7 @@ namespace Interactions
 
         private bool TryRaycastInteract()
         {
-            //Debug.DrawRay(viewOrigin.position, viewOrigin.forward * maxDistance, Color.red, 1f);
+            Debug.DrawRay(viewOrigin.position, viewOrigin.forward * maxDistance, Color.red, 1f);
 
             if (Physics.Raycast(viewOrigin.position, viewOrigin.forward, out var hit, maxDistance, interactableMask))
             {
@@ -51,6 +56,11 @@ namespace Interactions
         private void InteractionStarted()
         {
             if (_currentInteractable is ILockable lockable && lockable.IsLocked()) return;
+            if (_currentInteractable is HoldablePickup holdablePickup)
+            {
+                if (_currentPickupable != null) return;
+                _currentPickupable = holdablePickup;
+            } 
             _currentInteractable?.Interact(this);
         }
 
