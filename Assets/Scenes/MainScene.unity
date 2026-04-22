@@ -668,22 +668,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: managedReferences[4634062619787395915].m_Value
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: managedReferences[4634062623298027906].m_Value
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: 'managedReferences[4634062573874708729].m_Value.Array.data[0]'
-      value: 
-      objectReference: {fileID: 771689309}
-    - target: {fileID: 0}
-      propertyPath: 'managedReferences[4634062573874708729].m_Value.Array.data[1]'
-      value: 
-      objectReference: {fileID: 1042516200}
     - target: {fileID: 5637966379975010227, guid: 505da9f8cbdf47b4193c7c08e654baeb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23.33789
@@ -1055,8 +1039,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBehaviour
   patrolPoints:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1546594253}
+  - {fileID: 726488466}
   speed: 2
   detectionRadius: 10
   detectionAngle: 180
