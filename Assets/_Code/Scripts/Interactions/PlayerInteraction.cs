@@ -26,37 +26,43 @@ namespace Interactions
 
         public void OnInteract(InputAction.CallbackContext context)
         {
-            if (context.started) TryRaycastInteract();
-            if (context.performed) ObjectInteract();
-            if (context.canceled) CancelInteraction();
+            if (context.started && TryRaycastInteract()) InteractionStarted();
+            if (context.performed && _currentInteractable != null) InteractionPerformed();
+            if (context.canceled && _currentInteractable != null) InteractionCanceled();
         }
 
         private bool TryRaycastInteract()
         {
-            Debug.DrawRay(viewOrigin.position, viewOrigin.forward * maxDistance, Color.red, 1f);
+            //Debug.DrawRay(viewOrigin.position, viewOrigin.forward * maxDistance, Color.red, 1f);
 
             if (Physics.Raycast(viewOrigin.position, viewOrigin.forward, out var hit, maxDistance, interactableMask))
             {
                 var interactable = hit.collider.GetComponentInParent<IInteractable>();
                 if (interactable == null) return false;
-                if (!interactable.CanInteract()) return false;
-                interactable.Interact();
                 _currentInteractable = interactable;
                 return true;
             }
-
             return false;
         }
 
-        private void ObjectInteract()
+        private void InteractionStarted()
+        {
+            if (_currentInteractable is ILockable lockable && lockable.IsLocked()) return;
+            _currentInteractable?.Interact();
+        }
+
+        private void InteractionPerformed()
         {
             Debug.Log("Hold Finished");
             _currentInteractable = null;
         }
 
-        private void CancelInteraction()
+        private void InteractionCanceled()
         {
-            _currentInteractable?.CancelInteract();
+            if (_currentInteractable is IHoldInteractable holdInteractable)
+            {
+                holdInteractable?.OnHoldCanceled();
+            }
             _currentInteractable = null;
         }
     }
