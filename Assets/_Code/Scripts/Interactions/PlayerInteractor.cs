@@ -39,6 +39,21 @@ namespace Interactions
             if (context.canceled && _currentInteractable != null) InteractionCanceled();
         }
 
+        public void OnAttack(InputAction.CallbackContext context)
+        {
+            if (context.canceled && _currentPickupable != null)
+            {
+                _currentPickupable.Drop();
+                _currentPickupable = null;
+                return;
+            }
+            if (context.performed && _currentPickupable != null)
+            {
+                _currentPickupable.Throw(handTransform.forward * 10f);
+                _currentPickupable = null;
+            }
+        }
+
         private bool TryRaycastInteract()
         {
             Debug.DrawRay(viewOrigin.position, viewOrigin.forward * maxDistance, Color.red, 1f);
