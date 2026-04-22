@@ -5,11 +5,11 @@ namespace _Code.Scripts.Pickupables
 {
     public abstract class PickupableBase : MonoBehaviour, IInteractable
     {
-        public virtual void Interact()
+        public virtual void Interact(IInteractor interactor)
         {
-            PickUp();
+            PickUp(interactor);
         }
         
-        public abstract void PickUp();
+        public abstract void PickUp(IInteractor interactor);
     }
 }

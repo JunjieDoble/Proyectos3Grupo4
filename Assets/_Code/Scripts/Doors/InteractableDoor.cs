@@ -17,7 +17,7 @@ namespace _Code.Scripts.Doors
             door = GetComponentInChildren<Door>();
         }
 
-        public void Interact()
+        public void Interact(IInteractor interactor)
         {
             if (IsLocked()) return;
             door.OpenDoor(!door.IsOpen());

@@ -1,4 +1,5 @@
 ﻿using _Code.Scripts.Doors;
+using Interactions;
 using UnityEngine;
 
 namespace _Code.Scripts.Pickupables
@@ -18,7 +19,7 @@ namespace _Code.Scripts.Pickupables
             door?.Lock();
         }
 
-        public override void PickUp()
+        public override void PickUp(IInteractor interactor)
         {
             door.Unlock();
             Destroy(gameObject);

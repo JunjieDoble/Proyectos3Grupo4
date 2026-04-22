@@ -2,6 +2,6 @@ namespace Interactions
 {
     public interface IInteractable
     {
-        void Interact();
+        void Interact(IInteractor interactor);
     }
 }

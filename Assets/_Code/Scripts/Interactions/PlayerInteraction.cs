@@ -5,7 +5,7 @@ namespace Interactions
 {
     [RequireComponent(typeof(PlayerInput))]
     [DisallowMultipleComponent]
-    public class PlayerInteraction : MonoBehaviour
+    public class PlayerInteraction : MonoBehaviour, IInteractor
     {
         [Header("Raycast")]
         [SerializeField] private Transform viewOrigin;
@@ -13,6 +13,9 @@ namespace Interactions
         [SerializeField] private LayerMask interactableMask;
 
         private IInteractable _currentInteractable;
+        
+        public Transform Transform => transform;
+        public GameObject GameObject => gameObject;
 
         private void Awake()
         {
@@ -48,7 +51,7 @@ namespace Interactions
         private void InteractionStarted()
         {
             if (_currentInteractable is ILockable lockable && lockable.IsLocked()) return;
-            _currentInteractable?.Interact();
+            _currentInteractable?.Interact(this);
         }
 
         private void InteractionPerformed()
@@ -61,7 +64,7 @@ namespace Interactions
         {
             if (_currentInteractable is IHoldInteractable holdInteractable)
             {
-                holdInteractable?.OnHoldCanceled();
+                holdInteractable?.OnHoldCanceled(this);
             }
             _currentInteractable = null;
         }

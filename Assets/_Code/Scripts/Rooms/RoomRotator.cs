@@ -17,15 +17,15 @@ namespace Rooms
             targetRoom?.StartRotate();
         }
 
-        public void Interact()
+        public void Interact(IInteractor interactor)
         {
             if (IsLocked()) return;
-            OnHoldStarted();
+            OnHoldStarted(interactor);
         }
 
-        public void OnHoldStarted() => RotateRoom();
+        public void OnHoldStarted(IInteractor interactor) => RotateRoom();
 
-        public void OnHoldCanceled()
+        public void OnHoldCanceled(IInteractor interactor)
         {
             targetRoom?.CancelRotate();
         }

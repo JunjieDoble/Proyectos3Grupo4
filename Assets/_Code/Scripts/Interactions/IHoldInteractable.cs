@@ -2,7 +2,7 @@
 {
     public interface IHoldInteractable: IInteractable
     {
-        void OnHoldStarted();
-        void OnHoldCanceled();
+        void OnHoldStarted(IInteractor interactor);
+        void OnHoldCanceled(IInteractor interactor);
     }
 }
