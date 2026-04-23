@@ -30,6 +30,11 @@ namespace Rooms
             targetRoom?.CancelRotate();
         }
 
+        public void OnHoldCompleted(IInteractor interactor)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public bool IsLocked()
         {
             return false;
