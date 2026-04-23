@@ -4,40 +4,33 @@ using Interactions;
 
 namespace _Code.Scripts.Doors
 {
-    public class InteractableDoor : MonoBehaviour, IInteractable
+    public class InteractableDoor : MonoBehaviour, IInteractable, ILockable
     {
 
         [SerializeField] private Door door;
-        [SerializeField] private bool active;
+        [SerializeField] private bool locked;
+        
+        public bool IsLocked() => locked;
         
         private void Awake()
         {
             door = GetComponentInChildren<Door>();
         }
-        
-        public bool CanInteract()
-        {
-            return active;
-        }
 
-        public void Interact()
+        public void Interact(IInteractor interactor)
         {
-            if(CanInteract()) door.OpenDoor(!door.IsOpen());
-        }
-
-        public void CancelInteract()
-        {
-            // Nothing to do
+            if (IsLocked()) return;
+            door.OpenDoor(!door.IsOpen());
         }
         
         public void Unlock()
         {
-            active = true;
+            locked = false;
         }
-        
+
         public void Lock()
         {
-            active = false;
+            locked = true;
         }
     }
 }
