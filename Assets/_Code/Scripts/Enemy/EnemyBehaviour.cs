@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Interactions;
+using UnityEngine;
 
-public class EnemyBehaviour : MonoBehaviour, IEnemy
+public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
 {
     [Header("Parameters")]
     [SerializeField] private Transform[] patrolPoints;
@@ -58,10 +59,15 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy
         // Detect if the player is behind the enemy when killing it
         if (angleToPlayer >= detectionAngle /2f && !_isDead)
         {
+            Debug.Log("Enemy killed from behind");
             _isDead = true;
             _animator.SetTrigger("Die");
 
             Destroy(gameObject);
+        }
+        else
+        {
+            Debug.Log("Cannot kill the enemy from the front");
         }
     }
 
@@ -73,6 +79,11 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy
             _lastAlertPosition = alertPosition;
             _animator.SetBool("Alerted", true);
         }
+    }
+
+    public void Interact(IInteractor interactor)
+    {
+        KillEnemy();
     }
 
     private void OnTriggerEnter(Collider collider)
