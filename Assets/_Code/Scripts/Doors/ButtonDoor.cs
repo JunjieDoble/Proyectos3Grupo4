@@ -16,18 +16,6 @@ namespace _Code.Scripts.Doors
         {
             door = GetComponentInChildren<Door>();
         }
-        
-        private void OnEnable()
-        {
-            Button.OnButtonPressed += CheckButtons;
-            Button.OnButtonReleased += CloseDoor;
-        }
-
-        private void OnDisable()
-        {
-            Button.OnButtonPressed -= CheckButtons;
-            Button.OnButtonReleased -= CloseDoor;
-        }
 
         public void AddButton(Button button)
         {
@@ -36,7 +24,7 @@ namespace _Code.Scripts.Doors
             Debug.Log("Active buttons: " + _buttons.Count + "");
         }
         
-        private void CheckButtons()
+        public void CheckButtons()
         {
             foreach (var button in _buttons)
             {
@@ -51,7 +39,7 @@ namespace _Code.Scripts.Doors
             door.OpenDoor(true);
         }
         
-        private void CloseDoor()
+        public void CloseDoor()
         {
             door.OpenDoor(false);
         }
