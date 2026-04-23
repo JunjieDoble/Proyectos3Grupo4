@@ -17,6 +17,8 @@ public class ChaseState : StateMachineBehaviour
         _agent.isStopped = false;
         _agent.speed = _enemyBehaviour.GetSpeed();
         _agent.stoppingDistance = _stoppingDistance;
+
+        animator.SetBool("Alert", false);
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
