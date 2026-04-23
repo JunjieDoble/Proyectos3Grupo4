@@ -15,7 +15,7 @@ public class ChaseState : StateMachineBehaviour
         _player = GameObject.Find("Player");
 
         _agent.isStopped = false;
-        _agent.speed = _enemyBehaviour.speed;
+        _agent.speed = _enemyBehaviour.GetSpeed();
         _agent.stoppingDistance = _stoppingDistance;
     }
 

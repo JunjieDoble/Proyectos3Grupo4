@@ -15,14 +15,14 @@ public class PatrolState : StateMachineBehaviour
     {
         _agent = animator.transform.GetComponent<NavMeshAgent>();
         _enemyBehaviour = animator.transform.GetComponent<EnemyBehaviour>();
-        _patrolPoints = _enemyBehaviour.patrolPoints;
+        _patrolPoints = _enemyBehaviour.GetPatrolPoints();
 
         _currentPointIndex = animator.GetInteger("CurrentPointIndex");
         _patrolPosition = _patrolPoints[_currentPointIndex].transform.position;
         _patrolPointsCount = _patrolPoints.Length;
 
         _agent.isStopped = false;
-        _agent.speed = _enemyBehaviour.speed;
+        _agent.speed = _enemyBehaviour.GetSpeed();
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
