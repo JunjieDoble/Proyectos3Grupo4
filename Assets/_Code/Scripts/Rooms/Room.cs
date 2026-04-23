@@ -40,6 +40,8 @@ namespace Rooms
         }
 
         public Action<Room> OnRotationChanged;
+        public static Action<Room> OnStartRotation;
+        public static Action<Room> OnEndRotation;
         private Quaternion _startRotation; //before hold
         private bool _isRotating;
         private int _currentAbsRotation; //0, 90, 180, 270
@@ -60,9 +62,11 @@ namespace Rooms
 
         public void StartRotate()
         {
+            if (_isRotating) return;
             _currentAbsRotation = (_currentAbsRotation + 90) % 360;
             _startRotation = transform.rotation;
             _isRotating = true;
+            OnStartRotation?.Invoke(this);
         }
 
         public void CancelRotate()
@@ -71,6 +75,7 @@ namespace Rooms
             _currentAbsRotation = (_currentAbsRotation - 90 + 360) % 360;
             transform.rotation = _startRotation;
             _isRotating = false;
+            OnEndRotation?.Invoke(this);
         }
 
         private void RotateRoom()
@@ -85,6 +90,7 @@ namespace Rooms
                     transform.rotation = targetRotation;
                     _isRotating = false;
                     OnRotationChanged?.Invoke(this);
+                    OnEndRotation?.Invoke(this);
                 }
             }
         }     
@@ -117,6 +123,7 @@ namespace Rooms
         private void OnDestroy()
         {
             RoomRegistry.RemoveRoom(this);
+            OnEndRotation?.Invoke(this);
         }
     }
 }
