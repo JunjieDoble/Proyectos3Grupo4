@@ -1,3 +1,4 @@
+using _Code.Scripts.Character;
 using UnityEngine;
 
 namespace Laser
@@ -7,10 +8,13 @@ namespace Laser
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player"))
+            if (other.GetComponent<IDie>() != null)
             {
-                //Player dead
-                Debug.Log("Player dead by laser");
+                other.GetComponent<IDie>().Die();
+            }
+            else if (other.CompareTag("Enemy"))
+            {
+                other.GetComponent<IEnemy>().KillEnemy();
             }
         }
     }
