@@ -2,16 +2,15 @@ using UnityEngine;
 using System.Collections.Generic;
 using Rooms;
 using Interactions;
-using Unity.VisualScripting;
 
 namespace LinePaths
 {
     public class PathManager : MonoBehaviour
     {
         [SerializeField] private List<Path> allPaths = new();
-        private readonly Dictionary<Room, List<Path>> _pathsByRoom = new();
+        private readonly Dictionary<Room, List<Path>> _pathsByRoom = new(); //so when a room is rotated, we only check affected paths
         
-        const float ALIGNMENT_THRESHOLD = 1f;
+        const float ALIGNMENT_THRESHOLD = 2f;
         
         private void Awake()
         {
@@ -22,25 +21,25 @@ namespace LinePaths
         {
             foreach (var path in allPaths)
             {
-                if (path?.segments == null || path.segments.Count < 2)
+                if (path?.Segments == null || path.Segments.Count < 2)
                 {
                     Debug.LogWarning("Invalid path configuration: " + path);
                     continue;
                 }
 
-                foreach (var segment in path.segments)
+                foreach (var segment in path.Segments)
                 {
-                    if (segment?.room == null)
+                    if (segment?.Room == null)
                     {
                         Debug.LogWarning("Invalid path segment configuration: " + segment);
                         continue;
                     }
 
-                    if (!_pathsByRoom.ContainsKey(segment.room))
+                    if (!_pathsByRoom.ContainsKey(segment.Room))
                     {
-                        _pathsByRoom[segment.room] = new List<Path>();
+                        _pathsByRoom[segment.Room] = new List<Path>();
                     }
-                    _pathsByRoom[segment.room].Add(path);
+                    _pathsByRoom[segment.Room].Add(path);
                 }
             }
     
@@ -68,21 +67,20 @@ namespace LinePaths
 
         private void CheckPathAlignment(Path path)
         {
-            Debug.Log("Checking path alignment: " + path);
-            if (path == null || path.segments == null || path.segments.Count < 2)
+            if (path == null || path.Segments == null || path.Segments.Count < 2)
             {
                 SetPathState(path, false);
                 return;
             }
 
-            for (int i = 0; i < path.segments.Count - 1; i++)
+            for (int i = 0; i < path.Segments.Count - 1; i++)
             {
-                var current = path.segments[i];
-                var next = path.segments[i + 1];
+                var current = path.Segments[i];
+                var next = path.Segments[i + 1];
                 
-                float distance = Vector3.Distance(current.exitPoint.position, next.entryPoint.position);
-                Debug.Log($"Checking segment {i} of path: Exit {current.exitPoint.position} to Entry {next.entryPoint.position}, Distance: {distance}");
-                if (distance > ALIGNMENT_THRESHOLD)
+                //float distance = Vector3.Distance(current.ExitPoint.position, next.EntryPoint.position);
+                //Debug.Log($"Checking segment {i} of path: Exit {current.ExitPoint.position} to Entry {next.EntryPoint.position}, Distance: {distance}");
+                if (!AreSegmentsConnected(current, next))
                 {
                     SetPathState(path, false);
                     return;
@@ -92,9 +90,22 @@ namespace LinePaths
             SetPathState(path, true);
         }
 
-        private static void SetPathState(Path path, bool isComplete)
+        private bool AreSegmentsConnected(PathSegment current, PathSegment next)
         {
-            Debug.Log($"Setting path state: {path} to {(isComplete ? "Complete" : "Incomplete")}");
+            float exitToEntry = Vector3.Distance(current.ExitPoint.position, next.EntryPoint.position);
+            float exitToExit = Vector3.Distance(current.ExitPoint.position, next.ExitPoint.position);
+            float entryToEntry = Vector3.Distance(current.EntryPoint.position, next.EntryPoint.position);
+            float entryToExit = Vector3.Distance(current.EntryPoint.position, next.ExitPoint.position);
+
+            return exitToEntry < ALIGNMENT_THRESHOLD || 
+                exitToExit < ALIGNMENT_THRESHOLD || 
+                entryToEntry < ALIGNMENT_THRESHOLD || 
+                entryToExit < ALIGNMENT_THRESHOLD;
+        }
+
+        private void SetPathState(Path path, bool isComplete)
+        {
+            //Debug.Log($"Setting path state: {path} to {(isComplete ? "Complete" : "Incomplete")}");
             if (path == null) return;
   
             ILockable lockable = path.UnlockTarget;
@@ -107,25 +118,25 @@ namespace LinePaths
             }
             else
             {
-                if (path.isComplete) //only change visuals and lock if it was previously complete
+                if (path.IsComplete) //only change visuals and lock if it was previously complete
                 {
                     ChangePathVisuals(path, isComplete);
                     lockable.Lock(); //opcional
                 }
             }
-            path.isComplete = isComplete;
+            path.SetComplete(isComplete);
         }
 
-        private static void ChangePathVisuals(Path path, bool isComplete)
+        private void ChangePathVisuals(Path path, bool isComplete)
         {
-            foreach (var segment in path.segments)
+            foreach (var segment in path.Segments)
             {
-                if (segment.physicalPath != null)
+                if (segment.PhysicalPath != null)
                 {
-                    var meshRenderer = segment.physicalPath.GetComponent<MeshRenderer>();
+                    var meshRenderer = segment.PhysicalPath.GetComponent<MeshRenderer>();
                     if (meshRenderer != null)
                     {
-                        meshRenderer.material.color = isComplete ? Color.green : Color.blue;
+                        meshRenderer.material.color = isComplete ? Color.green : Color.blue; //Temporal
                     }
                 }
             }

@@ -1,17 +1,23 @@
 using UnityEngine;
 using System.Collections.Generic;
 using Interactions;
-using Rooms;
 
 namespace LinePaths
 {
     [System.Serializable]
     public class Path
     {
-        public List<PathSegment> segments = new();
-        public bool isComplete;
+        [SerializeField] private List<PathSegment> segments = new();
+        [SerializeField] private bool isComplete;
         [SerializeField] private MonoBehaviour unlockTarget;
 
+        public List<PathSegment> Segments => segments;
+        public bool IsComplete => isComplete;
         public ILockable UnlockTarget => unlockTarget as ILockable; //unity inspector doesn't serialize interfaces
+
+        public void SetComplete(bool value)
+        {
+            isComplete = value;
+        }
     }
 }

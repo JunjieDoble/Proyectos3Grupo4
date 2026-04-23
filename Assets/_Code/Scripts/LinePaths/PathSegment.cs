@@ -6,9 +6,14 @@ namespace LinePaths
     [System.Serializable]
     public class PathSegment
     {
-        public Room room;
-        public Transform entryPoint;
-        public Transform exitPoint;
-        public GameObject physicalPath;
+        [SerializeField] private Room room;
+        [SerializeField] private Transform entryPoint;
+        [SerializeField] private Transform exitPoint;
+        [SerializeField] private GameObject physicalPath;
+
+        public Room Room => room;
+        public Transform EntryPoint => entryPoint;
+        public Transform ExitPoint => exitPoint;
+        public GameObject PhysicalPath => physicalPath;
     }
 }
