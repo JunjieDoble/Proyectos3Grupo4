@@ -20,13 +20,13 @@ namespace _Code.Scripts.Doors
         private void OnEnable()
         {
             Button.OnButtonPressed += CheckButtons;
-            Button.OnButtonReleased += CheckButtons;
+            Button.OnButtonReleased += CloseDoor;
         }
 
         private void OnDisable()
         {
             Button.OnButtonPressed -= CheckButtons;
-            Button.OnButtonReleased -= CheckButtons;
+            Button.OnButtonReleased -= CloseDoor;
         }
 
         public void AddButton(Button button)
@@ -42,10 +42,18 @@ namespace _Code.Scripts.Doors
             {
                 if (!button.IsActive)
                 {
+                    Debug.Log("Button not active: "+" "+button.gameObject.name);
                     door.OpenDoor(false);
-                };
+                    return;
+                }
             }
+            Debug.Log("All buttons active");
             door.OpenDoor(true);
+        }
+        
+        private void CloseDoor()
+        {
+            door.OpenDoor(false);
         }
     
     }
