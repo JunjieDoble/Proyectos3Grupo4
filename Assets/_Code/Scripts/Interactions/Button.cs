@@ -39,7 +39,7 @@ namespace Interactions
         private void PressButton()
         {
             buttonObject.transform.localPosition += Vector3.down * 0.1f;
-            OnButtonPressed?.Invoke();
+            buttonDoor?.CheckButtons();
         }
 
         private void OnTriggerExit(Collider other)
@@ -54,7 +54,7 @@ namespace Interactions
         private void ReleaseButton()
         {
             buttonObject.transform.localPosition -= Vector3.down * 0.1f;
-            OnButtonReleased?.Invoke();
+            buttonDoor?.CloseDoor();
         }
     }
 }
