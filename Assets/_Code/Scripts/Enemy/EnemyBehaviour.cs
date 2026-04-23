@@ -77,7 +77,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
         if (distanceToAlert <= alertRadius && !_isDead)
         {
             _lastAlertPosition = alertPosition;
-            _animator.SetBool("Alerted", true);
+            _animator.SetBool("Alert", true);
         }
     }
 

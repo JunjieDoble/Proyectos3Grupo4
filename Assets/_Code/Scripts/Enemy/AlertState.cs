@@ -21,7 +21,7 @@ public class AlertState : StateMachineBehaviour
     {
         if (Vector3.Distance(_agent.transform.position, _lastAlertPosition) < 1.5f)
         {
-            animator.SetBool("Alerted", false);
+            animator.SetBool("Alert", false);
         }
 
         _agent.SetDestination(_lastAlertPosition);
