@@ -4,13 +4,16 @@ using UnityEngine.InputSystem;
 namespace _Code.Scripts.Character
 {
     [DisallowMultipleComponent]
-    public class CameraController : MonoBehaviour
+    [RequireComponent(typeof(Player))]
+    public class CameraController : MonoBehaviour, IController
     {
         [SerializeField] private PlayerParameters parameters;
         [SerializeField] private Transform pitchController;
 
         private float _yaw;
         private float _pitch;
+
+        public bool IsEnabled { get; set; }
 
         private void Awake()
         {
@@ -19,10 +22,12 @@ namespace _Code.Scripts.Character
             Cursor.lockState = CursorLockMode.Locked;
             if (!parameters)
                 parameters = ScriptableObject.CreateInstance<PlayerParameters>();
+            GetComponent<Player>()?.AddController(this);
         }
 
         void Update()
         {
+            if (!IsEnabled) return;
             transform.rotation = Quaternion.Euler(0f, _yaw, 0f);
             pitchController.localRotation = Quaternion.Euler(_pitch, 0f, 0f);
         }

@@ -5,8 +5,9 @@ namespace _Code.Scripts.Character
 {
     [RequireComponent(typeof(CharacterController))]
     [RequireComponent(typeof(PlayerInput))]
+    [RequireComponent(typeof(Player))]
     [DisallowMultipleComponent]
-    public class MovementController : MonoBehaviour
+    public class MovementController : MonoBehaviour, IController
     {
         [Header("Parameters")]
         [SerializeField] private PlayerParameters parameters;
@@ -24,6 +25,8 @@ namespace _Code.Scripts.Character
         public bool IsCrouching => _crouching;
         public bool IsGrounded => _grounded;
 
+        public bool IsEnabled { get; set; }
+        
         void Awake()
         {
             _characterController = GetComponent<CharacterController>();
@@ -31,10 +34,12 @@ namespace _Code.Scripts.Character
             {
                 parameters = ScriptableObject.CreateInstance<PlayerParameters>();
             }
+            GetComponent<Player>()?.AddController(this);
         }
 
         void Update()
         {
+            if (!IsEnabled) return;
             float deltaTime = Time.deltaTime;
             
             Vector3 relativeDirection = new Vector3(_movementInput.x, 0, _movementInput.y);
@@ -57,6 +62,7 @@ namespace _Code.Scripts.Character
 
         void LateUpdate()
         {
+            if (!IsEnabled) return;
             SetCharacterHeight();
         }
 
@@ -167,6 +173,13 @@ namespace _Code.Scripts.Character
                 }
             }
             _crouching = false;
+        }
+
+        public void Teleport(Vector3 spawnPointPosition)
+        {
+            _characterController.enabled = false;
+            transform.position = spawnPointPosition;
+            _characterController.enabled = true;
         }
     }
 }

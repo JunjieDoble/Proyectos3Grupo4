@@ -1,3 +1,4 @@
+using _Code.Scripts.Character;
 using _Code.Scripts.Pickupables;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -5,8 +6,9 @@ using UnityEngine.InputSystem;
 namespace Interactions
 {
     [RequireComponent(typeof(PlayerInput))]
+    [RequireComponent(typeof(Player))]
     [DisallowMultipleComponent]
-    public class PlayerInteractor : MonoBehaviour, IInteractor
+    public class PlayerInteractor : MonoBehaviour, IInteractor, IController
     {
         [Header("Raycast")]
         [SerializeField] private Transform viewOrigin;
@@ -21,6 +23,8 @@ namespace Interactions
         
         public Transform Transform => transform;
         public GameObject GameObject => gameObject;
+        
+        public bool IsEnabled { get; set; }
 
         private void Awake()
         {
@@ -30,10 +34,12 @@ namespace Interactions
                 viewOrigin = cam != null ? cam.transform : transform;
             }
             if (interactableMask.value == 0) Debug.LogWarning("Unassigned interactableMask in PlayerInteraction");
+            GetComponent<Player>()?.AddController(this);
         }
 
         public void OnInteract(InputAction.CallbackContext context)
         {
+            if (!IsEnabled) return;
             if (context.started && TryRaycastInteract()) InteractionStarted();
             if (context.performed && _currentInteractable != null) InteractionPerformed();
             if (context.canceled && _currentInteractable != null) InteractionCanceled();
@@ -41,6 +47,7 @@ namespace Interactions
 
         public void OnAttack(InputAction.CallbackContext context)
         {
+            if (!IsEnabled) return;
             if (context.canceled && _currentPickupable != null)
             {
                 _currentPickupable.Drop();
