@@ -80,6 +80,7 @@ namespace Rooms
 
         private void RotateRoom()
         {
+            
             Quaternion targetRotation = Quaternion.Euler(0, _startRotation.eulerAngles.y + 90, 0);
             float rotationSpeed = 90 / 1.2f;
             if(_isRotating)
@@ -91,6 +92,7 @@ namespace Rooms
                     _isRotating = false;
                     OnRotationChanged?.Invoke(this);
                     OnEndRotation?.Invoke(this);
+                    Debug.Log("Rotasion");
                 }
             }
         }     
