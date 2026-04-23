@@ -3,7 +3,7 @@ using Interactions;
 
 namespace Rooms
 {
-    public class RoomRotator : MonoBehaviour, IInteractable
+    public class RoomRotator : MonoBehaviour, IHoldInteractable, ILockable
     {
         [SerializeField] private Room targetRoom;
 
@@ -17,19 +17,32 @@ namespace Rooms
             targetRoom?.StartRotate();
         }
 
-        public void Interact()
+        public void Interact(IInteractor interactor)
         {
-            RotateRoom();
+            if (IsLocked()) return;
+            OnHoldStarted(interactor);
         }
 
-        public bool CanInteract()
-        {
-            return true; //TODO: afegir condicions més endavant
-        }
+        public void OnHoldStarted(IInteractor interactor) => RotateRoom();
 
-        public void CancelInteract()
+        public void OnHoldCanceled(IInteractor interactor)
         {
             targetRoom?.CancelRotate();
+        }
+
+        public bool IsLocked()
+        {
+            return false;
+        }
+
+        public void Lock()
+        {
+            // TODO: Implement lock
+        }
+
+        public void Unlock()
+        {
+            // TODO: Implement unlock
         }
     }
 }
