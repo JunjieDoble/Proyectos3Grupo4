@@ -52,6 +52,14 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
+    private void EnemyDie()
+    {
+        _isDead = true;
+        _animator.SetTrigger("Die");
+
+        Destroy(gameObject);
+    }
+
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.CompareTag("Player"))
