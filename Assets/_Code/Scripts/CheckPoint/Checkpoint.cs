@@ -1,3 +1,4 @@
+using System;
 using _Code.Scripts.Character;
 using Interactions;
 using UnityEngine;
@@ -9,6 +10,15 @@ namespace _Code.Scripts.CheckPoint
         private static Checkpoint CurrentCheckpoint { get; set; }
         private Vector3 _spawnPosition;
         private Player _player;
+
+        public void Awake() {
+            if (CurrentCheckpoint == null)
+            {
+                CurrentCheckpoint = this;
+                _player = FindObjectOfType<Player>();
+                _spawnPosition = _player.transform.position;
+            }
+        }
 
         public void Interact(IInteractor interactor)
         {

@@ -6,7 +6,7 @@ namespace Rooms
 {
     public class OverheatManager : MonoBehaviour
     {
-        private float _overheatValue;
+        private float _overheatValue = 0f;
         private const float MaxOverheatValue = 100f;
         private HashSet<Room> _overheatingRooms = new HashSet<Room>(); //There can be multiple rooms rotating at once, for example the buggy alien
         [SerializeField] private float _overheatIncreaseMultiplier = 15f;
