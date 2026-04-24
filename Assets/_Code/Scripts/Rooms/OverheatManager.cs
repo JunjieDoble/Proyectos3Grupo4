@@ -7,7 +7,7 @@ namespace Rooms
 {
     public class OverheatManager : MonoBehaviour
     {
-        private float _overheatValue;
+        private float _overheatValue = 0f;
         private const float MaxOverheatValue = 100f;
         private int _overheatingRoomsCount;
         [SerializeField] private float _overheatIncreaseMultiplier = 15f;

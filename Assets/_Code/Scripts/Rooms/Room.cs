@@ -52,6 +52,7 @@ namespace _Code.Scripts.Rooms
 
         private void RotateRoom()
         {
+            
             Quaternion targetRotation = Quaternion.Euler(0, _startRotation.eulerAngles.y + 90, 0);
             float rotationSpeed = 90 / 1.2f;
             if(_isRotating)

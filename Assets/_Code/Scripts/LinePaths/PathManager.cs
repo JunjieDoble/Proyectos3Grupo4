@@ -10,7 +10,7 @@ namespace LinePaths
         [SerializeField] private List<Path> allPaths = new();
         private readonly Dictionary<Room, List<Path>> _pathsByRoom = new(); //so when a room is rotated, we only check affected paths
         
-        const float ALIGNMENT_THRESHOLD = 2f;
+        const float ALIGNMENT_THRESHOLD = 10f;
         
         private void Awake()
         {
@@ -49,12 +49,18 @@ namespace LinePaths
             }
         }
 
+        private void OnEnable() {
+                Room.OnEndRotation += OnRoomRotated;
+        }
+
         private void OnRoomRotated(Room rotatedRoom)
         {
+            Debug.Log($"Room {rotatedRoom.name} was rotated");
             if (_pathsByRoom.TryGetValue(rotatedRoom, out var affectedPaths))
             {
                 foreach (var path in affectedPaths)
                 {
+                    Debug.Log($"Checking path alignment for path affected by rotation of room {rotatedRoom.name}: {path}");
                     CheckPathAlignment(path);
                 }
             }
@@ -100,7 +106,7 @@ namespace LinePaths
 
         private void SetPathState(Path path, bool isComplete)
         {
-            //Debug.Log($"Setting path state: {path} to {(isComplete ? "Complete" : "Incomplete")}");
+            
             if (path == null) return;
   
             ILockable lockable = path.UnlockTarget;
@@ -120,6 +126,8 @@ namespace LinePaths
                 }
             }
             path.SetComplete(isComplete);
+            
+            Debug.Log($"Setting path state: {path} to {(isComplete ? "Complete" : "Incomplete")}");
         }
 
         private void ChangePathVisuals(Path path, bool isComplete)

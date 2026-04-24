@@ -17,6 +17,8 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
     private Color _gizmosColor = Color.green;
     private Vector3 _lastAlertPosition;
 
+    public GameObject drop;
+
     private void Start()
     {
         _player = GameObject.Find("Player");
@@ -64,6 +66,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
             _animator.SetTrigger("Die");
 
             Destroy(gameObject);
+            Instantiate(drop, transform.position, Quaternion.identity);
         }
         else
         {
