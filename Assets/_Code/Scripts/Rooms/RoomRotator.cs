@@ -1,3 +1,4 @@
+using _Code.Scripts.Rooms;
 using UnityEngine;
 using Interactions;
 
@@ -32,7 +33,7 @@ namespace Rooms
 
         public void OnHoldCompleted(IInteractor interactor)
         {
-            throw new System.NotImplementedException();
+            // No additional action needed on hold completion for now
         }
 
         public bool IsLocked()
