@@ -1,65 +1,54 @@
-﻿using Doors;
+﻿using _Code.Scripts.Rooms;
 using UnityEngine;
 
-namespace _Code.Scripts.Rooms
-{ 
-    public class HallConnector : MonoBehaviour, IConnector
+namespace _Code.Scripts.LinePaths
+{
+    public class GeneratorConnector : MonoBehaviour, IConnector
     {
         [Header("References")]
-        [SerializeField] private Door door;
         [SerializeField] Vector3 checkCenter;
         [SerializeField] Vector3 checkHalfExtents = new (1, 1, 1);
         [SerializeField] LayerMask layerMask;
-        
+
         private void Awake()
         {
-            if (door == null)
-            {
-                door = GetComponentInChildren<Door>();
-                if (door == null) Debug.LogWarning("HallConnector does not have a door", this);
-                else door.OpenDoor(false);
-            }
-            else
-            {
-                door.OpenDoor(false);
-            }
             CheckConnection();
         }
-
+        
         public void CheckConnection()
-        {             
+        {
             Vector3 worldCenter = transform.TransformPoint(checkCenter);
             Quaternion worldRotation = transform.rotation;
             Collider[] hits = new Collider[10];
-            Physics.OverlapBoxNonAlloc(worldCenter, checkHalfExtents, hits, worldRotation, layerMask); 
-            foreach (var hit in hits) 
-            { 
+            Physics.OverlapBoxNonAlloc(worldCenter, checkHalfExtents, hits, worldRotation, layerMask);
+            foreach (var hit in hits)
+            {
                 if (hit == null) continue;
                 IConnector connector = hit.GetComponentInParent<IConnector>();
-                 if (connector != null)
+                if (connector != null)
                 {
-                    if (connector is HallConnector otherHallConnector && otherHallConnector != this)
+                    if (connector is PathConnector pathConnector)
                     {
-                        otherHallConnector.Connect();
                         Connect();
+                        pathConnector.Connect();
                     }
+                    
                 }
             }
         }
 
         public void Connect()
         {
-            door?.OpenDoor(true);
+            // TODO: Generator animations or effects
         }
 
         public void Disconnect()
         {
-            door?.OpenDoor(false);
+            // TODO: Generator animations or effects
         }
         
         void OnDrawGizmos()
         {
-            
             Gizmos.color = Color.green;
 
             Matrix4x4 matrix = Matrix4x4.TRS(

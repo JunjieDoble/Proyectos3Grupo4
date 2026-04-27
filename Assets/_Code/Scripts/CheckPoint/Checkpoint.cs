@@ -1,4 +1,3 @@
-using System;
 using _Code.Scripts.Character;
 using Interactions;
 using UnityEngine;
@@ -15,7 +14,7 @@ namespace _Code.Scripts.CheckPoint
             if (CurrentCheckpoint == null)
             {
                 CurrentCheckpoint = this;
-                _player = FindObjectOfType<Player>();
+                _player = FindFirstObjectByType<Player>();
                 _spawnPosition = _player.transform.position;
             }
         }

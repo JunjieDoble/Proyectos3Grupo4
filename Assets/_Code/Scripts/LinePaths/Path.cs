@@ -1,23 +1,30 @@
+﻿using System.Collections.Generic;
 using UnityEngine;
-using System.Collections.Generic;
-using Interactions;
 
-namespace LinePaths
+namespace _Code.Scripts.LinePaths
 {
-    [System.Serializable]
-    public class Path
+    public class Path : MonoBehaviour
     {
-        [SerializeField] private List<PathSegment> segments = new();
-        [SerializeField] private bool isComplete;
-        [SerializeField] private MonoBehaviour unlockTarget;
+        [Header("References")]
+        [SerializeField] private List<MeshRenderer> pathMeshRenderers;
+        [SerializeField] private Material activeMaterial;
+        [SerializeField] private Material inactiveMaterial;
 
-        public List<PathSegment> Segments => segments;
-        public bool IsComplete => isComplete;
-        public ILockable UnlockTarget => unlockTarget as ILockable; //unity inspector doesn't serialize interfaces
-
-        public void SetComplete(bool value)
+        private void Awake()
         {
-            isComplete = value;
+            if (pathMeshRenderers == null || pathMeshRenderers.Count == 0)
+            {
+                pathMeshRenderers = new List<MeshRenderer>(GetComponentsInChildren<MeshRenderer>());
+                if (pathMeshRenderers.Count == 0) Debug.LogWarning("Path does not have any MeshRenderers", this);
+            }
+        }
+        
+        public void SetActive(bool active)
+        {
+            foreach (var meshRenderer in pathMeshRenderers)
+            {
+                meshRenderer.material = active ? activeMaterial : inactiveMaterial;
+            }
         }
     }
 }
