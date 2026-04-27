@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-using Rooms;
+using _Code.Scripts.Rooms;
 using Interactions;
 
 namespace LinePaths
@@ -42,7 +42,6 @@ namespace LinePaths
                     _pathsByRoom[segment.Room].Add(path);
                 }
             }
-            
 
             foreach (var path in allPaths)
             {
@@ -51,7 +50,7 @@ namespace LinePaths
         }
 
         private void OnEnable() {
-                Room.OnEndRotation += OnRoomRotated;
+                //Room.OnEndRotation += OnRoomRotated;
         }
 
         private void OnRoomRotated(Room rotatedRoom)
@@ -143,14 +142,6 @@ namespace LinePaths
                         meshRenderer.material.color = isComplete ? Color.green : Color.blue; //Temporal
                     }
                 }
-            }
-        }
-
-        private void OnDestroy()
-        {
-            foreach (var room in RoomRegistry.GetRooms())
-            {
-                room.OnRotationChanged -= OnRoomRotated;
             }
         }
     }

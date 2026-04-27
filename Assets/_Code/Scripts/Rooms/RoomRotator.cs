@@ -1,3 +1,4 @@
+using _Code.Scripts.Rooms;
 using UnityEngine;
 using Interactions;
 
@@ -28,6 +29,11 @@ namespace Rooms
         public void OnHoldCanceled(IInteractor interactor)
         {
             targetRoom?.CancelRotate();
+        }
+
+        public void OnHoldCompleted(IInteractor interactor)
+        {
+            // No additional action needed on hold completion for now
         }
 
         public bool IsLocked()

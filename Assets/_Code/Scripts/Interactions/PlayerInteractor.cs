@@ -89,6 +89,10 @@ namespace Interactions
         private void InteractionPerformed()
         {
             Debug.Log("Hold Finished");
+            if (_currentInteractable is IHoldInteractable holdInteractable)
+            {
+                holdInteractable?.OnHoldCompleted(this);
+            }
             _currentInteractable = null;
         }
 

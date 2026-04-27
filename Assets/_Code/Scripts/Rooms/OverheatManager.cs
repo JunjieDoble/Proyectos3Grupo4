@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using _Code.Scripts.Rooms;
 using UnityEngine;
 
 namespace Rooms
@@ -8,7 +9,7 @@ namespace Rooms
     {
         private float _overheatValue = 0f;
         private const float MaxOverheatValue = 100f;
-        private HashSet<Room> _overheatingRooms = new HashSet<Room>(); //There can be multiple rooms rotating at once, for example the buggy alien
+        private int _overheatingRoomsCount;
         [SerializeField] private float _overheatIncreaseMultiplier = 15f;
         [SerializeField] private float _overheatDecreaseMultiplier = 10f;
 
@@ -32,7 +33,7 @@ namespace Rooms
 
         private void Update()
         {
-            int overheatingSources = _overheatingRooms.Count;
+            int overheatingSources = _overheatingRoomsCount;
             if (overheatingSources > 0)
             {
                 _overheatValue += Time.deltaTime * overheatingSources * _overheatIncreaseMultiplier;
@@ -66,14 +67,19 @@ namespace Rooms
             _wasAtMax = isAtMax;
         }
 
-        private void HandleStartRotation(Room room)
-        {
-            _overheatingRooms.Add(room);
+        private void HandleStartRotation()
+        { 
+            _overheatingRoomsCount++;
         }
 
-        private void HandleEndRotation(Room room)
+        private void HandleEndRotation()
         {
-            _overheatingRooms.Remove(room);
+            if (_overheatingRoomsCount <= 0)
+            {
+                _overheatingRoomsCount = 0;
+                return;
+            }
+            _overheatingRoomsCount--;
         }
     }
 }
