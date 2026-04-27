@@ -50,7 +50,7 @@ namespace LinePaths
         }
 
         private void OnEnable() {
-                Room.OnEndRotation += OnRoomRotated;
+                //Room.OnEndRotation += OnRoomRotated;
         }
 
         private void OnRoomRotated(Room rotatedRoom)
