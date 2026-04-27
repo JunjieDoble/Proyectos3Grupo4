@@ -9,6 +9,8 @@ namespace _Code.Scripts.LinePaths
         [SerializeField] private List<MeshRenderer> pathMeshRenderers;
         [SerializeField] private Material activeMaterial;
         [SerializeField] private Material inactiveMaterial;
+        private bool _isActive;
+        public bool IsActive => _isActive;
 
         private void Awake()
         {
@@ -21,6 +23,7 @@ namespace _Code.Scripts.LinePaths
         
         public void SetActive(bool active)
         {
+            _isActive = active;
             foreach (var meshRenderer in pathMeshRenderers)
             {
                 meshRenderer.material = active ? activeMaterial : inactiveMaterial;

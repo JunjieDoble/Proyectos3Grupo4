@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using _Code.Scripts.Rooms;
 using UnityEngine;
 
@@ -11,15 +12,23 @@ namespace _Code.Scripts.LinePaths
         [SerializeField] Vector3 checkHalfExtents = new (1, 1, 1);
         [SerializeField] LayerMask layerMask;
         [SerializeField] private Path path;
-        private bool _isActive;
-        public bool IsActive => _isActive;
 
         void Awake()
         {
             path = GetComponentInParent<Path>();
             if (path == null) Debug.LogWarning("PathConnector does not have a path", this);
-            Disconnect();
-            CheckConnection();
+        }
+        
+        private void OnEnable()
+        {
+            Room.OnStartRotation += Disconnect;
+            Room.OnEndRotation += CheckConnection;
+        }
+        
+        private void OnDisable()
+        {
+            Room.OnStartRotation -= Disconnect;
+            Room.OnEndRotation -= CheckConnection;
         }
 
         private void Start()
@@ -35,13 +44,13 @@ namespace _Code.Scripts.LinePaths
             Physics.OverlapBoxNonAlloc(worldCenter, checkHalfExtents, hits, worldRotation, layerMask);
             foreach (var hit in hits)
             {
-                if (hit == null) continue;
+                if (!hit) continue;
                 IConnector connector = hit.GetComponentInParent<IConnector>();
                 if (connector != null)
                 {
                     if (connector is PathConnector otherPathConnector && otherPathConnector != this)
                     {
-                        if (IsActive || otherPathConnector.IsActive)
+                        if (path.IsActive || otherPathConnector.path.IsActive)
                         {
                             Connect();
                             otherPathConnector.Connect();
@@ -57,14 +66,12 @@ namespace _Code.Scripts.LinePaths
         
         public void Connect()
         {
-            _isActive = true;
-            path?.SetActive(_isActive);
+            path?.SetActive(true);
         }
 
         public void Disconnect()
         {
-            _isActive = false;
-            path?.SetActive(_isActive);
+            path?.SetActive(false);
         }
         
         void OnDrawGizmos()

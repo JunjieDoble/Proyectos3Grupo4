@@ -10,6 +10,7 @@ namespace _Code.Scripts.Rooms
         [SerializeField] Vector3 checkCenter;
         [SerializeField] Vector3 checkHalfExtents = new (1, 1, 1);
         [SerializeField] LayerMask layerMask;
+        private Wall _wall;
         
         private void Awake()
         {
@@ -38,7 +39,7 @@ namespace _Code.Scripts.Rooms
                 IConnector connector = hit.GetComponentInParent<IConnector>();
                  if (connector != null)
                 {
-                    if (connector is HallConnector otherHallConnector && otherHallConnector != this)
+                    if (connector is HallConnector otherHallConnector && otherHallConnector != this && _wall != otherHallConnector._wall)
                     {
                         otherHallConnector.Connect();
                         Connect();
@@ -70,6 +71,11 @@ namespace _Code.Scripts.Rooms
 
             Gizmos.matrix = matrix;
             Gizmos.DrawWireCube(Vector3.zero, checkHalfExtents * 2);
+        }
+
+        public void SetWall(Wall wall)
+        {
+            _wall = wall;
         }
     }
 }

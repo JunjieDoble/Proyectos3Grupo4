@@ -11,6 +11,13 @@ namespace _Code.Scripts.Rooms
         private void Awake()
         {
             _connectors = GetComponentsInChildren<IConnector>().ToList();
+            foreach (var connector in _connectors)
+            {
+                if (connector is HallConnector hallConnector)
+                {
+                    hallConnector.SetWall(this);
+                }
+            }
         }
 
         public void OnRoomRotationEnded()
