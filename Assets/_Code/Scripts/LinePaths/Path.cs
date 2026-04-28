@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Interactions;
 using UnityEngine;
 
 namespace _Code.Scripts.LinePaths
@@ -9,6 +10,8 @@ namespace _Code.Scripts.LinePaths
         [SerializeField] private List<MeshRenderer> pathMeshRenderers;
         [SerializeField] private Material activeMaterial;
         [SerializeField] private Material inactiveMaterial;
+        [SerializeField] private GameObject lockableTarget;
+        
         private bool _isActive;
         public bool IsActive => _isActive || _generatorConnector;
         private List<PathConnector> _connectors = new();
@@ -33,6 +36,16 @@ namespace _Code.Scripts.LinePaths
             foreach (var meshRenderer in pathMeshRenderers)
             {
                 meshRenderer.material = active ? activeMaterial : inactiveMaterial;
+            }
+            
+            if (lockableTarget)
+            {
+                ILockable lockable = lockableTarget.GetComponent<ILockable>();
+                if (lockable != null)
+                {
+                    if (active) lockable.Unlock();
+                    else lockable.Unlock();
+                }
             }
         }
 
