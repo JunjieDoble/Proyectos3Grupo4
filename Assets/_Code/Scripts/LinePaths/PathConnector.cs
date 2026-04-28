@@ -92,5 +92,10 @@ namespace _Code.Scripts.LinePaths
             Gizmos.matrix = matrix;
             Gizmos.DrawWireCube(Vector3.zero, checkHalfExtents * 2);
         }
+
+        public void SetGenerator(GeneratorConnector generatorConnector)
+        {
+            path?.SetGenerator(generatorConnector);
+        }
     }
 }

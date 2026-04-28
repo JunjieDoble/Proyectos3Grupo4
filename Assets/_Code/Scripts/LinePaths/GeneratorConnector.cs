@@ -9,8 +9,7 @@ namespace _Code.Scripts.LinePaths
         [SerializeField] Vector3 checkCenter;
         [SerializeField] Vector3 checkHalfExtents = new (1, 1, 1);
         [SerializeField] LayerMask layerMask;
-
-        private void Awake()
+        private void Start()
         {
             CheckConnection();
         }
@@ -24,15 +23,20 @@ namespace _Code.Scripts.LinePaths
             foreach (var hit in hits)
             {
                 if (hit == null) continue;
-                IConnector connector = hit.GetComponentInParent<IConnector>();
-                if (connector != null)
+                PathConnector pathConnector = hit.GetComponent<PathConnector>();
+                if (pathConnector != null)
                 {
-                    if (connector is PathConnector pathConnector)
-                    {
-                        Connect();
-                        pathConnector.Connect();
-                    }
-                    
+                    Connect();
+                    pathConnector.Connect();
+                    pathConnector.SetGenerator(this);
+                    break;
+                }
+                Path path = hit.GetComponentInParent<Path>();
+                if (path)
+                {
+                    path.SetGenerator(this);
+                    path.SetActive(true);
+                    break;
                 }
             }
         }

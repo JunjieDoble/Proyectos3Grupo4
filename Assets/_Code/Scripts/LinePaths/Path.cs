@@ -10,8 +10,9 @@ namespace _Code.Scripts.LinePaths
         [SerializeField] private Material activeMaterial;
         [SerializeField] private Material inactiveMaterial;
         private bool _isActive;
-        public bool IsActive => _isActive;
+        public bool IsActive => _isActive || _generatorConnector;
         private List<PathConnector> _connectors = new();
+        private GeneratorConnector _generatorConnector;
 
         private void Awake()
         {
@@ -26,6 +27,8 @@ namespace _Code.Scripts.LinePaths
         
         public void SetActive(bool active)
         {
+            if (_generatorConnector && !active) return;
+            if (_isActive == active) return;
             _isActive = active;
             foreach (var meshRenderer in pathMeshRenderers)
             {
@@ -42,6 +45,11 @@ namespace _Code.Scripts.LinePaths
                 if (connector == pathConnector) continue;
                 connector.Connect();
             }
+        }
+
+        public void SetGenerator(GeneratorConnector generatorConnector)
+        {
+            _generatorConnector = generatorConnector;
         }
     }
 }
