@@ -11,6 +11,9 @@ namespace _Code.Scripts.Rooms
         [SerializeField] Vector3 checkHalfExtents = new (1, 1, 1);
         [SerializeField] LayerMask layerMask;
         private Wall _wall;
+        private HallConnector _otherConnector;
+        
+        private void SetOther(HallConnector other) => _otherConnector = other;
         
         private void Awake()
         {
@@ -24,6 +27,10 @@ namespace _Code.Scripts.Rooms
             {
                 door.OpenDoor(false);
             }
+        }
+
+        void Start()
+        {
             CheckConnection();
         }
 
@@ -42,6 +49,8 @@ namespace _Code.Scripts.Rooms
                     if (connector is HallConnector otherHallConnector && otherHallConnector != this && _wall != otherHallConnector._wall)
                     {
                         otherHallConnector.Connect();
+                        SetOther(otherHallConnector);
+                        otherHallConnector.SetOther(this);
                         Connect();
                     }
                 }
@@ -50,12 +59,17 @@ namespace _Code.Scripts.Rooms
 
         public void Connect()
         {
-            door?.OpenDoor(true);
+            SetDoorState(true);
         }
+        
+        private void SetDoorState(bool open) => door?.OpenDoor(open);
 
         public void Disconnect()
         {
-            door?.OpenDoor(false);
+            _otherConnector?.SetDoorState(false);
+            _otherConnector?.SetOther(null);
+            _otherConnector = null;
+            SetDoorState(false);
         }
         
         void OnDrawGizmos()
