@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using _Code.Scripts.Rooms;
+﻿using _Code.Scripts.Rooms;
 using UnityEngine;
 
 namespace _Code.Scripts.LinePaths
@@ -12,11 +10,14 @@ namespace _Code.Scripts.LinePaths
         [SerializeField] Vector3 checkHalfExtents = new (1, 1, 1);
         [SerializeField] LayerMask layerMask;
         [SerializeField] private Path path;
+        
+        private PathConnector _otherConnector;
 
         void Awake()
         {
             path = GetComponentInParent<Path>();
             if (path == null) Debug.LogWarning("PathConnector does not have a path", this);
+            else path.AddConnector(this);
         }
         
         private void OnEnable()
@@ -50,6 +51,7 @@ namespace _Code.Scripts.LinePaths
                 {
                     if (connector is PathConnector otherPathConnector && otherPathConnector != this)
                     {
+                        _otherConnector = otherPathConnector;
                         if (path.IsActive || otherPathConnector.path.IsActive)
                         {
                             Connect();
@@ -66,11 +68,14 @@ namespace _Code.Scripts.LinePaths
         
         public void Connect()
         {
-            path?.SetActive(true);
+            path?.Activate(this);
+            if (_otherConnector && _otherConnector.path != path && !_otherConnector.path.IsActive)
+                _otherConnector?.Connect();
         }
 
         public void Disconnect()
         {
+            _otherConnector = null;
             path?.SetActive(false);
         }
         
