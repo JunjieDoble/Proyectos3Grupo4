@@ -44,7 +44,7 @@ namespace _Code.Scripts.LinePaths
                 if (lockable != null)
                 {
                     if (active) lockable.Unlock();
-                    else lockable.Unlock();
+                    else lockable.Lock();
                 }
             }
         }
