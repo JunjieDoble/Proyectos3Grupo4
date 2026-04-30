@@ -6,27 +6,33 @@ namespace _Code.Scripts.Rooms
 {
     public class Wall : MonoBehaviour
     {
-        [Header("References")]
-        [SerializeField] private List<HallConnector> halls = new();
+        private List<IConnector> _connectors = new();
 
         private void Awake()
         {
-            halls = GetComponentsInChildren<HallConnector>().ToList();
+            _connectors = GetComponentsInChildren<IConnector>().ToList();
+            foreach (var connector in _connectors)
+            {
+                if (connector is HallConnector hallConnector)
+                {
+                    hallConnector.SetWall(this);
+                }
+            }
         }
 
         public void OnRoomRotationEnded()
         {
-            foreach (var hall in halls)
+            foreach (var connector in _connectors)
             {
-                hall.CheckConnections();
+                connector.CheckConnection();
             }
         }
 
         public void OnRoomRotationStarted()
         {
-            foreach (var hall in halls)
+            foreach (var connector in _connectors)
             {
-                hall.Disconnect();
+                connector.Disconnect();
             }
         }
     }

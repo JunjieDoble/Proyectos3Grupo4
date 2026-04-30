@@ -31,6 +31,7 @@ namespace _Code.Scripts.Doors
         public void Lock()
         {
             locked = true;
+            door.OpenDoor(false);
         }
     }
 }

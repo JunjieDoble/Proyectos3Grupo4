@@ -1,23 +1,66 @@
-using UnityEngine;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Interactions;
+using UnityEngine;
 
-namespace LinePaths
+namespace _Code.Scripts.LinePaths
 {
-    [System.Serializable]
-    public class Path
+    public class Path : MonoBehaviour
     {
-        [SerializeField] private List<PathSegment> segments = new();
-        [SerializeField] private bool isComplete;
-        [SerializeField] private MonoBehaviour unlockTarget;
+        [Header("References")]
+        [SerializeField] private List<MeshRenderer> pathMeshRenderers;
+        [SerializeField] private Material activeMaterial;
+        [SerializeField] private Material inactiveMaterial;
+        [SerializeField] private GameObject lockableTarget;
+        
+        private bool _isActive;
+        public bool IsActive => _isActive || _generatorConnector;
+        private List<PathConnector> _connectors = new();
+        private GeneratorConnector _generatorConnector;
 
-        public List<PathSegment> Segments => segments;
-        public bool IsComplete => isComplete;
-        public ILockable UnlockTarget => unlockTarget as ILockable; //unity inspector doesn't serialize interfaces
-
-        public void SetComplete(bool value)
+        private void Awake()
         {
-            isComplete = value;
+            if (pathMeshRenderers == null || pathMeshRenderers.Count == 0)
+            {
+                pathMeshRenderers = new List<MeshRenderer>(GetComponentsInChildren<MeshRenderer>());
+                if (pathMeshRenderers.Count == 0) Debug.LogWarning("Path does not have any MeshRenderers", this);
+            }
+        }
+        
+        public void AddConnector(PathConnector connector) => _connectors.Add(connector);
+        
+        public void SetActive(bool active)
+        {
+            if (_generatorConnector && !active) return;
+            if (_isActive == active) return;
+            _isActive = active;
+            
+            pathMeshRenderers.ForEach(mr => mr.sharedMaterial = active ? activeMaterial : inactiveMaterial);
+            
+            if (lockableTarget)
+            {
+                ILockable lockable = lockableTarget.GetComponent<ILockable>();
+                if (lockable != null)
+                {
+                    if (active) lockable.Unlock();
+                    else lockable.Lock();
+                }
+            }
+        }
+
+        public void Activate(PathConnector pathConnector)
+        {
+            if (IsActive) return;
+            SetActive(true);
+            foreach (PathConnector connector in _connectors)
+            {
+                if (connector == pathConnector) continue;
+                connector.Connect();
+            }
+        }
+
+        public void SetGenerator(GeneratorConnector generatorConnector)
+        {
+            _generatorConnector = generatorConnector;
         }
     }
 }
