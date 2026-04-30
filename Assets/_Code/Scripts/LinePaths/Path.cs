@@ -33,10 +33,8 @@ namespace _Code.Scripts.LinePaths
             if (_generatorConnector && !active) return;
             if (_isActive == active) return;
             _isActive = active;
-            foreach (var meshRenderer in pathMeshRenderers)
-            {
-                meshRenderer.material = active ? activeMaterial : inactiveMaterial;
-            }
+            
+            pathMeshRenderers.ForEach(mr => mr.sharedMaterial = active ? activeMaterial : inactiveMaterial);
             
             if (lockableTarget)
             {
