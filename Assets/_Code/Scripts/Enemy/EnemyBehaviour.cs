@@ -16,6 +16,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
     private bool _isDead = false;
     private Color _gizmosColor = Color.green;
     private Vector3 _lastAlertPosition;
+    private Vector3 _lastPlayerPosition;
 
     public GameObject drop;
 
@@ -134,5 +135,15 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
     public Vector3 GetLastAlertPosition()
     {
         return _lastAlertPosition;
+    }
+
+    public Vector3 GetLastPlayerPosition()
+    {
+        return _lastPlayerPosition;
+    }
+
+    public void SetLastPlayerPosition(Vector3 pos)
+    {
+        _lastPlayerPosition = pos;
     }
 }
