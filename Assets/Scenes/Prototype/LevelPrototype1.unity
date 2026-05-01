@@ -2103,6 +2103,7 @@ GameObject:
   - component: {fileID: 103981498}
   - component: {fileID: 103981497}
   - component: {fileID: 103981496}
+  - component: {fileID: 103981501}
   m_Layer: 6
   m_Name: Plane (3)
   m_TagString: Untagged
@@ -2242,6 +2243,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 103981494}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!135 &103981501
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103981494}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &103986433
 GameObject:
   m_ObjectHideFlags: 0
@@ -6367,7 +6389,7 @@ Transform:
   m_GameObject: {fileID: 304415220}
   serializedVersion: 2
   m_LocalRotation: {x: 1, y: -0, z: -0, w: 0.0000005066394}
-  m_LocalPosition: {x: 0, y: 9.999995, z: 0.0000009536743}
+  m_LocalPosition: {x: 0, y: 4.499995, z: 0.0000009536743}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14636,6 +14658,7 @@ GameObject:
   - component: {fileID: 624095668}
   - component: {fileID: 624095667}
   - component: {fileID: 624095671}
+  - component: {fileID: 624095672}
   m_Layer: 6
   m_Name: Plane (1)
   m_TagString: Untagged
@@ -14775,6 +14798,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aa4718b3366488197fd48d5458fce2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Pickupables.HoldablePickup
+--- !u!135 &624095672
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624095665}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &625994427
 GameObject:
   m_ObjectHideFlags: 0
@@ -47444,6 +47488,7 @@ GameObject:
   - component: {fileID: 1995902223}
   - component: {fileID: 1995902222}
   - component: {fileID: 1995902221}
+  - component: {fileID: 1995902225}
   m_Layer: 6
   m_Name: Rotator
   m_TagString: Untagged
@@ -47557,6 +47602,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1995902219}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!135 &1995902225
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995902219}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.7
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1999601268
 GameObject:
   m_ObjectHideFlags: 0
