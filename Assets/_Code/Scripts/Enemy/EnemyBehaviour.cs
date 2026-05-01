@@ -18,6 +18,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
     private Color _gizmosColor = Color.green;
     private Vector3 _lastAlertPosition;
     private Vector3 _lastPlayerPosition;
+    private int _interactableLayer;
 
     public GameObject drop;
 
@@ -26,6 +27,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
         _player = GameObject.Find("Player");
         _animator = GetComponent<Animator>();
         _enemyInteractor = GetComponent<EnemyInteractor>();
+        _interactableLayer = LayerMask.NameToLayer("Interactable");
     }
 
     private void Update()
@@ -92,15 +94,19 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
         KillEnemy();
     }
 
-    public void CheckInteractObject(GameObject interactableObject)
+    public void InteractWithInteractable(GameObject inte)
     {
-        if (interactableObject.CompareTag("Interactable"))
+        if (inte.TryGetComponent(out InteractPoint interactPoint))
         {
-            IInteractable interactable = interactableObject.GetComponent<IInteractable>();
-            if (interactable != null)
+            GameObject interactableObject = interactPoint.GetInteractable();
+            if (interactableObject != null && interactableObject.layer == _interactableLayer)
             {
-                _enemyInteractor.AssignInteractable(interactable);
-                _enemyInteractor.OnInteract();
+                IInteractable interactable = interactableObject.GetComponent<IInteractable>();
+                if (interactable != null)
+                {
+                    _enemyInteractor.AssignInteractable(interactable);
+                    _enemyInteractor.OnInteract();
+                }
             }
         }
     }
