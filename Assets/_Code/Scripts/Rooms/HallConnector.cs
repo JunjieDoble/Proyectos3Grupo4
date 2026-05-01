@@ -1,5 +1,4 @@
-﻿using System;
-using Doors;
+﻿using Doors;
 using UnityEngine;
 
 namespace _Code.Scripts.Rooms
@@ -11,6 +10,10 @@ namespace _Code.Scripts.Rooms
         [SerializeField] Vector3 checkCenter;
         [SerializeField] Vector3 checkHalfExtents = new (1, 1, 1);
         [SerializeField] LayerMask layerMask;
+        private Wall _wall;
+        private HallConnector _otherConnector;
+        
+        private void SetOther(HallConnector other) => _otherConnector = other;
         
         private void Awake()
         {
@@ -24,36 +27,49 @@ namespace _Code.Scripts.Rooms
             {
                 door.OpenDoor(false);
             }
-            CheckConnections();
         }
 
-        public void CheckConnections()
+        void Start()
+        {
+            CheckConnection();
+        }
+
+        public void CheckConnection()
         {             
             Vector3 worldCenter = transform.TransformPoint(checkCenter);
             Quaternion worldRotation = transform.rotation;
-            
-            var hits = Physics.OverlapBox(worldCenter, checkHalfExtents, worldRotation, layerMask);
-             foreach (var hit in hits)
-             {
-                 if (hit.GetComponentInParent<IConnector>() is IConnector otherConnector)
-                 {
-                     if (otherConnector is HallConnector otherHallConnector && otherHallConnector != this)
-                     {
-                         otherHallConnector.Connect();
-                         Connect();
-                     }
-                 }
-             }
+            Collider[] hits = new Collider[10];
+            Physics.OverlapBoxNonAlloc(worldCenter, checkHalfExtents, hits, worldRotation, layerMask); 
+            foreach (var hit in hits) 
+            { 
+                if (hit == null) continue;
+                IConnector connector = hit.GetComponentInParent<IConnector>();
+                 if (connector != null)
+                {
+                    if (connector is HallConnector otherHallConnector && otherHallConnector != this && _wall != otherHallConnector._wall)
+                    {
+                        otherHallConnector.Connect();
+                        SetOther(otherHallConnector);
+                        otherHallConnector.SetOther(this);
+                        Connect();
+                    }
+                }
+            }
         }
 
         public void Connect()
         {
-            door?.OpenDoor(true);
+            SetDoorState(true);
         }
+        
+        private void SetDoorState(bool open) => door?.OpenDoor(open);
 
         public void Disconnect()
         {
-            door?.OpenDoor(false);
+            _otherConnector?.SetDoorState(false);
+            _otherConnector?.SetOther(null);
+            _otherConnector = null;
+            SetDoorState(false);
         }
         
         void OnDrawGizmos()
@@ -69,6 +85,11 @@ namespace _Code.Scripts.Rooms
 
             Gizmos.matrix = matrix;
             Gizmos.DrawWireCube(Vector3.zero, checkHalfExtents * 2);
+        }
+
+        public void SetWall(Wall wall)
+        {
+            _wall = wall;
         }
     }
 }
