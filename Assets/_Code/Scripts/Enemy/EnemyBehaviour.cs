@@ -4,7 +4,7 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
 {
     [Header("Parameters")]
-    [SerializeField] private Transform[] patrolPoints;
+    [SerializeField] private GameObject[] patrolPoints;
     [SerializeField] private float speed = 2f;
     [SerializeField] private float detectionRadius = 10f;
     [SerializeField] private float alertRadius = 15f;
@@ -13,6 +13,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
 
     private Animator _animator;
     private GameObject _player;
+    private EnemyInteractor _enemyInteractor;
     private bool _isDead = false;
     private Color _gizmosColor = Color.green;
     private Vector3 _lastAlertPosition;
@@ -24,6 +25,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
     {
         _player = GameObject.Find("Player");
         _animator = GetComponent<Animator>();
+        _enemyInteractor = GetComponent<EnemyInteractor>();
     }
 
     private void Update()
@@ -90,6 +92,19 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
         KillEnemy();
     }
 
+    public void CheckInteractObject(GameObject interactableObject)
+    {
+        if (interactableObject.CompareTag("Interactable"))
+        {
+            IInteractable interactable = interactableObject.GetComponent<IInteractable>();
+            if (interactable != null)
+            {
+                _enemyInteractor.AssignInteractable(interactable);
+                _enemyInteractor.OnInteract();
+            }
+        }
+    }
+
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.CompareTag("Player"))
@@ -122,7 +137,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
         return Vector3.Angle(directionForward, directionToPlayer);
     }
 
-    public Transform[] GetPatrolPoints()
+    public GameObject[] GetPatrolPoints()
     {
         return patrolPoints;
     }

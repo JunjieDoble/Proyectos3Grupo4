@@ -6,7 +6,7 @@ public class PatrolState : StateMachineBehaviour
 {
     private NavMeshAgent _agent;
     private EnemyBehaviour _enemyBehaviour;
-    private Transform[] _patrolPoints;
+    private GameObject[] _patrolPoints;
     private Vector3 _patrolPosition;
     private int _currentPointIndex;
     private int _patrolPointsCount;
