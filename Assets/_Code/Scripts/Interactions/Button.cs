@@ -10,6 +10,8 @@ namespace Interactions
 
         [SerializeField] private ButtonDoor buttonDoor;
         [SerializeField] private GameObject buttonObject;
+        [SerializeField] private Material pressedMaterial;
+        [SerializeField] private Material releasedMaterial;
         
         public static Action OnButtonPressed;
         public static Action OnButtonReleased;
@@ -39,6 +41,7 @@ namespace Interactions
         private void PressButton()
         {
             buttonObject.transform.localPosition += Vector3.down * 0.1f;
+            buttonObject.GetComponent<Renderer>().sharedMaterial = pressedMaterial;
             buttonDoor?.CheckButtons();
         }
 
@@ -54,6 +57,7 @@ namespace Interactions
         private void ReleaseButton()
         {
             buttonObject.transform.localPosition -= Vector3.down * 0.1f;
+            buttonObject.GetComponent<Renderer>().sharedMaterial = releasedMaterial;
             buttonDoor?.CloseDoor();
         }
     }
