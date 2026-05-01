@@ -29,6 +29,7 @@ namespace Interactions
         
         private void OnTriggerEnter(Collider other)
         {
+            if (other.isTrigger) return;
             Debug.Log("Button pressed!");
             _isActive++;            
             if (_isActive == 1)
@@ -47,6 +48,7 @@ namespace Interactions
 
         private void OnTriggerExit(Collider other)
         {
+            if (other.isTrigger) return;
             Debug.Log("Button released!");
             _isActive--;            
             Debug.Log("Colliders: " + _isActive + "");
