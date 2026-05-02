@@ -1,4 +1,4 @@
-using _Code.Scripts.Rooms;
+﻿using _Code.Scripts.Rooms;
 using UnityEngine;
 using Interactions;
 
@@ -7,6 +7,8 @@ namespace Rooms
     public class RoomRotator : MonoBehaviour, IHoldInteractable, ILockable
     {
         [SerializeField] private Room targetRoom;
+
+        private IInteractor _currentInteractor;
 
         public void Awake()
         {
@@ -24,16 +26,25 @@ namespace Rooms
             OnHoldStarted(interactor);
         }
 
-        public void OnHoldStarted(IInteractor interactor) => RotateRoom();
+        public void OnHoldStarted(IInteractor interactor)
+        {
+            _currentInteractor = interactor;
+            RotateRoom();
+        }
 
         public void OnHoldCanceled(IInteractor interactor)
         {
+            if (_currentInteractor != interactor) return;
+
             targetRoom?.CancelRotate();
+            _currentInteractor = null;
         }
 
         public void OnHoldCompleted(IInteractor interactor)
         {
-            // No additional action needed on hold completion for now
+            if (_currentInteractor != interactor) return;
+
+            _currentInteractor = null;
         }
 
         public bool IsLocked()
