@@ -9,6 +9,9 @@ namespace _Code.Scripts.Rooms
     {
         public static Action OnStartRotation;
         public static Action OnEndRotation;
+        [Header("Room Properties")]
+        [SerializeField]
+        private Vector3 rotatorVector = new (0, 1, 0);
         private Quaternion _startRotation; //before hold
         private bool _isRotating;
         private int _currentAbsRotation; //0, 90, 180, 270
@@ -53,7 +56,7 @@ namespace _Code.Scripts.Rooms
         private void RotateRoom()
         {
             
-            Quaternion targetRotation = Quaternion.Euler(0, _startRotation.eulerAngles.y + 90, 0);
+            Quaternion targetRotation = _startRotation * Quaternion.AngleAxis(90, rotatorVector);
             float rotationSpeed = 90 / 1.2f;
             if(_isRotating)
             {
