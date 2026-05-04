@@ -11,7 +11,6 @@ namespace Rooms
         [SerializeField] private float rotationCooldown = 1.5f;
 
         private IInteractor _currentInteractor;
-        private Coroutine _rotationCoroutine;
 
         public void Awake()
         {
@@ -35,9 +34,7 @@ namespace Rooms
 
             _currentInteractor = interactor;
             RotateRoom();
-
-            if (_rotationCoroutine != null) StopCoroutine(_rotationCoroutine);
-            _rotationCoroutine = StartCoroutine(RotationCooldown());
+            _currentInteractor = null;
         }
 
         public void OnHoldCanceled(IInteractor interactor)
@@ -45,7 +42,6 @@ namespace Rooms
             if (_currentInteractor != null && _currentInteractor != interactor) return;
             targetRoom?.CancelRotate();
 
-            if (_rotationCoroutine != null) StopCoroutine(_rotationCoroutine);
             _currentInteractor = null;
         }
 
@@ -53,7 +49,6 @@ namespace Rooms
         {
             if (_currentInteractor != null && _currentInteractor != interactor) return;
 
-            if (_rotationCoroutine != null) StopCoroutine(_rotationCoroutine);
             _currentInteractor = null;
         }
 
@@ -70,14 +65,6 @@ namespace Rooms
         public void Unlock()
         {
             // TODO: Implement unlock
-        }
-
-        private IEnumerator RotationCooldown()
-        {
-            yield return new WaitForSeconds(rotationCooldown);
-
-            _currentInteractor = null;
-            _rotationCoroutine = null;
         }
     }
 }

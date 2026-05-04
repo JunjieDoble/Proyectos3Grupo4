@@ -98,15 +98,11 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
     {
         if (inte.TryGetComponent(out InteractPoint interactPoint))
         {
-            GameObject interactableObject = interactPoint.GetInteractable();
-            if (interactableObject != null && interactableObject.layer == _interactableLayer)
+            IInteractable interactable = interactPoint.GetInteractable();
+            if (interactable != null)
             {
-                IInteractable interactable = interactableObject.GetComponent<IInteractable>();
-                if (interactable != null)
-                {
-                    _enemyInteractor.AssignInteractable(interactable);
-                    _enemyInteractor.OnInteract();
-                }
+                _enemyInteractor.AssignInteractable(interactable);
+                _enemyInteractor.OnInteract();
             }
         }
     }

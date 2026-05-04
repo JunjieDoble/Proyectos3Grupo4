@@ -3,10 +3,13 @@ using UnityEngine;
 
 public class InteractPoint : MonoBehaviour
 {
-    [SerializeReference] private GameObject interactable;
+    [SerializeField] private GameObject interactableObj;
 
-    public GameObject GetInteractable()
+    public IInteractable GetInteractable()
     {
+        if (interactableObj == null) return null;
+
+        IInteractable interactable = interactableObj.GetComponent<IInteractable>();
         return interactable;
     }
 }

@@ -19,6 +19,7 @@ public class EnemyInteractor : MonoBehaviour, IInteractor
 
     public void OnInteract()
     {
+        if (_currentInteractable != null) return;
         if (_currentInteractable is ILockable lockable && lockable.IsLocked()) return;
         _currentInteractable?.Interact(this);
     }
