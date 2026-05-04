@@ -152,6 +152,7 @@ GameObject:
   - component: {fileID: 7420929849495479328}
   - component: {fileID: 3495040407503735536}
   - component: {fileID: 2963254709656132882}
+  - component: {fileID: 8638280349087719594}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -445,11 +446,27 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ff0c9acf-c74f-4acb-accf-0b805207566f
+    m_ActionName: 'Player/ShowMap[/Keyboard/m]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &8638280349087719594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5747956447751248614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5d786311b7a4003a1d9bbf28d297f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Character.Player
 --- !u!1 &7727098410176515725
 GameObject:
   m_ObjectHideFlags: 0
