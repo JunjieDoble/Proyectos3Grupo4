@@ -22,14 +22,18 @@ namespace _Code.Scripts.LinePaths
         
         private void OnEnable()
         {
-            Room.OnStartRotation += Disconnect;
-            Room.OnEndRotation += CheckConnection;
+            Room.OnEndRotation += DisconnectAndCheck;
         }
-        
+
+        private void DisconnectAndCheck()
+        {
+            Disconnect();
+            CheckConnection();
+        }
+
         private void OnDisable()
         {
-            Room.OnStartRotation -= Disconnect;
-            Room.OnEndRotation -= CheckConnection;
+            Room.OnEndRotation -= DisconnectAndCheck;
         }
 
         private void Start()
