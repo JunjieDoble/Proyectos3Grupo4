@@ -6,10 +6,11 @@ public class PatrolState : StateMachineBehaviour
 {
     private NavMeshAgent _agent;
     private EnemyBehaviour _enemyBehaviour;
-    private Transform[] _patrolPoints;
+    private GameObject[] _patrolPoints;
     private Vector3 _patrolPosition;
     private int _currentPointIndex;
     private int _patrolPointsCount;
+    private bool _pointReached;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -22,6 +23,7 @@ public class PatrolState : StateMachineBehaviour
         _patrolPointsCount = _patrolPoints.Length;
 
         _agent.isStopped = false;
+        _pointReached = false;
         _agent.speed = _enemyBehaviour.GetSpeed();
     }
 
@@ -29,6 +31,11 @@ public class PatrolState : StateMachineBehaviour
     {
         if (Vector3.Distance(_agent.transform.position, _patrolPosition) < 1.5f)
         {
+            if (_pointReached) return;
+
+            _enemyBehaviour.InteractWithInteractable(_patrolPoints[_currentPointIndex]);
+            _pointReached = true;
+
             if (_currentPointIndex >= _patrolPointsCount - 1)
             {
                 _currentPointIndex = 0;
