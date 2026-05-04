@@ -10,6 +10,8 @@ namespace Interactions
 
         [SerializeField] private ButtonDoor buttonDoor;
         [SerializeField] private GameObject buttonObject;
+        [SerializeField] private Material pressedMaterial;
+        [SerializeField] private Material releasedMaterial;
         
         public static Action OnButtonPressed;
         public static Action OnButtonReleased;
@@ -27,6 +29,7 @@ namespace Interactions
         
         private void OnTriggerEnter(Collider other)
         {
+            if (other.isTrigger) return;
             Debug.Log("Button pressed!");
             _isActive++;            
             if (_isActive == 1)
@@ -39,11 +42,13 @@ namespace Interactions
         private void PressButton()
         {
             buttonObject.transform.localPosition += Vector3.down * 0.1f;
+            buttonObject.GetComponent<Renderer>().sharedMaterial = pressedMaterial;
             buttonDoor?.CheckButtons();
         }
 
         private void OnTriggerExit(Collider other)
         {
+            if (other.isTrigger) return;
             Debug.Log("Button released!");
             _isActive--;            
             Debug.Log("Colliders: " + _isActive + "");
@@ -54,6 +59,7 @@ namespace Interactions
         private void ReleaseButton()
         {
             buttonObject.transform.localPosition -= Vector3.down * 0.1f;
+            buttonObject.GetComponent<Renderer>().sharedMaterial = releasedMaterial;
             buttonDoor?.CloseDoor();
         }
     }
