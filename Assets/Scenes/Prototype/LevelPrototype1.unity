@@ -11411,9 +11411,9 @@ GameObject:
   - component: {fileID: 491443897}
   - component: {fileID: 491443896}
   - component: {fileID: 491443895}
-  - component: {fileID: 491443894}
+  - component: {fileID: 491443898}
   m_Layer: 9
-  m_Name: Cylinder (5)
+  m_Name: B_In
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11434,24 +11434,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 728794516}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: -90}
---- !u!114 &491443894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 491443892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fafa793ff6f4ce1a360d5a016060b90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.LinePaths.PathConnector
-  checkCenter: {x: 0, y: -1, z: 0}
-  checkHalfExtents: {x: 0.1, y: 1, z: 0.1}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 512
-  path: {fileID: 0}
 --- !u!136 &491443895
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11532,6 +11514,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 491443892}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &491443898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491443892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c83e69366340496bb83e948f481a1f19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Revamp.Activators.Connectors.PathConnector
+  activable: {fileID: 0}
+  checkCenter: {x: 0, y: -1, z: 0}
+  checkHalfExtents: {x: 0.1, y: 1, z: 0.1}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  path: {fileID: 0}
 --- !u!1 &492563191
 GameObject:
   m_ObjectHideFlags: 0
@@ -16207,26 +16208,14 @@ GameObject:
   - component: {fileID: 660459115}
   - component: {fileID: 660459114}
   - component: {fileID: 660459113}
-  - component: {fileID: 660459112}
+  - component: {fileID: 660459117}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &660459112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 660459111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18a633e5c2930bb4699449b086d26652, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Doors.Door
 --- !u!65 &660459113
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16313,13 +16302,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 660459111}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5000011, y: 0.49999967, z: -0.49999827, w: 0.5000011}
+  m_LocalRotation: {x: 0.49999964, y: -0.49999964, z: 0.49999964, w: 0.500001}
   m_LocalPosition: {x: 0, y: 1.5, z: 0}
-  m_LocalScale: {x: 0.1, y: 2, z: 3}
+  m_LocalScale: {x: 0.10000002, y: 2, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1941658598}
+  m_Father: {fileID: 937620606}
   m_LocalEulerAnglesHint: {x: 90, y: 180, z: 90}
+--- !u!114 &660459117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660459111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32ad19a512e54fc38475ee284f2d2bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Revamp.Activables.Door
 --- !u!1 &666339077
 GameObject:
   m_ObjectHideFlags: 0
@@ -18636,7 +18637,7 @@ GameObject:
   - component: {fileID: 728794516}
   - component: {fileID: 728794517}
   m_Layer: 9
-  m_Name: LightPath
+  m_Name: LightPathB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18671,13 +18672,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 728794515}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5f6b955aca84f65ad4dce67d7ac03d1, type: 3}
+  m_Script: {fileID: 11500000, guid: f8e86b2cf96f4e7e8702cbcfd49dafac, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.LinePaths.Path
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Revamp.Activables.Path
   pathMeshRenderers: []
   activeMaterial: {fileID: 2100000, guid: d9e6d2d3345c4c44bbc26b993fe2e347, type: 2}
   inactiveMaterial: {fileID: 2100000, guid: 443ee28c99000ef41836537cba7f4121, type: 2}
-  lockableTarget: {fileID: 0}
+  target: {fileID: 0}
 --- !u!1 &732220700
 GameObject:
   m_ObjectHideFlags: 0
@@ -21736,9 +21737,9 @@ GameObject:
   - component: {fileID: 912302803}
   - component: {fileID: 912302802}
   - component: {fileID: 912302801}
-  - component: {fileID: 912302800}
+  - component: {fileID: 912302804}
   m_Layer: 9
-  m_Name: Cylinder (3)
+  m_Name: A_In
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21759,24 +21760,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1452181499}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 90.008}
---- !u!114 &912302800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 912302798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fafa793ff6f4ce1a360d5a016060b90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.LinePaths.PathConnector
-  checkCenter: {x: 0, y: -1, z: 0}
-  checkHalfExtents: {x: 0.1, y: 1, z: 0.1}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 512
-  path: {fileID: 0}
 --- !u!136 &912302801
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -21857,6 +21840,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912302798}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &912302804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912302798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c83e69366340496bb83e948f481a1f19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Revamp.Activators.Connectors.PathConnector
+  activable: {fileID: 0}
+  checkCenter: {x: 0, y: -1, z: 0}
+  checkHalfExtents: {x: 0.1, y: 1, z: 0.1}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  path: {fileID: 0}
 --- !u!1 &912842529
 GameObject:
   m_ObjectHideFlags: 0
@@ -22663,7 +22665,7 @@ Transform:
   - {fileID: 384750051}
   - {fileID: 269863778}
   - {fileID: 1107774132}
-  - {fileID: 1941658598}
+  - {fileID: 660459116}
   - {fileID: 538038512}
   - {fileID: 1478173453}
   - {fileID: 2147207881}
@@ -34704,8 +34706,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1419705622}
   - component: {fileID: 1419705623}
+  - component: {fileID: 1419705624}
   m_Layer: 9
-  m_Name: LightPath
+  m_Name: LightPathC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34745,7 +34748,23 @@ MonoBehaviour:
   pathMeshRenderers: []
   activeMaterial: {fileID: 2100000, guid: d9e6d2d3345c4c44bbc26b993fe2e347, type: 2}
   inactiveMaterial: {fileID: 2100000, guid: 443ee28c99000ef41836537cba7f4121, type: 2}
-  lockableTarget: {fileID: 1941658596}
+  lockableTarget: {fileID: 0}
+--- !u!114 &1419705624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419705621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8e86b2cf96f4e7e8702cbcfd49dafac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Revamp.Activables.Path
+  pathMeshRenderers: []
+  activeMaterial: {fileID: 2100000, guid: d9e6d2d3345c4c44bbc26b993fe2e347, type: 2}
+  inactiveMaterial: {fileID: 2100000, guid: 443ee28c99000ef41836537cba7f4121, type: 2}
+  target: {fileID: 660459117}
 --- !u!1 &1420265349
 GameObject:
   m_ObjectHideFlags: 0
@@ -35434,7 +35453,7 @@ GameObject:
   - component: {fileID: 1452181499}
   - component: {fileID: 1452181500}
   m_Layer: 9
-  m_Name: LightPath
+  m_Name: LightPathA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35467,13 +35486,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1452181498}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5f6b955aca84f65ad4dce67d7ac03d1, type: 3}
+  m_Script: {fileID: 11500000, guid: f8e86b2cf96f4e7e8702cbcfd49dafac, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.LinePaths.Path
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Revamp.Activables.Path
   pathMeshRenderers: []
   activeMaterial: {fileID: 2100000, guid: d9e6d2d3345c4c44bbc26b993fe2e347, type: 2}
   inactiveMaterial: {fileID: 2100000, guid: 443ee28c99000ef41836537cba7f4121, type: 2}
-  lockableTarget: {fileID: 0}
+  target: {fileID: 0}
 --- !u!1 &1456264197
 GameObject:
   m_ObjectHideFlags: 0
@@ -40255,9 +40274,9 @@ GameObject:
   - component: {fileID: 1649740697}
   - component: {fileID: 1649740696}
   - component: {fileID: 1649740695}
-  - component: {fileID: 1649740694}
+  - component: {fileID: 1649740698}
   m_Layer: 9
-  m_Name: Cylinder (5)
+  m_Name: C_In
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40278,24 +40297,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1419705622}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: -90}
---- !u!114 &1649740694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1649740692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fafa793ff6f4ce1a360d5a016060b90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.LinePaths.PathConnector
-  checkCenter: {x: 0, y: -1, z: 0}
-  checkHalfExtents: {x: 0.1, y: 1, z: 0.1}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 512
-  path: {fileID: 0}
 --- !u!136 &1649740695
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -40376,6 +40377,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1649740692}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1649740698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649740692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c83e69366340496bb83e948f481a1f19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Revamp.Activators.Connectors.PathConnector
+  activable: {fileID: 0}
+  checkCenter: {x: 0, y: -1, z: 0}
+  checkHalfExtents: {x: 0.1, y: 1, z: 0.1}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  path: {fileID: 0}
 --- !u!1 &1651131010
 GameObject:
   m_ObjectHideFlags: 0
@@ -42125,7 +42145,7 @@ GameObject:
   - component: {fileID: 1707813180}
   - component: {fileID: 1707813179}
   - component: {fileID: 1707813178}
-  - component: {fileID: 1707813177}
+  - component: {fileID: 1707813181}
   m_Layer: 9
   m_Name: Generator
   m_TagString: Untagged
@@ -42148,23 +42168,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1077099615}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1707813177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1707813175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca12abc2662d4c90a789eef2e4e3ea28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.LinePaths.GeneratorConnector
-  checkCenter: {x: 0, y: 0, z: 0}
-  checkHalfExtents: {x: 0.6, y: 1.1, z: 0.3}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!65 &1707813178
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42243,6 +42246,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1707813175}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1707813181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707813175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c94408072e34fa58e7a8f74039d9ebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Revamp.Activators.Connectors.GeneratorConnector
+  activable: {fileID: 0}
+  checkCenter: {x: 0, y: 0, z: 0}
+  checkHalfExtents: {x: 0.6, y: 1.1, z: 0.3}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &1715283339
 GameObject:
   m_ObjectHideFlags: 0
@@ -47568,74 +47589,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1936091531}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1941658596
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1941658598}
-  - component: {fileID: 1941658599}
-  - component: {fileID: 1941658600}
-  m_Layer: 6
-  m_Name: PathDoor
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
---- !u!4 &1941658598
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1941658596}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.000002801418}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 660459116}
-  m_Father: {fileID: 937620606}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1941658599
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1941658596}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2, y: 3, z: 0.1}
-  m_Center: {x: 0, y: 1.5, z: 0}
---- !u!114 &1941658600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1941658596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fa5638e9e384127975d411cd081b1c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Doors.PathDoor
-  door: {fileID: 660459112}
 --- !u!1 &1943241939
 GameObject:
   m_ObjectHideFlags: 0
@@ -47874,9 +47827,9 @@ GameObject:
   - component: {fileID: 1949361366}
   - component: {fileID: 1949361365}
   - component: {fileID: 1949361364}
-  - component: {fileID: 1949361363}
+  - component: {fileID: 1949361367}
   m_Layer: 9
-  m_Name: Cylinder (7)
+  m_Name: B_Out
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47897,24 +47850,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 728794516}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: -180}
---- !u!114 &1949361363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1949361361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fafa793ff6f4ce1a360d5a016060b90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.LinePaths.PathConnector
-  checkCenter: {x: 0, y: -1, z: 0}
-  checkHalfExtents: {x: 0.1, y: 1, z: 0.1}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 512
-  path: {fileID: 0}
 --- !u!136 &1949361364
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -47995,6 +47930,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1949361361}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1949361367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949361361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c83e69366340496bb83e948f481a1f19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Revamp.Activators.Connectors.PathConnector
+  activable: {fileID: 0}
+  checkCenter: {x: 0, y: -1, z: 0}
+  checkHalfExtents: {x: 0.1, y: 1, z: 0.1}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  path: {fileID: 0}
 --- !u!1 &1952562082
 GameObject:
   m_ObjectHideFlags: 0
@@ -48946,9 +48900,9 @@ GameObject:
   - component: {fileID: 1987036251}
   - component: {fileID: 1987036250}
   - component: {fileID: 1987036249}
-  - component: {fileID: 1987036248}
+  - component: {fileID: 1987036252}
   m_Layer: 9
-  m_Name: Cylinder (5)
+  m_Name: A_Out
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48969,24 +48923,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1452181499}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: -90}
---- !u!114 &1987036248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1987036246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fafa793ff6f4ce1a360d5a016060b90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.LinePaths.PathConnector
-  checkCenter: {x: 0, y: -1, z: 0}
-  checkHalfExtents: {x: 0.1, y: 1, z: 0.1}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 512
-  path: {fileID: 0}
 --- !u!136 &1987036249
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -49067,6 +49003,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1987036246}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1987036252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987036246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c83e69366340496bb83e948f481a1f19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Revamp.Activators.Connectors.PathConnector
+  activable: {fileID: 0}
+  checkCenter: {x: 0, y: -1, z: 0}
+  checkHalfExtents: {x: 0.1, y: 1, z: 0.1}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  path: {fileID: 0}
 --- !u!1 &1995902219
 GameObject:
   m_ObjectHideFlags: 0
@@ -53092,7 +53047,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7324281891904208692, guid: 9dab36df29ba2674a90c9075a4273fce, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.4
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: 7324281891904208692, guid: 9dab36df29ba2674a90c9075a4273fce, type: 3}
       propertyPath: m_LocalPosition.y
@@ -53100,7 +53055,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7324281891904208692, guid: 9dab36df29ba2674a90c9075a4273fce, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.6
+      value: 28.999998
       objectReference: {fileID: 0}
     - target: {fileID: 7324281891904208692, guid: 9dab36df29ba2674a90c9075a4273fce, type: 3}
       propertyPath: m_LocalRotation.w

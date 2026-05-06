@@ -63,7 +63,6 @@ namespace _Code.Scripts.Rooms
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
                 if (Quaternion.Angle(transform.rotation, targetRotation) < 0.1f)
                 {
-                    Debug.Log("Rotation finished");
                     transform.rotation = targetRotation;
                     _isRotating = false;
                     OnEndRotation?.Invoke();

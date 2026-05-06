@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using _Code.Scripts.Revamp.Bases;
 using UnityEngine;
 
 namespace _Code.Scripts.Rooms
@@ -7,6 +8,7 @@ namespace _Code.Scripts.Rooms
     public class Wall : MonoBehaviour
     {
         private List<IConnector> _connectors = new();
+        private List<Connector> _connectors2 = new();
 
         private void Awake()
         {
@@ -18,6 +20,8 @@ namespace _Code.Scripts.Rooms
                     hallConnector.SetWall(this);
                 }
             }
+            
+            _connectors2 = GetComponentsInChildren<Connector>().ToList();
         }
 
         public void OnRoomRotationEnded()
@@ -26,11 +30,19 @@ namespace _Code.Scripts.Rooms
             {
                 connector.CheckConnection();
             }
+            foreach (var connector in _connectors2)
+            {
+                connector.CheckConnection();
+            }
         }
 
         public void OnRoomRotationStarted()
         {
             foreach (var connector in _connectors)
+            {
+                connector.Disconnect();
+            }
+            foreach (var connector in _connectors2)
             {
                 connector.Disconnect();
             }
