@@ -16,12 +16,12 @@ namespace _Code.Scripts.Pickupables
 
         private void Start()
         {
-            door?.Lock();
+            door?.AddKey(this);
         }
 
         public override void PickUp(IInteractor interactor)
         {
-            door.Unlock();
+            door?.RemoveKey(this);
             Destroy(gameObject);
         }
     }
