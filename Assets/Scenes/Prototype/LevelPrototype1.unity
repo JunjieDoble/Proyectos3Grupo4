@@ -1440,10 +1440,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 50802116}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a58dd7ba656044309c0c1c85977d5866, type: 3}
+  m_Script: {fileID: 11500000, guid: 9441588436254bebacfc14e44372d9eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.HallConnector
-  door: {fileID: 0}
+  activable: {fileID: 0}
   checkCenter: {x: -5, y: 1.5, z: 0}
   checkHalfExtents: {x: 1, y: 3, z: 2}
   layerMask:
@@ -1719,10 +1719,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 69244891}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a58dd7ba656044309c0c1c85977d5866, type: 3}
+  m_Script: {fileID: 11500000, guid: 9441588436254bebacfc14e44372d9eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.HallConnector
-  door: {fileID: 0}
+  activable: {fileID: 0}
   checkCenter: {x: -5, y: 1, z: 0}
   checkHalfExtents: {x: 1, y: 2, z: 2}
   layerMask:
@@ -3560,10 +3560,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 176029212}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a58dd7ba656044309c0c1c85977d5866, type: 3}
+  m_Script: {fileID: 11500000, guid: 9441588436254bebacfc14e44372d9eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.HallConnector
-  door: {fileID: 0}
+  activable: {fileID: 0}
   checkCenter: {x: -5, y: 1.5, z: 0}
   checkHalfExtents: {x: 1, y: 3, z: 2}
   layerMask:
@@ -4819,7 +4819,7 @@ GameObject:
   - component: {fileID: 217704249}
   - component: {fileID: 217704248}
   - component: {fileID: 217704247}
-  - component: {fileID: 217704246}
+  - component: {fileID: 217704250}
   m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
@@ -4842,18 +4842,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1012112630}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!114 &217704246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 217704244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18a633e5c2930bb4699449b086d26652, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Doors.Door
 --- !u!64 &217704247
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4933,6 +4921,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 217704244}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &217704250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217704244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32ad19a512e54fc38475ee284f2d2bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Revamp.Activables.Door
 --- !u!1 &218557288
 GameObject:
   m_ObjectHideFlags: 0
@@ -5656,7 +5656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 686f9622b852ae54d999c899535471f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Doors.ButtonDoor
-  door: {fileID: 1082845521}
+  door: {fileID: 0}
 --- !u!1 &269863777
 GameObject:
   m_ObjectHideFlags: 0
@@ -5812,10 +5812,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 272237208}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a58dd7ba656044309c0c1c85977d5866, type: 3}
+  m_Script: {fileID: 11500000, guid: 9441588436254bebacfc14e44372d9eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.HallConnector
-  door: {fileID: 0}
+  activable: {fileID: 0}
   checkCenter: {x: -5, y: 1, z: 0}
   checkHalfExtents: {x: 1, y: 2, z: 2}
   layerMask:
@@ -5951,7 +5951,7 @@ GameObject:
   - component: {fileID: 298326233}
   - component: {fileID: 298326232}
   - component: {fileID: 298326231}
-  - component: {fileID: 298326230}
+  - component: {fileID: 298326234}
   m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
@@ -5974,18 +5974,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 649471848}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!114 &298326230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 298326228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18a633e5c2930bb4699449b086d26652, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Doors.Door
 --- !u!64 &298326231
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6065,6 +6053,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 298326228}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &298326234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298326228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32ad19a512e54fc38475ee284f2d2bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Revamp.Activables.Door
 --- !u!1 &299406466
 GameObject:
   m_ObjectHideFlags: 0
@@ -6303,7 +6303,7 @@ GameObject:
   - component: {fileID: 302807708}
   - component: {fileID: 302807707}
   - component: {fileID: 302807706}
-  - component: {fileID: 302807705}
+  - component: {fileID: 302807709}
   m_Layer: 6
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -6326,18 +6326,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1300856069}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &302807705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 302807703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18a633e5c2930bb4699449b086d26652, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Doors.Door
 --- !u!65 &302807706
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6416,6 +6404,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 302807703}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &302807709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302807703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32ad19a512e54fc38475ee284f2d2bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Revamp.Activables.Door
 --- !u!1 &302971981
 GameObject:
   m_ObjectHideFlags: 0
@@ -7649,7 +7649,7 @@ GameObject:
   - component: {fileID: 344597063}
   - component: {fileID: 344597062}
   - component: {fileID: 344597061}
-  - component: {fileID: 344597060}
+  - component: {fileID: 344597064}
   m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
@@ -7672,18 +7672,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 572308805}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!114 &344597060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 344597058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18a633e5c2930bb4699449b086d26652, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Doors.Door
 --- !u!64 &344597061
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7763,6 +7751,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 344597058}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &344597064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344597058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32ad19a512e54fc38475ee284f2d2bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Revamp.Activables.Door
 --- !u!1 &346127872
 GameObject:
   m_ObjectHideFlags: 0
@@ -8966,7 +8966,7 @@ GameObject:
   - component: {fileID: 379970822}
   - component: {fileID: 379970821}
   - component: {fileID: 379970820}
-  - component: {fileID: 379970819}
+  - component: {fileID: 379970823}
   m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
@@ -8989,18 +8989,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 272237209}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!114 &379970819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 379970817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18a633e5c2930bb4699449b086d26652, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Doors.Door
 --- !u!64 &379970820
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9080,6 +9068,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 379970817}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &379970823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379970817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32ad19a512e54fc38475ee284f2d2bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Revamp.Activables.Door
 --- !u!1 &384750050
 GameObject:
   m_ObjectHideFlags: 0
@@ -11532,7 +11532,6 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 512
-  path: {fileID: 0}
 --- !u!1 &492563191
 GameObject:
   m_ObjectHideFlags: 0
@@ -13722,10 +13721,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 572308804}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a58dd7ba656044309c0c1c85977d5866, type: 3}
+  m_Script: {fileID: 11500000, guid: 9441588436254bebacfc14e44372d9eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.HallConnector
-  door: {fileID: 0}
+  activable: {fileID: 0}
   checkCenter: {x: -5, y: 1.5, z: 0}
   checkHalfExtents: {x: 1, y: 3, z: 2}
   layerMask:
@@ -16074,10 +16073,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 649471847}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a58dd7ba656044309c0c1c85977d5866, type: 3}
+  m_Script: {fileID: 11500000, guid: 9441588436254bebacfc14e44372d9eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.HallConnector
-  door: {fileID: 0}
+  activable: {fileID: 0}
   checkCenter: {x: -5, y: 1, z: 0}
   checkHalfExtents: {x: 1, y: 2, z: 2}
   layerMask:
@@ -20527,10 +20526,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 855138584}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a58dd7ba656044309c0c1c85977d5866, type: 3}
+  m_Script: {fileID: 11500000, guid: 9441588436254bebacfc14e44372d9eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.HallConnector
-  door: {fileID: 0}
+  activable: {fileID: 0}
   checkCenter: {x: -5, y: 1.5, z: 0}
   checkHalfExtents: {x: 1, y: 3, z: 2}
   layerMask:
@@ -21858,7 +21857,6 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 512
-  path: {fileID: 0}
 --- !u!1 &912842529
 GameObject:
   m_ObjectHideFlags: 0
@@ -23488,7 +23486,7 @@ GameObject:
   - component: {fileID: 968934861}
   - component: {fileID: 968934860}
   - component: {fileID: 968934859}
-  - component: {fileID: 968934858}
+  - component: {fileID: 968934862}
   m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
@@ -23511,18 +23509,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1047285622}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!114 &968934858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 968934856}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18a633e5c2930bb4699449b086d26652, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Doors.Door
 --- !u!64 &968934859
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23602,6 +23588,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 968934856}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &968934862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968934856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32ad19a512e54fc38475ee284f2d2bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Revamp.Activables.Door
 --- !u!1 &976296294
 GameObject:
   m_ObjectHideFlags: 0
@@ -24433,10 +24431,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1012112629}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a58dd7ba656044309c0c1c85977d5866, type: 3}
+  m_Script: {fileID: 11500000, guid: 9441588436254bebacfc14e44372d9eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.HallConnector
-  door: {fileID: 0}
+  activable: {fileID: 0}
   checkCenter: {x: -5, y: 1.5, z: 0}
   checkHalfExtents: {x: 1, y: 3, z: 2}
   layerMask:
@@ -25307,10 +25305,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1047285621}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a58dd7ba656044309c0c1c85977d5866, type: 3}
+  m_Script: {fileID: 11500000, guid: 9441588436254bebacfc14e44372d9eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.HallConnector
-  door: {fileID: 0}
+  activable: {fileID: 0}
   checkCenter: {x: -5, y: 1.5, z: 0}
   checkHalfExtents: {x: 1, y: 3, z: 2}
   layerMask:
@@ -26741,9 +26739,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1082845516}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18a633e5c2930bb4699449b086d26652, type: 3}
+  m_Script: {fileID: 11500000, guid: 32ad19a512e54fc38475ee284f2d2bee, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Doors.Door
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Revamp.Activables.Door
 --- !u!1 &1083015689
 GameObject:
   m_ObjectHideFlags: 0
@@ -29675,7 +29673,7 @@ GameObject:
   - component: {fileID: 1193956249}
   - component: {fileID: 1193956248}
   - component: {fileID: 1193956247}
-  - component: {fileID: 1193956246}
+  - component: {fileID: 1193956250}
   m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
@@ -29698,18 +29696,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 855138585}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!114 &1193956246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1193956244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18a633e5c2930bb4699449b086d26652, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Doors.Door
 --- !u!64 &1193956247
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -29789,6 +29775,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1193956244}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1193956250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193956244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32ad19a512e54fc38475ee284f2d2bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Revamp.Activables.Door
 --- !u!1 &1194054129
 GameObject:
   m_ObjectHideFlags: 0
@@ -34705,7 +34703,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1419705622}
-  - component: {fileID: 1419705623}
   - component: {fileID: 1419705624}
   m_Layer: 9
   m_Name: LightPathC
@@ -34733,22 +34730,6 @@ Transform:
   - {fileID: 208313970}
   m_Father: {fileID: 768287535}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1419705623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1419705621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5f6b955aca84f65ad4dce67d7ac03d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.LinePaths.Path
-  pathMeshRenderers: []
-  activeMaterial: {fileID: 2100000, guid: d9e6d2d3345c4c44bbc26b993fe2e347, type: 2}
-  inactiveMaterial: {fileID: 2100000, guid: 443ee28c99000ef41836537cba7f4121, type: 2}
-  lockableTarget: {fileID: 0}
 --- !u!114 &1419705624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35652,7 +35633,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1465003368}
-  - component: {fileID: 1465003369}
+  - component: {fileID: 1465003370}
   m_Layer: 8
   m_Name: Hall (1)
   m_TagString: Untagged
@@ -35677,7 +35658,7 @@ Transform:
   - {fileID: 1418738471}
   m_Father: {fileID: 968000189}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &1465003369
+--- !u!114 &1465003370
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -35686,10 +35667,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1465003367}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a58dd7ba656044309c0c1c85977d5866, type: 3}
+  m_Script: {fileID: 11500000, guid: 9441588436254bebacfc14e44372d9eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.HallConnector
-  door: {fileID: 0}
+  activable: {fileID: 0}
   checkCenter: {x: -5, y: 1.5, z: 0}
   checkHalfExtents: {x: 1, y: 3, z: 2}
   layerMask:
@@ -36046,7 +36027,7 @@ GameObject:
   - component: {fileID: 1481634079}
   - component: {fileID: 1481634078}
   - component: {fileID: 1481634077}
-  - component: {fileID: 1481634076}
+  - component: {fileID: 1481634080}
   m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
@@ -36069,18 +36050,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 50802117}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!114 &1481634076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1481634074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18a633e5c2930bb4699449b086d26652, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Doors.Door
 --- !u!64 &1481634077
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -36160,6 +36129,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1481634074}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1481634080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481634074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32ad19a512e54fc38475ee284f2d2bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Revamp.Activables.Door
 --- !u!1 &1489056042
 GameObject:
   m_ObjectHideFlags: 0
@@ -40395,7 +40376,6 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 512
-  path: {fileID: 0}
 --- !u!1 &1651131010
 GameObject:
   m_ObjectHideFlags: 0
@@ -44023,10 +44003,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1819884088}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a58dd7ba656044309c0c1c85977d5866, type: 3}
+  m_Script: {fileID: 11500000, guid: 9441588436254bebacfc14e44372d9eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.HallConnector
-  door: {fileID: 0}
+  activable: {fileID: 0}
   checkCenter: {x: -5, y: 1.5, z: 0}
   checkHalfExtents: {x: 1, y: 3, z: 2}
   layerMask:
@@ -44929,10 +44909,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1857059770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a58dd7ba656044309c0c1c85977d5866, type: 3}
+  m_Script: {fileID: 11500000, guid: 9441588436254bebacfc14e44372d9eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.HallConnector
-  door: {fileID: 0}
+  activable: {fileID: 0}
   checkCenter: {x: -5, y: 1.5, z: 0}
   checkHalfExtents: {x: 1, y: 3, z: 2}
   layerMask:
@@ -45289,7 +45269,7 @@ GameObject:
   - component: {fileID: 1877135026}
   - component: {fileID: 1877135025}
   - component: {fileID: 1877135024}
-  - component: {fileID: 1877135023}
+  - component: {fileID: 1877135027}
   m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
@@ -45312,18 +45292,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 176029213}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!114 &1877135023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1877135021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18a633e5c2930bb4699449b086d26652, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Doors.Door
 --- !u!64 &1877135024
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -45403,6 +45371,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1877135021}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1877135027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877135021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32ad19a512e54fc38475ee284f2d2bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Revamp.Activables.Door
 --- !u!1 &1877434025
 GameObject:
   m_ObjectHideFlags: 0
@@ -46671,7 +46651,7 @@ GameObject:
   - component: {fileID: 1915471632}
   - component: {fileID: 1915471631}
   - component: {fileID: 1915471630}
-  - component: {fileID: 1915471629}
+  - component: {fileID: 1915471633}
   m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
@@ -46694,18 +46674,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1819884089}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!114 &1915471629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1915471627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18a633e5c2930bb4699449b086d26652, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Doors.Door
 --- !u!64 &1915471630
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -46785,6 +46753,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1915471627}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1915471633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915471627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32ad19a512e54fc38475ee284f2d2bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Revamp.Activables.Door
 --- !u!1 &1917955059
 GameObject:
   m_ObjectHideFlags: 0
@@ -47249,7 +47229,7 @@ GameObject:
   - component: {fileID: 1930982372}
   - component: {fileID: 1930982371}
   - component: {fileID: 1930982370}
-  - component: {fileID: 1930982369}
+  - component: {fileID: 1930982373}
   m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
@@ -47272,18 +47252,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 69244892}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!114 &1930982369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1930982367}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18a633e5c2930bb4699449b086d26652, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Doors.Door
 --- !u!64 &1930982370
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -47363,6 +47331,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930982367}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1930982373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930982367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32ad19a512e54fc38475ee284f2d2bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Revamp.Activables.Door
 --- !u!1 &1935838789
 GameObject:
   m_ObjectHideFlags: 0
@@ -47948,7 +47928,6 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 512
-  path: {fileID: 0}
 --- !u!1 &1952562082
 GameObject:
   m_ObjectHideFlags: 0
@@ -49021,7 +49000,6 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 512
-  path: {fileID: 0}
 --- !u!1 &1995902219
 GameObject:
   m_ObjectHideFlags: 0
@@ -49183,7 +49161,7 @@ GameObject:
   - component: {fileID: 1999601273}
   - component: {fileID: 1999601272}
   - component: {fileID: 1999601271}
-  - component: {fileID: 1999601270}
+  - component: {fileID: 1999601274}
   m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
@@ -49206,18 +49184,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1857059771}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!114 &1999601270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1999601268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18a633e5c2930bb4699449b086d26652, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Doors.Door
 --- !u!64 &1999601271
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -49297,6 +49263,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1999601268}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1999601274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999601268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32ad19a512e54fc38475ee284f2d2bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Revamp.Activables.Door
 --- !u!1 &2000748041
 GameObject:
   m_ObjectHideFlags: 0
@@ -50903,7 +50881,7 @@ GameObject:
   - component: {fileID: 2076229385}
   - component: {fileID: 2076229384}
   - component: {fileID: 2076229383}
-  - component: {fileID: 2076229382}
+  - component: {fileID: 2076229386}
   m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
@@ -50926,18 +50904,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1465003368}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!114 &2076229382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2076229380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18a633e5c2930bb4699449b086d26652, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Doors.Door
 --- !u!64 &2076229383
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -51017,6 +50983,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076229380}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2076229386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076229380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32ad19a512e54fc38475ee284f2d2bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Revamp.Activables.Door
 --- !u!1 &2078292450
 GameObject:
   m_ObjectHideFlags: 0

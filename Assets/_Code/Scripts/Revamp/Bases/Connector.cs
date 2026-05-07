@@ -1,5 +1,4 @@
-﻿using _Code.Scripts.Rooms;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace _Code.Scripts.Revamp.Bases
 {
@@ -33,17 +32,7 @@ namespace _Code.Scripts.Revamp.Bases
 
         public virtual bool CheckHit(Collider hit)
         {
-            if (hit == null) return false;
-            Connector other = hit.GetComponentInParent<Connector>();
-            if (other != null)
-            {
-                SetOther(other);
-                other.SetOther(this);
-                Connect();
-                other.Connect();
-                return true;
-            }
-            return false;
+            throw new System.NotImplementedException();
         }
 
         public void Connect()
@@ -53,6 +42,7 @@ namespace _Code.Scripts.Revamp.Bases
         
         public void Disconnect()
         {
+            _otherConnector?.Deactivate();
             _otherConnector?.SetOther(null);
             _otherConnector = null;
             Deactivate();

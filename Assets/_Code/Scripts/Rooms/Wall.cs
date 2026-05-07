@@ -7,21 +7,18 @@ namespace _Code.Scripts.Rooms
 {
     public class Wall : MonoBehaviour
     {
-        private List<IConnector> _connectors = new();
-        private List<Connector> _connectors2 = new();
+        private List<Connector> _connectors = new();
 
         private void Awake()
         {
-            _connectors = GetComponentsInChildren<IConnector>().ToList();
+            _connectors = GetComponentsInChildren<Connector>().ToList();
             foreach (var connector in _connectors)
             {
-                if (connector is HallConnector hallConnector)
+                if (connector is Revamp.Activators.Connectors.HallConnector hallConnector)
                 {
                     hallConnector.SetWall(this);
                 }
             }
-            
-            _connectors2 = GetComponentsInChildren<Connector>().ToList();
         }
 
         public void OnRoomRotationEnded()
@@ -30,19 +27,11 @@ namespace _Code.Scripts.Rooms
             {
                 connector.CheckConnection();
             }
-            foreach (var connector in _connectors2)
-            {
-                connector.CheckConnection();
-            }
         }
 
         public void OnRoomRotationStarted()
         {
             foreach (var connector in _connectors)
-            {
-                connector.Disconnect();
-            }
-            foreach (var connector in _connectors2)
             {
                 connector.Disconnect();
             }
