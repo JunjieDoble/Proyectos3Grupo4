@@ -23,7 +23,8 @@ namespace _Code.Scripts.Bases
             Vector3 worldCenter = transform.TransformPoint(checkCenter);
             Quaternion worldRotation = transform.rotation;
             Collider[] hits = new Collider[10];
-            Physics.OverlapBoxNonAlloc(worldCenter, checkHalfExtents, hits, worldRotation, layerMask);
+            Vector3 overlapBoxHalfExtents = new Vector3(checkHalfExtents.x * transform.lossyScale.x, checkHalfExtents.y * transform.lossyScale.y, checkHalfExtents.z * transform.lossyScale.z);
+            Physics.OverlapBoxNonAlloc(worldCenter, overlapBoxHalfExtents, hits, worldRotation, layerMask);
             foreach (var hit in hits)
             {
                 if (CheckHit(hit)) return;
@@ -59,7 +60,8 @@ namespace _Code.Scripts.Bases
             );
 
             Gizmos.matrix = matrix;
-            Gizmos.DrawWireCube(Vector3.zero, checkHalfExtents * 2);
+            Vector3 overlapBoxHalfExtents = new Vector3(checkHalfExtents.x * transform.lossyScale.x, checkHalfExtents.y * transform.lossyScale.y, checkHalfExtents.z * transform.lossyScale.z);
+            Gizmos.DrawWireCube(Vector3.zero, overlapBoxHalfExtents * 2);
         }
     }
 }
