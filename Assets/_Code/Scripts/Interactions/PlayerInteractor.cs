@@ -1,9 +1,10 @@
 using _Code.Scripts.Character;
 using _Code.Scripts.Pickupables;
+using Interactions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Interactions
+namespace _Code.Scripts.Interactions
 {
     [RequireComponent(typeof(PlayerInput))]
     [RequireComponent(typeof(Player))]
@@ -91,7 +92,7 @@ namespace Interactions
             Debug.Log("Hold Finished");
             if (_currentInteractable is IHoldInteractable holdInteractable)
             {
-                holdInteractable?.OnHoldCompleted(this);
+                holdInteractable.OnHoldCompleted(this);
             }
             _currentInteractable = null;
         }
@@ -100,7 +101,7 @@ namespace Interactions
         {
             if (_currentInteractable is IHoldInteractable holdInteractable)
             {
-                holdInteractable?.OnHoldCanceled(this);
+                holdInteractable.OnHoldCanceled(this);
             }
             _currentInteractable = null;
         }

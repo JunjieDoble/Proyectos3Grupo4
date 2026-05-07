@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using _Code.Scripts.Revamp.Bases;
+using _Code.Scripts.Activators.Connectors;
+using _Code.Scripts.Bases;
 using UnityEngine;
 
 namespace _Code.Scripts.Rooms
@@ -14,7 +15,7 @@ namespace _Code.Scripts.Rooms
             _connectors = GetComponentsInChildren<Connector>().ToList();
             foreach (var connector in _connectors)
             {
-                if (connector is Revamp.Activators.Connectors.HallConnector hallConnector)
+                if (connector is HallConnector hallConnector)
                 {
                     hallConnector.SetWall(this);
                 }
