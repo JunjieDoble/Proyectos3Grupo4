@@ -542,7 +542,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.RoomRotator
   targetRoom: {fileID: 1685566142}
-  rotationCooldown: 1.5
 --- !u!65 &51459994
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3253,7 +3252,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.RoomRotator
   targetRoom: {fileID: 477985385}
-  rotationCooldown: 1.5
 --- !u!65 &396813076
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3674,7 +3672,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.RoomRotator
   targetRoom: {fileID: 569243783}
-  rotationCooldown: 1.5
 --- !u!65 &443595417
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3782,7 +3779,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
-  rotatorVector: {x: 0, y: 1, z: 0}
+  editorDoors:
+  - North: {fileID: 1508502693}
+    East: {fileID: 514051637}
+    South: {fileID: 0}
+    West: {fileID: 0}
+  - North: {fileID: 283831529}
+    East: {fileID: 821313421}
+    South: {fileID: 0}
+    West: {fileID: 0}
 --- !u!4 &477985386
 Transform:
   m_ObjectHideFlags: 0
@@ -4356,7 +4361,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
-  rotatorVector: {x: 0, y: 1, z: 0}
+  editorDoors:
+  - North: {fileID: 0}
+    East: {fileID: 1869679736}
+    South: {fileID: 0}
+    West: {fileID: 977370419}
+  - North: {fileID: 0}
+    East: {fileID: 266881784}
+    South: {fileID: 0}
+    West: {fileID: 306815499}
 --- !u!1 &525670392
 GameObject:
   m_ObjectHideFlags: 0
@@ -4386,8 +4399,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1aa1cf7bef579a49806499f2655bb68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.OverheatManager
-  overheatIncreaseMultiplier: 15
-  overheatDecreaseMultiplier: 10
+  _overheatIncreaseMultiplier: 20
+  _overheatDecreaseMultiplier: 10
 --- !u!4 &525670394
 Transform:
   m_ObjectHideFlags: 0
@@ -5018,7 +5031,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
-  rotatorVector: {x: 0, y: 1, z: 0}
+  editorDoors:
+  - North: {fileID: 1075967652}
+    East: {fileID: 239474214}
+    South: {fileID: 1793241528}
+    West: {fileID: 1091133432}
+  - North: {fileID: 1172186350}
+    East: {fileID: 168124385}
+    South: {fileID: 885821539}
+    West: {fileID: 1264381880}
 --- !u!4 &569243784
 Transform:
   m_ObjectHideFlags: 0
@@ -7432,7 +7453,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
-  rotatorVector: {x: 0, y: 1, z: 0}
+  editorDoors:
+  - North: {fileID: 563156389}
+    East: {fileID: 1945231325}
+    South: {fileID: 0}
+    West: {fileID: 0}
+  - North: {fileID: 813881901}
+    East: {fileID: 0}
+    South: {fileID: 0}
+    West: {fileID: 1771128746}
 --- !u!4 &886940415
 Transform:
   m_ObjectHideFlags: 0
@@ -11070,7 +11099,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.RoomRotator
   targetRoom: {fileID: 886940414}
-  rotationCooldown: 1.5
 --- !u!65 &1452713234
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12906,7 +12934,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
-  rotatorVector: {x: 0, y: 1, z: 0}
+  editorDoors:
+  - North: {fileID: 0}
+    East: {fileID: 862791244}
+    South: {fileID: 1911774164}
+    West: {fileID: 22955112}
+  - North: {fileID: 0}
+    East: {fileID: 681264862}
+    South: {fileID: 1922984380}
+    West: {fileID: 425235585}
 --- !u!4 &1685566143
 Transform:
   m_ObjectHideFlags: 0
@@ -14067,7 +14103,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.RoomRotator
   targetRoom: {fileID: 521319710}
-  rotationCooldown: 1.5
 --- !u!65 &1879587914
 BoxCollider:
   m_ObjectHideFlags: 0
