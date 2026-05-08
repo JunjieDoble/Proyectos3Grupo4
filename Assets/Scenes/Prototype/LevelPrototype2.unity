@@ -179,6 +179,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6420959257080526915, guid: b135fc3d8974d904f99441d4a7e0f15f, type: 3}
+      propertyPath: rotatorVector.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420959257080526915, guid: b135fc3d8974d904f99441d4a7e0f15f, type: 3}
+      propertyPath: rotatorVector.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9199325032280479147, guid: b135fc3d8974d904f99441d4a7e0f15f, type: 3}
       propertyPath: m_Name
       value: Room_I
@@ -187,8 +195,93 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 1756502684254028951, guid: b135fc3d8974d904f99441d4a7e0f15f, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3195047666205150272, guid: b135fc3d8974d904f99441d4a7e0f15f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 953966398}
+    - targetCorrespondingSourceObject: {fileID: 3195047666205150272, guid: b135fc3d8974d904f99441d4a7e0f15f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 953966401}
+    - targetCorrespondingSourceObject: {fileID: 3195047666205150272, guid: b135fc3d8974d904f99441d4a7e0f15f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 953966400}
   m_SourcePrefab: {fileID: 100100000, guid: b135fc3d8974d904f99441d4a7e0f15f, type: 3}
+--- !u!1 &953966396 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3195047666205150272, guid: b135fc3d8974d904f99441d4a7e0f15f, type: 3}
+  m_PrefabInstance: {fileID: 305925727}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &953966398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953966396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
+--- !u!114 &953966399 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6420959257080526915, guid: b135fc3d8974d904f99441d4a7e0f15f, type: 3}
+  m_PrefabInstance: {fileID: 305925727}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953966396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.Room
+--- !u!114 &953966400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953966396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c232883d8880b0946afb8a794ec3039d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Interactions.AutoInteractor
+  interactableObject: {fileID: 953966396}
+  loopTime: 5
+--- !u!114 &953966401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953966396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 109651ed04b1e1a449ed1899c37787c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Rooms.RoomRotator
+  targetRoom: {fileID: 953966399}
+  rotationCooldown: 1.5
 --- !u!1001 &974570226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -283,6 +376,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5747956447751248614, guid: 9dab36df29ba2674a90c9075a4273fce, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747956447751248614, guid: 9dab36df29ba2674a90c9075a4273fce, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7324281891904208692, guid: 9dab36df29ba2674a90c9075a4273fce, type: 3}
