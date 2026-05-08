@@ -157,7 +157,7 @@ namespace _Code.Scripts.Character
 
         private void Crouch(bool crouching)
         {
-            if (_grounded)
+            if (_grounded && _crouching != crouching)
             {
                 if (crouching)
                 {
@@ -172,7 +172,7 @@ namespace _Code.Scripts.Character
                     return;
                 }
             }
-            _crouching = false;
+            _crouching = crouching;                
         }
 
         public void Teleport(Vector3 spawnPointPosition)

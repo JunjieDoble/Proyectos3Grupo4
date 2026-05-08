@@ -1,16 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using _Code.Scripts.Activators.Connectors;
+using _Code.Scripts.Bases;
 using UnityEngine;
 
 namespace _Code.Scripts.Rooms
 {
     public class Wall : MonoBehaviour
     {
-        private List<IConnector> _connectors = new();
+        private List<Connector> _connectors = new();
 
         private void Awake()
         {
-            _connectors = GetComponentsInChildren<IConnector>().ToList();
+            _connectors = GetComponentsInChildren<Connector>().ToList();
             foreach (var connector in _connectors)
             {
                 if (connector is HallConnector hallConnector)
