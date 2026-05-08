@@ -343,8 +343,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 22962dfe36ae73c4bb410ce08c60fb41, type: 2}
   - {fileID: 2100000, guid: 7aad3d61c3105304884c30f8fada8b6d, type: 2}
+  - {fileID: 2100000, guid: 22962dfe36ae73c4bb410ce08c60fb41, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -485,7 +485,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -506,6 +506,37 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!1 &3091415478562431245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3451215713658125408}
+  m_Layer: 0
+  m_Name: Hand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3451215713658125408
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3091415478562431245}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.10626403, y: 0, z: 0, w: 0.994338}
+  m_LocalPosition: {x: 0.423, y: -0.36, z: 0.774}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4469663929358455670}
+  m_LocalEulerAnglesHint: {x: 12.2, y: 0, z: 0}
 --- !u!1 &5023892815083003302
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,10 +764,9 @@ GameObject:
   - component: {fileID: 3495040407503735536}
   - component: {fileID: 2963254709656132882}
   - component: {fileID: 8638280349087719594}
-  - component: {fileID: 4409372299366601337}
   - component: {fileID: 5329034194111529345}
-  - component: {fileID: 4831684063195653964}
   - component: {fileID: 3524835025102095570}
+  - component: {fileID: 4289422829444865055}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -755,7 +785,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.6706901, y: 1, z: 0.22981}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3967297010848358395}
   - {fileID: 4735691810048761381}
@@ -930,7 +960,7 @@ MonoBehaviour:
     m_ActionName: 'Player/Look[/Mouse/delta,/Pen/delta]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4409372299366601337}
+      - m_Target: {fileID: 4289422829444865055}
         m_TargetAssemblyTypeName: Interactions.PlayerInteractor, Assembly-CSharp
         m_MethodName: OnAttack
         m_Mode: 0
@@ -946,7 +976,7 @@ MonoBehaviour:
     m_ActionName: 'Player/Attack[/Mouse/leftButton,/Keyboard/enter]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4409372299366601337}
+      - m_Target: {fileID: 4289422829444865055}
         m_TargetAssemblyTypeName: Interactions.PlayerInteraction, Assembly-CSharp
         m_MethodName: OnInteract
         m_Mode: 0
@@ -1089,24 +1119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5d786311b7a4003a1d9bbf28d297f3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Character.Player
---- !u!114 &4409372299366601337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5747956447751248614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ad801772aec1094191223c5e1d34528, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Interactions.PlayerInteraction
-  viewOrigin: {fileID: 449669597691772303}
-  maxDistance: 3
-  interactableMask:
-    serializedVersion: 2
-    m_Bits: 64
-  handTransform: {fileID: 988834673723317365}
 --- !u!65 &5329034194111529345
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1128,18 +1140,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 2.1130695, z: 1}
   m_Center: {x: 0, y: -0.056534708, z: 0}
---- !u!114 &4831684063195653964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5747956447751248614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5d786311b7a4003a1d9bbf28d297f3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Character.Player
 --- !u!114 &3524835025102095570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1153,6 +1153,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MiniMap.MiniMap
   MiniMapObject: {fileID: 756447853059299412}
+--- !u!114 &4289422829444865055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5747956447751248614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad801772aec1094191223c5e1d34528, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interactions.PlayerInteraction
+  viewOrigin: {fileID: 449669597691772303}
+  maxDistance: 3
+  interactableMask:
+    serializedVersion: 2
+    m_Bits: 64
+  handTransform: {fileID: 3451215713658125408}
 --- !u!1 &6551861631629963220
 GameObject:
   m_ObjectHideFlags: 0
@@ -1276,6 +1294,7 @@ Transform:
   - {fileID: 988834673723317365}
   - {fileID: 4690231850937261287}
   - {fileID: 8546641783623039810}
+  - {fileID: 3451215713658125408}
   m_Father: {fileID: 7324281891904208692}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8533381088864018956
