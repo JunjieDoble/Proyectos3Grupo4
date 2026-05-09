@@ -8,10 +8,10 @@ namespace _Code.Scripts.Activables
     public class Path : Activable
     {
         [Header("References")]
-        [SerializeField] private List<MeshRenderer> pathMeshRenderers;
         [SerializeField] private Material activeMaterial;
         [SerializeField] private Material inactiveMaterial;
         [SerializeField] private Activable target;
+        private List<MeshRenderer> pathMeshRenderers;
         private GeneratorConnector _generatorConnector;
         
         private bool _isActive;
