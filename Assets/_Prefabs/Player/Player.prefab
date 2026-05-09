@@ -210,7 +210,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 4096
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -285,7 +285,7 @@ GameObject:
   - component: {fileID: 4690231850937261287}
   - component: {fileID: 5499616340593772618}
   - component: {fileID: 1657561758467407872}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: MiniMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -506,37 +506,6 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!1 &3091415478562431245
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3451215713658125408}
-  m_Layer: 0
-  m_Name: Hand
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3451215713658125408
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3091415478562431245}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.10626403, y: 0, z: 0, w: 0.994338}
-  m_LocalPosition: {x: 0.423, y: -0.36, z: 0.774}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4469663929358455670}
-  m_LocalEulerAnglesHint: {x: 12.2, y: 0, z: 0}
 --- !u!1 &5023892815083003302
 GameObject:
   m_ObjectHideFlags: 0
@@ -579,7 +548,7 @@ GameObject:
   - component: {fileID: 1008775982613499158}
   - component: {fileID: 8895284162249750732}
   - component: {fileID: 694565241031052407}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -669,7 +638,7 @@ GameObject:
   - component: {fileID: 5267944091312659613}
   - component: {fileID: 291421918797275914}
   - component: {fileID: 9213462230971751303}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -766,10 +735,11 @@ GameObject:
   - component: {fileID: 8638280349087719594}
   - component: {fileID: 5329034194111529345}
   - component: {fileID: 3524835025102095570}
-  - component: {fileID: 4289422829444865055}
+  - component: {fileID: 3423802248107404508}
+  - component: {fileID: 1939197106175274975}
   m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -960,7 +930,7 @@ MonoBehaviour:
     m_ActionName: 'Player/Look[/Mouse/delta,/Pen/delta]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4289422829444865055}
+      - m_Target: {fileID: 3423802248107404508}
         m_TargetAssemblyTypeName: Interactions.PlayerInteractor, Assembly-CSharp
         m_MethodName: OnAttack
         m_Mode: 0
@@ -976,7 +946,7 @@ MonoBehaviour:
     m_ActionName: 'Player/Attack[/Mouse/leftButton,/Keyboard/enter]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4289422829444865055}
+      - m_Target: {fileID: 3423802248107404508}
         m_TargetAssemblyTypeName: Interactions.PlayerInteraction, Assembly-CSharp
         m_MethodName: OnInteract
         m_Mode: 0
@@ -1103,7 +1073,7 @@ MonoBehaviour:
     m_ActionId: ff0c9acf-c74f-4acb-accf-0b805207566f
     m_ActionName: 'Player/ShowMap[/Keyboard/m]'
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -1153,7 +1123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MiniMap.MiniMap
   MiniMapObject: {fileID: 756447853059299412}
---- !u!114 &4289422829444865055
+--- !u!114 &3423802248107404508
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1170,7 +1140,28 @@ MonoBehaviour:
   interactableMask:
     serializedVersion: 2
     m_Bits: 64
-  handTransform: {fileID: 3451215713658125408}
+  handTransform: {fileID: 988834673723317365}
+--- !u!65 &1939197106175274975
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5747956447751248614}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 2.1130695, z: 1}
+  m_Center: {x: 0, y: -0.056534708, z: 0}
 --- !u!1 &6551861631629963220
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,7 +1173,7 @@ GameObject:
   - component: {fileID: 5462113151052785829}
   - component: {fileID: 1636823004800260820}
   - component: {fileID: 6932529216597257908}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1294,7 +1285,6 @@ Transform:
   - {fileID: 988834673723317365}
   - {fileID: 4690231850937261287}
   - {fileID: 8546641783623039810}
-  - {fileID: 3451215713658125408}
   m_Father: {fileID: 7324281891904208692}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8533381088864018956
