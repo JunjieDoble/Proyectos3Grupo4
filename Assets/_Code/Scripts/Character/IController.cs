@@ -7,5 +7,7 @@ namespace _Code.Scripts.Character
         public bool IsEnabled { get; set; }
         void Enable() => IsEnabled = true;
         void Disable() => IsEnabled = false;
+        
+        void LoadPlayerParameters (PlayerParameters playerParameters);
     }
 }
