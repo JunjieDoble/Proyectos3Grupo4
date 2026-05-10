@@ -19,6 +19,12 @@ namespace _Code.Scripts.Character
         public float airControl = 0.5f;
         public float jumpStopMultiplier = 0.5f;
         
+        [Header("Gravity")]
+        public float fallMultiplier = 2.5f;
+        
+        [Header("Coyote Time")]
+        public float coyoteTime = 0.1f;  // Time in seconds to allow jumping after leaving ground
+        
         [Header("Camera")]
         public float mouseSensitivity = 1f;
         public float minPitch = -89f;

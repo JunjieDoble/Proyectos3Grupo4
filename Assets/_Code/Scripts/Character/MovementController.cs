@@ -20,6 +20,7 @@ namespace _Code.Scripts.Character
         private bool _crouchButtonHeld;
         private bool _crouching;
         private bool _grounded;
+        private float _coyoteCounter;  // Tracks time since leaving ground
         
         public bool IsRunning => _running;
         public bool IsCrouching => _crouching;
@@ -42,12 +43,22 @@ namespace _Code.Scripts.Character
             if (!IsEnabled) return;
             float deltaTime = Time.deltaTime;
             
+            // Decrement coyote timer
+            _coyoteCounter -= deltaTime;
+            
             Vector3 relativeDirection = new Vector3(_movementInput.x, 0, _movementInput.y);
             Vector3 worldDirection = transform.TransformDirection(relativeDirection);
 
             float speed = CalculateCharacterSpeed();
 
             float gravity = Physics.gravity.y;
+            
+            // Fast fall when moving down
+            if (_verticalVelocity < 0)
+            {
+                gravity *= parameters.fallMultiplier;
+            }
+            
             _verticalVelocity += gravity * deltaTime;
 
             Vector3 movement = new Vector3(
@@ -100,6 +111,7 @@ namespace _Code.Scripts.Character
             if ((flags & CollisionFlags.Below) != 0)
             {
                 _grounded = true;
+                _coyoteCounter = parameters.coyoteTime;  // Reset coyote timer
                 if (_verticalVelocity < -2)
                     _verticalVelocity = -2; // Keep player grounded
                 Crouch(_crouchButtonHeld);
@@ -147,10 +159,12 @@ namespace _Code.Scripts.Character
 
         private void Jump()
         {
-            if (_grounded)
+            // Allow jump if grounded OR within coyote time window
+            if (_grounded || _coyoteCounter > 0)
             {
                 _verticalVelocity = parameters.jumpSpeed;
                 _grounded = false;
+                _coyoteCounter = 0;  // Consume coyote time
                 _crouching = false;
             }
         }
