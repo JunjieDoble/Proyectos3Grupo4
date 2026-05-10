@@ -7,7 +7,10 @@ namespace _Code.Scripts.Character
     public class Player : MonoBehaviour, IDie
     {
 
-        private List<IController> _controllers = new();
+        [Header("References")]
+        [SerializeField] private PlayerParameters playerParameters;
+        
+        private readonly List<IController> _controllers = new();
         private bool _isDead;
         public bool IsDead() => _isDead;
 
@@ -35,7 +38,9 @@ namespace _Code.Scripts.Character
         
         public void AddController(IController controller)
         {
+            if (!playerParameters) throw new MissingReferenceException("PlayerParameters is not assigned in the inspector.");
             _controllers.Add(controller);
+            controller.LoadPlayerParameters(playerParameters);
             controller.Enable();
         }
     }
