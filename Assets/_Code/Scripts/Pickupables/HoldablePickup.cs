@@ -1,4 +1,5 @@
-﻿using Interactions;
+﻿using _Code.Scripts.Interactions;
+using Interactions;
 using UnityEngine;
 
 namespace _Code.Scripts.Pickupables

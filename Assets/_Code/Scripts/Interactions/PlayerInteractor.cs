@@ -1,9 +1,10 @@
 using _Code.Scripts.Character;
 using _Code.Scripts.Pickupables;
+using Interactions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Interactions
+namespace _Code.Scripts.Interactions
 {
     [RequireComponent(typeof(PlayerInput))]
     [RequireComponent(typeof(Player))]
@@ -12,17 +13,19 @@ namespace Interactions
     {
         [Header("Raycast")]
         [SerializeField] private Transform viewOrigin;
-        [SerializeField] private float maxDistance = 3f;
         [SerializeField] private LayerMask interactableMask;
         
         [Header("Refs")]
         public Transform handTransform;
 
+        private PlayerParameters _playerParameters;
         private IInteractable _currentInteractable;
         private HoldablePickup _currentPickupable;
         
         public Transform Transform => transform;
         public GameObject GameObject => gameObject;
+
+        public void LoadPlayerParameters(PlayerParameters playerParameters) => _playerParameters = playerParameters;
         
         public bool IsEnabled { get; set; }
 
@@ -34,6 +37,7 @@ namespace Interactions
                 viewOrigin = cam != null ? cam.transform : transform;
             }
             if (interactableMask.value == 0) Debug.LogWarning("Unassigned interactableMask in PlayerInteraction");
+            IsEnabled = false;
             GetComponent<Player>()?.AddController(this);
         }
 
@@ -63,9 +67,7 @@ namespace Interactions
 
         private bool TryRaycastInteract()
         {
-            Debug.DrawRay(viewOrigin.position, viewOrigin.forward * maxDistance, Color.red, 1f);
-
-            if (Physics.Raycast(viewOrigin.position, viewOrigin.forward, out var hit, maxDistance, interactableMask))
+            if (Physics.Raycast(viewOrigin.position, viewOrigin.forward, out var hit, _playerParameters.interactionDistance, interactableMask))
             {
                 var interactable = hit.collider.GetComponentInParent<IInteractable>();
                 if (interactable == null) return false;
@@ -91,7 +93,7 @@ namespace Interactions
             Debug.Log("Hold Finished");
             if (_currentInteractable is IHoldInteractable holdInteractable)
             {
-                holdInteractable?.OnHoldCompleted(this);
+                holdInteractable.OnHoldCompleted(this);
             }
             _currentInteractable = null;
         }
@@ -100,7 +102,7 @@ namespace Interactions
         {
             if (_currentInteractable is IHoldInteractable holdInteractable)
             {
-                holdInteractable?.OnHoldCanceled(this);
+                holdInteractable.OnHoldCanceled(this);
             }
             _currentInteractable = null;
         }

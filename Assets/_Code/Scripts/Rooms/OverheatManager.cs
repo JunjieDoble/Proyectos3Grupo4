@@ -1,20 +1,18 @@
 using System;
-using System.Collections.Generic;
-using _Code.Scripts.Rooms;
 using UnityEngine;
 
-namespace Rooms
+namespace _Code.Scripts.Rooms
 {
     public class OverheatManager : MonoBehaviour
     {
-        private float _overheatValue = 0f;
+        private float _overheatValue;
         private const float MaxOverheatValue = 100f;
         private int _overheatingRoomsCount;
-        [SerializeField] private float _overheatIncreaseMultiplier = 15f;
-        [SerializeField] private float _overheatDecreaseMultiplier = 10f;
+        [SerializeField] private float overheatIncreaseMultiplier = 15f;
+        [SerializeField] private float overheatDecreaseMultiplier = 10f;
 
-        private bool _wasPreviousZero = false; //to avoid invoking OnOverheatValueChanged every frame when at 0
-        private bool _wasAtMax = false; //to avoid invoking OnOverheatMaxed every frame when at max
+        private bool _wasPreviousZero; //to avoid invoking OnOverheatValueChanged every frame when at 0
+        private bool _wasAtMax; //to avoid invoking OnOverheatMaxed every frame when at max
 
         public static Action<float> OnOverheatValueChanged;
         public static Action OnOverheatMaxed;
@@ -36,12 +34,12 @@ namespace Rooms
             int overheatingSources = _overheatingRoomsCount;
             if (overheatingSources > 0)
             {
-                _overheatValue += Time.deltaTime * overheatingSources * _overheatIncreaseMultiplier;
+                _overheatValue += Time.deltaTime * overheatingSources * overheatIncreaseMultiplier;
                 _overheatValue = Mathf.Clamp(_overheatValue, 0f, MaxOverheatValue);
             }
             else
             {
-                _overheatValue -= Time.deltaTime * _overheatDecreaseMultiplier;
+                _overheatValue -= Time.deltaTime * overheatDecreaseMultiplier;
                 _overheatValue = Mathf.Clamp(_overheatValue, 0f, MaxOverheatValue);
             }
            
