@@ -20,13 +20,11 @@ namespace _Code.Scripts.Activators.Connectors
 
         private void OnEnable()
         {
-            Room.OnStartRotation += Disconnect;
             Room.OnEndRotation += CheckConnection;
         }
         
         private void OnDisable()
         {
-            Room.OnStartRotation -= Disconnect;
             Room.OnEndRotation -= CheckConnection;
         }
 
