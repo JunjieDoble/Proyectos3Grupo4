@@ -9,16 +9,17 @@ namespace _Code.Scripts.Bases
         [SerializeField] private Vector3 checkHalfExtents = new (1, 1, 1);
         [SerializeField] private LayerMask layerMask;
         
-        private Connector _otherConnector;
+        protected Connector _otherConnector;
+        public Connector OtherConnector => _otherConnector;
         
-        protected void SetOther(Connector other) => _otherConnector = other;
+        protected internal void SetOther(Connector other) => _otherConnector = other;
 
         private void Start()
         {
             CheckConnection();
         }
         
-        public void CheckConnection()
+        public virtual void CheckConnection()
         {
             Vector3 worldCenter = transform.TransformPoint(checkCenter);
             Quaternion worldRotation = transform.rotation;
@@ -41,7 +42,7 @@ namespace _Code.Scripts.Bases
             Activate();
         }
         
-        public void Disconnect()
+        public virtual void Disconnect()
         {
             _otherConnector?.Deactivate();
             _otherConnector?.SetOther(null);
