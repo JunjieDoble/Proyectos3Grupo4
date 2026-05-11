@@ -19,18 +19,12 @@ namespace _Code.Scripts.Activators.Connectors
 
         private void OnEnable()
         {
-            Room.OnEndRotation += DisconnectAndCheck;
-        }
-
-        private void DisconnectAndCheck()
-        {
-            Disconnect();
-            CheckConnection();
+            Room.OnStartRotation += Deactivate;
         }
         
         private void OnDisable()
         {
-            Room.OnEndRotation -= DisconnectAndCheck;
+            Room.OnStartRotation -= Deactivate;
         }
 
         protected override bool CheckHit(Collider hit)
@@ -42,11 +36,7 @@ namespace _Code.Scripts.Activators.Connectors
                 if (other is PathConnector otherPathConnector && otherPathConnector != this)
                 {
                     SetOther(otherPathConnector);
-                    if (activable.IsActive() || otherPathConnector.activable.IsActive())
-                    {
-                        Connect();
-                        otherPathConnector.Connect();
-                    }
+                    otherPathConnector.SetOther(this);
                     Debug.Log("Connected to " + other.name);
                     return true;
                 }

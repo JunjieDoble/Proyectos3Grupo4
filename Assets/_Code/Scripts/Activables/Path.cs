@@ -12,12 +12,10 @@ namespace _Code.Scripts.Activables
         [SerializeField] private Material inactiveMaterial;
         [SerializeField] private Activable target;
         private List<MeshRenderer> pathMeshRenderers;
-        private GeneratorConnector _generatorConnector;
         
         private bool _isActive;
         public override bool IsActive()
         {
-            if (_generatorConnector) return true;
             return activators.Exists(a => a.IsActive);
         }
         
@@ -41,11 +39,6 @@ namespace _Code.Scripts.Activables
             _isActive = IsActive();
             activators.ForEach(a => a.SetActive(_isActive));
             pathMeshRenderers.ForEach(mr => mr.sharedMaterial = _isActive ? activeMaterial : inactiveMaterial);
-        }
-        
-        public void SetGenerator(GeneratorConnector generatorConnector)
-        {
-            _generatorConnector = generatorConnector;
         }
     }
 }
