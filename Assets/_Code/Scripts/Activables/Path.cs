@@ -35,9 +35,21 @@ namespace _Code.Scripts.Activables
         
         public override void ActivatorUpdate()
         {
-            if (IsActive() == _isActive) return;
             _isActive = IsActive();
-            activators.ForEach(a => a.SetActive(_isActive));
+
+            foreach (var activator in activators)
+            {
+                Debug.Log(activator.name + " is " + (activator.IsActive ? "active" : "inactive") + " in path "+name);
+                if (activator.IsActive) continue;
+                if (activator is Connector connector)
+                {
+                    if (connector.OtherConnector is PathConnector otherPathConnector)
+                    {
+                        otherPathConnector.SetActive(_isActive);
+                    }
+                }
+            }
+            
             pathMeshRenderers.ForEach(mr => mr.sharedMaterial = _isActive ? activeMaterial : inactiveMaterial);
         }
     }

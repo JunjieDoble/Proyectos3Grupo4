@@ -1,4 +1,5 @@
-﻿using _Code.Scripts.Activables;
+﻿using System;
+using _Code.Scripts.Activables;
 using _Code.Scripts.Bases;
 using _Code.Scripts.Rooms;
 using UnityEngine;
@@ -19,12 +20,20 @@ namespace _Code.Scripts.Activators.Connectors
 
         private void OnEnable()
         {
-            Room.OnStartRotation += Deactivate;
+            Room.OnStartRotation += Disconnect;
+            Room.OnEndRotation += CheckConnection;
         }
         
         private void OnDisable()
         {
-            Room.OnStartRotation -= Deactivate;
+            Room.OnStartRotation -= Disconnect;
+            Room.OnEndRotation -= CheckConnection;
+        }
+
+        public override void CheckConnection()
+        {
+            base.CheckConnection();
+            activable.ActivatorUpdate();
         }
 
         protected override bool CheckHit(Collider hit)
@@ -37,18 +46,31 @@ namespace _Code.Scripts.Activators.Connectors
                 {
                     SetOther(otherPathConnector);
                     otherPathConnector.SetOther(this);
-                    Debug.Log("Connected to " + other.name);
                     return true;
                 }
 
                 if (other is GeneratorConnector)
                 {
-                    Debug.Log("Connected to " + other.name);
                     Connect();
                     return true;
                 }
             }
             return false;
         }
+        
+        public override void Disconnect()
+        {
+            if (IsActive)
+            {
+                Deactivate();
+            }
+            else
+            {
+                _otherConnector?.SetActive(false);
+            }
+            _otherConnector?.SetOther(null);
+            _otherConnector = null;
+        }
+        
     }
 }
