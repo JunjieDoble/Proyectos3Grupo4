@@ -1331,6 +1331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.RoomRotator
   targetRoom: {fileID: 779426524}
+  rotationCooldown: 1.5
 --- !u!135 &48764344
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1490,6 +1491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.RoomRotator
   targetRoom: {fileID: 1685566142}
+  rotationCooldown: 1.5
 --- !u!65 &51459994
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4595,7 +4597,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8542fe347b324a5e97227d643cce17ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.Wall
-  halls: []
 --- !u!1 &221395502
 GameObject:
   m_ObjectHideFlags: 0
@@ -5251,7 +5252,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8542fe347b324a5e97227d643cce17ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.Wall
-  halls: []
 --- !u!1 &237744261
 GameObject:
   m_ObjectHideFlags: 0
@@ -6518,7 +6518,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8542fe347b324a5e97227d643cce17ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.Wall
-  halls: []
 --- !u!1 &284473187
 GameObject:
   m_ObjectHideFlags: 0
@@ -6680,7 +6679,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8542fe347b324a5e97227d643cce17ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.Wall
-  halls: []
 --- !u!1 &298927364
 GameObject:
   m_ObjectHideFlags: 0
@@ -6934,6 +6932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.Room
+  rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!4 &302769381
 Transform:
   m_ObjectHideFlags: 0
@@ -8755,6 +8754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
+  rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!4 &380274258
 Transform:
   m_ObjectHideFlags: 0
@@ -10152,6 +10152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.RoomRotator
   targetRoom: {fileID: 569243783}
+  rotationCooldown: 1.5
 --- !u!65 &443595417
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10292,6 +10293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
+  rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!4 &455024038
 Transform:
   m_ObjectHideFlags: 0
@@ -11076,6 +11078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
+  rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!1 &524475309
 GameObject:
   m_ObjectHideFlags: 0
@@ -11230,8 +11233,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1aa1cf7bef579a49806499f2655bb68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.OverheatManager
-  _overheatIncreaseMultiplier: 20
-  _overheatDecreaseMultiplier: 10
+  overheatIncreaseMultiplier: 15
+  overheatDecreaseMultiplier: 10
 --- !u!4 &525670394
 Transform:
   m_ObjectHideFlags: 0
@@ -12284,7 +12287,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8542fe347b324a5e97227d643cce17ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.Wall
-  halls: []
 --- !u!1 &568452770
 GameObject:
   m_ObjectHideFlags: 0
@@ -12427,6 +12429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
+  rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!4 &569243784
 Transform:
   m_ObjectHideFlags: 0
@@ -13687,7 +13690,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8542fe347b324a5e97227d643cce17ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.Wall
-  halls: []
 --- !u!1 &660567302
 GameObject:
   m_ObjectHideFlags: 0
@@ -16141,6 +16143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
+  rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!4 &760771381
 Transform:
   m_ObjectHideFlags: 0
@@ -16776,6 +16779,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.Room
+  rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!4 &779426525
 Transform:
   m_ObjectHideFlags: 0
@@ -18885,6 +18889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.RoomRotator
   targetRoom: {fileID: 455024037}
+  rotationCooldown: 1.5
 --- !u!65 &868653280
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19149,6 +19154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
+  rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!4 &886940415
 Transform:
   m_ObjectHideFlags: 0
@@ -20362,6 +20368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.RoomRotator
   targetRoom: {fileID: 1394892511}
+  rotationCooldown: 1.5
 --- !u!65 &946282412
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22132,7 +22139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8542fe347b324a5e97227d643cce17ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.Wall
-  halls: []
 --- !u!1 &1020455439
 GameObject:
   m_ObjectHideFlags: 0
@@ -22400,6 +22406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.Room
+  rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!4 &1041149438
 Transform:
   m_ObjectHideFlags: 0
@@ -22582,6 +22589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.RoomRotator
   targetRoom: {fileID: 760771380}
+  rotationCooldown: 1.5
 --- !u!65 &1043253459
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24849,6 +24857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
+  rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!4 &1132918096
 Transform:
   m_ObjectHideFlags: 0
@@ -25964,6 +25973,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.RoomRotator
   targetRoom: {fileID: 1132918095}
+  rotationCooldown: 1.5
 --- !u!65 &1161661232
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27041,6 +27051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
+  rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!4 &1201615161
 Transform:
   m_ObjectHideFlags: 0
@@ -28863,6 +28874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.RoomRotator
   targetRoom: {fileID: 380274257}
+  rotationCooldown: 1.5
 --- !u!65 &1334882055
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29265,7 +29277,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 22962dfe36ae73c4bb410ce08c60fb41, type: 2}
-  - {fileID: 2100000, guid: 7aad3d61c3105304884c30f8fada8b6d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -30302,6 +30313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
+  rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!4 &1394892512
 Transform:
   m_ObjectHideFlags: 0
@@ -30606,6 +30618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.RoomRotator
   targetRoom: {fileID: 886940414}
+  rotationCooldown: 1.5
 --- !u!65 &1452713234
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33979,7 +33992,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8542fe347b324a5e97227d643cce17ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.Wall
-  halls: []
 --- !u!1 &1651899023
 GameObject:
   m_ObjectHideFlags: 0
@@ -34215,6 +34227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
+  rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!4 &1685566143
 Transform:
   m_ObjectHideFlags: 0
@@ -34632,6 +34645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.RoomRotator
   targetRoom: {fileID: 1859744325}
+  rotationCooldown: 1.5
 --- !u!65 &1694716232
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35313,6 +35327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.Room
+  rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!4 &1736940466
 Transform:
   m_ObjectHideFlags: 0
@@ -38152,6 +38167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
+  rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!4 &1859744326
 Transform:
   m_ObjectHideFlags: 0
@@ -38557,6 +38573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.RoomRotator
   targetRoom: {fileID: 521319710}
+  rotationCooldown: 1.5
 --- !u!65 &1879587914
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -40441,6 +40458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.RoomRotator
   targetRoom: {fileID: 1736940465}
+  rotationCooldown: 1.5
 --- !u!135 &1958544132
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -40713,6 +40731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.RoomRotator
   targetRoom: {fileID: 1201615160}
+  rotationCooldown: 1.5
 --- !u!65 &1973871535
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42147,6 +42166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.RoomRotator
   targetRoom: {fileID: 302769380}
+  rotationCooldown: 1.5
 --- !u!135 &2032183294
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -42273,6 +42293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.RoomRotator
   targetRoom: {fileID: 1041149437}
+  rotationCooldown: 1.5
 --- !u!135 &2040726177
 SphereCollider:
   m_ObjectHideFlags: 0
