@@ -1,4 +1,5 @@
 ﻿using _Code.Scripts.Interactions;
+using _Code.Scripts.Rooms;
 using Interactions;
 using UnityEngine;
 
@@ -7,13 +8,44 @@ namespace _Code.Scripts.Pickupables
     [RequireComponent(typeof(Rigidbody))]
     public class HoldablePickup : PickupableBase
     {
-        
+        [Header("Settings")]
+        [SerializeField] private float stopVelocityThreshold = 0.1f;
+        [SerializeField] private LayerMask layerMask;
         private Rigidbody _rigidbody;
         private bool _isHolding;
 
         void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
+        }
+
+        void FixedUpdate()
+        {
+            FindParent();
+        }
+
+        private void FindParent()
+        {
+            if (!_rigidbody) return;
+            if (_isHolding) return;
+            if (transform.parent != null) return;
+            if (_rigidbody.angularVelocity.magnitude < stopVelocityThreshold &&
+                _rigidbody.angularVelocity.magnitude < stopVelocityThreshold)
+            {
+                Vector3 worldCenter = transform.TransformPoint(transform.localPosition);
+                Quaternion worldRotation = transform.rotation;
+                Collider[] hits = new Collider[25];
+                Physics.OverlapBoxNonAlloc(worldCenter, Vector3.one, hits, worldRotation, layerMask);
+                foreach (var hit in hits)
+                {
+                    var room = hit?.GetComponentInParent<Room>();
+                    if (room)
+                    {
+                        transform.parent = room.transform;
+                        break;
+                    }
+                }
+            }
         }
         
         public override void PickUp(IInteractor interactor)
@@ -72,6 +104,8 @@ namespace _Code.Scripts.Pickupables
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, 10f);
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, 1f);
         }
     }
 }
