@@ -31,6 +31,8 @@ namespace _Code.Scripts.Activators.Connectors
         public override void CheckConnection()
         {
             base.CheckConnection();
+            if (OtherConnector is PathConnector pathConnector)
+                pathConnector.activable.ActivatorUpdate();
             activable.ActivatorUpdate();
         }
 
