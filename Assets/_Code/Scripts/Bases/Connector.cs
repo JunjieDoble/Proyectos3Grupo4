@@ -9,20 +9,21 @@ namespace _Code.Scripts.Bases
         [SerializeField] private Vector3 checkHalfExtents = new (1, 1, 1);
         [SerializeField] private LayerMask layerMask;
         
-        private Connector _otherConnector;
+        protected Connector _otherConnector;
+        public Connector OtherConnector => _otherConnector;
         
-        protected void SetOther(Connector other) => _otherConnector = other;
+        protected internal void SetOther(Connector other) => _otherConnector = other;
 
         private void Start()
         {
             CheckConnection();
         }
         
-        public void CheckConnection()
+        public virtual void CheckConnection()
         {
             Vector3 worldCenter = transform.TransformPoint(checkCenter);
             Quaternion worldRotation = transform.rotation;
-            Collider[] hits = new Collider[10];
+            Collider[] hits = new Collider[25];
             Vector3 overlapBoxHalfExtents = new Vector3(checkHalfExtents.x * transform.lossyScale.x, checkHalfExtents.y * transform.lossyScale.y, checkHalfExtents.z * transform.lossyScale.z);
             Physics.OverlapBoxNonAlloc(worldCenter, overlapBoxHalfExtents, hits, worldRotation, layerMask);
             foreach (var hit in hits)
@@ -41,7 +42,7 @@ namespace _Code.Scripts.Bases
             Activate();
         }
         
-        public void Disconnect()
+        public virtual void Disconnect()
         {
             _otherConnector?.Deactivate();
             _otherConnector?.SetOther(null);

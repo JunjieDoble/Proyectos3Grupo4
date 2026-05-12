@@ -9,9 +9,7 @@ namespace _Code.Scripts.Character
     [DisallowMultipleComponent]
     public class MovementController : MonoBehaviour, IController
     {
-        [Header("Parameters")]
-        [SerializeField] private PlayerParameters parameters;
-
+        private PlayerParameters _playerParameters;
         private CharacterController _characterController;
         private Vector2 _movementInput;
         private float _verticalVelocity;
@@ -20,6 +18,7 @@ namespace _Code.Scripts.Character
         private bool _crouchButtonHeld;
         private bool _crouching;
         private bool _grounded;
+        private float _coyoteCounter;
         
         public bool IsRunning => _running;
         public bool IsCrouching => _crouching;
@@ -30,17 +29,22 @@ namespace _Code.Scripts.Character
         void Awake()
         {
             _characterController = GetComponent<CharacterController>();
-            if (!parameters)
+            if (!_playerParameters)
             {
-                parameters = ScriptableObject.CreateInstance<PlayerParameters>();
+                _playerParameters = ScriptableObject.CreateInstance<PlayerParameters>();
             }
+            IsEnabled = false;
             GetComponent<Player>()?.AddController(this);
         }
+
+        public void LoadPlayerParameters(PlayerParameters playerParameters) => _playerParameters = playerParameters;
 
         void Update()
         {
             if (!IsEnabled) return;
             float deltaTime = Time.deltaTime;
+            
+            _coyoteCounter -= deltaTime;
             
             Vector3 relativeDirection = new Vector3(_movementInput.x, 0, _movementInput.y);
             Vector3 worldDirection = transform.TransformDirection(relativeDirection);
@@ -48,6 +52,12 @@ namespace _Code.Scripts.Character
             float speed = CalculateCharacterSpeed();
 
             float gravity = Physics.gravity.y;
+            
+            if (_verticalVelocity < 0)
+            {
+                gravity *= _playerParameters.fallMultiplier;
+            }
+            
             _verticalVelocity += gravity * deltaTime;
 
             Vector3 movement = new Vector3(
@@ -68,7 +78,7 @@ namespace _Code.Scripts.Character
 
         private void SetCharacterHeight()
         {
-            _characterController.height = _crouching ? parameters.crouchHeight : parameters.walkHeight;
+            _characterController.height = _crouching ? _playerParameters.crouchHeight : _playerParameters.walkHeight;
         }
 
         private float CalculateCharacterSpeed()
@@ -76,20 +86,20 @@ namespace _Code.Scripts.Character
             float speed;
             if (_crouching)
             {
-                speed = parameters.crouchSpeed;
+                speed = _playerParameters.crouchSpeed;
             }
             else if (_running)
             {
-                speed = parameters.runSpeed;                
+                speed = _playerParameters.runSpeed;                
             }
             else
             {
-                speed = parameters.walkSpeed;                
+                speed = _playerParameters.walkSpeed;                
             }
             
             if (!_grounded)
             {
-                speed *= parameters.airControl;
+                speed *= _playerParameters.airControl;
             }
             
             return speed;
@@ -100,8 +110,9 @@ namespace _Code.Scripts.Character
             if ((flags & CollisionFlags.Below) != 0)
             {
                 _grounded = true;
+                _coyoteCounter = _playerParameters.coyoteTime;
                 if (_verticalVelocity < -2)
-                    _verticalVelocity = -2; // Keep player grounded
+                    _verticalVelocity = -2;
                 Crouch(_crouchButtonHeld);
             }
             else
@@ -141,16 +152,17 @@ namespace _Code.Scripts.Character
         {
             if (_verticalVelocity > 0)
             {
-                _verticalVelocity *= parameters.jumpStopMultiplier;
+                _verticalVelocity *= _playerParameters.jumpStopMultiplier;
             }
         }
 
         private void Jump()
         {
-            if (_grounded)
+            if (_grounded || _coyoteCounter > 0)
             {
-                _verticalVelocity = parameters.jumpSpeed;
+                _verticalVelocity = _playerParameters.jumpSpeed;
                 _grounded = false;
+                _coyoteCounter = 0;
                 _crouching = false;
             }
         }
@@ -164,9 +176,9 @@ namespace _Code.Scripts.Character
                     _crouching = true;
                     return;
                 }
-                Vector3 headPosition = transform.position + Vector3.up * (_crouching ? parameters.crouchHeight/2 : parameters.walkHeight/2);
+                Vector3 headPosition = transform.position + Vector3.up * (_crouching ? _playerParameters.crouchHeight/2 : _playerParameters.walkHeight/2);
                 Ray headCheckRay = new Ray(headPosition, Vector3.up);
-                if (Physics.Raycast(headCheckRay, parameters.walkHeight - parameters.crouchHeight))
+                if (Physics.Raycast(headCheckRay, _playerParameters.walkHeight - _playerParameters.crouchHeight))
                 {
                     _crouching = true;
                     return;

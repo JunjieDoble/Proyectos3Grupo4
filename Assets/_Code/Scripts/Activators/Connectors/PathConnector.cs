@@ -1,4 +1,5 @@
-﻿using _Code.Scripts.Activables;
+﻿using System;
+using _Code.Scripts.Activables;
 using _Code.Scripts.Bases;
 using _Code.Scripts.Rooms;
 using UnityEngine;
@@ -19,18 +20,20 @@ namespace _Code.Scripts.Activators.Connectors
 
         private void OnEnable()
         {
-            Room.OnEndRotation += DisconnectAndCheck;
-        }
-
-        private void DisconnectAndCheck()
-        {
-            Disconnect();
-            CheckConnection();
+            Room.OnEndRotation += CheckConnection;
         }
         
         private void OnDisable()
         {
-            Room.OnEndRotation -= DisconnectAndCheck;
+            Room.OnEndRotation -= CheckConnection;
+        }
+
+        public override void CheckConnection()
+        {
+            base.CheckConnection();
+            if (OtherConnector is PathConnector pathConnector)
+                pathConnector.activable.ActivatorUpdate();
+            activable.ActivatorUpdate();
         }
 
         protected override bool CheckHit(Collider hit)
@@ -42,23 +45,32 @@ namespace _Code.Scripts.Activators.Connectors
                 if (other is PathConnector otherPathConnector && otherPathConnector != this)
                 {
                     SetOther(otherPathConnector);
-                    if (activable.IsActive() || otherPathConnector.activable.IsActive())
-                    {
-                        Connect();
-                        otherPathConnector.Connect();
-                    }
-                    Debug.Log("Connected to " + other.name);
+                    otherPathConnector.SetOther(this);
                     return true;
                 }
 
                 if (other is GeneratorConnector)
                 {
-                    Debug.Log("Connected to " + other.name);
                     Connect();
                     return true;
                 }
             }
             return false;
         }
+        
+        public override void Disconnect()
+        {
+            if (IsActive)
+            {
+                Deactivate();
+            }
+            else
+            {
+                _otherConnector?.SetActive(false);
+            }
+            _otherConnector?.SetOther(null);
+            _otherConnector = null;
+        }
+        
     }
 }
