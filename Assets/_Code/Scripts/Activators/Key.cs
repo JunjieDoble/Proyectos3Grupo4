@@ -8,8 +8,8 @@ namespace _Code.Scripts.Activators
         private static Key _activeKey;
         public void Interact(IInteractor interactor)
         {
-            SetActive(true);
             _activeKey?.SetActive(false);
+            SetActive(true);
             _activeKey = this;
             onActivatorUpdate?.Invoke();
         }
