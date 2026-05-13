@@ -39,7 +39,6 @@ namespace _Code.Scripts.Activables
 
             foreach (var activator in activators)
             {
-                Debug.Log(activator.name + " is " + (activator.IsActive ? "active" : "inactive") + " in path "+name);
                 if (activator.IsActive) continue;
                 if (activator is Connector connector)
                 {

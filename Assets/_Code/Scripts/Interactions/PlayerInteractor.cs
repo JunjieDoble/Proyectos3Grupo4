@@ -90,7 +90,6 @@ namespace _Code.Scripts.Interactions
 
         private void InteractionPerformed()
         {
-            Debug.Log("Hold Finished");
             if (_currentInteractable is IHoldInteractable holdInteractable)
             {
                 holdInteractable.OnHoldCompleted(this);
