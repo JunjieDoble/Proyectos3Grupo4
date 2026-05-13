@@ -1158,6 +1158,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 30644410}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &40158590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 40158591}
+  m_Layer: 0
+  m_Name: PatrolPoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &40158591
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40158590}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.91, y: -0, z: 1.47655}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &41031627
 GameObject:
   m_ObjectHideFlags: 0
@@ -1876,7 +1907,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a26afe38cd4b68047997e8e546f07345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MiniMap.ResetRotation
-  playerTransform: {fileID: 803525976}
 --- !u!33 &62252941
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2471,11 +2501,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18a633e5c2930bb4699449b086d26652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Doors.Door
---- !u!1 &104142764 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 76dddc6d75782944ba992851af34be85, type: 3}
-  m_PrefabInstance: {fileID: 9480105}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &120210378
 GameObject:
   m_ObjectHideFlags: 0
@@ -2634,12 +2659,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58dd7ba656044309c0c1c85977d5866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.HallConnector
-  door: {fileID: 0}
-  checkCenter: {x: -3, y: 2, z: 0}
-  checkHalfExtents: {x: 1, y: 2, z: 2}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!1 &122538162
 GameObject:
   m_ObjectHideFlags: 0
@@ -5634,11 +5653,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250733551}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &255889950 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 76dddc6d75782944ba992851af34be85, type: 3}
-  m_PrefabInstance: {fileID: 1382097059}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &262143317
 GameObject:
   m_ObjectHideFlags: 0
@@ -6932,6 +6946,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.Room
+  rotationTime: 1.2
+  rotationDegree: 90
   rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!4 &302769381
 Transform:
@@ -7113,12 +7129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58dd7ba656044309c0c1c85977d5866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.HallConnector
-  door: {fileID: 0}
-  checkCenter: {x: -3, y: 2, z: 0}
-  checkHalfExtents: {x: 1, y: 2, z: 2}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!1 &306109573
 GameObject:
   m_ObjectHideFlags: 0
@@ -7683,6 +7693,7 @@ GameObject:
   - component: {fileID: 314223136}
   - component: {fileID: 314223135}
   - component: {fileID: 314223134}
+  - component: {fileID: 314223137}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -7784,6 +7795,38 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 314223132}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &314223137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314223132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 1
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 8fd75a336c96d9d4980d8030615938e7, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1 &322805121
 GameObject:
   m_ObjectHideFlags: 0
@@ -8754,6 +8797,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
+  rotationTime: 1.2
+  rotationDegree: 90
   rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!4 &380274258
 Transform:
@@ -9310,12 +9355,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58dd7ba656044309c0c1c85977d5866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.HallConnector
-  door: {fileID: 0}
-  checkCenter: {x: -3, y: 2, z: 0}
-  checkHalfExtents: {x: 1, y: 2, z: 2}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!1 &401528519
 GameObject:
   m_ObjectHideFlags: 0
@@ -10293,6 +10332,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
+  rotationTime: 1.2
+  rotationDegree: 90
   rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!4 &455024038
 Transform:
@@ -11078,6 +11119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
+  rotationTime: 1.2
+  rotationDegree: 90
   rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!1 &524475309
 GameObject:
@@ -11758,12 +11801,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58dd7ba656044309c0c1c85977d5866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.HallConnector
-  door: {fileID: 0}
-  checkCenter: {x: -3, y: 2, z: 0}
-  checkHalfExtents: {x: 1, y: 2, z: 2}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!1 &550166437
 GameObject:
   m_ObjectHideFlags: 0
@@ -12429,6 +12466,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
+  rotationTime: 1.2
+  rotationDegree: 90
   rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!4 &569243784
 Transform:
@@ -16143,6 +16182,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
+  rotationTime: 1.2
+  rotationDegree: 90
   rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!4 &760771381
 Transform:
@@ -16779,6 +16820,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.Room
+  rotationTime: 1.2
+  rotationDegree: 90
   rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!4 &779426525
 Transform:
@@ -16848,12 +16891,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58dd7ba656044309c0c1c85977d5866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.HallConnector
-  door: {fileID: 0}
-  checkCenter: {x: -3, y: 2, z: 0}
-  checkHalfExtents: {x: 1, y: 2, z: 2}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!1 &795096326
 GameObject:
   m_ObjectHideFlags: 0
@@ -17435,7 +17472,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7911420c97a85074aa4cda5555b43d3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Character.CameraController
-  parameters: {fileID: 11400000, guid: b06daa5a65788f547b5f485a5a448eea, type: 2}
   pitchController: {fileID: 2030142191}
 --- !u!114 &803525973
 MonoBehaviour:
@@ -17449,7 +17485,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9347ec496c34a9e4180eaa44c9ca9552, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Character.MovementController
-  parameters: {fileID: 11400000, guid: b06daa5a65788f547b5f485a5a448eea, type: 2}
 --- !u!23 &803525974
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17536,7 +17571,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactions.PlayerInteraction
   viewOrigin: {fileID: 2030142191}
-  maxDistance: 5
   interactableMask:
     serializedVersion: 2
     m_Bits: 64
@@ -17566,6 +17600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5d786311b7a4003a1d9bbf28d297f3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Character.Player
+  playerParameters: {fileID: 0}
 --- !u!1 &809785239
 GameObject:
   m_ObjectHideFlags: 0
@@ -18284,7 +18319,7 @@ Transform:
   m_GameObject: {fileID: 848264028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.9, y: 1.07, z: 2.73}
+  m_LocalPosition: {x: -2.9, y: 4.63, z: 2.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19154,6 +19189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
+  rotationTime: 1.2
+  rotationDegree: 90
   rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!4 &886940415
 Transform:
@@ -21554,11 +21591,6 @@ Transform:
   - {fileID: 1990384830}
   m_Father: {fileID: 1936261077}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &984114936 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 76dddc6d75782944ba992851af34be85, type: 3}
-  m_PrefabInstance: {fileID: 799337811}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &984630979
 GameObject:
   m_ObjectHideFlags: 0
@@ -21933,6 +21965,71 @@ Transform:
   m_Children: []
   m_Father: {fileID: 380274258}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &994549174
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1213430296394784280, guid: 4d34894f34b13ed4a996247d1b96d59c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.62498003
+      objectReference: {fileID: 0}
+    - target: {fileID: 1213430296394784280, guid: 4d34894f34b13ed4a996247d1b96d59c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1213430296394784280, guid: 4d34894f34b13ed4a996247d1b96d59c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.223228
+      objectReference: {fileID: 0}
+    - target: {fileID: 1213430296394784280, guid: 4d34894f34b13ed4a996247d1b96d59c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1213430296394784280, guid: 4d34894f34b13ed4a996247d1b96d59c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1213430296394784280, guid: 4d34894f34b13ed4a996247d1b96d59c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1213430296394784280, guid: 4d34894f34b13ed4a996247d1b96d59c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1213430296394784280, guid: 4d34894f34b13ed4a996247d1b96d59c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1213430296394784280, guid: 4d34894f34b13ed4a996247d1b96d59c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1213430296394784280, guid: 4d34894f34b13ed4a996247d1b96d59c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4962309162539759452, guid: 4d34894f34b13ed4a996247d1b96d59c, type: 3}
+      propertyPath: m_Name
+      value: Enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923881779137876185, guid: 4d34894f34b13ed4a996247d1b96d59c, type: 3}
+      propertyPath: 'patrolPoints.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1398884970}
+    - target: {fileID: 7923881779137876185, guid: 4d34894f34b13ed4a996247d1b96d59c, type: 3}
+      propertyPath: 'patrolPoints.Array.data[1]'
+      value: 
+      objectReference: {fileID: 40158590}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d34894f34b13ed4a996247d1b96d59c, type: 3}
 --- !u!1 &998074565
 GameObject:
   m_ObjectHideFlags: 0
@@ -22406,6 +22503,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.Room
+  rotationTime: 1.2
+  rotationDegree: 90
   rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!4 &1041149438
 Transform:
@@ -24857,6 +24956,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
+  rotationTime: 1.2
+  rotationDegree: 90
   rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!4 &1132918096
 Transform:
@@ -25120,7 +25221,7 @@ PrefabInstance:
       objectReference: {fileID: 896882616}
     - target: {fileID: 5747956447751248614, guid: 9dab36df29ba2674a90c9075a4273fce, type: 3}
       propertyPath: m_Name
-      value: Player (1)
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5747956447751248614, guid: 9dab36df29ba2674a90c9075a4273fce, type: 3}
       propertyPath: m_Layer
@@ -25166,6 +25267,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8638280349087719594, guid: 9dab36df29ba2674a90c9075a4273fce, type: 3}
+      propertyPath: playerParameters
+      value: 
+      objectReference: {fileID: 11400000, guid: b06daa5a65788f547b5f485a5a448eea, type: 2}
     - target: {fileID: 8846441738133079241, guid: 9dab36df29ba2674a90c9075a4273fce, type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 1023
@@ -25229,6 +25334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5d786311b7a4003a1d9bbf28d297f3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Character.Player
+  playerParameters: {fileID: 0}
 --- !u!65 &1134890165
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25263,7 +25369,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactions.PlayerInteraction
   viewOrigin: {fileID: 1134890163}
-  maxDistance: 3
   interactableMask:
     serializedVersion: 2
     m_Bits: 64
@@ -27051,6 +27156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
+  rotationTime: 1.2
+  rotationDegree: 90
   rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!4 &1201615161
 Transform:
@@ -27165,12 +27272,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58dd7ba656044309c0c1c85977d5866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.HallConnector
-  door: {fileID: 0}
-  checkCenter: {x: -3, y: 2, z: 0}
-  checkHalfExtents: {x: 1, y: 2, z: 2}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!1 &1231640108
 GameObject:
   m_ObjectHideFlags: 0
@@ -28304,8 +28405,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e9bd2ea041d8445ba2a42527f89301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Doors.InteractableDoor
-  door: {fileID: 21690088}
-  locked: 1
 --- !u!65 &1284818697
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30132,12 +30231,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58dd7ba656044309c0c1c85977d5866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.HallConnector
-  door: {fileID: 0}
-  checkCenter: {x: -3, y: 2, z: 0}
-  checkHalfExtents: {x: 1, y: 2, z: 2}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!1 &1390352427
 GameObject:
   m_ObjectHideFlags: 0
@@ -30313,6 +30406,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
+  rotationTime: 1.2
+  rotationDegree: 90
   rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!4 &1394892512
 Transform:
@@ -30345,6 +30440,37 @@ Transform:
   - {fileID: 346964870}
   - {fileID: 1695359829}
   m_Father: {fileID: 1520092340}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1398884970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1398884971}
+  m_Layer: 0
+  m_Name: PatrolPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1398884971
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398884970}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.01, y: -0, z: 1.47655}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1402334089
 GameObject:
@@ -31878,12 +32004,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58dd7ba656044309c0c1c85977d5866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.HallConnector
-  door: {fileID: 0}
-  checkCenter: {x: -3, y: 2, z: 0}
-  checkHalfExtents: {x: 1, y: 2, z: 2}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!1 &1522172135
 GameObject:
   m_ObjectHideFlags: 0
@@ -34036,22 +34156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d7602ba84c3e1945a26923023f32087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LinePaths.PathManager
-  allPaths:
-  - segments:
-    - room: {fileID: 521319710}
-      entryPoint: {fileID: 1715025137}
-      exitPoint: {fileID: 694592078}
-      physicalPath: {fileID: 104142764}
-    - room: {fileID: 569243783}
-      entryPoint: {fileID: 624139481}
-      exitPoint: {fileID: 1173595634}
-      physicalPath: {fileID: 255889950}
-    - room: {fileID: 760771380}
-      entryPoint: {fileID: 1151826851}
-      exitPoint: {fileID: 276427409}
-      physicalPath: {fileID: 984114936}
-    isComplete: 0
-    unlockTarget: {fileID: 1284818696}
 --- !u!1 &1661351606
 GameObject:
   m_ObjectHideFlags: 0
@@ -34227,6 +34331,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
+  rotationTime: 1.2
+  rotationDegree: 90
   rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!4 &1685566143
 Transform:
@@ -35327,6 +35433,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.Room
+  rotationTime: 1.2
+  rotationDegree: 90
   rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!4 &1736940466
 Transform:
@@ -36208,12 +36316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58dd7ba656044309c0c1c85977d5866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.HallConnector
-  door: {fileID: 0}
-  checkCenter: {x: -3, y: 2, z: 0}
-  checkHalfExtents: {x: 1, y: 2, z: 2}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!1 &1777878926
 GameObject:
   m_ObjectHideFlags: 0
@@ -37658,12 +37760,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58dd7ba656044309c0c1c85977d5866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.HallConnector
-  door: {fileID: 0}
-  checkCenter: {x: -3, y: 2, z: 0}
-  checkHalfExtents: {x: 1, y: 2, z: 2}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!1 &1835396284
 GameObject:
   m_ObjectHideFlags: 0
@@ -38167,6 +38263,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665dc035ffc90d248848e191d7da3cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.Room
+  rotationTime: 1.2
+  rotationDegree: 90
   rotatorVector: {x: 0, y: 1, z: 0}
 --- !u!4 &1859744326
 Transform:
@@ -38519,12 +38617,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58dd7ba656044309c0c1c85977d5866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.HallConnector
-  door: {fileID: 0}
-  checkCenter: {x: -3, y: 2, z: 0}
-  checkHalfExtents: {x: 1, y: 2, z: 2}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!1 &1879587911
 GameObject:
   m_ObjectHideFlags: 0
@@ -39060,12 +39152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58dd7ba656044309c0c1c85977d5866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.HallConnector
-  door: {fileID: 0}
-  checkCenter: {x: -3, y: 2, z: 0}
-  checkHalfExtents: {x: 1, y: 2, z: 2}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!1 &1893765370
 GameObject:
   m_ObjectHideFlags: 0
@@ -40042,12 +40128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58dd7ba656044309c0c1c85977d5866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Rooms.HallConnector
-  door: {fileID: 0}
-  checkCenter: {x: -3, y: 2, z: 0}
-  checkHalfExtents: {x: 1, y: 2, z: 2}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!1 &1945231324
 GameObject:
   m_ObjectHideFlags: 0
@@ -43713,7 +43793,7 @@ Transform:
   m_GameObject: {fileID: 2134272115}
   serializedVersion: 2
   m_LocalRotation: {x: 0.00000009049907, y: -0.9497008, z: 0.31315872, w: 0.00000060463253}
-  m_LocalPosition: {x: 3, y: 3.0214593, z: 0.9762211}
+  m_LocalPosition: {x: 3, y: 4.72, z: 3.27}
   m_LocalScale: {x: 0.4, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44051,3 +44131,6 @@ SceneRoots:
   - {fileID: 1394392749}
   - {fileID: 1134890160}
   - {fileID: 848264032}
+  - {fileID: 994549174}
+  - {fileID: 1398884971}
+  - {fileID: 40158591}
