@@ -10,11 +10,11 @@ namespace _Code.Scripts.Activators.Connectors
     {
         protected override void Awake()
         {
-            activable = GetComponentInParent<Path>();
-            if (activable == null) Debug.LogWarning("PathConnector does not have a path", this);
+            activables.Add(GetComponentInParent<Path>());
+            if (activables == null || activables.Count == 0) Debug.LogWarning("PathConnector does not have a path", this);
             else
             {
-                activable.AddActivator(this);
+                activables.ForEach(a => a.AddActivator(this));
             }
         }
 
@@ -32,8 +32,8 @@ namespace _Code.Scripts.Activators.Connectors
         {
             base.CheckConnection();
             if (OtherConnector is PathConnector pathConnector)
-                pathConnector.activable.ActivatorUpdate();
-            activable.ActivatorUpdate();
+                pathConnector.activables.ForEach(a => a?.ActivatorUpdate());
+            activables.ForEach(a => a?.ActivatorUpdate());
         }
 
         protected override bool CheckHit(Collider hit)

@@ -15,7 +15,7 @@ namespace _Code.Scripts.Activators.Connectors
             if (path)
             {
                 path.AddActivator(this);
-                activable = path;
+                activables.Add(path);
                 path.ActivatorUpdate();
                 return true;
             }
