@@ -26,6 +26,10 @@ namespace _Code.Scripts.Interactions
         public GameObject GameObject => gameObject;
 
         public void LoadPlayerParameters(PlayerParameters playerParameters) => _playerParameters = playerParameters;
+        public void OnPlayerRespawn(Vector3 _)
+        {
+            _currentPickupable?.Reset();
+        }
         
         public bool IsEnabled { get; set; }
 
@@ -90,7 +94,6 @@ namespace _Code.Scripts.Interactions
 
         private void InteractionPerformed()
         {
-            Debug.Log("Hold Finished");
             if (_currentInteractable is IHoldInteractable holdInteractable)
             {
                 holdInteractable.OnHoldCompleted(this);

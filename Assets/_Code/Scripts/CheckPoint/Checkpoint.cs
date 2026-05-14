@@ -1,3 +1,4 @@
+using System;
 using _Code.Scripts.Character;
 using _Code.Scripts.Interactions;
 using Interactions;
@@ -7,6 +8,7 @@ namespace _Code.Scripts.CheckPoint
 {
     public class Checkpoint : MonoBehaviour, IInteractable
     {
+        public static Action OnCheckpointChange;
         private static Checkpoint CurrentCheckpoint { get; set; }
         private Vector3 _spawnPosition;
         private Player _player;
@@ -24,6 +26,7 @@ namespace _Code.Scripts.CheckPoint
         {
             if (interactor is PlayerInteractor playerInteractor)
             {
+                OnCheckpointChange?.Invoke();
                 CurrentCheckpoint = this;
                 _spawnPosition = playerInteractor.Transform.position;
                 _player = playerInteractor.GetComponent<Player>();

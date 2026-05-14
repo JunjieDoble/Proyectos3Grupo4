@@ -1,11 +1,14 @@
 ﻿using System.Collections.Generic;
-using _Code.Scripts.CheckPoint;
 using UnityEngine;
+using System;
+using _Code.Scripts.Interactions;
 
 namespace _Code.Scripts.Character
 {
     public class Player : MonoBehaviour, IDie
     {
+
+        public static Action OnPlayerDied;
 
         [Header("References")]
         [SerializeField] private PlayerParameters playerParameters;
@@ -20,10 +23,7 @@ namespace _Code.Scripts.Character
             foreach (IController controller in _controllers)
             {
                 controller.Enable();
-                if (controller is MovementController movementController)
-                {
-                    movementController.Teleport(spawnPoint);
-                }
+                controller.OnPlayerRespawn(spawnPoint);
             }
         }
         
@@ -33,7 +33,8 @@ namespace _Code.Scripts.Character
             {
                 controller.Disable();
             }
-            Checkpoint.RespawnPlayer();
+            OnPlayerDied?.Invoke();
+            _isDead = true;
         }
         
         public void AddController(IController controller)

@@ -11,8 +11,9 @@ public class ChaseState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _agent = animator.transform.GetComponent<NavMeshAgent>();
-        _enemyBehaviour = animator.transform.GetComponent<EnemyBehaviour>();
         _player = GameObject.Find("Player");
+        _enemyBehaviour = animator.transform.GetComponent<EnemyBehaviour>();
+        _enemyBehaviour.SetDeathZoneActive(true);
 
         _agent.isStopped = false;
         _agent.speed = _enemyBehaviour.GetSpeed();
@@ -41,5 +42,10 @@ public class ChaseState : StateMachineBehaviour
         }
 
         _enemyBehaviour.SetLastPlayerPosition(_player.transform.position);
+    }
+
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        _enemyBehaviour.SetDeathZoneActive(false);
     }
 }

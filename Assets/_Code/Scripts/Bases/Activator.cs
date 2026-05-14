@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace _Code.Scripts.Bases
 {
     public class Activator : MonoBehaviour
     {
-        [Header("References")]
-        [SerializeField] protected Activable activable;
+        [Header("References")] [SerializeField]
+        protected List<Activable> activables = new();
         public Action onActivatorUpdate;
         public virtual bool IsActive { get; private set;}
         protected void Activate() => SetActive(true);
@@ -21,7 +22,8 @@ namespace _Code.Scripts.Bases
 
         protected virtual void Awake()
         {
-            if (activable != null) activable.AddActivator(this);
+            if (activables != null && activables.Count > 0)
+                activables.ForEach(a => a?.AddActivator(this));
         }
     }
 }
