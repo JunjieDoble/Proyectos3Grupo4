@@ -19,6 +19,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
     private Vector3 _lastAlertPosition;
     private Vector3 _lastPlayerPosition;
     private int _interactableLayer;
+    private GameObject _deathZone;
 
     public GameObject drop;
 
@@ -28,6 +29,9 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
         _animator = GetComponent<Animator>();
         _enemyInteractor = GetComponent<EnemyInteractor>();
         _interactableLayer = LayerMask.NameToLayer("Interactable");
+        _deathZone = transform.Find("DeathZone")?.gameObject;
+        if (_deathZone == null) Debug.LogWarning("Enemy doesnt have a DeathZone child");
+        _deathZone?.SetActive(false);
     }
 
     private void Update()
@@ -107,12 +111,9 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
         }
     }
 
-    private void OnTriggerEnter(Collider collider)
+    public void SetDeathZoneActive(bool active)
     {
-        if (collider.CompareTag("Player"))
-        {
-            // Dmg or kill the player
-        }
+        _deathZone?.gameObject.SetActive(active);
     }
 
     private void OnDrawGizmos()
