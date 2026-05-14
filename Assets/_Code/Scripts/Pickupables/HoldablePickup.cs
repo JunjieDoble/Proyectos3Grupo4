@@ -1,4 +1,5 @@
-﻿using _Code.Scripts.Interactions;
+﻿using _Code.Scripts.Gameplay;
+using _Code.Scripts.Interactions;
 using _Code.Scripts.Rooms;
 using Interactions;
 using UnityEngine;
@@ -20,6 +21,16 @@ namespace _Code.Scripts.Pickupables
         {
             _rigidbody = GetComponent<Rigidbody>();
             _originalPosition = transform.position;
+        }
+
+        void OnEnable()
+        {
+            GameManager.OnPlayerRespawn += Reset;
+        }
+        
+        void OnDisable()
+        {
+            GameManager.OnPlayerRespawn -= Reset;
         }
 
         void FixedUpdate()
