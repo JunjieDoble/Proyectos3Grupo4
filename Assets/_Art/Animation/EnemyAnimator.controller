@@ -9,7 +9,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: SeePlayer
+    m_ConditionEvent: PlayerInFOV
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7610687767166416906}
@@ -103,7 +103,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: SeePlayer
+    m_ConditionEvent: PlayerInFOV
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7610687767166416906}
@@ -337,6 +337,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: PlayerInFOV
+    m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -471,7 +477,7 @@ AnimatorStateMachine:
     m_Position: {x: 590, y: 0, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7468437839493729696}
-    m_Position: {x: 800, y: 190, z: 0}
+    m_Position: {x: 800, y: 160, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -4928298822160963433}

@@ -63,6 +63,11 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
         }
     }
 
+    public void SetPlayerInFOV()
+    {
+        _animator.SetTrigger("PlayerInFOV"); //trigger exclusiu pel fov, SeePlayer és per quan ja ha vist i persegueix/busca el player
+    }
+
     public void KillEnemy()
     {
         float angleToPlayer = GetAngleToPlayer();
