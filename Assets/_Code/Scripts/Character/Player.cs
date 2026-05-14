@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
-using _Code.Scripts.CheckPoint;
 using UnityEngine;
+using System;
 
 namespace _Code.Scripts.Character
 {
     public class Player : MonoBehaviour, IDie
     {
+
+        public static Action OnPlayerDied;
 
         [Header("References")]
         [SerializeField] private PlayerParameters playerParameters;
@@ -33,7 +35,8 @@ namespace _Code.Scripts.Character
             {
                 controller.Disable();
             }
-            Checkpoint.RespawnPlayer();
+            OnPlayerDied?.Invoke();
+            _isDead = true;
         }
         
         public void AddController(IController controller)
