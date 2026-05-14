@@ -14,6 +14,8 @@ namespace _Code.Scripts.Rooms
         [SerializeField]
         private float rotationTime = 1.2f;
         [SerializeField]
+        private float cancelSpeedMultiplier = 2f;
+        [SerializeField]
         private float rotationDegree = 90;
         [SerializeField]
         private Vector3 rotatorVector = new (0, 1, 0);
@@ -22,6 +24,7 @@ namespace _Code.Scripts.Rooms
         private bool _isRotating;
         private Quaternion _targetRotation;
         private List<Wall> _walls = new();
+        private float _speedMultiplier = 1f;
 
         void Awake()
         {
@@ -44,19 +47,21 @@ namespace _Code.Scripts.Rooms
             {
                 wall.OnRoomRotationStarted();
             }
+            _speedMultiplier = 1f;
         }
 
         public void CancelRotate()
         {
             if (!_isRotating) return;
             _targetRotation = _startRotation;
+            _speedMultiplier = cancelSpeedMultiplier;
         }
 
         private void RotateRoom()
         {
             if(_isRotating)
             {
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, rotationSpeed * Time.deltaTime);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, rotationSpeed * _speedMultiplier * Time.deltaTime);
                 if (Quaternion.Angle(transform.rotation, _targetRotation) < 0.1f)
                 {
                     transform.rotation = _targetRotation;
