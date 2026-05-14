@@ -126,6 +126,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
 
     private float GetDistanceToPlayer()
     {
+        if (_player == null) return 0;
         Vector3 playerPos = _player.transform.position;
         Vector3 enemyPos = transform.position;
 
@@ -136,6 +137,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
 
     private float GetAngleToPlayer()
     {
+        if (_player == null) return 0;
         Vector3 directionToPlayer = _player.transform.position - transform.position;
         Vector3 directionForward = transform.forward;
         return Vector3.Angle(directionForward, directionToPlayer);
