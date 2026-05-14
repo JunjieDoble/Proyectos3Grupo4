@@ -21,10 +21,7 @@ namespace _Code.Scripts.UI
 
         public void Respawn()
         {
-            Checkpoint.RespawnPlayer();
-            Time.timeScale = 1f;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            GameManager.Instance?.RespawnPlayer();
             _childObject.SetActive(false);
         }
 

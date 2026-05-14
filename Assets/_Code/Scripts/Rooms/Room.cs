@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using _Code.Scripts.CheckPoint;
+using _Code.Scripts.Gameplay;
 using UnityEngine;
 
 namespace _Code.Scripts.Rooms
@@ -25,11 +27,37 @@ namespace _Code.Scripts.Rooms
         private Quaternion _targetRotation;
         private List<Wall> _walls = new();
         private float _speedMultiplier = 1f;
+        
+        private Quaternion _originalRotation;
 
         void Awake()
         {
             _walls = GetComponentsInChildren<Wall>().ToList();
             rotationSpeed = rotationDegree / rotationTime;
+            _originalRotation = transform.rotation;
+        }
+
+        void OnEnable()
+        {
+            GameManager.OnPlayerRespawn += ResetRoom;
+            Checkpoint.OnCheckpointChange += UpdateOrigin;
+        }
+        
+        void OnDisable()
+        {
+            GameManager.OnPlayerRespawn -= ResetRoom;
+            Checkpoint.OnCheckpointChange -= UpdateOrigin;
+        }       
+        
+        void ResetRoom()
+        {
+            _isRotating = true;
+            _targetRotation = _originalRotation;
+        }
+        
+        void UpdateOrigin()
+        {
+            _originalRotation = transform.rotation;
         }
 
         private void FixedUpdate()
