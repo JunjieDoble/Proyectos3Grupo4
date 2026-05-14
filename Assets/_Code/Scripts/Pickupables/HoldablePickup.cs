@@ -14,10 +14,12 @@ namespace _Code.Scripts.Pickupables
         [SerializeField] private float alertRadius = 10f;
         private Rigidbody _rigidbody;
         private bool _isHolding;
+        private Vector3 _originalPosition;
 
         void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
+            _originalPosition = transform.position;
         }
 
         void FixedUpdate()
@@ -29,7 +31,7 @@ namespace _Code.Scripts.Pickupables
         {
             if (!_rigidbody) return;
             if (_isHolding) return;
-            if (transform.parent != null) return;
+            if (transform.parent) return;
             if (_rigidbody.angularVelocity.magnitude < stopVelocityThreshold &&
                 _rigidbody.angularVelocity.magnitude < stopVelocityThreshold)
             {
@@ -42,7 +44,7 @@ namespace _Code.Scripts.Pickupables
                     var room = hit?.GetComponentInParent<Room>();
                     if (room)
                     {
-                        transform.parent = room.transform;
+                        transform.SetParent(room.transform);
                         break;
                     }
                 }
@@ -107,6 +109,12 @@ namespace _Code.Scripts.Pickupables
             Gizmos.DrawWireSphere(transform.position, alertRadius);
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, 1f);
+        }
+
+        public void Reset()
+        {
+            Drop();
+            transform.position = _originalPosition;
         }
     }
 }

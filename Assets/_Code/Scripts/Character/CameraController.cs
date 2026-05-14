@@ -18,6 +18,7 @@ namespace _Code.Scripts.Character
         public bool IsEnabled { get; set; }
         
         public void LoadPlayerParameters(PlayerParameters playerParameters) => _playerParameters = playerParameters;
+        public void OnPlayerRespawn(Vector3 _) { }
 
         private void Awake()
         {

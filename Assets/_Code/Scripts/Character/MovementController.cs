@@ -38,6 +38,7 @@ namespace _Code.Scripts.Character
         }
 
         public void LoadPlayerParameters(PlayerParameters playerParameters) => _playerParameters = playerParameters;
+        public void OnPlayerRespawn(Vector3 spawnPoint) => Teleport(spawnPoint);
 
         void Update()
         {
