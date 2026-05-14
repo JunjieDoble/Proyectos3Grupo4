@@ -11,6 +11,7 @@ namespace _Code.Scripts.Pickupables
         [Header("Settings")]
         [SerializeField] private float stopVelocityThreshold = 0.1f;
         [SerializeField] private LayerMask layerMask;
+        [SerializeField] private float alertRadius = 10f;
         private Rigidbody _rigidbody;
         private bool _isHolding;
 
@@ -89,7 +90,7 @@ namespace _Code.Scripts.Pickupables
         
         private void AlertNearbyEnemies(Vector3 point)
         {
-            Collider[] hits = Physics.OverlapSphere(point, 10f);
+            Collider[] hits = Physics.OverlapSphere(point, alertRadius);
             foreach (Collider hit in hits)
             {
                 IEnemy enemy = hit.GetComponentInParent<IEnemy>();
@@ -103,7 +104,7 @@ namespace _Code.Scripts.Pickupables
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(transform.position, 10f);
+            Gizmos.DrawWireSphere(transform.position, alertRadius);
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, 1f);
         }

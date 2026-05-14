@@ -12,9 +12,9 @@ namespace _Code.Scripts.Activators.Connectors
         
         protected override void Awake()
         {
-            activable = GetComponentInChildren<Door>();
-            if (activable == null) Debug.LogWarning("HallConnector does not have a Door in its children", this);
-            else activable.AddActivator(this);
+            activables.Add(GetComponentInChildren<Door>());
+            if (activables == null) Debug.LogWarning("HallConnector does not have a Door in its children", this);
+            else activables.ForEach(a => a?.AddActivator(this));
         }
 
         protected override bool CheckHit(Collider hit)

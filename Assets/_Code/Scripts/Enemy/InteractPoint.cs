@@ -1,4 +1,6 @@
-﻿using Interactions;
+﻿using System;
+using Interactions;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InteractPoint : MonoBehaviour
@@ -11,5 +13,11 @@ public class InteractPoint : MonoBehaviour
 
         IInteractable interactable = interactableObj.GetComponent<IInteractable>();
         return interactable;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, 0.1f);
     }
 }
