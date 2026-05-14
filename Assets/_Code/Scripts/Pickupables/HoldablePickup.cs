@@ -1,4 +1,5 @@
-﻿using _Code.Scripts.Gameplay;
+﻿using _Code.Scripts.CheckPoint;
+using _Code.Scripts.Gameplay;
 using _Code.Scripts.Interactions;
 using _Code.Scripts.Rooms;
 using Interactions;
@@ -26,11 +27,19 @@ namespace _Code.Scripts.Pickupables
         void OnEnable()
         {
             GameManager.OnPlayerRespawn += Reset;
+            Checkpoint.OnCheckpointChange += UpdateOrigin;
         }
         
         void OnDisable()
         {
             GameManager.OnPlayerRespawn -= Reset;
+            Checkpoint.OnCheckpointChange -= UpdateOrigin;
+
+        }
+        
+        void UpdateOrigin()
+        {
+            _originalPosition = transform.position;
         }
 
         void FixedUpdate()
