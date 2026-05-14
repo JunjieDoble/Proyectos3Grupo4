@@ -6,22 +6,28 @@ namespace _Code.Scripts.Character
     [DisallowMultipleComponent]
     [RequireComponent(typeof(Player))]
     public class CameraController : MonoBehaviour, IController
-    {
-        [SerializeField] private PlayerParameters parameters;
+    { 
+        
         [SerializeField] private Transform pitchController;
-
+        
+        private PlayerParameters _playerParameters;
+        
         private float _yaw;
         private float _pitch;
 
         public bool IsEnabled { get; set; }
+        
+        public void LoadPlayerParameters(PlayerParameters playerParameters) => _playerParameters = playerParameters;
+        public void OnPlayerRespawn(Vector3 _) { }
 
         private void Awake()
         {
             _yaw = transform.eulerAngles.y;
             _pitch = pitchController.localEulerAngles.x;
             Cursor.lockState = CursorLockMode.Locked;
-            if (!parameters)
-                parameters = ScriptableObject.CreateInstance<PlayerParameters>();
+            if (!_playerParameters)
+                _playerParameters = ScriptableObject.CreateInstance<PlayerParameters>();
+            IsEnabled = false;
             GetComponent<Player>()?.AddController(this);
         }
 
@@ -41,9 +47,9 @@ namespace _Code.Scripts.Character
 
         public void AddLookDelta(Vector2 delta)
         {
-            _yaw += delta.x * parameters.mouseSensitivity;
-            _pitch -= delta.y * parameters.mouseSensitivity;
-            _pitch = Mathf.Clamp(_pitch, parameters.minPitch, parameters.maxPitch);
+            _yaw += delta.x * _playerParameters.mouseSensitivity;
+            _pitch -= delta.y * _playerParameters.mouseSensitivity;
+            _pitch = Mathf.Clamp(_pitch, _playerParameters.minPitch, _playerParameters.maxPitch);
         }
         
     }

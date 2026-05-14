@@ -4,7 +4,7 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
 {
     [Header("Parameters")]
-    [SerializeField] private Transform[] patrolPoints;
+    [SerializeField] private GameObject[] patrolPoints;
     [SerializeField] private float speed = 2f;
     [SerializeField] private float detectionRadius = 10f;
     [SerializeField] private float alertRadius = 15f;
@@ -13,9 +13,13 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
 
     private Animator _animator;
     private GameObject _player;
+    private EnemyInteractor _enemyInteractor;
     private bool _isDead = false;
     private Color _gizmosColor = Color.green;
     private Vector3 _lastAlertPosition;
+    private Vector3 _lastPlayerPosition;
+    private int _interactableLayer;
+    private GameObject _deathZone;
 
     public GameObject drop;
 
@@ -23,6 +27,11 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
     {
         _player = GameObject.Find("Player");
         _animator = GetComponent<Animator>();
+        _enemyInteractor = GetComponent<EnemyInteractor>();
+        _interactableLayer = LayerMask.NameToLayer("Interactable");
+        _deathZone = transform.Find("DeathZone")?.gameObject;
+        if (_deathZone == null) Debug.LogWarning("Enemy doesnt have a DeathZone child");
+        _deathZone?.SetActive(false);
     }
 
     private void Update()
@@ -66,7 +75,8 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
             _animator.SetTrigger("Die");
 
             Destroy(gameObject);
-            Instantiate(drop, transform.position, Quaternion.identity);
+            if (drop)
+                Instantiate(drop, transform.position, Quaternion.identity);
         }
         else
         {
@@ -89,12 +99,22 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
         KillEnemy();
     }
 
-    private void OnTriggerEnter(Collider collider)
+    public void InteractWithInteractable(GameObject inte)
     {
-        if (collider.CompareTag("Player"))
+        if (inte.TryGetComponent(out InteractPoint interactPoint))
         {
-            // Dmg or kill the player
+            IInteractable interactable = interactPoint.GetInteractable();
+            if (interactable != null)
+            {
+                _enemyInteractor.AssignInteractable(interactable);
+                _enemyInteractor.OnInteract();
+            }
         }
+    }
+
+    public void SetDeathZoneActive(bool active)
+    {
+        _deathZone?.gameObject.SetActive(active);
     }
 
     private void OnDrawGizmos()
@@ -121,7 +141,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
         return Vector3.Angle(directionForward, directionToPlayer);
     }
 
-    public Transform[] GetPatrolPoints()
+    public GameObject[] GetPatrolPoints()
     {
         return patrolPoints;
     }
@@ -134,5 +154,15 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
     public Vector3 GetLastAlertPosition()
     {
         return _lastAlertPosition;
+    }
+
+    public Vector3 GetLastPlayerPosition()
+    {
+        return _lastPlayerPosition;
+    }
+
+    public void SetLastPlayerPosition(Vector3 pos)
+    {
+        _lastPlayerPosition = pos;
     }
 }

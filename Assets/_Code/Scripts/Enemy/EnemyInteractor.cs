@@ -1,11 +1,26 @@
-﻿using Interactions;
+﻿using _Code.Scripts.Character;
+using _Code.Scripts.Pickupables;
+using Interactions;
 using UnityEngine;
 
 public class EnemyInteractor : MonoBehaviour, IInteractor
 {
-    public Transform Transform => throw new System.NotImplementedException();
+    [SerializeField] private LayerMask interactableMask;
 
-    public GameObject GameObject => throw new System.NotImplementedException();
+    private IInteractable _currentInteractable;
 
-    
+    public Transform Transform => transform;
+    public GameObject GameObject => gameObject;
+
+    public void AssignInteractable(IInteractable interactable)
+    {
+        _currentInteractable = interactable;
+    }
+
+    public void OnInteract()
+    {
+        if (_currentInteractable != null) return;
+        if (_currentInteractable is ILockable lockable && lockable.IsLocked()) return;
+        _currentInteractable?.Interact(this);
+    }
 }

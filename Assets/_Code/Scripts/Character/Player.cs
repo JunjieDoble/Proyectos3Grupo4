@@ -1,13 +1,19 @@
 ﻿using System.Collections.Generic;
-using _Code.Scripts.CheckPoint;
 using UnityEngine;
+using System;
+using _Code.Scripts.Interactions;
 
 namespace _Code.Scripts.Character
 {
     public class Player : MonoBehaviour, IDie
     {
 
-        private List<IController> _controllers = new();
+        public static Action OnPlayerDied;
+
+        [Header("References")]
+        [SerializeField] private PlayerParameters playerParameters;
+        
+        private readonly List<IController> _controllers = new();
         private bool _isDead;
         public bool IsDead() => _isDead;
 
@@ -17,10 +23,7 @@ namespace _Code.Scripts.Character
             foreach (IController controller in _controllers)
             {
                 controller.Enable();
-                if (controller is MovementController movementController)
-                {
-                    movementController.Teleport(spawnPoint);
-                }
+                controller.OnPlayerRespawn(spawnPoint);
             }
         }
         
@@ -30,12 +33,15 @@ namespace _Code.Scripts.Character
             {
                 controller.Disable();
             }
-            Checkpoint.RespawnPlayer();
+            OnPlayerDied?.Invoke();
+            _isDead = true;
         }
         
         public void AddController(IController controller)
         {
+            if (!playerParameters) throw new MissingReferenceException("PlayerParameters is not assigned in the inspector.");
             _controllers.Add(controller);
+            controller.LoadPlayerParameters(playerParameters);
             controller.Enable();
         }
     }

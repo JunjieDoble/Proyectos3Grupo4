@@ -4,5 +4,6 @@
     {
         void OnHoldStarted(IInteractor interactor);
         void OnHoldCanceled(IInteractor interactor);
+        void OnHoldCompleted(IInteractor interactor);
     }
 }
