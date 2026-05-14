@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
+using _Code.Scripts.Interactions;
 
 namespace _Code.Scripts.Character
 {
@@ -22,10 +23,7 @@ namespace _Code.Scripts.Character
             foreach (IController controller in _controllers)
             {
                 controller.Enable();
-                if (controller is MovementController movementController)
-                {
-                    movementController.Teleport(spawnPoint);
-                }
+                controller.OnPlayerRespawn(spawnPoint);
             }
         }
         
