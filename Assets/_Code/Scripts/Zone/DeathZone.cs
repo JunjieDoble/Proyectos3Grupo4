@@ -9,9 +9,5 @@ public class DeathZone : MonoBehaviour
         {
             other.GetComponent<IDie>().Die();
         }
-        else if (other.CompareTag("Enemy"))
-        {
-            other.GetComponent<IEnemy>().KillEnemy();
-        }
     }
 }

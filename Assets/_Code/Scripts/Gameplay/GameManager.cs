@@ -1,4 +1,6 @@
+using System;
 using _Code.Scripts.Character;
+using _Code.Scripts.CheckPoint;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using _Code.Scripts.UI;
@@ -7,6 +9,9 @@ namespace _Code.Scripts.Gameplay
 {
     public class GameManager : MonoBehaviour
     {
+        
+        public static Action OnPlayerRespawn;
+        
         [SerializeField] 
         private GameplayParameters parameters;
         public static GameManager Instance;
@@ -59,6 +64,15 @@ namespace _Code.Scripts.Gameplay
             Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+        }
+
+        public void RespawnPlayer()
+        {
+            OnPlayerRespawn?.Invoke();
+            Checkpoint.RespawnPlayer();
+            Time.timeScale = 1f;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
 }

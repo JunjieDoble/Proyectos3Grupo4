@@ -9,5 +9,6 @@ namespace _Code.Scripts.Character
         void Disable() => IsEnabled = false;
         
         void LoadPlayerParameters (PlayerParameters playerParameters);
+        void OnPlayerRespawn(Vector3 spawnPoint);
     }
 }

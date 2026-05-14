@@ -1,4 +1,6 @@
-﻿using _Code.Scripts.Interactions;
+﻿using _Code.Scripts.CheckPoint;
+using _Code.Scripts.Gameplay;
+using _Code.Scripts.Interactions;
 using _Code.Scripts.Rooms;
 using Interactions;
 using UnityEngine;
@@ -11,12 +13,33 @@ namespace _Code.Scripts.Pickupables
         [Header("Settings")]
         [SerializeField] private float stopVelocityThreshold = 0.1f;
         [SerializeField] private LayerMask layerMask;
+        [SerializeField] private float alertRadius = 10f;
         private Rigidbody _rigidbody;
         private bool _isHolding;
+        private Vector3 _originalPosition;
 
         void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
+            _originalPosition = transform.position;
+        }
+
+        void OnEnable()
+        {
+            GameManager.OnPlayerRespawn += Reset;
+            Checkpoint.OnCheckpointChange += UpdateOrigin;
+        }
+        
+        void OnDisable()
+        {
+            GameManager.OnPlayerRespawn -= Reset;
+            Checkpoint.OnCheckpointChange -= UpdateOrigin;
+
+        }
+        
+        void UpdateOrigin()
+        {
+            _originalPosition = transform.position;
         }
 
         void FixedUpdate()
@@ -28,7 +51,7 @@ namespace _Code.Scripts.Pickupables
         {
             if (!_rigidbody) return;
             if (_isHolding) return;
-            if (transform.parent != null) return;
+            if (transform.parent) return;
             if (_rigidbody.angularVelocity.magnitude < stopVelocityThreshold &&
                 _rigidbody.angularVelocity.magnitude < stopVelocityThreshold)
             {
@@ -41,7 +64,7 @@ namespace _Code.Scripts.Pickupables
                     var room = hit?.GetComponentInParent<Room>();
                     if (room)
                     {
-                        transform.parent = room.transform;
+                        transform.SetParent(room.transform);
                         break;
                     }
                 }
@@ -89,7 +112,7 @@ namespace _Code.Scripts.Pickupables
         
         private void AlertNearbyEnemies(Vector3 point)
         {
-            Collider[] hits = Physics.OverlapSphere(point, 10f);
+            Collider[] hits = Physics.OverlapSphere(point, alertRadius);
             foreach (Collider hit in hits)
             {
                 IEnemy enemy = hit.GetComponentInParent<IEnemy>();
@@ -103,9 +126,15 @@ namespace _Code.Scripts.Pickupables
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(transform.position, 10f);
+            Gizmos.DrawWireSphere(transform.position, alertRadius);
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, 1f);
+        }
+
+        public void Reset()
+        {
+            Drop();
+            transform.position = _originalPosition;
         }
     }
 }

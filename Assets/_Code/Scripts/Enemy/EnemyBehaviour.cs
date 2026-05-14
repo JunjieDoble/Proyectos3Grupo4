@@ -75,7 +75,8 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
             _animator.SetTrigger("Die");
 
             Destroy(gameObject);
-            Instantiate(drop, transform.position, Quaternion.identity);
+            if (drop)
+                Instantiate(drop, transform.position, Quaternion.identity);
         }
         else
         {
