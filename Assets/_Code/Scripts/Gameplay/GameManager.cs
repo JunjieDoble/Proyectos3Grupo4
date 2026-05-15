@@ -75,9 +75,6 @@ namespace _Code.Scripts.Gameplay
             Time.timeScale = 1f;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-            SceneManager.LoadScene("LevelPrototype2");
-            SceneManager.LoadSceneAsync("LevelPrototype2LW", LoadSceneMode.Additive);
-            SceneManager.LoadSceneAsync("LevelPrototype2RW", LoadSceneMode.Additive);
         }
     }
 }
