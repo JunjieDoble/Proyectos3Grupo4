@@ -1,4 +1,5 @@
-﻿using Interactions;
+﻿using _Code.Scripts.Character;
+using Interactions;
 using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
@@ -22,6 +23,16 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
     private GameObject _deathZone;
 
     public GameObject drop;
+
+    private void OnEnable()
+    {
+        Player.OnPlayerDied += PlayerDied;
+    }
+
+    private void OnDisable()
+    {
+        Player.OnPlayerDied -= PlayerDied;
+    }
 
     private void Start()
     {
@@ -117,6 +128,11 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
         _deathZone?.gameObject.SetActive(active);
     }
 
+    private void PlayerDied()
+    {
+        _animator.SetBool("PlayerDead", true);
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = _gizmosColor;
@@ -126,6 +142,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
 
     private float GetDistanceToPlayer()
     {
+        if (_player == null) return 0;
         Vector3 playerPos = _player.transform.position;
         Vector3 enemyPos = transform.position;
 
@@ -136,6 +153,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
 
     private float GetAngleToPlayer()
     {
+        if (_player == null) return 0;
         Vector3 directionToPlayer = _player.transform.position - transform.position;
         Vector3 directionForward = transform.forward;
         return Vector3.Angle(directionForward, directionToPlayer);
