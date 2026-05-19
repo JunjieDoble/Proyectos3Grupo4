@@ -120,6 +120,11 @@ namespace _Code.Scripts.Character
             {
                 _grounded = false;
             }
+            
+            if ((flags & CollisionFlags.Above) != 0 && _verticalVelocity > 0)
+            {
+                _verticalVelocity = 0;
+            }
         }
         
         public void OnMove(InputAction.CallbackContext context)
