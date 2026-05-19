@@ -11,6 +11,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
     [SerializeField] private float alertRadius = 15f;
     [SerializeField] private float detectionAngle = 180f;
     [SerializeField] private LayerMask playerLayerMask;
+    [SerializeField] private Transform headTransform;
 
     private Animator _animator;
     private GameObject _player;
@@ -21,6 +22,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
     private Vector3 _lastPlayerPosition;
     private int _interactableLayer;
     private GameObject _deathZone;
+    private Transform _headTransform;
 
     public GameObject drop;
 
@@ -43,6 +45,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
         _deathZone = transform.Find("DeathZone")?.gameObject;
         if (_deathZone == null) Debug.LogWarning("Enemy doesnt have a DeathZone child");
         _deathZone?.SetActive(false);
+        _headTransform = headTransform ?? transform;
     }
 
     private void Update()
@@ -54,15 +57,17 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
 
     private void DistanceAndVisionToPlayer()
     {
-        float HorizontalDistance = GetDistanceToPlayer();
-        _animator.SetFloat("DistanceToPlayer", HorizontalDistance);
+        float distanceToPlayer = GetDistanceToPlayer();
+        _animator.SetFloat("DistanceToPlayer", distanceToPlayer);
 
         float angleToPlayer = GetAngleToPlayer();
 
         RaycastHit hit;
-        Vector3 directionToPlayer = _player.transform.position - transform.position;
-        Physics.Raycast(transform.position, directionToPlayer, out hit, detectionRadius);
-        if (hit.collider != null && hit.collider.gameObject == _player && angleToPlayer <= detectionAngle/2f && HorizontalDistance <= detectionRadius)
+        Vector3 directionToPlayer = _player.transform.position - _headTransform.position;
+        Ray ray = new Ray(_headTransform.position, directionToPlayer);
+        Debug.DrawLine(_headTransform.position, _headTransform.position + directionToPlayer.normalized * detectionRadius, Color.red);
+        Physics.Raycast(ray, out hit, detectionRadius);
+        if (hit.collider != null && hit.collider.gameObject == _player && angleToPlayer <= detectionAngle/2f && distanceToPlayer <= detectionRadius)
         {
             _animator.SetBool("SeePlayer", true);
             _gizmosColor = Color.red;
@@ -97,7 +102,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
 
     public void AlertEnemy(Vector3 alertPosition)
     {
-        float distanceToAlert = Vector3.Distance(transform.position, alertPosition);
+        float distanceToAlert = Vector3.Distance(_headTransform.position, alertPosition);
         if (distanceToAlert <= alertRadius && !_isDead)
         {
             _lastAlertPosition = alertPosition;
@@ -136,19 +141,16 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
     private void OnDrawGizmos()
     {
         Gizmos.color = _gizmosColor;
-        Gizmos.DrawWireSphere(transform.position, detectionRadius);
-        Gizmos.DrawRay(transform.position, transform.forward * detectionRadius);
+        Gizmos.DrawWireSphere(headTransform.position, detectionRadius);
+        Gizmos.DrawRay(headTransform.position, headTransform.forward * detectionRadius);
     }
 
     private float GetDistanceToPlayer()
     {
         if (_player == null) return 0;
         Vector3 playerPos = _player.transform.position;
-        Vector3 enemyPos = transform.position;
-
-        Vector2 playerXZ = new Vector2(playerPos.x, playerPos.z);
-        Vector2 EnemyXZ = new Vector2(enemyPos.x, enemyPos.z);
-        return Vector2.Distance(playerXZ, EnemyXZ);
+        Vector3 enemyPos = _headTransform.position;
+        return Vector3.Distance(playerPos, enemyPos);
     }
 
     private float GetAngleToPlayer()
