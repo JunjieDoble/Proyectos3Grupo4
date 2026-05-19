@@ -56,10 +56,8 @@ namespace _Code.Scripts.Pickupables
                 _rigidbody.linearVelocity.magnitude < stopVelocityThreshold)
             {
                 Debug.Log("Finding parent for " + name + " angular velocity: " + _rigidbody.angularVelocity.magnitude + " velocity: " + _rigidbody.linearVelocity.magnitude);
-                Vector3 worldCenter = transform.position;
-                Quaternion worldRotation = transform.rotation;
                 Collider[] hits = new Collider[25];
-                Physics.OverlapBoxNonAlloc(worldCenter, Vector3.one * 0.5f, hits, worldRotation, layerMask);
+                Physics.OverlapBoxNonAlloc(transform.position, Vector3.one * 0.5f, hits, transform.rotation, layerMask);
                 foreach (var hit in hits)
                 {
                     var room = hit?.GetComponent<Room>() ?? hit?.GetComponentInParent<Room>();
