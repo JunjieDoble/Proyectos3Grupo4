@@ -21,12 +21,14 @@ namespace _Code.Scripts.UI
 
         public void Respawn()
         {
+            Debug.Log("DeathMenu.Respawn() called");
             GameManager.Instance?.RespawnPlayer();
             _childObject.SetActive(false);
         }
 
         public void ReturnToMenu()
         {
+            Debug.Log("DeathMenu.ReturnToMenu() called");
             GameManager.Instance.ReturnToMenu();
             _childObject.SetActive(false);
         }
