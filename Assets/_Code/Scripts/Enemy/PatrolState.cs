@@ -32,8 +32,13 @@ public class PatrolState : StateMachineBehaviour
         if (Vector3.Distance(_agent.transform.position, _patrolPosition) < 1.5f)
         {
             if (_pointReached) return;
-
-            _enemyBehaviour.InteractWithInteractable(_patrolPoints[_currentPointIndex]);
+            _patrolPoints[_currentPointIndex].TryGetComponent(out InteractPoint interactPoint);
+            if (interactPoint)
+            {
+                _enemyBehaviour.InteractWithInteractable(interactPoint);
+                if (interactPoint.GetOverrideIdleTime())
+                    _enemyBehaviour.SetIdleTime(interactPoint.IdleTime);
+            }
             _pointReached = true;
 
             if (_currentPointIndex >= _patrolPointsCount - 1)
