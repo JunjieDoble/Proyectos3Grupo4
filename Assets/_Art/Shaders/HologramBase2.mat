@@ -34,7 +34,6 @@ Material:
   stringTagMap:
     RenderType: Transparent
   disabledShaderPasses:
-  - DepthOnly
   - MOTIONVECTORS
   m_LockedProperties: 
   m_SavedProperties:
@@ -48,6 +47,7 @@ Material:
     - _Speed: 1
     - _SrcBlend: 5
     - _VertexOffset: 0.1
+    - _ZWrite: 1
     m_Colors:
     - _Direction: {r: 0, g: 1, b: 0, a: 0}
     - _FresnelColor: {r: 0.3580209, g: 2.1512158, b: 5.992157, a: 1}

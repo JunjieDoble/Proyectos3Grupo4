@@ -44,14 +44,13 @@ Material:
     m_Floats:
     - _DstBlend: 10
     - _DstBlendAlpha: 10
-    - _FresnelPower: 3
     - _QueueControl: 0
     - _SrcBlend: 5
-    - _VertexOffset: 0.1
+    - _VertexOffset: 0.05
     - _ZWrite: 1
     m_Colors:
-    - _FresnelColor: {r: 0.3580209, g: 2.1512158, b: 5.992157, a: 1}
-    - _ScanLineSpeed: {r: 0, g: 2, b: 0, a: 0}
-    - _ScanLineTiling: {r: 1, g: 3, b: 0, a: 0}
+    - _FresnelColor: {r: 0.17901045, g: 1.0756079, b: 2.9960785, a: 1}
+    - _ScanLineSpeed: {r: 0, g: 0.1, b: 0, a: 0}
+    - _ScanLineTiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
