@@ -57,13 +57,14 @@ namespace _Code.Scripts.Pickupables
             {
                 Debug.Log("Finding parent for " + name + " angular velocity: " + _rigidbody.angularVelocity.magnitude + " velocity: " + _rigidbody.linearVelocity.magnitude);
                 Collider[] hits = new Collider[25];
-                Physics.OverlapBoxNonAlloc(transform.position, Vector3.one * 0.5f, hits, transform.rotation, layerMask);
+                Physics.OverlapBoxNonAlloc(transform.position, transform.lossyScale/2, hits, transform.rotation, layerMask);
                 foreach (var hit in hits)
                 {
                     var room = hit?.GetComponent<Room>() ?? hit?.GetComponentInParent<Room>();
                     if (room)
                     {
                         transform.SetParent(room.transform);
+                        _rigidbody.isKinematic = true;
                         Debug.Log(transform.parent + " holding " + name);
                         break;
                     }
@@ -128,7 +129,7 @@ namespace _Code.Scripts.Pickupables
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, alertRadius);
             Gizmos.color = Color.red;
-            Gizmos.DrawWireCube(transform.position, Vector3.one);
+            Gizmos.DrawWireCube(transform.position, transform.lossyScale);
         }
 
         public void Reset()
