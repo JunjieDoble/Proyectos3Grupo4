@@ -11,7 +11,7 @@ namespace Rooms
         [SerializeField] private Room targetRoom;
         [SerializeField] private float rotationCooldown = 1.5f;
         [SerializeField] private MeshFilter hologramTarget;
-        [SerializeField] private bool saveHologramMeshAsset = true;
+        [SerializeField] private bool saveHologramMeshAsset = false;
         
         
         private IInteractor _currentInteractor;
