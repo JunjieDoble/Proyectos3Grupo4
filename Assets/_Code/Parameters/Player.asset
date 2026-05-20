@@ -13,13 +13,18 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Character.PlayerParameters
   walkSpeed: 5
-  runSpeed: 10
+  runSpeed: 8
   crouchSpeed: 2.5
-  jumpSpeed: 8
+  jumpSpeed: 5
+  jumpHeight: 1.4
+  jumpDuration: 0.2
+  airControl: 1
+  jumpStopMultiplier: 0
+  fallMultiplier: 2.5
+  coyoteTime: 0.2
   walkHeight: 2
   crouchHeight: 1
-  airControl: 0.5
-  jumpStopMultiplier: 0.5
   mouseSensitivity: 0.2
   minPitch: -89
   maxPitch: 89
+  interactionDistance: 3
