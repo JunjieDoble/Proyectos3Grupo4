@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3911863353779549905}
-  - component: {fileID: 7751014857903393355}
+  - component: {fileID: 5835388539499706862}
+  - component: {fileID: 462952503276374639}
   m_Layer: 0
   m_Name: StartDoor
   m_TagString: Untagged
@@ -34,7 +35,29 @@ Transform:
   - {fileID: 1539343783539932986}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7751014857903393355
+--- !u!95 &5835388539499706862
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2673064012876548745}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 204b0de1d62373e48aef1c56f5765a4c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &462952503276374639
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,9 +66,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2673064012876548745}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cc1f5c12f164e57a190cf5af65d601b, type: 3}
+  m_Script: {fileID: 11500000, guid: 32ad19a512e54fc38475ee284f2d2bee, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Activables.AnimationToggle
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Activables.Door
 --- !u!1 &3278220564351265852
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,7 +317,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1214
+  m_VersionIndex: 1231
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -314,7 +337,7 @@ MonoBehaviour:
   m_Shape:
     rid: 7636438583353540609
   m_ShapeRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_UnmodifiedMeshVersion: 1214
+  m_UnmodifiedMeshVersion: 1228
   m_Size: {x: 2, y: 5, z: 1}
   m_LocalCenter: {x: 0, y: 0, z: 0}
   references:
@@ -650,7 +673,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1214
+  m_VersionIndex: 1231
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -670,7 +693,7 @@ MonoBehaviour:
   m_Shape:
     rid: 7636438583353540609
   m_ShapeRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_UnmodifiedMeshVersion: 1214
+  m_UnmodifiedMeshVersion: 1228
   m_Size: {x: 2, y: 5, z: 1}
   m_LocalCenter: {x: 0, y: 0, z: 0}
   references:

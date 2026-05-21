@@ -55,7 +55,6 @@ namespace _Code.Scripts.Pickupables
             if (_rigidbody.angularVelocity.magnitude < stopVelocityThreshold &&
                 _rigidbody.linearVelocity.magnitude < stopVelocityThreshold)
             {
-                Debug.Log("Finding parent for " + name + " angular velocity: " + _rigidbody.angularVelocity.magnitude + " velocity: " + _rigidbody.linearVelocity.magnitude);
                 Collider[] hits = new Collider[25];
                 Physics.OverlapBoxNonAlloc(transform.position, transform.lossyScale/2, hits, transform.rotation, layerMask);
                 foreach (var hit in hits)
@@ -65,7 +64,6 @@ namespace _Code.Scripts.Pickupables
                     {
                         transform.SetParent(room.transform);
                         _rigidbody.isKinematic = true;
-                        Debug.Log(transform.parent + " holding " + name);
                         break;
                     }
                 }
