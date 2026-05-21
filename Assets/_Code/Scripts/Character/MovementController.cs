@@ -52,12 +52,7 @@ namespace _Code.Scripts.Character
 
             float speed = CalculateCharacterSpeed();
 
-            float gravity = Physics.gravity.y;
-            
-            if (_verticalVelocity < 0)
-            {
-                gravity *= _playerParameters.fallMultiplier;
-            }
+            float gravity = Physics.gravity.y * _playerParameters.fallMultiplier;
             
             _verticalVelocity += gravity * deltaTime;
 
@@ -120,6 +115,11 @@ namespace _Code.Scripts.Character
             {
                 _grounded = false;
             }
+            
+            if ((flags & CollisionFlags.Above) != 0 && _verticalVelocity > 0)
+            {
+                _verticalVelocity = 0;
+            }
         }
         
         public void OnMove(InputAction.CallbackContext context)
@@ -161,11 +161,19 @@ namespace _Code.Scripts.Character
         {
             if (_grounded || _coyoteCounter > 0)
             {
-                _verticalVelocity = _playerParameters.jumpSpeed;
+                _verticalVelocity = CalculateJumpVelocity();
                 _grounded = false;
                 _coyoteCounter = 0;
                 _crouching = false;
             }
+        }
+
+        private float CalculateJumpVelocity()
+        {
+            var jumpDuration = _playerParameters.jumpDuration;
+            var jumpHeight = _playerParameters.jumpHeight;
+            var gravity = Physics.gravity.y;
+            return jumpHeight / jumpDuration - gravity / 2 * jumpDuration;
         }
 
         private void Crouch(bool crouching)
