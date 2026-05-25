@@ -49,6 +49,7 @@ namespace _Code.Scripts.Enemy.States
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             _enemyBehaviour.SetDeathZoneActive(false);
+            animator.SetBool("Search", true);
         }
     }
 }

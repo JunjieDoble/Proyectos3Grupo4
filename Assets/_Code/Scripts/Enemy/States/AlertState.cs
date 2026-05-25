@@ -18,13 +18,18 @@ namespace _Code.Scripts.Enemy.States
 
             _agent.isStopped = false;
             _agent.speed = _enemyBehaviour.GetSpeed();
-            _agent.SetDestination(_lastAlertPosition);
             _timer = 0;
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            _timer += Time.deltaTime;
+            _agent.SetDestination(_enemyBehaviour.GetLastAlertPosition());
+
+            if (_agent.isStopped || _agent.velocity.magnitude < 0.1f)
+            {
+                _timer += Time.deltaTime;
+            }
+
             
             if (Vector3.Distance(_agent.transform.position, _lastAlertPosition) < 1.5f || _timer >= _enemyBehaviour.GetAlertTimeout())
             {

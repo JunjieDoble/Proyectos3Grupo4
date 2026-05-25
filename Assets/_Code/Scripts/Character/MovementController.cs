@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -64,6 +65,7 @@ namespace _Code.Scripts.Character
 
             CollisionFlags collisionFlags = _characterController.Move(movement);
             CheckCollisionFlags(collisionFlags);
+            MakeMovementSound();
         }
 
         void LateUpdate()
@@ -202,6 +204,37 @@ namespace _Code.Scripts.Character
             transform.position = spawnPointPosition;
             _characterController.enabled = true;
         }
+
+        private void MakeMovementSound()
+        {
+            var enemies = new Collider[25];
+            Physics.OverlapSphereNonAlloc(transform.position, GetCurrentNoiseRadius(), enemies);
+            foreach (Collider target in enemies)
+            {
+                if (!target) continue;
+                if (target.GetComponentInParent<EnemyBehaviour>() is { } enemy)
+                {
+                    Debug.Log("Made noise with radius " + GetCurrentNoiseRadius());
+                    enemy.ListenForSound(transform.position, GetCurrentNoiseRadius());
+                }
+            }
+        }
+
+        private float GetCurrentNoiseRadius()
+        {
+            if (_characterController.velocity.magnitude < 0.1f) return 0f;
+            if (!_grounded) return _playerParameters.airNoiseRadius;
+            if (_crouching) return _playerParameters.crouchNoiseRadius;
+            if (_running) return _playerParameters.runNoiseRadius;
+            return _playerParameters.walkNoiseRadius;
+        }
+
+        private void OnDrawGizmos() {
+            Gizmos.color = Color.blue;
+            if (_characterController)
+                Gizmos.DrawWireSphere(transform.position, GetCurrentNoiseRadius());
+        }
+
     }
 }
 

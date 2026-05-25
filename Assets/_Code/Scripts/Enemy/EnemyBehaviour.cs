@@ -14,7 +14,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
     [SerializeField] private GameObject[] patrolPoints;
     
     private Animator _animator;
-    private GameObject _player;
+    private Player _player;
     private NavMeshAgent _agent;
     private EnemyInteractor _enemyInteractor;
     private bool _isDead;
@@ -26,6 +26,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
     private int _interactableLayer;
     private GameObject _deathZone;
     private Transform _headTransform;
+    private Light _FOVLight;
     
     public GameObject drop;
 
@@ -41,6 +42,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
     public float GetChaseSpeed() => enemyParameters.chaseSpeed;
     public float GetIdleTime() => _idleTime;
     public float GetAlertTimeout() => enemyParameters.alertTimeoutDuration;
+    public EnemyParameters GetEnemyParameters => enemyParameters;
 
     public void SetIdleTime(float time) => _idleTime = time;
     public Vector3 GetLastAlertPosition() => _lastAlertPosition;
@@ -49,7 +51,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
 
     private void Start()
     {
-        _player = GameObject.Find("Player");
+        _player = GameObject.Find("Player").GetComponent<Player>();
         _animator = GetComponent<Animator>();
         _agent = GetComponent<NavMeshAgent>();
         _enemyInteractor = GetComponent<EnemyInteractor>();
@@ -59,6 +61,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
         _deathZone?.SetActive(false);
         _headTransform = headTransform ?? transform;
         _idleTime = enemyParameters.idleTime;
+        _FOVLight = GetComponentInChildren<Light>();
     }
 
     private void Update()
@@ -67,28 +70,37 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
         DistanceAndVisionToPlayer();
     }
 
+    private bool PlayerAvailable()
+    {
+        if (!_player) return false;
+        return !_player.IsDead();
+    }
+    
+    private float DistanceToPlayer() => Vector3.Distance(_player.transform.position, _headTransform.position);
+
     private void DistanceAndVisionToPlayer()
     {
-        if (_player == null) return;
+        if (!PlayerAvailable()) return;
         
-        float distanceToPlayer = Vector3.Distance(_player.transform.position, _headTransform.position);
-        _animator.SetFloat("DistanceToPlayer", distanceToPlayer);
+        _animator.SetFloat("DistanceToPlayer", DistanceToPlayer());
 
         Vector3 directionToPlayer = (_player.transform.position - _headTransform.position).normalized;
-        float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
+        float angleToPlayer = Vector3.Angle(_headTransform.forward, directionToPlayer);
 
-        if (distanceToPlayer <= enemyParameters.detectionRadius && angleToPlayer <= enemyParameters.detectionAngle / 2f)
+        if (DistanceToPlayer() <= enemyParameters.detectionRadius && angleToPlayer <= enemyParameters.detectionAngle / 2f)
         {
             if (!Physics.Linecast(_headTransform.position, _player.transform.position, enemyParameters.obstacleMask))
             {
                 _animator.SetBool("SeePlayer", true);
                 _gizmosColor = Color.red;
+                _FOVLight.color = Color.red;
                 return;
             }
         }
 
         _animator.SetBool("SeePlayer", false);
         _gizmosColor = Color.green;
+        _FOVLight.color = Color.green;
     }
 
     public void KillEnemy()
