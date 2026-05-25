@@ -25,6 +25,7 @@ namespace _Code.Scripts.Activators.Connectors
             {
                 if (otherHallConnector != this && _wall != otherHallConnector._wall)
                 {
+                    Debug.Log("Connecting hall connectors");
                     otherHallConnector.Connect();
                     SetOther(otherHallConnector);
                     otherHallConnector.SetOther(this);

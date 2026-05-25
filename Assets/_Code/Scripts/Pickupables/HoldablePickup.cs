@@ -55,7 +55,6 @@ namespace _Code.Scripts.Pickupables
             if (_rigidbody.angularVelocity.magnitude < stopVelocityThreshold &&
                 _rigidbody.linearVelocity.magnitude < stopVelocityThreshold)
             {
-                Debug.Log("Finding parent for " + name + " angular velocity: " + _rigidbody.angularVelocity.magnitude + " velocity: " + _rigidbody.linearVelocity.magnitude);
                 Collider[] hits = new Collider[25];
                 Physics.OverlapBoxNonAlloc(transform.position, transform.lossyScale/2, hits, transform.rotation, layerMask);
                 foreach (var hit in hits)
@@ -65,7 +64,6 @@ namespace _Code.Scripts.Pickupables
                     {
                         transform.SetParent(room.transform);
                         _rigidbody.isKinematic = true;
-                        Debug.Log(transform.parent + " holding " + name);
                         break;
                     }
                 }
@@ -99,24 +97,21 @@ namespace _Code.Scripts.Pickupables
             _rigidbody.AddForce(force, ForceMode.Impulse);
         }
 
-        void OnCollisionEnter(Collision collision)
+        void OnCollisionEnter()
         {
             if (_rigidbody.linearVelocity.magnitude > 0.1f && !_isHolding)
             {
-                Vector3 avgPoint = Vector3.zero;
-                foreach (var contact in collision.contacts)
-                    avgPoint += contact.point;
-                avgPoint /= collision.contacts.Length;
-                AlertNearbyEnemies(avgPoint);
+                AlertNearbyEnemies(transform.position);
             }
         }
         
         private void AlertNearbyEnemies(Vector3 point)
         {
-            Collider[] hits = Physics.OverlapSphere(point, alertRadius);
-            foreach (Collider hit in hits)
+            var results = new Collider[25];
+            Physics.OverlapSphereNonAlloc(point, alertRadius, results);
+            foreach (Collider hit in results)
             {
-                IEnemy enemy = hit.GetComponentInParent<IEnemy>();
+                EnemyBehaviour enemy = hit?.GetComponentInParent<EnemyBehaviour>();
                 if (enemy != null)
                 {
                     enemy.AlertEnemy(point);
