@@ -33,5 +33,11 @@ namespace _Code.Scripts.Character
         
          [Header("Interactor")]
          public float interactionDistance = 3f;
+
+         [Header("Audio")]
+         public float airNoiseRadius = 3f;
+         public float crouchNoiseRadius = 2f;
+         public float runNoiseRadius = 8f;
+         public float walkNoiseRadius = 4f;
     }
 }
