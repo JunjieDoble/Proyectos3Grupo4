@@ -1,14 +1,10 @@
 ﻿using _Code.Scripts.Bases;
+using UnityEngine;
 
 namespace _Code.Scripts.Activables
 {
     public class Door : Activable
     {
-        public override bool IsActive()
-        {
-            return !base.IsActive();
-        }
-
         public override void ActivatorUpdate()
         {
             SetDoorOpen(IsActive());
@@ -16,7 +12,12 @@ namespace _Code.Scripts.Activables
 
         private void SetDoorOpen(bool open)
         {
-            gameObject.SetActive(open);
+            if (gameObject.GetComponent<Animator>() != null)
+            {
+                gameObject.GetComponent<Animator>().SetBool("IsActive", open);
+            }
+            else
+                gameObject.SetActive(!open);
         }
     }
 }
