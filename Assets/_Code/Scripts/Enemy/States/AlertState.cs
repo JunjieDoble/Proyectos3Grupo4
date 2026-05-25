@@ -14,7 +14,6 @@ namespace _Code.Scripts.Enemy.States
         {
             _agent = animator.transform.GetComponent<NavMeshAgent>();
             _enemyBehaviour = animator.transform.GetComponent<EnemyBehaviour>();
-            _lastAlertPosition = _enemyBehaviour.GetLastAlertPosition();
 
             _agent.isStopped = false;
             _agent.speed = _enemyBehaviour.GetSpeed();
@@ -23,12 +22,13 @@ namespace _Code.Scripts.Enemy.States
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            _agent.SetDestination(_enemyBehaviour.GetLastAlertPosition());
+            _lastAlertPosition = _enemyBehaviour.GetLastAlertPosition();
+            _agent.SetDestination(_lastAlertPosition);
 
             if (_agent.isStopped || _agent.velocity.magnitude < 0.1f)
             {
                 _timer += Time.deltaTime;
-            }
+            } else _timer = 0;
 
             
             if (Vector3.Distance(_agent.transform.position, _lastAlertPosition) < 1.5f || _timer >= _enemyBehaviour.GetAlertTimeout())

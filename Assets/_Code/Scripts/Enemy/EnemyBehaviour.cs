@@ -15,7 +15,6 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
     
     private Animator _animator;
     private Player _player;
-    private NavMeshAgent _agent;
     private EnemyInteractor _enemyInteractor;
     private bool _isDead;
     private Color _gizmosColor = Color.green;
@@ -26,7 +25,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
     private int _interactableLayer;
     private GameObject _deathZone;
     private Transform _headTransform;
-    private Light _FOVLight;
+    private Light fovLight;
     
     public GameObject drop;
 
@@ -53,7 +52,6 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
     {
         _player = GameObject.Find("Player").GetComponent<Player>();
         _animator = GetComponent<Animator>();
-        _agent = GetComponent<NavMeshAgent>();
         _enemyInteractor = GetComponent<EnemyInteractor>();
         _interactableLayer = LayerMask.NameToLayer("Interactable");
         _deathZone = transform.Find("DeathZone")?.gameObject;
@@ -61,7 +59,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
         _deathZone?.SetActive(false);
         _headTransform = headTransform ?? transform;
         _idleTime = enemyParameters.idleTime;
-        _FOVLight = GetComponentInChildren<Light>();
+        fovLight = GetComponentInChildren<Light>();
     }
 
     private void Update()
@@ -93,14 +91,14 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
             {
                 _animator.SetBool("SeePlayer", true);
                 _gizmosColor = Color.red;
-                _FOVLight.color = Color.red;
+                fovLight.color = Color.red;
                 return;
             }
         }
 
         _animator.SetBool("SeePlayer", false);
         _gizmosColor = Color.green;
-        _FOVLight.color = Color.green;
+        fovLight.color = Color.green;
     }
 
     public void KillEnemy()
@@ -121,12 +119,8 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
 
     public void AlertEnemy(Vector3 alertPosition)
     {
-        NavMeshPath path = new NavMeshPath();
-        if (_agent.CalculatePath(alertPosition, path) && path.status == NavMeshPathStatus.PathComplete)
-        {
-            _lastAlertPosition = alertPosition;
-            _animator.SetBool("Alert", true);
-        }
+        _lastAlertPosition = alertPosition;
+        _animator.SetBool("Alert", true);
     }
     
     public void InteractWithInteractable(InteractPoint interactPoint)

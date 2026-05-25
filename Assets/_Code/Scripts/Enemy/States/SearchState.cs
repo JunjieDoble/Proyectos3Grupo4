@@ -5,6 +5,8 @@ namespace _Code.Scripts.Enemy.States
 {
     public class SearchState : StateMachineBehaviour
     {
+        private static readonly int Search = Animator.StringToHash("Search");
+        
         private NavMeshAgent _agent;
         private EnemyBehaviour _enemyBehaviour;
         private Vector3 _lastPlayerPosition;
@@ -33,12 +35,12 @@ namespace _Code.Scripts.Enemy.States
 
             if (!(distance <= _stoppingDistance) && !(_searchTimer >= _enemyBehaviour.GetAlertTimeout())) return;
             _agent.isStopped = true;
-            animator.SetBool("Search", false);
+            animator.SetBool(Search, false);
         }
 
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            animator.SetBool("Search", false);
+            animator.SetBool(Search, false);
         }
     }
 }

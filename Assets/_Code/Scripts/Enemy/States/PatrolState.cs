@@ -5,6 +5,9 @@ namespace _Code.Scripts.Enemy.States
 {
     public class PatrolState : StateMachineBehaviour
     {
+        private static readonly int CurrentPointIndex = Animator.StringToHash("CurrentPointIndex");
+        private static readonly int ReachedPoint = Animator.StringToHash("ReachedPoint");
+        
         private NavMeshAgent _agent;
         private EnemyBehaviour _enemyBehaviour;
         private GameObject[] _patrolPoints;
@@ -19,7 +22,7 @@ namespace _Code.Scripts.Enemy.States
             _enemyBehaviour = animator.transform.GetComponent<EnemyBehaviour>();
             _patrolPoints = _enemyBehaviour.GetPatrolPoints();
 
-            _currentPointIndex = animator.GetInteger("CurrentPointIndex");
+            _currentPointIndex = animator.GetInteger(CurrentPointIndex);
             _patrolPosition = _patrolPoints[_currentPointIndex].transform.position;
             _patrolPointsCount = _patrolPoints.Length;
 
@@ -52,8 +55,8 @@ namespace _Code.Scripts.Enemy.States
                 {
                     _currentPointIndex = _currentPointIndex + 1;
                 }
-                animator.SetInteger("CurrentPointIndex", _currentPointIndex);
-                animator.SetBool("ReachedPoint", true);
+                animator.SetInteger(CurrentPointIndex, _currentPointIndex);
+                animator.SetBool(ReachedPoint, true);
             }
 
             _patrolPosition = _patrolPoints[_currentPointIndex].transform.position;
