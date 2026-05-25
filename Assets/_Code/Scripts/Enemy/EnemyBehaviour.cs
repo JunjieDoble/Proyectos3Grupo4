@@ -66,6 +66,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
     {
         if (_isDead) return;
         DistanceAndVisionToPlayer();
+        HearPlayer();
     }
 
     private bool PlayerAvailable()
@@ -100,6 +101,13 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
         _gizmosColor = Color.green;
         fovLight.color = Color.green;
     }
+    private void HearPlayer()
+    {
+        if (!PlayerAvailable()) return;
+        MovementController playerMovement = _player.GetComponent<MovementController>();
+        ListenForSound(_player.transform.position, playerMovement.GetCurrentNoiseRadius());
+    }
+    
 
     public void KillEnemy()
     {

@@ -37,14 +37,13 @@ namespace _Code.Scripts.Enemy.States
             {
                 _agent.isStopped = true;
                 _agent.velocity = Vector3.zero;
-                _enemyBehaviour.RotateTowards(_player.transform.position);
             }
             else
             {
                 _agent.isStopped = false;
                 _agent.SetDestination(_player.transform.position);
             }
-
+            _enemyBehaviour.RotateTowards(_player.transform.position);
             _enemyBehaviour.SetLastPlayerPosition(_player.transform.position);
         }
 

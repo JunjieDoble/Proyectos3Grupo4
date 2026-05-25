@@ -65,7 +65,6 @@ namespace _Code.Scripts.Character
 
             CollisionFlags collisionFlags = _characterController.Move(movement);
             CheckCollisionFlags(collisionFlags);
-            MakeMovementSound();
         }
 
         void LateUpdate()
@@ -205,22 +204,7 @@ namespace _Code.Scripts.Character
             _characterController.enabled = true;
         }
 
-        private void MakeMovementSound()
-        {
-            var enemies = new Collider[25];
-            Physics.OverlapSphereNonAlloc(transform.position, GetCurrentNoiseRadius(), enemies);
-            foreach (Collider target in enemies)
-            {
-                if (!target) continue;
-                if (target.GetComponentInParent<EnemyBehaviour>() is { } enemy)
-                {
-                    Debug.Log("Made noise with radius " + GetCurrentNoiseRadius());
-                    enemy.ListenForSound(transform.position, GetCurrentNoiseRadius());
-                }
-            }
-        }
-
-        private float GetCurrentNoiseRadius()
+        public float GetCurrentNoiseRadius()
         {
             if (_characterController.velocity.magnitude < 0.1f) return 0f;
             if (!_grounded) return _playerParameters.airNoiseRadius;
