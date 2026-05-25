@@ -5,6 +5,8 @@ namespace _Code.Scripts.Enemy.States
 {
     public class AlertState : StateMachineBehaviour
     {
+        private static readonly int Alert = Animator.StringToHash("Alert");
+        private static readonly int Search = Animator.StringToHash("Search");
         private NavMeshAgent _agent;
         private EnemyBehaviour _enemyBehaviour;
         private Vector3 _lastAlertPosition;
@@ -18,12 +20,20 @@ namespace _Code.Scripts.Enemy.States
             _agent.isStopped = false;
             _agent.speed = _enemyBehaviour.GetSpeed();
             _timer = 0;
+            
+            _lastAlertPosition = _enemyBehaviour.GetLastAlertPosition();
+            _agent.SetDestination(_lastAlertPosition);
+            animator.SetBool(Search, false);
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            _lastAlertPosition = _enemyBehaviour.GetLastAlertPosition();
-            _agent.SetDestination(_lastAlertPosition);
+            Vector3 currentAlertPos = _enemyBehaviour.GetLastAlertPosition();
+            if (Vector3.Distance(_lastAlertPosition, currentAlertPos) > 1f)
+            {
+                _lastAlertPosition = currentAlertPos;
+                _agent.SetDestination(_lastAlertPosition);
+            }
 
             if (_agent.isStopped || _agent.velocity.magnitude < 0.1f)
             {
@@ -33,8 +43,8 @@ namespace _Code.Scripts.Enemy.States
             
             if (Vector3.Distance(_agent.transform.position, _lastAlertPosition) < 1.5f || _timer >= _enemyBehaviour.GetAlertTimeout())
             {
-                animator.SetBool("Alert", false);
-                animator.SetBool("ReachedPoint", true);
+                animator.SetBool(Alert, false);
+                animator.SetBool(Search, true);
             }
         }
     }

@@ -2,10 +2,14 @@
 using _Code.Scripts.Enemy;
 using Interactions;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
 {
+    private static readonly int SeePlayer = Animator.StringToHash("SeePlayer");
+    private static readonly int ToPlayer = Animator.StringToHash("DistanceToPlayer");
+    private static readonly int Alert = Animator.StringToHash("Alert");
+    private static readonly int PlayerDead = Animator.StringToHash("PlayerDead");
+
     [Header("Enemy Parameters")]
     [SerializeField] private EnemyParameters enemyParameters;
     [SerializeField] private Transform headTransform;
@@ -22,7 +26,6 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
     private Vector3 _lastPlayerPosition;
     private float _idleTime;
     
-    private int _interactableLayer;
     private GameObject _deathZone;
     private Transform _headTransform;
     private Light fovLight;
@@ -31,7 +34,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
 
     private void OnEnable() => Player.OnPlayerDied += PlayerDied;
     private void OnDisable() => Player.OnPlayerDied -= PlayerDied;
-    private void PlayerDied() => _animator.SetBool("PlayerDead", true);
+    private void PlayerDied() => _animator.SetBool(PlayerDead, true);
     
     public void Interact(IInteractor interactor) => KillEnemy();
     public void SetDeathZoneActive(bool active) => _deathZone?.gameObject.SetActive(active);
@@ -53,7 +56,6 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
         _player = GameObject.Find("Player").GetComponent<Player>();
         _animator = GetComponent<Animator>();
         _enemyInteractor = GetComponent<EnemyInteractor>();
-        _interactableLayer = LayerMask.NameToLayer("Interactable");
         _deathZone = transform.Find("DeathZone")?.gameObject;
         if (_deathZone == null) Debug.LogWarning("Enemy doesnt have a DeathZone child");
         _deathZone?.SetActive(false);
@@ -81,7 +83,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
     {
         if (!PlayerAvailable()) return;
         
-        _animator.SetFloat("DistanceToPlayer", DistanceToPlayer());
+        _animator.SetFloat(ToPlayer, DistanceToPlayer());
 
         Vector3 directionToPlayer = (_player.transform.position - _headTransform.position).normalized;
         float angleToPlayer = Vector3.Angle(_headTransform.forward, directionToPlayer);
@@ -90,14 +92,14 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
         {
             if (!Physics.Linecast(_headTransform.position, _player.transform.position, enemyParameters.obstacleMask))
             {
-                _animator.SetBool("SeePlayer", true);
+                _animator.SetBool(SeePlayer, true);
                 _gizmosColor = Color.red;
                 fovLight.color = Color.red;
                 return;
             }
         }
 
-        _animator.SetBool("SeePlayer", false);
+        _animator.SetBool(SeePlayer, false);
         _gizmosColor = Color.green;
         fovLight.color = Color.green;
     }
@@ -128,7 +130,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
     public void AlertEnemy(Vector3 alertPosition)
     {
         _lastAlertPosition = alertPosition;
-        _animator.SetBool("Alert", true);
+        _animator.SetBool(Alert, true);
     }
     
     public void InteractWithInteractable(InteractPoint interactPoint)

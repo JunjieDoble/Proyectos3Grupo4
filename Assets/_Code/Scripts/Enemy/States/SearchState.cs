@@ -9,32 +9,97 @@ namespace _Code.Scripts.Enemy.States
         
         private NavMeshAgent _agent;
         private EnemyBehaviour _enemyBehaviour;
-        private Vector3 _lastPlayerPosition;
-        private float _stoppingDistance = 1.5f;
-        private float _searchTimer;
+        private Vector3 _searchCenterPosition;
+        
+        private float _searchRadius;
+        private int _maxSearchPoints;
+        private float waitTimePerSearchPoint;
+        
+        private int _pointsCheckedCount;
+        private float _actionTimer;
+        private bool _isWaiting;
 
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             _agent = animator.transform.GetComponent<NavMeshAgent>();
             _enemyBehaviour = animator.transform.GetComponent<EnemyBehaviour>();
-            _lastPlayerPosition = _enemyBehaviour.GetLastPlayerPosition();
-
+            
+            _searchRadius = _enemyBehaviour.GetEnemyParameters.searchRadius;
+            _maxSearchPoints = _enemyBehaviour.GetEnemyParameters.maxSearchPoints;
+            waitTimePerSearchPoint = _enemyBehaviour.GetEnemyParameters.waitTimePerSearchPoint;
+            
+            _searchCenterPosition = _enemyBehaviour.GetLastAlertPosition();
+            
             _agent.isStopped = false;
             _agent.speed = _enemyBehaviour.GetSpeed();
-            _agent.stoppingDistance = _stoppingDistance;
-            _agent.SetDestination(_lastPlayerPosition);
-            _searchTimer = 0f;
+            _agent.stoppingDistance = 1f;
+            _agent.SetDestination(_searchCenterPosition);
+            
+            _pointsCheckedCount = 0;
+            _actionTimer = 0f;
+            _isWaiting = false;
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            if (_agent.isStopped || _agent.velocity.magnitude < 0.1f)
-                _searchTimer += Time.deltaTime;
-            
-            var distance = Vector3.Distance(_agent.transform.position, _lastPlayerPosition);
+            _actionTimer += Time.deltaTime;
+            if (_actionTimer >= _enemyBehaviour.GetAlertTimeout() + waitTimePerSearchPoint && !_isWaiting)
+            {
+                ExitSearchState(animator);
+                return;
+            }
 
-            if (!(distance <= _stoppingDistance) && !(_searchTimer >= _enemyBehaviour.GetAlertTimeout())) return;
-            _agent.isStopped = true;
+            if (!_agent.pathPending && _agent.remainingDistance <= _agent.stoppingDistance)
+            {
+                if (!_isWaiting)
+                {
+                    _isWaiting = true;
+                    _actionTimer = 0f;
+                    _pointsCheckedCount++;
+                }
+                else
+                {
+                    if (_actionTimer >= waitTimePerSearchPoint)
+                    {
+                        _isWaiting = false;
+
+                        if (_pointsCheckedCount >= _maxSearchPoints)
+                        {
+                            ExitSearchState(animator);
+                        }
+                        else
+                        {
+                            Vector3 nextSearchPoint = GetRandomPointNear(_agent.transform.position, _searchRadius);
+                            _agent.isStopped = false;
+                            _agent.SetDestination(nextSearchPoint);
+                            _actionTimer = 0f;
+                        }
+                    }
+                }
+            }
+        }
+
+        private Vector3 GetRandomPointNear(Vector3 center, float radius)
+        {
+            Debug.Log("GetRandomPointNear");
+            for (int i = 0; i < 5; i++)
+            {
+                Vector3 randomDirection = Random.insideUnitSphere * radius;
+                randomDirection += center;
+                randomDirection.y = center.y;
+
+                if (NavMesh.SamplePosition(randomDirection, out NavMeshHit hit, 1.0f, NavMesh.AllAreas))
+                {
+                    return hit.position;
+                }
+            }
+    
+            return center;
+        }
+
+        private void ExitSearchState(Animator animator)
+        {
+            if (_agent != null) _agent.isStopped = true;
             animator.SetBool(Search, false);
         }
 

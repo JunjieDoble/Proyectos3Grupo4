@@ -18,5 +18,10 @@ namespace _Code.Scripts.Enemy
         
         [Header("Idle")]
         public float idleTime = 5f;
+
+        [Header("Search")]
+        public float searchRadius = 5f;
+        public int maxSearchPoints = 3;
+        public float waitTimePerSearchPoint = 2f;
     }
 }
