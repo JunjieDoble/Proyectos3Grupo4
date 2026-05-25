@@ -53,18 +53,17 @@ namespace _Code.Scripts.Pickupables
             if (_isHolding) return;
             if (transform.parent) return;
             if (_rigidbody.angularVelocity.magnitude < stopVelocityThreshold &&
-                _rigidbody.angularVelocity.magnitude < stopVelocityThreshold)
+                _rigidbody.linearVelocity.magnitude < stopVelocityThreshold)
             {
-                Vector3 worldCenter = transform.TransformPoint(transform.localPosition);
-                Quaternion worldRotation = transform.rotation;
                 Collider[] hits = new Collider[25];
-                Physics.OverlapBoxNonAlloc(worldCenter, Vector3.one, hits, worldRotation, layerMask);
+                Physics.OverlapBoxNonAlloc(transform.position, transform.lossyScale/2, hits, transform.rotation, layerMask);
                 foreach (var hit in hits)
                 {
-                    var room = hit?.GetComponentInParent<Room>();
+                    var room = hit?.GetComponent<Room>() ?? hit?.GetComponentInParent<Room>();
                     if (room)
                     {
                         transform.SetParent(room.transform);
+                        _rigidbody.isKinematic = true;
                         break;
                     }
                 }
@@ -128,7 +127,7 @@ namespace _Code.Scripts.Pickupables
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, alertRadius);
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, 1f);
+            Gizmos.DrawWireCube(transform.position, transform.lossyScale);
         }
 
         public void Reset()
