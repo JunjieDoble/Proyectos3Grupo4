@@ -1,0 +1,36 @@
+﻿using UnityEngine;
+using UnityEngine.AI;
+
+namespace _Code.Scripts.Enemy.States
+{
+    public class SearchState : StateMachineBehaviour
+    {
+        private NavMeshAgent _agent;
+        private EnemyBehaviour _enemyBehaviour;
+        private Vector3 _lastPlayerPosition;
+        private float _stoppingDistance = 1.2f;
+        private float _searchTimer;
+
+        public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            _agent = animator.transform.GetComponent<NavMeshAgent>();
+            _enemyBehaviour = animator.transform.GetComponent<EnemyBehaviour>();
+            _lastPlayerPosition = _enemyBehaviour.GetLastPlayerPosition();
+
+            _agent.isStopped = false;
+            _agent.speed = _enemyBehaviour.GetSpeed();
+            _agent.stoppingDistance = _stoppingDistance;
+            _agent.SetDestination(_lastPlayerPosition);
+        }
+
+        public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            _searchTimer += Time.deltaTime;
+            var distance = Vector3.Distance(_agent.transform.position, _lastPlayerPosition);
+
+            if (!(distance <= _stoppingDistance) && !(_searchTimer >= _enemyBehaviour.GetAlertTimeout())) return;
+            _agent.isStopped = true;
+            animator.SetBool("Search", false);
+        }
+    }
+}
