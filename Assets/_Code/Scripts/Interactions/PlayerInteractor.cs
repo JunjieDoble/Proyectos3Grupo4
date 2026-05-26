@@ -22,7 +22,13 @@ namespace _Code.Scripts.Interactions
         private IInteractable _currentInteractable;
         private HoldablePickup _currentPickupable;
         
-        public Transform Transform => transform;
+        public HoldablePickup CurrentPickupable
+        {
+            get => _currentPickupable;
+            set => _currentPickupable = value;
+        }
+        
+        public Transform Transform => handTransform;
         public GameObject GameObject => gameObject;
 
         public void LoadPlayerParameters(PlayerParameters playerParameters) => _playerParameters = playerParameters;
