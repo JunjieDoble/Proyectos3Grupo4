@@ -136,11 +136,8 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
     public void InteractWithInteractable(InteractPoint interactPoint)
     {
         IInteractable interactable = interactPoint.GetInteractable();
-        if (interactable != null)
-        {
-            _enemyInteractor.AssignInteractable(interactable);
-            _enemyInteractor.OnInteract();
-        }
+        _enemyInteractor.AssignInteractable(interactable);
+        _enemyInteractor.OnInteract();
     }
 
     public void RotateTowards(Vector3 targetPosition)
