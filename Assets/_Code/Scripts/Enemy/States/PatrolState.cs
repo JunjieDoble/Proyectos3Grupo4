@@ -23,8 +23,8 @@ namespace _Code.Scripts.Enemy.States
             _patrolPoints = _enemyBehaviour.GetPatrolPoints();
 
             _currentPointIndex = animator.GetInteger(CurrentPointIndex);
-            _patrolPosition = _patrolPoints[_currentPointIndex].transform.position;
             _patrolPointsCount = _patrolPoints.Length;
+            GetNextPatrolPoint();
 
             _agent.isStopped = false;
             _pointReached = false;
@@ -37,30 +37,47 @@ namespace _Code.Scripts.Enemy.States
             if (Vector3.Distance(_agent.transform.position, _patrolPosition) < 1.5f)
             {
                 if (_pointReached) return;
-                _patrolPoints[_currentPointIndex].TryGetComponent(out InteractPoint interactPoint);
-                if (interactPoint)
-                {
-                    _enemyBehaviour.InteractWithInteractable(interactPoint);
-                    if (interactPoint.GetOverrideIdleTime())
-                        _enemyBehaviour.SetIdleTime(interactPoint.IdleTime);
-                }
+                CheckForInteraction();
                 _pointReached = true;
-
-                if (_currentPointIndex >= _patrolPointsCount - 1)
-                {
-                    _currentPointIndex = 0;
-                
-                }
-                else
-                {
-                    _currentPointIndex = _currentPointIndex + 1;
-                }
                 animator.SetInteger(CurrentPointIndex, _currentPointIndex);
                 animator.SetBool(ReachedPoint, true);
             }
+            else
+            {
+                animator.SetBool(ReachedPoint, false);
+            }
+        }
 
-            _patrolPosition = _patrolPoints[_currentPointIndex].transform.position;
-            _agent.SetDestination(_patrolPosition);
+        private void CheckForInteraction()
+        {
+            _patrolPoints[_currentPointIndex].TryGetComponent(out InteractPoint interactPoint);
+            if (interactPoint)
+            {
+                _enemyBehaviour.InteractWithInteractable(interactPoint);
+                if (interactPoint.GetOverrideIdleTime())
+                    _enemyBehaviour.SetIdleTime(interactPoint.IdleTime);
+            }
+        }
+
+        private void GetNextPatrolPoint()
+        {
+            if (_patrolPointsCount == 0) return;
+
+            for (int i = 0; i < _patrolPointsCount; i++)
+            {
+                int nextPointIndex = (_currentPointIndex + 1 + i) % _patrolPointsCount;
+                Vector3 nextPatrolPoint = _patrolPoints[nextPointIndex].transform.position;
+                
+                NavMeshPath path = new NavMeshPath();
+
+                if (_agent.CalculatePath(nextPatrolPoint, path) && path.status == NavMeshPathStatus.PathComplete)
+                {
+                    _currentPointIndex = nextPointIndex;
+                    _agent.SetDestination(nextPatrolPoint);
+                    _patrolPosition = nextPatrolPoint;
+                    return;
+                }
+            }
         }
     }
 }

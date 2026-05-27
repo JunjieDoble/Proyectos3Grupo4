@@ -14,7 +14,6 @@ public class InteractPoint : MonoBehaviour
     public IInteractable GetInteractable()
     {
         if (interactableObj == null) return null;
-
         IInteractable interactable = interactableObj.GetComponent<IInteractable>();
         return interactable;
     }

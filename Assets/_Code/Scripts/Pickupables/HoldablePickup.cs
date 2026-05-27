@@ -11,13 +11,17 @@ namespace _Code.Scripts.Pickupables
     public class HoldablePickup : PickupableBase
     {
         [Header("Settings")]
+        [SerializeField] private HoldableType holdableType = HoldableType.Distraction;
         [SerializeField] private float stopVelocityThreshold = 0.1f;
         [SerializeField] private LayerMask layerMask;
         [SerializeField] private float alertRadius = 10f;
+        [SerializeField] private Vector3 parentSearchScale;
         private Rigidbody _rigidbody;
         private bool _isHolding;
         private Vector3 _originalPosition;
 
+        public HoldableType HoldableType => holdableType;
+        
         void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
@@ -56,7 +60,7 @@ namespace _Code.Scripts.Pickupables
                 _rigidbody.linearVelocity.magnitude < stopVelocityThreshold)
             {
                 Collider[] hits = new Collider[25];
-                Physics.OverlapBoxNonAlloc(transform.position, transform.lossyScale/2, hits, transform.rotation, layerMask);
+                Physics.OverlapBoxNonAlloc(transform.position, parentSearchScale/2, hits, transform.rotation, layerMask);
                 foreach (var hit in hits)
                 {
                     var room = hit?.GetComponent<Room>() ?? hit?.GetComponentInParent<Room>();
@@ -72,15 +76,13 @@ namespace _Code.Scripts.Pickupables
         
         public override void PickUp(IInteractor interactor)
         {
-            if (interactor is PlayerInteractor player)
-            {
-                _rigidbody.isKinematic = true;
-                _rigidbody.useGravity = false;
-                transform.SetParent(player.handTransform);
-                transform.localPosition = Vector3.zero;
-                transform.localRotation = Quaternion.identity;
-                _isHolding = true;
-            }
+            if  (_isHolding) return;
+            _rigidbody.isKinematic = true;
+            _rigidbody.useGravity = false;
+            transform.SetParent(interactor.Transform);
+            transform.localPosition = Vector3.zero;
+            transform.localRotation = Quaternion.identity;
+            _isHolding = true;
         }
         
         public void Drop()
@@ -124,7 +126,7 @@ namespace _Code.Scripts.Pickupables
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, alertRadius);
             Gizmos.color = Color.red;
-            Gizmos.DrawWireCube(transform.position, transform.lossyScale);
+            Gizmos.DrawWireCube(transform.position, parentSearchScale);
         }
 
         public void Reset()
