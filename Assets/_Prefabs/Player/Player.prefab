@@ -73,7 +73,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1527
+    m_Bits: 10231
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: cc2879c3996d14948a4d6ef450ff77b7, type: 2}
   m_TargetDisplay: 0
@@ -441,7 +441,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1023
+    m_Bits: 17407
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -831,7 +831,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9347ec496c34a9e4180eaa44c9ca9552, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Character.MovementController
-  parameters: {fileID: 11400000, guid: b06daa5a65788f547b5f485a5a448eea, type: 2}
 --- !u!114 &7420929849495479328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -844,7 +843,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7911420c97a85074aa4cda5555b43d3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Character.CameraController
-  parameters: {fileID: 11400000, guid: b06daa5a65788f547b5f485a5a448eea, type: 2}
   pitchController: {fileID: 4469663929358455670}
 --- !u!143 &3495040407503735536
 CharacterController:
@@ -867,7 +865,7 @@ CharacterController:
   m_Height: 1.85
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.5
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
@@ -1089,6 +1087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5d786311b7a4003a1d9bbf28d297f3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Character.Player
+  playerParameters: {fileID: 11400000, guid: b06daa5a65788f547b5f485a5a448eea, type: 2}
 --- !u!65 &5329034194111529345
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1136,10 +1135,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactions.PlayerInteraction
   viewOrigin: {fileID: 449669597691772303}
-  maxDistance: 3
   interactableMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 4294967295
   handTransform: {fileID: 988834673723317365}
 --- !u!65 &1939197106175274975
 BoxCollider:
@@ -1298,7 +1296,7 @@ GameObject:
   - component: {fileID: 4735691810048761381}
   - component: {fileID: 6059115576251597775}
   - component: {fileID: 1354162700370073671}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: MapPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

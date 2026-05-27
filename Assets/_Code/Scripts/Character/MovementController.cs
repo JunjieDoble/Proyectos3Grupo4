@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -202,6 +203,22 @@ namespace _Code.Scripts.Character
             transform.position = spawnPointPosition;
             _characterController.enabled = true;
         }
+
+        public float GetCurrentNoiseRadius()
+        {
+            if (_characterController.velocity.magnitude < 0.1f) return 0f;
+            if (!_grounded) return _playerParameters.airNoiseRadius;
+            if (_crouching) return _playerParameters.crouchNoiseRadius;
+            if (_running) return _playerParameters.runNoiseRadius;
+            return _playerParameters.walkNoiseRadius;
+        }
+
+        private void OnDrawGizmos() {
+            Gizmos.color = Color.blue;
+            if (_characterController)
+                Gizmos.DrawWireSphere(transform.position, GetCurrentNoiseRadius());
+        }
+
     }
 }
 
