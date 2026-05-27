@@ -51,8 +51,9 @@ namespace _Code.Scripts.Rooms
         
         void ResetRoom()
         {
-            _isRotating = true;
             _targetRotation = _originalRotation;
+            StartRotation();
+            EndRotation(_originalRotation);
         }
         
         void UpdateOrigin()
@@ -69,13 +70,7 @@ namespace _Code.Scripts.Rooms
         {
             if (!_isRotating) _startRotation = transform.rotation;
             _targetRotation = _startRotation * Quaternion.AngleAxis(90, rotatorVector);
-            _isRotating = true;
-            OnStartRotation?.Invoke();
-            foreach (Wall wall in _walls)
-            {
-                wall.OnRoomRotationStarted();
-            }
-            _speedMultiplier = 1f;
+            StartRotation();
         }
 
         public void CancelRotate()
@@ -92,16 +87,32 @@ namespace _Code.Scripts.Rooms
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, rotationSpeed * _speedMultiplier * Time.deltaTime);
                 if (Quaternion.Angle(transform.rotation, _targetRotation) < 0.1f)
                 {
-                    transform.rotation = _targetRotation;
-                    _isRotating = false;
-                    OnEndRotation?.Invoke();
-                    foreach (Wall wall in _walls)
-                    {
-                        wall.OnRoomRotationEnded();
-                    }
+                    EndRotation(_targetRotation);
                 }
             }
-        }     
+        }
+
+        private void StartRotation()
+        {
+            _isRotating = true;
+            OnStartRotation?.Invoke();
+            foreach (Wall wall in _walls)
+            {
+                wall.OnRoomRotationStarted();
+            }
+            _speedMultiplier = 1f;
+        }
+
+        private void EndRotation(Quaternion targetRotation)
+        {
+            transform.rotation = targetRotation;
+            _isRotating = false;
+            OnEndRotation?.Invoke();
+            foreach (Wall wall in _walls)
+            {
+                wall.OnRoomRotationEnded();
+            }
+        }
     }
 }
 
