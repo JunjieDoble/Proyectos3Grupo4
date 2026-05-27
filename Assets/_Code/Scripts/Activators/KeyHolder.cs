@@ -1,4 +1,5 @@
 ﻿using _Code.Scripts.Bases;
+using _Code.Scripts.Gameplay;
 using _Code.Scripts.Interactions;
 using _Code.Scripts.Pickupables;
 using Interactions;
@@ -17,6 +18,23 @@ namespace _Code.Scripts.Activators
         public Transform Transform => socket;
         public GameObject GameObject => gameObject;
 
+        private void OnEnable()
+        {
+            GameManager.OnPlayerRespawn += Reset;
+        }
+        
+        private void OnDisable()
+        {
+            GameManager.OnPlayerRespawn -= Reset;
+        }
+        
+        private void Reset()
+        {
+            _heldKey?.Reset();
+            _heldKey = null;
+            SetActive(false);
+        }
+        
         public void Interact(IInteractor interactor)
         {
             if (interactor is not PlayerInteractor playerInteractor) return;

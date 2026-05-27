@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using _Code.Scripts.CheckPoint;
 using _Code.Scripts.Gameplay;
@@ -6,7 +7,19 @@ namespace _Code.Scripts.UI
 {
     public class DeathMenu : MonoBehaviour
     {
+        public static DeathMenu Instance;
         private GameObject _childObject;
+
+        private void Awake()
+        {
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+            Instance = this;
+             DontDestroyOnLoad(gameObject);
+        }
 
         private void Start()
         {

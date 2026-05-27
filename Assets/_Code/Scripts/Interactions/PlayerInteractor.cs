@@ -35,6 +35,8 @@ namespace _Code.Scripts.Interactions
         public void OnPlayerRespawn(Vector3 _)
         {
             _currentPickupable?.Reset();
+            _currentInteractable = null;
+            _currentPickupable = null;
         }
         
         public bool IsEnabled { get; set; }

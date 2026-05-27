@@ -19,6 +19,9 @@ namespace _Code.Scripts.Pickupables
         private Rigidbody _rigidbody;
         private bool _isHolding;
         private Vector3 _originalPosition;
+        private Quaternion _originalRotation;
+
+        private int _originalLayerMask;
 
         public HoldableType HoldableType => holdableType;
         
@@ -26,6 +29,8 @@ namespace _Code.Scripts.Pickupables
         {
             _rigidbody = GetComponent<Rigidbody>();
             _originalPosition = transform.position;
+            _originalRotation = transform.rotation;
+            _originalLayerMask = gameObject.layer;
         }
 
         void OnEnable()
@@ -38,12 +43,12 @@ namespace _Code.Scripts.Pickupables
         {
             GameManager.OnPlayerRespawn -= Reset;
             Checkpoint.OnCheckpointChange -= UpdateOrigin;
-
         }
         
         void UpdateOrigin()
         {
             _originalPosition = transform.position;
+            _originalRotation = transform.rotation;
         }
 
         void FixedUpdate()
@@ -83,6 +88,7 @@ namespace _Code.Scripts.Pickupables
             transform.localPosition = Vector3.zero;
             transform.localRotation = Quaternion.identity;
             _isHolding = true;
+            gameObject.layer = interactor.Transform.gameObject.layer;
         }
         
         public void Drop()
@@ -91,6 +97,7 @@ namespace _Code.Scripts.Pickupables
             _rigidbody.isKinematic = false;
             _rigidbody.useGravity = true;
             _isHolding = false;
+            gameObject.layer = _originalLayerMask;
         }
 
         public void Throw(Vector3 force)
@@ -133,6 +140,7 @@ namespace _Code.Scripts.Pickupables
         {
             Drop();
             transform.position = _originalPosition;
+            transform.rotation = _originalRotation;
         }
     }
 }
