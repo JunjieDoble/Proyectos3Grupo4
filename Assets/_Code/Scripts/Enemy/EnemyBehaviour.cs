@@ -162,5 +162,6 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
 
         Gizmos.DrawRay(origin.position, leftBoundary * enemyParameters.detectionRadius);
         Gizmos.DrawRay(origin.position, rightBoundary * enemyParameters.detectionRadius);
+        Gizmos.DrawRay(headTransform.position, headTransform.forward);
     }
 }
