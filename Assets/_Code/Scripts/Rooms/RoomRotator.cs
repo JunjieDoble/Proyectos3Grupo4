@@ -23,7 +23,7 @@ namespace Rooms
             if (hologramTarget.sharedMesh == null) CreateHologramMesh(saveHologramMeshAsset);
         }
 
-        public void CreateHologramMesh(bool saveAsset = true, bool makeNewInstance = true, bool optimize = true)
+        public void CreateHologramMesh(bool saveAsset = true, bool makeNewInstance = true, bool optimize = false)
         {
             if (targetRoom == null) return;
             if (hologramTarget == null) return;
