@@ -72,7 +72,7 @@ namespace _Code.Scripts.Interactions
             }
             if (context.performed && _currentPickupable != null)
             {
-                _currentPickupable.Throw(handTransform.forward * 10f);
+                _currentPickupable.Throw(viewOrigin.forward * 10f);
                 _currentPickupable = null;
             }
         }
