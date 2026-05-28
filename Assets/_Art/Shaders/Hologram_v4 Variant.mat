@@ -36,6 +36,7 @@ Material:
     RenderType: Transparent
   disabledShaderPasses:
   - MOTIONVECTORS
+  - SHADOWCASTER
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -45,9 +46,12 @@ Material:
     - _Alpha: 1
     - _AlphaClip: 1
     - _Ammount: 100
+    - _CastShadows: 0
+    - _Cull: 2
     - _DstBlend: 10
     - _DstBlendAlpha: 10
     - _QueueControl: 0
+    - _Speed: 0
     - _SrcBlend: 5
     - _ZWrite: 1
     m_Colors:
