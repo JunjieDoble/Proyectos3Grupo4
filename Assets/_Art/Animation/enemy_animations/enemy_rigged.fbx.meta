@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 267f548e7b237d64b8d4415a013fc086
+guid: bfcaf0399440e1647a1f5af4735eeeb3
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -99,7 +99,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: CAT_RLeft_High
+    - boneName: CAT_RLeg_High
       humanName: RightUpperLeg
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -125,6 +125,14 @@ ModelImporter:
         modified: 0
     - boneName: CAT_LLeg_Ankle
       humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: CAT_RLeg_Ankle
+      humanName: RightFoot
       limit:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
@@ -211,24 +219,16 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: CAT_Chest
-      humanName: UpperChest
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: CAT_RLeg_Ankle
-      humanName: RightFoot
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
     - boneName: CATRigRLeg_RFoot1
       humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: CAT_Chest
+      humanName: UpperChest
       limit:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
@@ -282,13 +282,13 @@ ModelImporter:
       position: {x: -0.19050036, y: 0, z: 0}
       rotation: {x: -0.00028107993, y: 0.0011908403, z: -0.22992942, w: 0.9732066}
       scale: {x: 1.000006, y: 0.999994, z: 1.0000001}
-    - name: CAT_RLeft_High
+    - name: CAT_RLeg_High
       parentName: CAT_Pelvis
       position: {x: 0.00000009689331, y: -0.008950262, z: -0.14784355}
       rotation: {x: -0.06446172, y: 0.9979164, z: -0.0019480097, w: 0.0019314873}
       scale: {x: 1.0000023, y: 0.9999976, z: 0.99999994}
     - name: CAT_RLeg_Low
-      parentName: CAT_RLeft_High
+      parentName: CAT_RLeg_High
       position: {x: -0.5426853, y: 0.000001477623, z: -0.000000012111664}
       rotation: {x: 0.012686973, y: 0.00312475, z: 0.1316508, w: 0.9912101}
       scale: {x: 0.99998295, y: 1.0000172, z: 1.0000001}
@@ -325,12 +325,12 @@ ModelImporter:
     - name: CAT_LShoulder
       parentName: CAT_Chest
       position: {x: -0, y: 0, z: 0.06350012}
-      rotation: {x: 0.0077426047, y: 0.53724384, z: 0.012153614, w: 0.84330386}
+      rotation: {x: 0.005249372, y: 0.58260226, z: 0.009707594, w: 0.81268257}
       scale: {x: 0.99999994, y: 1, z: 0.99999994}
     - name: CAT_LArm_Up
       parentName: CAT_LShoulder
       position: {x: -0.2541056, y: 0.000000003027916, z: 0.00000019378662}
-      rotation: {x: 0.015473416, y: 0.77680534, z: -0.014444699, w: 0.62938493}
+      rotation: {x: 0.013003827, y: 0.16978975, z: -0.012248139, w: 0.9853184}
       scale: {x: 1.0000025, y: 1.0000001, z: 0.9999974}
     - name: CAT_LArm_Mid
       parentName: CAT_LArm_Up
@@ -355,12 +355,12 @@ ModelImporter:
     - name: CAT_RShoulder
       parentName: CAT_Chest
       position: {x: -0, y: 0, z: -0.06350012}
-      rotation: {x: -0.0077426415, y: -0.53724384, z: 0.012153594, w: 0.84330386}
+      rotation: {x: -0.0052494346, y: -0.5826025, z: 0.00970751, w: 0.81268233}
       scale: {x: 1, y: 1, z: 0.9999999}
     - name: CAT_RArm_Up
       parentName: CAT_RShoulder
       position: {x: -0.2541056, y: 0, z: 0}
-      rotation: {x: -0.010764839, y: -0.77482295, z: -0.008713453, w: 0.63202655}
+      rotation: {x: -0.0056627016, y: -0.17003737, z: -0.010982995, w: 0.98536015}
       scale: {x: 0.9999999, y: 1.0000001, z: 1}
     - name: CAT_RArm_Mid
       parentName: CAT_RArm_Up
