@@ -93,6 +93,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
             if (!Physics.Linecast(_headTransform.position, _player.transform.position, enemyParameters.obstacleMask))
             {
                 _animator.SetBool(SeePlayer, true);
+                SetLastPlayerPosition(_player.transform.position);
                 _gizmosColor = Color.red;
                 fovLight.color = Color.red;
                 return;
