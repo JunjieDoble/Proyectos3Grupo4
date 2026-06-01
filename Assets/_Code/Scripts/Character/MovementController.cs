@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -52,12 +53,7 @@ namespace _Code.Scripts.Character
 
             float speed = CalculateCharacterSpeed();
 
-            float gravity = Physics.gravity.y;
-            
-            if (_verticalVelocity < 0)
-            {
-                gravity *= _playerParameters.fallMultiplier;
-            }
+            float gravity = Physics.gravity.y * _playerParameters.fallMultiplier;
             
             _verticalVelocity += gravity * deltaTime;
 
@@ -120,6 +116,11 @@ namespace _Code.Scripts.Character
             {
                 _grounded = false;
             }
+            
+            if ((flags & CollisionFlags.Above) != 0 && _verticalVelocity > 0)
+            {
+                _verticalVelocity = 0;
+            }
         }
         
         public void OnMove(InputAction.CallbackContext context)
@@ -161,11 +162,19 @@ namespace _Code.Scripts.Character
         {
             if (_grounded || _coyoteCounter > 0)
             {
-                _verticalVelocity = _playerParameters.jumpSpeed;
+                _verticalVelocity = CalculateJumpVelocity();
                 _grounded = false;
                 _coyoteCounter = 0;
                 _crouching = false;
             }
+        }
+
+        private float CalculateJumpVelocity()
+        {
+            var jumpDuration = _playerParameters.jumpDuration;
+            var jumpHeight = _playerParameters.jumpHeight;
+            var gravity = Physics.gravity.y;
+            return jumpHeight / jumpDuration - gravity / 2 * jumpDuration;
         }
 
         private void Crouch(bool crouching)
@@ -194,6 +203,22 @@ namespace _Code.Scripts.Character
             transform.position = spawnPointPosition;
             _characterController.enabled = true;
         }
+
+        public float GetCurrentNoiseRadius()
+        {
+            if (_characterController.velocity.magnitude < 0.1f) return 0f;
+            if (!_grounded) return _playerParameters.airNoiseRadius;
+            if (_crouching) return _playerParameters.crouchNoiseRadius;
+            if (_running) return _playerParameters.runNoiseRadius;
+            return _playerParameters.walkNoiseRadius;
+        }
+
+        private void OnDrawGizmos() {
+            Gizmos.color = Color.blue;
+            if (_characterController)
+                Gizmos.DrawWireSphere(transform.position, GetCurrentNoiseRadius());
+        }
+
     }
 }
 

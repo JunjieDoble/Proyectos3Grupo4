@@ -41,9 +41,11 @@ namespace _Code.Scripts.Gameplay
 
         public void StartGame()
         {
-            SceneManager.LoadScene("LevelPrototype2");
-            SceneManager.LoadSceneAsync("LevelPrototype2LW", LoadSceneMode.Additive);
-            SceneManager.LoadSceneAsync("LevelPrototype2RW", LoadSceneMode.Additive);
+            SceneManager.LoadScene("Tutorial");
+            SceneManager.LoadScene("BigRoom", LoadSceneMode.Additive);
+            SceneManager.LoadScene("Terrain", LoadSceneMode.Additive);
+            //SceneManager.LoadSceneAsync("LevelPrototype2LW", LoadSceneMode.Additive);
+            //SceneManager.LoadSceneAsync("LevelPrototype2RW", LoadSceneMode.Additive);
             Time.timeScale = 1f;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;

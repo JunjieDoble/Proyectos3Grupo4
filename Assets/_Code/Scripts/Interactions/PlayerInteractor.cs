@@ -22,13 +22,21 @@ namespace _Code.Scripts.Interactions
         private IInteractable _currentInteractable;
         private HoldablePickup _currentPickupable;
         
-        public Transform Transform => transform;
+        public HoldablePickup CurrentPickupable
+        {
+            get => _currentPickupable;
+            set => _currentPickupable = value;
+        }
+        
+        public Transform Transform => handTransform;
         public GameObject GameObject => gameObject;
 
         public void LoadPlayerParameters(PlayerParameters playerParameters) => _playerParameters = playerParameters;
         public void OnPlayerRespawn(Vector3 _)
         {
             _currentPickupable?.Reset();
+            _currentInteractable = null;
+            _currentPickupable = null;
         }
         
         public bool IsEnabled { get; set; }
@@ -64,7 +72,7 @@ namespace _Code.Scripts.Interactions
             }
             if (context.performed && _currentPickupable != null)
             {
-                _currentPickupable.Throw(handTransform.forward * 10f);
+                _currentPickupable.Throw(viewOrigin.forward * 10f);
                 _currentPickupable = null;
             }
         }

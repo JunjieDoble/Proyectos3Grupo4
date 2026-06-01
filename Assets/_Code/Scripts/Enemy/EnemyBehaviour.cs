@@ -1,186 +1,167 @@
 ﻿using _Code.Scripts.Character;
+using _Code.Scripts.Enemy;
 using Interactions;
 using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
 {
-    [Header("Parameters")]
-    [SerializeField] private GameObject[] patrolPoints;
-    [SerializeField] private float speed = 2f;
-    [SerializeField] private float detectionRadius = 10f;
-    [SerializeField] private float alertRadius = 15f;
-    [SerializeField] private float detectionAngle = 180f;
-    [SerializeField] private LayerMask playerLayerMask;
+    private static readonly int SeePlayer = Animator.StringToHash("SeePlayer");
+    private static readonly int ToPlayer = Animator.StringToHash("DistanceToPlayer");
+    private static readonly int Alert = Animator.StringToHash("Alert");
+    private static readonly int PlayerDead = Animator.StringToHash("PlayerDead");
 
+    [Header("Enemy Parameters")]
+    [SerializeField] private EnemyParameters enemyParameters;
+    [SerializeField] private Transform headTransform;
+    
+    [Header("Patrol Settings")]
+    [SerializeField] private GameObject[] patrolPoints;
+    
     private Animator _animator;
-    private GameObject _player;
+    private Player _player;
     private EnemyInteractor _enemyInteractor;
-    private bool _isDead = false;
+    private bool _isDead;
     private Color _gizmosColor = Color.green;
     private Vector3 _lastAlertPosition;
     private Vector3 _lastPlayerPosition;
-    private int _interactableLayer;
+    private float _idleTime;
+    
     private GameObject _deathZone;
-
+    private Transform _headTransform;
+    private Light fovLight;
+    
     public GameObject drop;
 
-    private void OnEnable()
-    {
-        Player.OnPlayerDied += PlayerDied;
-    }
+    private void OnEnable() => Player.OnPlayerDied += PlayerDied;
+    private void OnDisable() => Player.OnPlayerDied -= PlayerDied;
+    private void PlayerDied() => _animator.SetBool(PlayerDead, true);
+    
+    public void Interact(IInteractor interactor) => KillEnemy();
+    public void SetDeathZoneActive(bool active) => _deathZone?.gameObject.SetActive(active);
 
-    private void OnDisable()
-    {
-        Player.OnPlayerDied -= PlayerDied;
-    }
+    public GameObject[] GetPatrolPoints() => patrolPoints;
+    public float GetSpeed() => enemyParameters.speed;
+    public float GetChaseSpeed() => enemyParameters.chaseSpeed;
+    public float GetIdleTime() => _idleTime;
+    public float GetAlertTimeout() => enemyParameters.alertTimeoutDuration;
+    public EnemyParameters GetEnemyParameters => enemyParameters;
+
+    public void SetIdleTime(float time) => _idleTime = time;
+    public Vector3 GetLastAlertPosition() => _lastAlertPosition;
+    public Vector3 GetLastPlayerPosition() => _lastPlayerPosition;
+    public void SetLastPlayerPosition(Vector3 pos)  => _lastPlayerPosition = pos;
 
     private void Start()
     {
-        _player = GameObject.Find("Player");
+        _player = GameObject.Find("Player").GetComponent<Player>();
         _animator = GetComponent<Animator>();
         _enemyInteractor = GetComponent<EnemyInteractor>();
-        _interactableLayer = LayerMask.NameToLayer("Interactable");
         _deathZone = transform.Find("DeathZone")?.gameObject;
         if (_deathZone == null) Debug.LogWarning("Enemy doesnt have a DeathZone child");
         _deathZone?.SetActive(false);
+        _headTransform = headTransform ?? transform;
+        _idleTime = enemyParameters.idleTime;
+        fovLight = GetComponentInChildren<Light>();
     }
 
     private void Update()
     {
         if (_isDead) return;
-
         DistanceAndVisionToPlayer();
+        HearPlayer();
     }
+
+    private bool PlayerAvailable()
+    {
+        if (!_player) return false;
+        return !_player.IsDead();
+    }
+    
+    private float DistanceToPlayer() => Vector3.Distance(_player.transform.position, _headTransform.position);
 
     private void DistanceAndVisionToPlayer()
     {
-        float HorizontalDistance = GetDistanceToPlayer();
-        _animator.SetFloat("DistanceToPlayer", HorizontalDistance);
+        if (!PlayerAvailable()) return;
+        
+        _animator.SetFloat(ToPlayer, DistanceToPlayer());
 
-        float angleToPlayer = GetAngleToPlayer();
+        Vector3 directionToPlayer = (_player.transform.position - _headTransform.position).normalized;
+        float angleToPlayer = Vector3.Angle(_headTransform.forward, directionToPlayer);
 
-        RaycastHit hit;
-        Vector3 directionToPlayer = _player.transform.position - transform.position;
-        Physics.Raycast(transform.position, directionToPlayer, out hit, detectionRadius);
-        if (hit.collider != null && hit.collider.gameObject == _player && angleToPlayer <= detectionAngle/2f && HorizontalDistance <= detectionRadius)
+        if (DistanceToPlayer() <= enemyParameters.detectionRadius && angleToPlayer <= enemyParameters.detectionAngle / 2f)
         {
-            _animator.SetBool("SeePlayer", true);
-            _gizmosColor = Color.red;
+            if (!Physics.Linecast(_headTransform.position, _player.transform.position, enemyParameters.obstacleMask))
+            {
+                _animator.SetBool(SeePlayer, true);
+                _gizmosColor = Color.red;
+                fovLight.color = Color.red;
+                return;
+            }
         }
-        else
-        {
-            _animator.SetBool("SeePlayer", false);
-            _gizmosColor = Color.green;
-        }
+
+        _animator.SetBool(SeePlayer, false);
+        _gizmosColor = Color.green;
+        fovLight.color = Color.green;
     }
+    private void HearPlayer()
+    {
+        if (!PlayerAvailable()) return;
+        MovementController playerMovement = _player.GetComponent<MovementController>();
+        ListenForSound(_player.transform.position, playerMovement.GetCurrentNoiseRadius());
+    }
+    
 
     public void KillEnemy()
     {
-        float angleToPlayer = GetAngleToPlayer();
+        
+    }
 
-        // Detect if the player is behind the enemy when killing it
-        if (angleToPlayer >= detectionAngle /2f && !_isDead)
+    public void ListenForSound(Vector3 soundPosition, float noiseRadius)
+    {
+        if (_isDead) return;
+        
+        float distanceToSound = Vector3.Distance(_headTransform.position, soundPosition);
+        if (distanceToSound <= noiseRadius)
         {
-            Debug.Log("Enemy killed from behind");
-            _isDead = true;
-            _animator.SetTrigger("Die");
-
-            Destroy(gameObject);
-            if (drop)
-                Instantiate(drop, transform.position, Quaternion.identity);
-        }
-        else
-        {
-            Debug.Log("Cannot kill the enemy from the front");
+            AlertEnemy(soundPosition);
         }
     }
 
     public void AlertEnemy(Vector3 alertPosition)
     {
-        float distanceToAlert = Vector3.Distance(transform.position, alertPosition);
-        if (distanceToAlert <= alertRadius && !_isDead)
+        _lastAlertPosition = alertPosition;
+        _animator.SetBool(Alert, true);
+    }
+    
+    public void InteractWithInteractable(InteractPoint interactPoint)
+    {
+        IInteractable interactable = interactPoint.GetInteractable();
+        _enemyInteractor.AssignInteractable(interactable);
+        _enemyInteractor.OnInteract();
+    }
+
+    public void RotateTowards(Vector3 targetPosition)
+    {
+        Vector3 directionToTarget = (targetPosition - _headTransform.position).normalized;
+        directionToTarget.y = 0;
+        if (directionToTarget != Vector3.zero)
         {
-            _lastAlertPosition = alertPosition;
-            _animator.SetBool("Alert", true);
+            Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * enemyParameters.rotationSpeed);
         }
     }
-
-    public void Interact(IInteractor interactor)
-    {
-        KillEnemy();
-    }
-
-    public void InteractWithInteractable(GameObject inte)
-    {
-        if (inte.TryGetComponent(out InteractPoint interactPoint))
-        {
-            IInteractable interactable = interactPoint.GetInteractable();
-            if (interactable != null)
-            {
-                _enemyInteractor.AssignInteractable(interactable);
-                _enemyInteractor.OnInteract();
-            }
-        }
-    }
-
-    public void SetDeathZoneActive(bool active)
-    {
-        _deathZone?.gameObject.SetActive(active);
-    }
-
-    private void PlayerDied()
-    {
-        _animator.SetBool("PlayerDead", true);
-    }
-
+    
     private void OnDrawGizmos()
     {
+        Transform origin = headTransform ?? transform;
         Gizmos.color = _gizmosColor;
-        Gizmos.DrawWireSphere(transform.position, detectionRadius);
-        Gizmos.DrawRay(transform.position, transform.forward * detectionRadius);
-    }
+        Gizmos.DrawWireSphere(origin.position, enemyParameters.detectionRadius);
 
-    private float GetDistanceToPlayer()
-    {
-        if (_player == null) return 0;
-        Vector3 playerPos = _player.transform.position;
-        Vector3 enemyPos = transform.position;
+        Vector3 leftBoundary = Quaternion.AngleAxis(-enemyParameters.detectionAngle / 2f, Vector3.up) * transform.forward;
+        Vector3 rightBoundary = Quaternion.AngleAxis(enemyParameters.detectionAngle / 2f, Vector3.up) * transform.forward;
 
-        Vector2 playerXZ = new Vector2(playerPos.x, playerPos.z);
-        Vector2 EnemyXZ = new Vector2(enemyPos.x, enemyPos.z);
-        return Vector2.Distance(playerXZ, EnemyXZ);
-    }
-
-    private float GetAngleToPlayer()
-    {
-        if (_player == null) return 0;
-        Vector3 directionToPlayer = _player.transform.position - transform.position;
-        Vector3 directionForward = transform.forward;
-        return Vector3.Angle(directionForward, directionToPlayer);
-    }
-
-    public GameObject[] GetPatrolPoints()
-    {
-        return patrolPoints;
-    }
-
-    public float GetSpeed()
-    {
-            return speed;
-    }
-
-    public Vector3 GetLastAlertPosition()
-    {
-        return _lastAlertPosition;
-    }
-
-    public Vector3 GetLastPlayerPosition()
-    {
-        return _lastPlayerPosition;
-    }
-
-    public void SetLastPlayerPosition(Vector3 pos)
-    {
-        _lastPlayerPosition = pos;
+        Gizmos.DrawRay(origin.position, leftBoundary * enemyParameters.detectionRadius);
+        Gizmos.DrawRay(origin.position, rightBoundary * enemyParameters.detectionRadius);
+        Gizmos.DrawRay(headTransform.position, headTransform.forward);
     }
 }

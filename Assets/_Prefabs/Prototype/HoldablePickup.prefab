@@ -154,10 +154,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aa4718b3366488197fd48d5458fce2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Pickupables.HoldablePickup
+  holdableType: 2
   stopVelocityThreshold: 0.1
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  alertRadius: 10
+  parentSearchScale: {x: 0.3, y: 0.3, z: 0.3}
 --- !u!135 &5814937925422883576
 SphereCollider:
   m_ObjectHideFlags: 0

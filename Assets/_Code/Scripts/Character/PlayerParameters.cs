@@ -9,7 +9,8 @@ namespace _Code.Scripts.Character
         public float walkSpeed = 5f;
         public float runSpeed = 10f;   
         public float crouchSpeed = 2.5f;        
-        public float jumpSpeed = 8f;     
+        public float jumpHeight = 2f;
+        public float jumpDuration = 0.5f;
         
         [Header("Control")]
         public float airControl = 0.5f;
@@ -32,5 +33,11 @@ namespace _Code.Scripts.Character
         
          [Header("Interactor")]
          public float interactionDistance = 3f;
+
+         [Header("Audio")]
+         public float airNoiseRadius = 3f;
+         public float crouchNoiseRadius = 2f;
+         public float runNoiseRadius = 8f;
+         public float walkNoiseRadius = 4f;
     }
 }

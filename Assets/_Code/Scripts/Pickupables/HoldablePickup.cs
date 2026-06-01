@@ -11,17 +11,26 @@ namespace _Code.Scripts.Pickupables
     public class HoldablePickup : PickupableBase
     {
         [Header("Settings")]
+        [SerializeField] private HoldableType holdableType = HoldableType.Distraction;
         [SerializeField] private float stopVelocityThreshold = 0.1f;
         [SerializeField] private LayerMask layerMask;
         [SerializeField] private float alertRadius = 10f;
+        [SerializeField] private Vector3 parentSearchScale;
         private Rigidbody _rigidbody;
         private bool _isHolding;
         private Vector3 _originalPosition;
+        private Quaternion _originalRotation;
 
+        private int _originalLayerMask;
+
+        public HoldableType HoldableType => holdableType;
+        
         void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
             _originalPosition = transform.position;
+            _originalRotation = transform.rotation;
+            _originalLayerMask = gameObject.layer;
         }
 
         void OnEnable()
@@ -34,12 +43,12 @@ namespace _Code.Scripts.Pickupables
         {
             GameManager.OnPlayerRespawn -= Reset;
             Checkpoint.OnCheckpointChange -= UpdateOrigin;
-
         }
         
         void UpdateOrigin()
         {
             _originalPosition = transform.position;
+            _originalRotation = transform.rotation;
         }
 
         void FixedUpdate()
@@ -53,18 +62,17 @@ namespace _Code.Scripts.Pickupables
             if (_isHolding) return;
             if (transform.parent) return;
             if (_rigidbody.angularVelocity.magnitude < stopVelocityThreshold &&
-                _rigidbody.angularVelocity.magnitude < stopVelocityThreshold)
+                _rigidbody.linearVelocity.magnitude < stopVelocityThreshold)
             {
-                Vector3 worldCenter = transform.TransformPoint(transform.localPosition);
-                Quaternion worldRotation = transform.rotation;
                 Collider[] hits = new Collider[25];
-                Physics.OverlapBoxNonAlloc(worldCenter, Vector3.one, hits, worldRotation, layerMask);
+                Physics.OverlapBoxNonAlloc(transform.position, parentSearchScale/2, hits, transform.rotation, layerMask);
                 foreach (var hit in hits)
                 {
-                    var room = hit?.GetComponentInParent<Room>();
+                    var room = hit?.GetComponent<Room>() ?? hit?.GetComponentInParent<Room>();
                     if (room)
                     {
                         transform.SetParent(room.transform);
+                        _rigidbody.isKinematic = true;
                         break;
                     }
                 }
@@ -73,15 +81,14 @@ namespace _Code.Scripts.Pickupables
         
         public override void PickUp(IInteractor interactor)
         {
-            if (interactor is PlayerInteractor player)
-            {
-                _rigidbody.isKinematic = true;
-                _rigidbody.useGravity = false;
-                transform.SetParent(player.handTransform);
-                transform.localPosition = Vector3.zero;
-                transform.localRotation = Quaternion.identity;
-                _isHolding = true;
-            }
+            if  (_isHolding) return;
+            _rigidbody.isKinematic = true;
+            _rigidbody.useGravity = false;
+            transform.SetParent(interactor.Transform);
+            transform.localPosition = Vector3.zero;
+            transform.localRotation = Quaternion.identity;
+            _isHolding = true;
+            gameObject.layer = interactor.Transform.gameObject.layer;
         }
         
         public void Drop()
@@ -90,6 +97,7 @@ namespace _Code.Scripts.Pickupables
             _rigidbody.isKinematic = false;
             _rigidbody.useGravity = true;
             _isHolding = false;
+            gameObject.layer = _originalLayerMask;
         }
 
         public void Throw(Vector3 force)
@@ -98,24 +106,21 @@ namespace _Code.Scripts.Pickupables
             _rigidbody.AddForce(force, ForceMode.Impulse);
         }
 
-        void OnCollisionEnter(Collision collision)
+        void OnCollisionEnter()
         {
             if (_rigidbody.linearVelocity.magnitude > 0.1f && !_isHolding)
             {
-                Vector3 avgPoint = Vector3.zero;
-                foreach (var contact in collision.contacts)
-                    avgPoint += contact.point;
-                avgPoint /= collision.contacts.Length;
-                AlertNearbyEnemies(avgPoint);
+                AlertNearbyEnemies(transform.position);
             }
         }
         
         private void AlertNearbyEnemies(Vector3 point)
         {
-            Collider[] hits = Physics.OverlapSphere(point, alertRadius);
-            foreach (Collider hit in hits)
+            var results = new Collider[25];
+            Physics.OverlapSphereNonAlloc(point, alertRadius, results);
+            foreach (Collider hit in results)
             {
-                IEnemy enemy = hit.GetComponentInParent<IEnemy>();
+                EnemyBehaviour enemy = hit?.GetComponentInParent<EnemyBehaviour>();
                 if (enemy != null)
                 {
                     enemy.AlertEnemy(point);
@@ -128,13 +133,14 @@ namespace _Code.Scripts.Pickupables
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, alertRadius);
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, 1f);
+            Gizmos.DrawWireCube(transform.position, parentSearchScale);
         }
 
         public void Reset()
         {
             Drop();
             transform.position = _originalPosition;
+            transform.rotation = _originalRotation;
         }
     }
 }
