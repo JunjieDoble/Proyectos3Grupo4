@@ -5,30 +5,33 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: 2b3540e0a5b02a74d9a27988bcaf636d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameManager.unity
     guid: ae6bcc64b6cfc16459215c82f066ab6c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tutorial.unity
     guid: 8fa977db4d8d4974e815879a1c4d7d57
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Terrain.unity
     guid: bd3def669d35d9d44a54146abd53d212
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/BigRoom.unity
     guid: 7da583a637f82c4479323b7e9670a097
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Prototype/LevelPrototype2.unity
     guid: 46f9361aa9885654fae3217fb3e95dc2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Prototype/LevelPrototype2RW.unity
     guid: 4154d1066fbfec14fa6d0d495d7a2caf
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LevelPrototype2LW.unity
     guid: 8776a6a193914664c9e897ef474d4764
+  - enabled: 1
+    path: Assets/Scenes/KatsuLevel.unity
+    guid: 7456e490676f88541a026a8c74e9103b
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 99f9c9493070a9d4c979a8fec7c5a8d3, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
