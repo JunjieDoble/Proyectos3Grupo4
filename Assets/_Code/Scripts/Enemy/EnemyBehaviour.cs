@@ -2,6 +2,7 @@
 using _Code.Scripts.Enemy;
 using Interactions;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
 {
@@ -9,6 +10,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
     private static readonly int ToPlayer = Animator.StringToHash("DistanceToPlayer");
     private static readonly int Alert = Animator.StringToHash("Alert");
     private static readonly int PlayerDead = Animator.StringToHash("PlayerDead");
+    private static readonly int Speed = Animator.StringToHash("Speed");
 
     [Header("Enemy Parameters")]
     [SerializeField] private EnemyParameters enemyParameters;
@@ -28,7 +30,8 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
     
     private GameObject _deathZone;
     private Transform _headTransform;
-    private Light fovLight;
+    private Light _fovLight;
+    private NavMeshAgent _agent;
     
     public GameObject drop;
 
@@ -61,7 +64,8 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
         _deathZone?.SetActive(false);
         _headTransform = headTransform ?? transform;
         _idleTime = enemyParameters.idleTime;
-        fovLight = GetComponentInChildren<Light>();
+        _fovLight = GetComponentInChildren<Light>();
+        _agent = GetComponent<NavMeshAgent>();
     }
 
     private void Update()
@@ -69,6 +73,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
         if (_isDead) return;
         DistanceAndVisionToPlayer();
         HearPlayer();
+        _animator?.SetFloat(Speed, _agent?.velocity.magnitude ?? 0);
     }
 
     private bool PlayerAvailable()
@@ -95,14 +100,14 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
                 _animator.SetBool(SeePlayer, true);
                 SetLastPlayerPosition(_player.transform.position);
                 _gizmosColor = Color.red;
-                fovLight.color = Color.red;
+                _fovLight.color = Color.red;
                 return;
             }
         }
 
         _animator.SetBool(SeePlayer, false);
         _gizmosColor = Color.green;
-        fovLight.color = Color.green;
+        _fovLight.color = Color.green;
     }
     private void HearPlayer()
     {
