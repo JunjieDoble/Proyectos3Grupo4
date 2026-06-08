@@ -23,11 +23,11 @@ public class MinimapCamera : MonoBehaviour
 
     private float CalculateNearClipPlane()
     {
-        Ray ray = new Ray(player.position, player.up);
-        if (Physics.Raycast(ray, out RaycastHit hit, (player.position - transform.position).magnitude))
+        Ray ray = new Ray(player.position + Vector3.up, player.up);
+        if (Physics.Raycast(ray, out RaycastHit hit, (player.position - transform.position).magnitude, LayerMask.GetMask("Default")))
         {
             return transform.position.y - hit.point.y;
         }
-        return (player.position - transform.position).magnitude;
+        return 0.1f;
     }
 }
