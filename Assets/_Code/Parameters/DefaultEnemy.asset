@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b20b71a3142a4f6cbf6c0a8fc2297b5b, type: 3}
   m_Name: DefaultEnemy
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Enemy.EnemyParameters
-  speed: 2
-  chaseSpeed: 3.5
+  speed: 3
+  chaseSpeed: 6
   rotationSpeed: 5
   detectionRadius: 10
   detectionAngle: 90
@@ -22,3 +22,6 @@ MonoBehaviour:
     m_Bits: 983
   alertTimeoutDuration: 5
   idleTime: 5
+  searchRadius: 5
+  maxSearchPoints: 3
+  waitTimePerSearchPoint: 2
