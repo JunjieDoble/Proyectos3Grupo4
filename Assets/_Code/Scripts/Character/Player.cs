@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
-using _Code.Scripts.Interactions;
+using _Code.Scripts.Gameplay;
 
 namespace _Code.Scripts.Character
 {
@@ -17,6 +17,18 @@ namespace _Code.Scripts.Character
         private bool _isDead;
         public bool IsDead() => _isDead;
 
+        public void OnEnable()
+        {
+            GameManager.OnPause += DisableControllers;
+            GameManager.OnResume += EnableControllers;
+        }
+        
+        public void OnDisable()
+        {
+            GameManager.OnPause -= DisableControllers;
+            GameManager.OnResume -= EnableControllers;
+        }
+
         public void Revive(Vector3 spawnPoint)
         {
             _isDead = false;
@@ -29,10 +41,7 @@ namespace _Code.Scripts.Character
         
         public void Die()
         {
-            foreach (IController controller in _controllers)
-            {
-                controller.Disable();
-            }
+            DisableControllers();
             OnPlayerDied?.Invoke();
             _isDead = true;
         }
@@ -43,6 +52,29 @@ namespace _Code.Scripts.Character
             _controllers.Add(controller);
             controller.LoadPlayerParameters(playerParameters);
             controller.Enable();
+        }
+
+        public void Pause()
+        {
+            if (_isDead) return;
+            Debug.Log("Player.Pause() called");
+            GameManager.Instance?.ShowPauseMenu();
+        }
+        
+        private void EnableControllers()
+        {
+            foreach (IController controller in _controllers)
+            {
+                controller.Enable();
+            }
+        }
+        
+        private void DisableControllers()
+        {
+            foreach (IController controller in _controllers)
+            {
+                controller.Disable();
+            }
         }
     }
 }

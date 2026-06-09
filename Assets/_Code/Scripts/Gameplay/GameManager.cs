@@ -11,12 +11,15 @@ namespace _Code.Scripts.Gameplay
     {
         
         public static Action OnPlayerRespawn;
+        public static Action OnPause;
+        public static Action OnResume;
         
         [SerializeField] 
         private GameplayParameters parameters;
         public static GameManager Instance;
 
         private GameObject _deathMenu;
+        private GameObject _pauseMenu;
 
         void Awake()
         {
@@ -62,12 +65,36 @@ namespace _Code.Scripts.Gameplay
             _deathMenu = deathMenu;
         }
 
+        public void RegisterPauseMenu(GameObject pauseMenu)
+        {
+            _pauseMenu = pauseMenu;
+        }
+
         private void ShowDeathMenu()
         {
             _deathMenu?.SetActive(true);
             Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+        }
+        
+        public void ShowPauseMenu()
+        {
+            OnPause?.Invoke();
+            _pauseMenu?.SetActive(true);
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        
+        public void ResumeGame()
+        {
+            OnResume?.Invoke();
+            _deathMenu?.SetActive(false);
+            _pauseMenu?.SetActive(false);
+            Time.timeScale = 1f;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
 
         public void RespawnPlayer()
