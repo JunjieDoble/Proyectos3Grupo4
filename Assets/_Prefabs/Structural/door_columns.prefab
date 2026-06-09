@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7691922883459802773}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.50000006, y: 0.50000006, z: 0.5, w: 0.5}
+  m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -5.11, y: 2.52, z: -1.42}
   m_LocalScale: {x: 2.5400004, y: 2.5400004, z: 2.5400004}
   m_ConstrainProportionsScale: 0
@@ -32,7 +32,7 @@ Transform:
   - {fileID: 1101712980089302341}
   - {fileID: 1351168535645586412}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 90}
 --- !u!1001 &630692390462917294
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -94,12 +94,20 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: b7e59315badd21241a6b1c072f7100a9, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b7e59315badd21241a6b1c072f7100a9, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 9012433bddde29c458236d5beeed2d78, type: 2}
     - target: {fileID: 919132149155446097, guid: b7e59315badd21241a6b1c072f7100a9, type: 3}
       propertyPath: m_Name
       value: door_column
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b7e59315badd21241a6b1c072f7100a9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -172,12 +180,20 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 2f9f6a94d3e3b9f4fa77ee66abca0a96, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2f9f6a94d3e3b9f4fa77ee66abca0a96, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 6397153837302ce448f7ed77dc9bfbd4, type: 2}
     - target: {fileID: 919132149155446097, guid: 2f9f6a94d3e3b9f4fa77ee66abca0a96, type: 3}
       propertyPath: m_Name
       value: door_column_flipped
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2f9f6a94d3e3b9f4fa77ee66abca0a96, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

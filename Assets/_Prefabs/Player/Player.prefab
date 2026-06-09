@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 3805668282339850438}
   - component: {fileID: 1623551055783406778}
   - component: {fileID: 6514381089081985041}
+  - component: {fileID: 4180186895931411246}
   m_Layer: 0
   m_Name: MapTopCamera
   m_TagString: Untagged
@@ -220,7 +221,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 1
+  m_RenderPostProcessing: 0
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -256,6 +257,20 @@ MonoBehaviour:
   minimapCamera: {fileID: 5356213357727986277}
   player: {fileID: 7324281891904208692}
 --- !u!114 &6514381089081985041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327218342602940291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f57d22eaed8c634db9b583997fa9e9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinimapCamera
+  minimapCamera: {fileID: 5356213357727986277}
+  player: {fileID: 7324281891904208692}
+--- !u!114 &4180186895931411246
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

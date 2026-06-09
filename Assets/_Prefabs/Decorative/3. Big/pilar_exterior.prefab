@@ -49,6 +49,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: dedc92797444b3f48876a3820c6080f7, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: dedc92797444b3f48876a3820c6080f7, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: ee6365f7e8e4aa644883b0acccf01191, type: 2}
@@ -56,8 +60,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: pilar_exterior
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dedc92797444b3f48876a3820c6080f7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dedc92797444b3f48876a3820c6080f7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6098710438730709005}
   m_SourcePrefab: {fileID: 100100000, guid: dedc92797444b3f48876a3820c6080f7, type: 3}
+--- !u!1 &5946688919119554160 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: dedc92797444b3f48876a3820c6080f7, type: 3}
+  m_PrefabInstance: {fileID: 6793552225060936481}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &6098710438730709005
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5946688919119554160}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 6.733124, z: 2}
+  m_Center: {x: 0, y: 3.366562, z: 0.00000014901161}
