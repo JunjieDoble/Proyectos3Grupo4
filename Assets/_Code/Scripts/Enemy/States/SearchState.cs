@@ -13,7 +13,7 @@ namespace _Code.Scripts.Enemy.States
         
         private float _searchRadius;
         private int _maxSearchPoints;
-        private float waitTimePerSearchPoint;
+        private float _waitTimePerSearchPoint;
         
         private int _pointsCheckedCount;
         private float _actionTimer;
@@ -26,7 +26,7 @@ namespace _Code.Scripts.Enemy.States
             
             _searchRadius = _enemyBehaviour.GetEnemyParameters.searchRadius;
             _maxSearchPoints = _enemyBehaviour.GetEnemyParameters.maxSearchPoints;
-            waitTimePerSearchPoint = _enemyBehaviour.GetEnemyParameters.waitTimePerSearchPoint;
+            _waitTimePerSearchPoint = _enemyBehaviour.GetEnemyParameters.waitTimePerSearchPoint;
             
             _searchCenterPosition = _enemyBehaviour.GetLastAlertPosition();
             
@@ -43,7 +43,7 @@ namespace _Code.Scripts.Enemy.States
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             _actionTimer += Time.deltaTime;
-            if (_actionTimer >= _enemyBehaviour.GetAlertTimeout() + waitTimePerSearchPoint && !_isWaiting)
+            if (_actionTimer >= _enemyBehaviour.GetAlertTimeout() + _waitTimePerSearchPoint && !_isWaiting)
             {
                 ExitSearchState(animator);
                 return;
@@ -59,7 +59,7 @@ namespace _Code.Scripts.Enemy.States
                 }
                 else
                 {
-                    if (_actionTimer >= waitTimePerSearchPoint)
+                    if (_actionTimer >= _waitTimePerSearchPoint)
                     {
                         _isWaiting = false;
 

@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e723e6d706d4eea4fbe40e0aaf1dbba5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.009
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e723e6d706d4eea4fbe40e0aaf1dbba5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e723e6d706d4eea4fbe40e0aaf1dbba5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -27
+      value: -24.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e723e6d706d4eea4fbe40e0aaf1dbba5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -67,7 +67,7 @@ PrefabInstance:
     - target: {fileID: 2445304414265389129, guid: e723e6d706d4eea4fbe40e0aaf1dbba5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 2e85c75ff0d6d1e498be802419beaaee, type: 2}
+      objectReference: {fileID: 2100000, guid: ae2d73cafed10ea4e8209ba5e73287b2, type: 2}
     - target: {fileID: 3115699690207826739, guid: e723e6d706d4eea4fbe40e0aaf1dbba5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -82,6 +82,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e723e6d706d4eea4fbe40e0aaf1dbba5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4776534573988135842}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e723e6d706d4eea4fbe40e0aaf1dbba5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9202983519974821705}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e723e6d706d4eea4fbe40e0aaf1dbba5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 337478294217022692}
@@ -122,6 +125,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &9202983519974821705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454746452217913913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32ad19a512e54fc38475ee284f2d2bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Activables.Door
 --- !u!114 &337478294217022692
 MonoBehaviour:
   m_ObjectHideFlags: 0
