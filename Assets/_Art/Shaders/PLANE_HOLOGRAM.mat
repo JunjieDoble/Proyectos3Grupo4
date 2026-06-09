@@ -23,14 +23,14 @@ Material:
   m_Name: PLANE_HOLOGRAM
   m_Shader: {fileID: -6465566751694194690, guid: e2a96c0c0759e704c887d870241deaba, type: 3}
   m_Parent: {fileID: -876546973899608171, guid: e2a96c0c0759e704c887d870241deaba, type: 3}
-  m_ModifiedSerializedProperties: 0
+  m_ModifiedSerializedProperties: 16
   m_ValidKeywords:
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap:
     RenderType: Transparent
   disabledShaderPasses:
@@ -43,18 +43,21 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
-    - _DstBlend: 10
-    - _DstBlendAlpha: 10
+    - _Blend: 2
+    - _DstBlend: 1
+    - _DstBlendAlpha: 1
     - _FresnelPower: -0.2
     - _QueueControl: 0
     - _Speed: 0.01
     - _SrcBlend: 5
+    - _SrcBlendAlpha: 1
+    - _Surface: 1
     - _VertexOffset: 0.05
     - _ZTest: 4
     - _ZWrite: 1
     m_Colors:
     - _FresnelColor: {r: 1.4980392, g: 0.09411766, b: 0.11691216, a: 1}
-    - _ScanLineSpeed: {r: 0, g: 0.1, b: 0, a: 0}
-    - _ScanLineTiling: {r: 1, g: 1, b: 0, a: 0}
+    - _ScanLineSpeed: {r: 0, g: 0, b: 0, a: 0}
+    - _ScanLineTiling: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
