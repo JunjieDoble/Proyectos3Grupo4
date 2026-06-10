@@ -1,8 +1,11 @@
+using System.Collections.Generic;
 using _Code.Scripts.Bases;
 using UnityEngine;
 
 public class Charger : Activable
 {
+    [SerializeField]
+    private List<Material> materials = new();
     private float _charge;
     
     void Start() => UpdateVisual();
@@ -10,13 +13,15 @@ public class Charger : Activable
     public override void ActivatorUpdate()
     {
         var activeActivators = activators.FindAll(a => a.IsActive);
-        _charge = activeActivators.Count / (float)activators.Count;
+        _charge = (float)activeActivators.Count / activators.Count;
         UpdateVisual();
     }
 
     void UpdateVisual()
     {
-        if (_charge < 0.1f) transform.localScale = new Vector3(1, 0.1f, 1);
-        else transform.localScale = new Vector3(1, _charge, 1);
+        var materialCount = materials.Count;
+        if (materialCount == 0) return;
+        var materialIndex = Mathf.FloorToInt(_charge * materialCount);
+        GetComponent<Renderer>().material = materials[materialIndex];
     }
 }
