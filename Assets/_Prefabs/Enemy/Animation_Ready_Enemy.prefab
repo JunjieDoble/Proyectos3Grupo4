@@ -229,7 +229,7 @@ PrefabInstance:
     - target: {fileID: -7908564714005501043, guid: bfcaf0399440e1647a1f5af4735eeeb3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 18c7b438e243e184d981aac94c1190f5, type: 2}
+      objectReference: {fileID: 2100000, guid: a142b531d68fc26478e86dda5ea622f4, type: 2}
     - target: {fileID: -7845160305163168215, guid: bfcaf0399440e1647a1f5af4735eeeb3, type: 3}
       propertyPath: m_Layer
       value: 14
@@ -365,6 +365,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bfcaf0399440e1647a1f5af4735eeeb3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1310937504629792972}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bfcaf0399440e1647a1f5af4735eeeb3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2300932013380930319}
   m_SourcePrefab: {fileID: 100100000, guid: bfcaf0399440e1647a1f5af4735eeeb3, type: 3}
 --- !u!1 &34148150250992495 stripped
 GameObject:
@@ -410,6 +413,21 @@ MonoBehaviour:
   patrolPoints: []
   drop: {fileID: 0}
 --- !u!114 &1310937504629792972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 34148150250992495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8b67b3daf46dba418827fe39b66e614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyInteractor
+  interactableMask:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &2300932013380930319
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

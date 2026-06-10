@@ -1,22 +1,31 @@
+using System.Collections.Generic;
 using _Code.Scripts.Bases;
 using UnityEngine;
 
-public class Charger : Activable
+namespace _Code.Scripts.Activables
 {
-    private float _charge;
-    
-    void Start() => UpdateVisual();
-    
-    public override void ActivatorUpdate()
+    public class Charger : Activable
     {
-        var activeActivators = activators.FindAll(a => a.IsActive);
-        _charge = activeActivators.Count / (float)activators.Count;
-        UpdateVisual();
-    }
+        [SerializeField]
+        private List<Material> materials = new();
+        private float _charge;
+    
+        void Start() => UpdateVisual();
+    
+        public override void ActivatorUpdate()
+        {
+            var activeActivators = activators.FindAll(a => a.IsActive);
+            _charge = (float)activeActivators.Count / activators.Count;
+            UpdateVisual();
+        }
 
-    void UpdateVisual()
-    {
-        if (_charge < 0.1f) transform.localScale = new Vector3(1, 0.1f, 1);
-        else transform.localScale = new Vector3(1, _charge, 1);
+        void UpdateVisual()
+        {
+            var materialCount = materials.Count;
+            if (materialCount == 0) return;
+            var materialIndex = Mathf.FloorToInt(_charge * materialCount);
+            if (materialIndex >= materialCount) materialIndex = materialCount - 1;
+            GetComponent<Renderer>().material = materials[materialIndex];
+        }
     }
 }
