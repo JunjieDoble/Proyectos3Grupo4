@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1854375426413127802
 Transform:
@@ -129,7 +129,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &4697132168572238908
 Transform:
@@ -241,7 +241,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &434640071391739053
 Transform:
@@ -389,6 +389,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: frame + door
       objectReference: {fileID: 0}
+    - target: {fileID: 4256381932876274157, guid: b3fd132f62e3d824f9cbb0e23ee0d2a6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -413,6 +417,10 @@ PrefabInstance:
     - target: {fileID: 1485480332110845797, guid: da900444dd3fdb64b9b0556f8a4a3687, type: 3}
       propertyPath: m_Name
       value: door_normal
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485480332110845797, guid: da900444dd3fdb64b9b0556f8a4a3687, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2294211075030879711, guid: da900444dd3fdb64b9b0556f8a4a3687, type: 3}
       propertyPath: m_LocalScale.x
