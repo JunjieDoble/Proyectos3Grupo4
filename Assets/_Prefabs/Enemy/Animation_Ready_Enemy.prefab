@@ -87,7 +87,7 @@ Light:
     m_Strength: 1
     m_Bias: 0.05
     m_NormalBias: 0.4
-    m_NearPlane: 0.2
+    m_NearPlane: 1.36
     m_CullingMatrixOverride:
       e00: 1
       e01: 0
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
   m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 0
+  m_AdditionalLightsShadowResolutionTier: 2
   m_CustomShadowLayers: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
@@ -184,15 +184,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bfcaf0399440e1647a1f5af4735eeeb3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -95.47107
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bfcaf0399440e1647a1f5af4735eeeb3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -17.499943
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bfcaf0399440e1647a1f5af4735eeeb3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -171.6019
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bfcaf0399440e1647a1f5af4735eeeb3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -410,7 +410,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBehaviour
   enemyParameters: {fileID: 11400000, guid: c17d5d8808b33d347982b54bfe3c23c6, type: 2}
   headTransform: {fileID: 1942733508793037237}
-  patrolPoints: []
+  patrolPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   drop: {fileID: 0}
 --- !u!114 &1310937504629792972
 MonoBehaviour:
