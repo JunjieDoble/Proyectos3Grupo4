@@ -17,7 +17,16 @@ ModelImporter:
     removeConstantScaleCurves: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'CAT_LLeg_Low' has scale animation that
+      will be discarded.\n\t'CAT_LLeg_Ankle' has scale animation that will be discarded.\n\t'CATRigLLeg_LFoot1'
+      has scale animation that will be discarded.\n\t'CAT_LArm_Low' has scale animation
+      that will be discarded.\n\t'CAT_RArm_Low' has scale animation that will be
+      discarded.\n\t'CAT_Neck' is inbetween humanoid transforms and has rotation
+      animation that will be discarded.\n\t'CAT_RLeg_Low' has scale animation that
+      will be discarded.\n\t'CAT_RLeg_Ankle' has scale animation that will be discarded.\n\t'CATRigRLeg_RFoot1'
+      has scale animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -42,7 +51,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
