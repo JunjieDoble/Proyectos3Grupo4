@@ -19,13 +19,9 @@ ModelImporter:
     animationImportErrors: 
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'CAT_LLeg_Low' has scale animation that
-      will be discarded.\n\t'CAT_LLeg_Ankle' has scale animation that will be discarded.\n\t'CATRigLLeg_LFoot1'
-      has scale animation that will be discarded.\n\t'CAT_LArm_Low' has scale animation
-      that will be discarded.\n\t'CAT_RArm_Low' has scale animation that will be
-      discarded.\n\t'CAT_Neck' is inbetween humanoid transforms and has rotation
-      animation that will be discarded.\n\t'CAT_RLeg_Low' has scale animation that
-      will be discarded.\n\t'CAT_RLeg_Ankle' has scale animation that will be discarded.\n\t'CATRigRLeg_RFoot1'
+      to improve retargeting quality.\n\t'CAT_LLeg_Ankle' has scale animation that
+      will be discarded.\n\t'CATRigLLeg_LFoot1' has scale animation that will be
+      discarded.\n\t'CAT_RLeg_Ankle' has scale animation that will be discarded.\n\t'CATRigRLeg_RFoot1'
       has scale animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
@@ -64,9 +60,61 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CAT_Pelvis
+        weight: 1
+      - path: CAT_Pelvis/CAT_LLeft_High
+        weight: 1
+      - path: CAT_Pelvis/CAT_LLeft_High/CAT_LLeg_Low
+        weight: 1
+      - path: CAT_Pelvis/CAT_LLeft_High/CAT_LLeg_Low/CAT_LLeg_Ankle
+        weight: 1
+      - path: CAT_Pelvis/CAT_LLeft_High/CAT_LLeg_Low/CAT_LLeg_Ankle/CATRigLLeg_LFoot1
+        weight: 1
+      - path: CAT_Pelvis/CAT_RLeg_High
+        weight: 1
+      - path: CAT_Pelvis/CAT_RLeg_High/CAT_RLeg_Low
+        weight: 1
+      - path: CAT_Pelvis/CAT_RLeg_High/CAT_RLeg_Low/CAT_RLeg_Ankle
+        weight: 1
+      - path: CAT_Pelvis/CAT_RLeg_High/CAT_RLeg_Low/CAT_RLeg_Ankle/CATRigRLeg_RFoot1
+        weight: 1
+      - path: CAT_Pelvis/CAT_Spine_Low
+        weight: 1
+      - path: CAT_Pelvis/CAT_Spine_Low/CAT_Spine_Mid
+        weight: 1
+      - path: CAT_Pelvis/CAT_Spine_Low/CAT_Spine_Mid/CAT_Spine_High
+        weight: 1
+      - path: CAT_Pelvis/CAT_Spine_Low/CAT_Spine_Mid/CAT_Spine_High/CAT_Chest
+        weight: 1
+      - path: CAT_Pelvis/CAT_Spine_Low/CAT_Spine_Mid/CAT_Spine_High/CAT_Chest/CAT_LShoulder
+        weight: 1
+      - path: CAT_Pelvis/CAT_Spine_Low/CAT_Spine_Mid/CAT_Spine_High/CAT_Chest/CAT_LShoulder/CAT_LArm_Up
+        weight: 1
+      - path: CAT_Pelvis/CAT_Spine_Low/CAT_Spine_Mid/CAT_Spine_High/CAT_Chest/CAT_LShoulder/CAT_LArm_Up/CAT_LArm_Mid
+        weight: 1
+      - path: CAT_Pelvis/CAT_Spine_Low/CAT_Spine_Mid/CAT_Spine_High/CAT_Chest/CAT_LShoulder/CAT_LArm_Up/CAT_LArm_Mid/CAT_LArm_Low
+        weight: 1
+      - path: CAT_Pelvis/CAT_Spine_Low/CAT_Spine_Mid/CAT_Spine_High/CAT_Chest/CAT_Neck
+        weight: 1
+      - path: CAT_Pelvis/CAT_Spine_Low/CAT_Spine_Mid/CAT_Spine_High/CAT_Chest/CAT_Neck/CAT_Head
+        weight: 1
+      - path: CAT_Pelvis/CAT_Spine_Low/CAT_Spine_Mid/CAT_Spine_High/CAT_Chest/CAT_RShoulder
+        weight: 1
+      - path: CAT_Pelvis/CAT_Spine_Low/CAT_Spine_Mid/CAT_Spine_High/CAT_Chest/CAT_RShoulder/CAT_RArm_Up
+        weight: 1
+      - path: CAT_Pelvis/CAT_Spine_Low/CAT_Spine_Mid/CAT_Spine_High/CAT_Chest/CAT_RShoulder/CAT_RArm_Up/CAT_RArm_Mid
+        weight: 1
+      - path: CAT_Pelvis/CAT_Spine_Low/CAT_Spine_Mid/CAT_Spine_High/CAT_Chest/CAT_RShoulder/CAT_RArm_Up/CAT_RArm_Mid/CAT_RArm_Low
+        weight: 1
+      - path: enemy_body
+        weight: 0
+      - path: enemy_cables
+        weight: 0
+      maskType: 1
+      maskSource: {fileID: 31900000, guid: ca613619803e53a4280349c35e92285b, type: 2}
       additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:

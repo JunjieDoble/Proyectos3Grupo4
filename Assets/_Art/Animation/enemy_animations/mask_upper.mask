@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: mask_upper
+  m_Mask: 00000000010000000100000000000000000000000100000001000000010000000100000000000000000000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: CAT_Pelvis
+    m_Weight: 0
+  - m_Path: CAT_Pelvis/CAT_LLeft_High
+    m_Weight: 0
+  - m_Path: CAT_Pelvis/CAT_LLeft_High/CAT_LLeg_Low
+    m_Weight: 0
+  - m_Path: CAT_Pelvis/CAT_LLeft_High/CAT_LLeg_Low/CAT_LLeg_Ankle
+    m_Weight: 0
+  - m_Path: CAT_Pelvis/CAT_LLeft_High/CAT_LLeg_Low/CAT_LLeg_Ankle/CATRigLLeg_LFoot1
+    m_Weight: 0
+  - m_Path: CAT_Pelvis/CAT_RLeg_High
+    m_Weight: 0
+  - m_Path: CAT_Pelvis/CAT_RLeg_High/CAT_RLeg_Low
+    m_Weight: 0
+  - m_Path: CAT_Pelvis/CAT_RLeg_High/CAT_RLeg_Low/CAT_RLeg_Ankle
+    m_Weight: 0
+  - m_Path: CAT_Pelvis/CAT_RLeg_High/CAT_RLeg_Low/CAT_RLeg_Ankle/CATRigRLeg_RFoot1
+    m_Weight: 0
+  - m_Path: CAT_Pelvis/CAT_Spine_Low
+    m_Weight: 0
+  - m_Path: CAT_Pelvis/CAT_Spine_Low/CAT_Spine_Mid
+    m_Weight: 1
+  - m_Path: CAT_Pelvis/CAT_Spine_Low/CAT_Spine_Mid/CAT_Spine_High
+    m_Weight: 1
+  - m_Path: CAT_Pelvis/CAT_Spine_Low/CAT_Spine_Mid/CAT_Spine_High/CAT_Chest
+    m_Weight: 1
+  - m_Path: CAT_Pelvis/CAT_Spine_Low/CAT_Spine_Mid/CAT_Spine_High/CAT_Chest/CAT_LShoulder
+    m_Weight: 1
+  - m_Path: CAT_Pelvis/CAT_Spine_Low/CAT_Spine_Mid/CAT_Spine_High/CAT_Chest/CAT_LShoulder/CAT_LArm_Up
+    m_Weight: 1
+  - m_Path: CAT_Pelvis/CAT_Spine_Low/CAT_Spine_Mid/CAT_Spine_High/CAT_Chest/CAT_LShoulder/CAT_LArm_Up/CAT_LArm_Mid
+    m_Weight: 1
+  - m_Path: CAT_Pelvis/CAT_Spine_Low/CAT_Spine_Mid/CAT_Spine_High/CAT_Chest/CAT_LShoulder/CAT_LArm_Up/CAT_LArm_Mid/CAT_LArm_Low
+    m_Weight: 1
+  - m_Path: CAT_Pelvis/CAT_Spine_Low/CAT_Spine_Mid/CAT_Spine_High/CAT_Chest/CAT_Neck
+    m_Weight: 1
+  - m_Path: CAT_Pelvis/CAT_Spine_Low/CAT_Spine_Mid/CAT_Spine_High/CAT_Chest/CAT_Neck/CAT_Head
+    m_Weight: 1
+  - m_Path: CAT_Pelvis/CAT_Spine_Low/CAT_Spine_Mid/CAT_Spine_High/CAT_Chest/CAT_RShoulder
+    m_Weight: 1
+  - m_Path: CAT_Pelvis/CAT_Spine_Low/CAT_Spine_Mid/CAT_Spine_High/CAT_Chest/CAT_RShoulder/CAT_RArm_Up
+    m_Weight: 1
+  - m_Path: CAT_Pelvis/CAT_Spine_Low/CAT_Spine_Mid/CAT_Spine_High/CAT_Chest/CAT_RShoulder/CAT_RArm_Up/CAT_RArm_Mid
+    m_Weight: 1
+  - m_Path: CAT_Pelvis/CAT_Spine_Low/CAT_Spine_Mid/CAT_Spine_High/CAT_Chest/CAT_RShoulder/CAT_RArm_Up/CAT_RArm_Mid/CAT_RArm_Low
+    m_Weight: 1
+  - m_Path: enemy_body
+    m_Weight: 0
+  - m_Path: enemy_cables
+    m_Weight: 0

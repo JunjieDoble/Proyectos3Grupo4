@@ -44,11 +44,12 @@ namespace _Code.Scripts.Gameplay
 
         public void StartGame()
         {
-            SceneManager.LoadScene("Tutorial");
+            SceneManager.UnloadSceneAsync("MainMenu");
+            SceneManager.LoadScene("TutorialFix", LoadSceneMode.Additive);
             SceneManager.LoadScene("BigRoom", LoadSceneMode.Additive);
             SceneManager.LoadScene("Terrain", LoadSceneMode.Additive);
-            //SceneManager.LoadSceneAsync("LevelPrototype2LW", LoadSceneMode.Additive);
-            //SceneManager.LoadSceneAsync("LevelPrototype2RW", LoadSceneMode.Additive);
+            SceneManager.LoadSceneAsync("LevelPrototype2LW", LoadSceneMode.Additive);
+            SceneManager.LoadSceneAsync("KatsuLevelFinal", LoadSceneMode.Additive);
             Time.timeScale = 1f;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
