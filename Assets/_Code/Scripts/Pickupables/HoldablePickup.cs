@@ -1,4 +1,5 @@
 ﻿using _Code.Scripts.CheckPoint;
+using _Code.Scripts.Enemy;
 using _Code.Scripts.Gameplay;
 using _Code.Scripts.Interactions;
 using _Code.Scripts.Rooms;
