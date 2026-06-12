@@ -11,11 +11,10 @@ public class SignalVFX : MonoBehaviour
     private void Start()
     {
         _vfx = GetComponent<VisualEffect>();
-        _vfx.Stop();
     }
 
     public void Activate()
     {
-        _vfx.Play();
+        _vfx.SendEvent("OnStartBeam");    
     }
 }

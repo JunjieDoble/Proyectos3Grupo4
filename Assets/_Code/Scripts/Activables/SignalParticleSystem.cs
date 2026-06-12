@@ -8,6 +8,7 @@ public class SignalParticleSystem : MonoBehaviour
     private void Start()
     {
         _particleSystem = GetComponent<ParticleSystem>();
+        _particleSystem.Stop();
     }
 
     public void Activate()
