@@ -42,17 +42,19 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
+    - _Blend: 2
     - _Cull: 0
-    - _DstBlend: 10
-    - _DstBlendAlpha: 10
+    - _DstBlend: 1
+    - _DstBlendAlpha: 1
     - _QueueControl: 0
     - _Speed: 0.04
     - _SrcBlend: 5
     - _VertexOffset: 0.1
+    - _ZTest: 2
     - _ZWrite: 1
     m_Colors:
     - _Direction: {r: 0, g: 1, b: 0, a: 0}
-    - _FresnelColor: {r: 0.10930449, g: 0, b: 2.5030735, a: 1}
+    - _FresnelColor: {r: 0.034437276, g: 0.082856916, b: 2.4335718, a: 1}
     - _ScanLineSpeed: {r: 0, g: 0.3, b: 0, a: 0}
     - _ScanLineTiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
