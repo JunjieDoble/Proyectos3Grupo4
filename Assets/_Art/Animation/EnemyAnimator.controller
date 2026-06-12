@@ -309,7 +309,7 @@ BlendTree:
     m_DirectBlendParameter: Speed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 1827226128182048838, guid: 40da08523a66c154a88820b242c5c08e, type: 3}
+    m_Motion: {fileID: 1827226128182048838, guid: 8dfa0c73e32e3a1479fb0a60258d501a, type: 3}
     m_Threshold: 6
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -391,14 +391,14 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: 1827226128182048838, guid: bd2d1b4671fb1964ba218e8a9d8cf7a3, type: 3}
-    m_Threshold: 1
+    m_Threshold: 3
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Speed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 1827226128182048838, guid: bd2d1b4671fb1964ba218e8a9d8cf7a3, type: 3}
+    m_Motion: {fileID: 1827226128182048838, guid: a98c676020b9f68489e3e8bfbc1faf76, type: 3}
     m_Threshold: 6
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -483,9 +483,9 @@ AnimatorController:
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
   - serializedVersion: 5
-    m_Name: Arm animation layer
-    m_StateMachine: {fileID: 411706228164755653}
-    m_Mask: {fileID: 31900000, guid: a2304ac55b337a642bd69c87163136d8, type: 2}
+    m_Name: Leg animation layer
+    m_StateMachine: {fileID: -602124794993344824}
+    m_Mask: {fileID: 31900000, guid: ca613619803e53a4280349c35e92285b, type: 2}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0
@@ -495,9 +495,9 @@ AnimatorController:
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
   - serializedVersion: 5
-    m_Name: Leg animation layer
-    m_StateMachine: {fileID: -602124794993344824}
-    m_Mask: {fileID: 31900000, guid: ca613619803e53a4280349c35e92285b, type: 2}
+    m_Name: Arm animation layer
+    m_StateMachine: {fileID: 411706228164755653}
+    m_Mask: {fileID: 31900000, guid: a2304ac55b337a642bd69c87163136d8, type: 2}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0
@@ -517,7 +517,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 8655315438033704347}
-    m_Position: {x: 310, y: 110, z: 0}
+    m_Position: {x: 300, y: 120, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

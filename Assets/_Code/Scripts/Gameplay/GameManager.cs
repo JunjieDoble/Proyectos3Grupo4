@@ -44,6 +44,7 @@ namespace _Code.Scripts.Gameplay
 
         public void StartGame()
         {
+            SceneManager.UnloadSceneAsync("MainMenu");
             SceneManager.LoadScene("TutorialFix", LoadSceneMode.Additive);
             SceneManager.LoadScene("BigRoom", LoadSceneMode.Additive);
             SceneManager.LoadScene("Terrain", LoadSceneMode.Additive);
