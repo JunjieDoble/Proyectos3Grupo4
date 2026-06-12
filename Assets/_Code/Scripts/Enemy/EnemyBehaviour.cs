@@ -56,7 +56,7 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
 
     private void Start()
     {
-        _player = GameObject.Find("Player").GetComponent<Player>();
+        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         _animator = GetComponent<Animator>();
         _enemyInteractor = GetComponent<EnemyInteractor>();
         _deathZone = transform.Find("DeathZone")?.gameObject;
@@ -142,8 +142,8 @@ public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
     public void InteractWithInteractable(InteractPoint interactPoint)
     {
         IInteractable interactable = interactPoint.GetInteractable();
-        _enemyInteractor.AssignInteractable(interactable);
-        _enemyInteractor.OnInteract();
+        _enemyInteractor?.AssignInteractable(interactable);
+        _enemyInteractor?.OnInteract();
     }
 
     public void RotateTowards(Vector3 targetPosition)
