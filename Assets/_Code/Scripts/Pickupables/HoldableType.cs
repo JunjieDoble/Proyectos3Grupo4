@@ -2,7 +2,8 @@
 {
     public enum HoldableType
     {
-        Key,
+        KeyChip,
+        KeyCube,
         Generator,
         Distraction
     }

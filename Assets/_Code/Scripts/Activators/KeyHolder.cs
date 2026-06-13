@@ -11,7 +11,7 @@ namespace _Code.Scripts.Activators
     {
         [Header("Key Holder")] 
         [SerializeField] private Transform socket;
-        [SerializeField] private HoldableType acceptedType = HoldableType.Key;
+        [SerializeField] private HoldableType acceptedType = HoldableType.KeyChip;
         [SerializeField]
         private FMODUnity.EventReference activationSound;
         [SerializeField]
