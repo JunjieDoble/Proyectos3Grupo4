@@ -23,11 +23,6 @@ public class SignalDevice : Activable
         {
             Debug.LogError("SignalDevice is missing required components!");
         }
-
-        // Temporal para testing, remove this later
-        //_animator.Play("send_signal", 0, 0f);
-        //_roofAnimator.Play("open_roof", 0, 0f);
-        //_hologramAnimator.Play("hologram_on", 0, 0f);
     }
 
     public override void ActivatorUpdate()
