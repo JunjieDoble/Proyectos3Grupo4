@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using _Code.Scripts.Activators.Connectors;
 using _Code.Scripts.Bases;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace _Code.Scripts.Activables
@@ -10,7 +11,7 @@ namespace _Code.Scripts.Activables
         [Header("References")]
         [SerializeField] private Material activeMaterial;
         [SerializeField] private Material inactiveMaterial;
-        [SerializeField] private Activable target;
+        [SerializeField] [ItemCanBeNull] private List<Activable> target;
         private List<MeshRenderer> pathMeshRenderers;
         
         private bool _isActive;
@@ -30,7 +31,7 @@ namespace _Code.Scripts.Activables
 
         private void Start()
         {
-            if (target && activators.Count > 0) activators.ForEach(a => target.AddActivator(a));
+            if (target.Count > 0 && activators.Count > 0) activators.ForEach(a => target.ForEach(t => t.AddActivator(a)));
         }
         
         public override void ActivatorUpdate()
