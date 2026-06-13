@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class SignalDevice : Activable
+public class SignalDevice : MonoBehaviour
 {
     private SignalVFX _signalVFX;
     private SignalParticleSystem _signalParticleSystem;

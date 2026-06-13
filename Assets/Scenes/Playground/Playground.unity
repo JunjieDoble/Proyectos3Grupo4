@@ -938,14 +938,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 988834673723317365, guid: 9dab36df29ba2674a90c9075a4273fce, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 988834673723317365, guid: 9dab36df29ba2674a90c9075a4273fce, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.24
-      objectReference: {fileID: 0}
     - target: {fileID: 5747956447751248614, guid: 9dab36df29ba2674a90c9075a4273fce, type: 3}
       propertyPath: m_Name
       value: Player
@@ -3667,7 +3659,7 @@ MonoBehaviour:
     Path: 
   activeMaterial: {fileID: 2100000, guid: d9e6d2d3345c4c44bbc26b993fe2e347, type: 2}
   inactiveMaterial: {fileID: 2100000, guid: 443ee28c99000ef41836537cba7f4121, type: 2}
-  target: {fileID: 97976873}
+  target: []
 --- !u!1 &1082879228
 GameObject:
   m_ObjectHideFlags: 0
@@ -3774,7 +3766,7 @@ MonoBehaviour:
     Path: 
   activeMaterial: {fileID: 2100000, guid: d9e6d2d3345c4c44bbc26b993fe2e347, type: 2}
   inactiveMaterial: {fileID: 2100000, guid: 443ee28c99000ef41836537cba7f4121, type: 2}
-  target: {fileID: 0}
+  target: []
 --- !u!1001 &1194800529
 PrefabInstance:
   m_ObjectHideFlags: 0
