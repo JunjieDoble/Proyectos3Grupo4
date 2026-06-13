@@ -336,6 +336,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ad19a512e54fc38475ee284f2d2bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Activables.Door
+  activationSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  deactivationSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!65 &97976874
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -712,9 +726,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.RoomRotator
   targetRoom: {fileID: 1225902053}
-  rotationCooldown: 1.5
   hologramTarget: {fileID: 664701151}
   saveHologramMeshAsset: 0
+  interactionSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  completionSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!135 &249376667
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2121,6 +2148,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ad19a512e54fc38475ee284f2d2bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Activables.Door
+  activationSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  deactivationSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &799500191
 GameObject:
   m_ObjectHideFlags: 0
@@ -2153,6 +2194,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1ca017b9283f4449b5afecb1d0519b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Charger
+  activationSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  deactivationSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   materials:
   - {fileID: 2100000, guid: a6bd92c292784fb469f4d1e272c8b96c, type: 2}
   - {fileID: 2100000, guid: 443ee28c99000ef41836537cba7f4121, type: 2}
@@ -3359,6 +3414,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ad19a512e54fc38475ee284f2d2bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Activables.Door
+  activationSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  deactivationSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!65 &1031754012
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3680,6 +3749,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e86b2cf96f4e7e8702cbcfd49dafac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Activables.Path
+  activationSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  deactivationSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   activeMaterial: {fileID: 2100000, guid: d9e6d2d3345c4c44bbc26b993fe2e347, type: 2}
   inactiveMaterial: {fileID: 2100000, guid: 443ee28c99000ef41836537cba7f4121, type: 2}
   target: {fileID: 97976873}
@@ -3773,6 +3856,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e86b2cf96f4e7e8702cbcfd49dafac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Activables.Path
+  activationSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  deactivationSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   activeMaterial: {fileID: 2100000, guid: d9e6d2d3345c4c44bbc26b993fe2e347, type: 2}
   inactiveMaterial: {fileID: 2100000, guid: 443ee28c99000ef41836537cba7f4121, type: 2}
   target: {fileID: 0}
