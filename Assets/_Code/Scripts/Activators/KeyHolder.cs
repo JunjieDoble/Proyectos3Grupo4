@@ -12,6 +12,10 @@ namespace _Code.Scripts.Activators
         [Header("Key Holder")] 
         [SerializeField] private Transform socket;
         [SerializeField] private HoldableType acceptedType = HoldableType.Key;
+        [SerializeField]
+        private FMODUnity.EventReference activationSound;
+        [SerializeField]
+        private FMODUnity.EventReference deactivationSound;
 
         private HoldablePickup _heldKey;
 
@@ -45,6 +49,10 @@ namespace _Code.Scripts.Activators
                 _heldKey.Interact(playerInteractor);
                 playerInteractor.CurrentPickupable = _heldKey;
                 _heldKey = null;
+                if (!deactivationSound.IsNull)
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot(deactivationSound, transform.position);
+                }
             }
             else
             {
@@ -53,6 +61,10 @@ namespace _Code.Scripts.Activators
                 playerInteractor.CurrentPickupable.Interact(this);
                 _heldKey = playerInteractor.CurrentPickupable;                
                 playerInteractor.CurrentPickupable = null;
+                if (!activationSound.IsNull)
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot(activationSound, transform.position);
+                }
             }
             SetActive(_heldKey != null);
         }

@@ -8,6 +8,10 @@ using UnityEngine;
 namespace _Code.Scripts.CheckPoint
 {
     public class Checkpoint : MonoBehaviour, IInteractable {
+        [SerializeField]
+        private FMODUnity.EventReference interactionSound;
+        [SerializeField]
+        private FMODUnity.EventReference respawnSound;
         public static Action OnCheckpointChange;
         private static Checkpoint CurrentCheckpoint { get; set; }
         private Vector3 _spawnPosition;
@@ -27,12 +31,20 @@ namespace _Code.Scripts.CheckPoint
                 CurrentCheckpoint = this;
                 _spawnPosition = playerInteractor.Transform.position;
                 _player = playerInteractor.GetComponent<Player>();
+                if (!interactionSound.IsNull)
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot(interactionSound, transform.position);
+                }
             }
         }
 
         public static void RespawnPlayer() {
             if (CurrentCheckpoint == null) return;
             CurrentCheckpoint._player.Revive(CurrentCheckpoint._spawnPosition);
+            if (!CurrentCheckpoint.respawnSound.IsNull)
+            {
+                FMODUnity.RuntimeManager.PlayOneShot(CurrentCheckpoint.respawnSound, CurrentCheckpoint.transform.position);
+            }
             Debug.Log("Respawned player at " + CurrentCheckpoint._spawnPosition);
         }
 
@@ -42,9 +54,7 @@ namespace _Code.Scripts.CheckPoint
             CurrentCheckpoint = this;
             _spawnPosition = this.transform.position;
             _player = other.GetComponent<Player>();
-            
             Debug.Log("New checkpoint at " + _spawnPosition);
-    
         }
     }
 }
