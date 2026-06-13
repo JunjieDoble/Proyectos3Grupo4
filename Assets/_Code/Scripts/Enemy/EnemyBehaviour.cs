@@ -18,8 +18,6 @@ namespace _Code.Scripts.Enemy
         [Header("Enemy Parameters")]
         [SerializeField] private EnemyParameters enemyParameters;
         [SerializeField] private Transform headTransform;
-        [SerializeField] private Transform spineMidBoneTransform;
-        [SerializeField] private Transform headBoneTransform;
     
         [Header("Patrol Settings")]
         [SerializeField] private GameObject[] patrolPoints;

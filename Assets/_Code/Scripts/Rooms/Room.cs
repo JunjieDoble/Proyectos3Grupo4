@@ -53,7 +53,7 @@ namespace _Code.Scripts.Rooms
         {
             _targetRotation = _originalRotation;
             StartRotation();
-            EndRotation(_originalRotation);
+            //EndRotation(_originalRotation);
         }
         
         void UpdateOrigin()

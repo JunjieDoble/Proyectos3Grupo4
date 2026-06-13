@@ -9,7 +9,6 @@ namespace Rooms
     public class RoomRotator : MonoBehaviour, IHoldInteractable, ILockable
     {
         [SerializeField] private Room targetRoom;
-        [SerializeField] private float rotationCooldown = 1.5f;
         [SerializeField] private MeshFilter hologramTarget;
         [SerializeField] private bool saveHologramMeshAsset;
         [SerializeField]
