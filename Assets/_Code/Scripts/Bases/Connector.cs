@@ -52,7 +52,7 @@ namespace _Code.Scripts.Bases
 
         protected virtual bool CheckHit(Collider hit)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         protected void Connect()
