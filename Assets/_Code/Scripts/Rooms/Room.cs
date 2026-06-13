@@ -51,9 +51,9 @@ namespace _Code.Scripts.Rooms
         
         void ResetRoom()
         {
-            _targetRotation = _originalRotation;
-            StartRotation();
-            //EndRotation(_originalRotation);
+            _targetRotation = _originalRotation; 
+            _walls.ForEach(wall => wall.OnRoomRotationStarted());
+            EndRotation(_originalRotation);
         }
         
         void UpdateOrigin()
