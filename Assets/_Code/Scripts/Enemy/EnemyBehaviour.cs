@@ -7,7 +7,7 @@ namespace _Code.Scripts.Enemy
 {
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(NavMeshAgent))]
-    public class EnemyBehaviour : MonoBehaviour, IEnemy, IInteractable
+    public class EnemyBehaviour : MonoBehaviour, IEnemy
     {
         private static readonly int SeePlayer = Animator.StringToHash("SeePlayer");
         private static readonly int ToPlayer = Animator.StringToHash("DistanceToPlayer");
@@ -44,8 +44,7 @@ namespace _Code.Scripts.Enemy
         private void OnEnable() => Player.OnPlayerDied += PlayerDied;
         private void OnDisable() => Player.OnPlayerDied -= PlayerDied;
         private void PlayerDied() => _animator.SetBool(PlayerDead, true);
-    
-        public void Interact(IInteractor interactor) => KillEnemy();
+        
         public void SetDeathZoneActive(bool active) => _deathZone?.gameObject.SetActive(active);
 
         public GameObject[] GetPatrolPoints() => patrolPoints;

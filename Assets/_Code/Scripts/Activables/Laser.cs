@@ -8,11 +8,16 @@ namespace _Code.Scripts.Activables
         
         [Header("References")]
         [SerializeField] private GameObject laser;
+        
+        private bool _isActive;
 
         public override bool IsActive() => activators.Count == 0 || activators.Exists(a => !a.IsActive);
 
         public override void ActivatorUpdate()
         {
+            if (_isActive == IsActive()) return;
+            _isActive = IsActive();
+            PlayStateSound(_isActive);
             laser.SetActive(IsActive());
         }
     }

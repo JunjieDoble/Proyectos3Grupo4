@@ -5,8 +5,14 @@ namespace _Code.Scripts.Activables
 {
     public class Door : Activable
     {
+        
+        private bool _isActive;
+        
         public override void ActivatorUpdate()
         {
+            if (_isActive == IsActive()) return;
+            _isActive = IsActive();
+            PlayStateSound(_isActive);
             SetDoorOpen(IsActive());
         }
 

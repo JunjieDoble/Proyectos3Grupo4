@@ -11,8 +11,9 @@ namespace Rooms
         [SerializeField] private Room targetRoom;
         [SerializeField] private float rotationCooldown = 1.5f;
         [SerializeField] private MeshFilter hologramTarget;
-        [SerializeField] private bool saveHologramMeshAsset = false;
-        
+        [SerializeField] private bool saveHologramMeshAsset;
+        [SerializeField]
+        private FMODUnity.EventReference interactionSound;
         
         private IInteractor _currentInteractor;
 
@@ -94,6 +95,10 @@ namespace Rooms
         {
             if (IsLocked()) return;
             OnHoldStarted(interactor);
+            if (!interactionSound.IsNull)
+            {
+                FMODUnity.RuntimeManager.PlayOneShot(interactionSound, transform.position);
+            }
         }
 
         public void OnHoldStarted(IInteractor interactor)
