@@ -11,6 +11,7 @@ namespace _Code.Scripts.Character
         public float crouchSpeed = 2.5f;        
         public float jumpHeight = 2f;
         public float jumpDuration = 0.5f;
+        public float deathHeight = -100f;
         
         [Header("Control")]
         public float airControl = 0.5f;

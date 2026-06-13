@@ -20,10 +20,6 @@ namespace _Code.Scripts.Character
         private bool _crouching;
         private bool _grounded;
         private float _coyoteCounter;
-        
-        public bool IsRunning => _running;
-        public bool IsCrouching => _crouching;
-        public bool IsGrounded => _grounded;
 
         public bool IsEnabled { get; set; }
         
@@ -65,6 +61,15 @@ namespace _Code.Scripts.Character
 
             CollisionFlags collisionFlags = _characterController.Move(movement);
             CheckCollisionFlags(collisionFlags);
+            CheckDeathPosition();
+        }
+
+        private void CheckDeathPosition()
+        {
+            if (transform.position.y < _playerParameters.deathHeight)
+            {
+                GetComponent<Player>()?.Die();
+            }
         }
 
         void LateUpdate()
