@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using _Code.Scripts.Rooms;
+using UnityEngine;
 
 namespace _Code.Scripts.Bases
 {
@@ -13,6 +15,22 @@ namespace _Code.Scripts.Bases
         public Connector OtherConnector => _otherConnector;
         
         protected internal void SetOther(Connector other) => _otherConnector = other;
+
+        private void OnEnable()
+        {
+            Room.OnRoomReset += Reset;
+        }
+        
+        private void OnDisable()
+        {
+            Room.OnRoomReset -= Reset;
+        }       
+        
+        private void Reset()
+        {
+            Disconnect();
+            CheckConnection();
+        }
 
         private void Start()
         {
