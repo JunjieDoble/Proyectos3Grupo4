@@ -11,7 +11,8 @@ namespace _Code.Scripts.Rooms
     {
         public static Action OnStartRotation;
         public static Action OnEndRotation;
-
+        public static Action OnRoomReset;
+        
         [Header("Room Properties")] 
         [SerializeField]
         private float rotationTime = 1.2f;
@@ -51,9 +52,8 @@ namespace _Code.Scripts.Rooms
         
         void ResetRoom()
         {
-            _targetRotation = _originalRotation; 
-            _walls.ForEach(wall => wall.OnRoomRotationStarted());
-            EndRotation(_originalRotation);
+            transform.rotation = _originalRotation;
+            OnRoomReset?.Invoke();
         }
         
         void UpdateOrigin()
