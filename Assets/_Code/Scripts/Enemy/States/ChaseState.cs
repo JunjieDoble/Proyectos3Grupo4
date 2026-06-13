@@ -33,11 +33,13 @@ namespace _Code.Scripts.Enemy.States
             {
                 _agent.isStopped = true;
                 _agent.velocity = Vector3.zero;
+                _enemyBehaviour.RotateBody(false);
             }
             else
             {
                 _agent.isStopped = false;
                 _agent.SetDestination(_enemyBehaviour.GetLastPlayerPosition());
+                _enemyBehaviour.RotateBody(true);
             }
             _enemyBehaviour.RotateTowards(_enemyBehaviour.GetLastPlayerPosition());
         }
@@ -46,6 +48,7 @@ namespace _Code.Scripts.Enemy.States
         {
             _enemyBehaviour.SetDeathZoneActive(false);
             animator.SetBool(Search, true);
+            _enemyBehaviour.RotateBody(false);
         }
     }
 }

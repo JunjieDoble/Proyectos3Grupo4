@@ -66,15 +66,32 @@ namespace _Code.Scripts.Interactions
             if (!IsEnabled) return;
             if (context.canceled && _currentPickupable != null)
             {
+                if (!CheckValidDrop()) return;
                 _currentPickupable.Drop();
                 _currentPickupable = null;
                 return;
             }
             if (context.performed && _currentPickupable != null)
             {
+                if (!CheckValidDrop()) return;
                 _currentPickupable.Throw(viewOrigin.forward * 10f);
                 _currentPickupable = null;
             }
+        }
+
+        private bool CheckValidDrop()
+        {
+            if (_currentPickupable == null) return false;
+            Ray ray = new Ray(viewOrigin.position, viewOrigin.forward);
+            if (Physics.Raycast(ray, out var hit, _playerParameters.throwCheckDistance, interactableMask))
+            {
+                if (hit.collider.GetComponentInParent<IInteractable>() != null)
+                {
+                    Debug.Log("Cannot throw, object in the way");
+                    return false;
+                }
+            }
+            return true;
         }
 
         private bool TryRaycastInteract()
