@@ -11,6 +11,8 @@ namespace _Code.Scripts.Activables
         [SerializeField] private Material activeMaterial;
         [SerializeField] private Material inactiveMaterial;
         
+        private bool _isActive;
+        
         private void Awake()
         {
             if (!buttonObject) buttonObject = gameObject;
@@ -19,6 +21,9 @@ namespace _Code.Scripts.Activables
 
         public override void ActivatorUpdate()
         {
+            if (_isActive == IsActive()) return;
+            _isActive = IsActive();
+            PlayStateSound(_isActive);
             if (IsActive()) PressButton();
             else ReleaseButton();
         }
