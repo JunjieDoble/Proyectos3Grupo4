@@ -33,6 +33,7 @@ namespace _Code.Scripts.Character
         
          [Header("Interactor")]
          public float interactionDistance = 3f;
+         public float throwCheckDistance = 1f;
 
          [Header("Audio")]
          public float airNoiseRadius = 3f;

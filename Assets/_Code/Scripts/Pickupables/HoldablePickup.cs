@@ -1,7 +1,6 @@
 ﻿using _Code.Scripts.CheckPoint;
 using _Code.Scripts.Enemy;
 using _Code.Scripts.Gameplay;
-using _Code.Scripts.Interactions;
 using _Code.Scripts.Rooms;
 using Interactions;
 using UnityEngine;
@@ -23,6 +22,7 @@ namespace _Code.Scripts.Pickupables
         private Quaternion _originalRotation;
 
         private int _originalLayerMask;
+        private float _searchForParentTimer;
 
         public HoldableType HoldableType => holdableType;
         
@@ -59,6 +59,11 @@ namespace _Code.Scripts.Pickupables
 
         private void FindParent()
         {
+            if (_searchForParentTimer > 0)
+            {
+                _searchForParentTimer -= Time.fixedDeltaTime;
+                return;
+            }
             if (!_rigidbody) return;
             if (_isHolding) return;
             if (transform.parent) return;
@@ -99,6 +104,7 @@ namespace _Code.Scripts.Pickupables
             _rigidbody.useGravity = true;
             _isHolding = false;
             gameObject.layer = _originalLayerMask;
+            _searchForParentTimer = 0.5f;
         }
 
         public void Throw(Vector3 force)
