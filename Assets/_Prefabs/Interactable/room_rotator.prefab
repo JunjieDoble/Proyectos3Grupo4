@@ -20,7 +20,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 1
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4235234846765831022
 Transform:
@@ -150,9 +150,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rooms.RoomRotator
   targetRoom: {fileID: 0}
-  rotationCooldown: 1.5
   hologramTarget: {fileID: 0}
-  saveHologramMeshAsset: 0
+  saveHologramMeshAsset: 1
+  interactionSound:
+    Guid:
+      Data1: 313798453
+      Data2: 1255003557
+      Data3: -2006830934
+      Data4: -598588298
+    Path: event:/Rotation
+  completionSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!65 &2101095681764294145
 BoxCollider:
   m_ObjectHideFlags: 0

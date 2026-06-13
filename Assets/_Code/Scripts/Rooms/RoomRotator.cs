@@ -9,11 +9,13 @@ namespace Rooms
     public class RoomRotator : MonoBehaviour, IHoldInteractable, ILockable
     {
         [SerializeField] private Room targetRoom;
-        [SerializeField] private float rotationCooldown = 1.5f;
         [SerializeField] private MeshFilter hologramTarget;
         [SerializeField] private bool saveHologramMeshAsset;
         [SerializeField]
         private FMODUnity.EventReference interactionSound;
+        [SerializeField]
+        private FMODUnity.EventReference completionSound;
+        private FMOD.Studio.EventInstance _interactionSoundInstance;
         
         private IInteractor _currentInteractor;
 
@@ -97,7 +99,10 @@ namespace Rooms
             OnHoldStarted(interactor);
             if (!interactionSound.IsNull)
             {
-                FMODUnity.RuntimeManager.PlayOneShot(interactionSound, transform.position);
+                this._interactionSoundInstance = FMODUnity.RuntimeManager.CreateInstance(interactionSound);
+                this._interactionSoundInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
+                FMOD.Studio.Bus masterBus = FMODUnity.RuntimeManager.GetBus("bus:/");
+                this._interactionSoundInstance.start();
             }
         }
 
@@ -116,6 +121,14 @@ namespace Rooms
             targetRoom?.CancelRotate();
 
             _currentInteractor = null;
+            
+            
+            if (this._interactionSoundInstance.isValid())
+            {
+                this._interactionSoundInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                this._interactionSoundInstance.release();
+            }
+            
         }
 
         public void OnHoldCompleted(IInteractor interactor)
@@ -123,6 +136,17 @@ namespace Rooms
             if (_currentInteractor != null && _currentInteractor != interactor) return;
 
             _currentInteractor = null;
+            
+            if (this._interactionSoundInstance.isValid())
+            {
+                this._interactionSoundInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                this._interactionSoundInstance.release();
+            }
+            if (!completionSound.IsNull)
+            {
+                FMODUnity.RuntimeManager.PlayOneShot(completionSound, transform.position);
+            }
+            
         }
 
         public bool IsLocked()

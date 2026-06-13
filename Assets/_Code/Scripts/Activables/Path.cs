@@ -35,7 +35,6 @@ namespace _Code.Scripts.Activables
         
         public override void ActivatorUpdate()
         {
-            if (_isActive == IsActive()) return;
             PlayStateSound(IsActive());
             _isActive = IsActive();
 
