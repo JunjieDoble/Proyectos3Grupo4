@@ -178,7 +178,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 10231
+    m_Bits: 2039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: cc2879c3996d14948a4d6ef450ff77b7, type: 2}
   m_TargetDisplay: 0
@@ -807,13 +807,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5023892815083003302}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.8373192, y: 0.34682897, z: 0.161729, w: -0.39044833}
-  m_LocalPosition: {x: 0.423, y: -0.36, z: 0.774}
+  m_LocalRotation: {x: 0.79151875, y: 0.5072692, z: -0.11122323, w: -0.32218865}
+  m_LocalPosition: {x: 0.43452507, y: -0.35215044, z: 1.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4469663929358455670}
-  m_LocalEulerAnglesHint: {x: 230, y: 0, z: -45}
+  m_LocalEulerAnglesHint: {x: 203.403, y: 33.231995, z: -72.384}
 --- !u!1 &5747956447751248614
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,7 +830,6 @@ GameObject:
   - component: {fileID: 3495040407503735536}
   - component: {fileID: 2963254709656132882}
   - component: {fileID: 8638280349087719594}
-  - component: {fileID: 5329034194111529345}
   - component: {fileID: 3423802248107404508}
   - component: {fileID: 1939197106175274975}
   m_Layer: 3
@@ -1188,27 +1187,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Character.Player
   playerParameters: {fileID: 11400000, guid: b06daa5a65788f547b5f485a5a448eea, type: 2}
---- !u!65 &5329034194111529345
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5747956447751248614}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 1
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 2.1130695, z: 1}
-  m_Center: {x: 0, y: -0.056534708, z: 0}
 --- !u!114 &3423802248107404508
 MonoBehaviour:
   m_ObjectHideFlags: 0
