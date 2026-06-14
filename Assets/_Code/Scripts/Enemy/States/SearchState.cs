@@ -38,7 +38,7 @@ namespace _Code.Scripts.Enemy.States
             _pointsCheckedCount = 0;
             _actionTimer = 0f;
             _isWaiting = false;
-            _enemyBehaviour.SetFOVColor(Color.yellow);
+            _enemyBehaviour.SetFOVColor(Color.orange);
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
