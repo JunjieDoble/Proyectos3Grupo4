@@ -5,8 +5,6 @@ namespace _Code.Scripts.Enemy.States
 {
     public class AlertState : StateMachineBehaviour
     {
-        private static readonly int Alert = Animator.StringToHash("Alert");
-        private static readonly int Search = Animator.StringToHash("Search");
         private NavMeshAgent _agent;
         private EnemyBehaviour _enemyBehaviour;
         private Vector3 _lastAlertPosition;
@@ -23,7 +21,7 @@ namespace _Code.Scripts.Enemy.States
             
             _lastAlertPosition = _enemyBehaviour.GetLastAlertPosition();
             _agent.SetDestination(_lastAlertPosition);
-            animator.SetBool(Search, false);
+            animator.SetBool(EnemyAnimatorFields.Search, false);
             _enemyBehaviour.SetFOVColor(Color.yellow);
         }
 
@@ -44,8 +42,8 @@ namespace _Code.Scripts.Enemy.States
             
             if (Vector3.Distance(_agent.transform.position, _lastAlertPosition) < 1.5f || _timer >= _enemyBehaviour.GetAlertTimeout())
             {
-                animator.SetBool(Alert, false);
-                animator.SetBool(Search, true);
+                animator.SetBool(EnemyAnimatorFields.Alert, false);
+                animator.SetBool(EnemyAnimatorFields.Search, true);
             }
         }
     }

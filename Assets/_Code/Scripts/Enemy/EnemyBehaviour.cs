@@ -10,12 +10,6 @@ namespace _Code.Scripts.Enemy
     [RequireComponent(typeof(NavMeshAgent))]
     public class EnemyBehaviour : MonoBehaviour, IEnemy
     {
-        private static readonly int SeePlayer = Animator.StringToHash("SeePlayer");
-        private static readonly int ToPlayer = Animator.StringToHash("DistanceToPlayer");
-        private static readonly int Alert = Animator.StringToHash("Alert");
-        private static readonly int PlayerDead = Animator.StringToHash("PlayerDead");
-        private static readonly int Speed = Animator.StringToHash("Speed");
-
         [Header("Enemy Parameters")]
         [SerializeField] private EnemyParameters enemyParameters;
         [SerializeField] private Transform headTransform;
@@ -40,7 +34,7 @@ namespace _Code.Scripts.Enemy
 
         private void OnEnable() => Player.OnPlayerDied += PlayerDied;
         private void OnDisable() => Player.OnPlayerDied -= PlayerDied;
-        private void PlayerDied() => _animator.SetBool(PlayerDead, true);
+        private void PlayerDied() => _animator.SetBool(EnemyAnimatorFields.PlayerDead, true);
         
         public void SetDeathZoneActive(bool active) => _deathZone?.gameObject.SetActive(active);
 
@@ -95,7 +89,7 @@ namespace _Code.Scripts.Enemy
             {
                 normalized = patrolNormalizedSpeed / 2;
             }
-            _animator.SetFloat(Speed, Mathf.Clamp01(normalized));
+            _animator.SetFloat(EnemyAnimatorFields.Speed, Mathf.Clamp01(normalized));
         }
 
         private bool PlayerAvailable()
@@ -110,7 +104,7 @@ namespace _Code.Scripts.Enemy
         {
             if (!PlayerAvailable()) return;
         
-            _animator.SetFloat(ToPlayer, DistanceToPlayer());
+            _animator.SetFloat(EnemyAnimatorFields.ToPlayer, DistanceToPlayer());
 
             Vector3 directionToPlayer = (_player.transform.position - _headTransform.position).normalized;
             float angleToPlayer = Vector3.Angle(_headTransform.forward, directionToPlayer);
@@ -119,13 +113,13 @@ namespace _Code.Scripts.Enemy
             {
                 if (!Physics.Linecast(_headTransform.position, _player.transform.position, enemyParameters.obstacleMask))
                 {
-                    _animator.SetBool(SeePlayer, true);
+                    _animator.SetBool(EnemyAnimatorFields.SeePlayer, true);
                     SetLastPlayerPosition(_player.transform.position);
                     return;
                 }
             }
 
-            _animator.SetBool(SeePlayer, false);
+            _animator.SetBool(EnemyAnimatorFields.SeePlayer, false);
         }
 
         public void SetFOVColor(Color color)
@@ -155,7 +149,8 @@ namespace _Code.Scripts.Enemy
         public void AlertEnemy(Vector3 alertPosition)
         {
             _lastAlertPosition = alertPosition;
-            _animator.SetBool(Alert, true);
+            _animator.SetBool(EnemyAnimatorFields.Alert, true);
+            _animator.SetBool(EnemyAnimatorFields.Search, false);
         }
     
         public void InteractWithInteractable(InteractPoint interactPoint)
