@@ -45,7 +45,7 @@ ModelImporter:
     importLights: 1
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
-    swapUVChannels: 0
+    swapUVChannels: 1
     generateSecondaryUV: 1
     useFileUnits: 1
     keepQuads: 0
@@ -65,19 +65,19 @@ ModelImporter:
     secondaryUVAreaDistortion: 15
     secondaryUVHardAngle: 88
     secondaryUVMarginMethod: 0
-    secondaryUVMinLightmapResolution: 24
+    secondaryUVMinLightmapResolution: 20
     secondaryUVMinObjectScale: 1
-    secondaryUVPackMargin: 10
+    secondaryUVPackMargin: 8
     useFileScale: 1
     strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 0
+    normalImportMode: 1
     tangentImportMode: 3
-    normalCalculationMode: 4
+    normalCalculationMode: 0
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
-    blendShapeNormalImportMode: 1
-    normalSmoothingSource: 0
+    blendShapeNormalImportMode: 2
+    normalSmoothingSource: 2
   referencedClips: []
   importAnimation: 1
   humanDescription:
