@@ -10,12 +10,6 @@ namespace _Code.Scripts.Enemy
     [RequireComponent(typeof(NavMeshAgent))]
     public class EnemyBehaviour : MonoBehaviour, IEnemy
     {
-        private static readonly int SeePlayer = Animator.StringToHash("SeePlayer");
-        private static readonly int ToPlayer = Animator.StringToHash("DistanceToPlayer");
-        private static readonly int Alert = Animator.StringToHash("Alert");
-        private static readonly int PlayerDead = Animator.StringToHash("PlayerDead");
-        private static readonly int Speed = Animator.StringToHash("Speed");
-
         [Header("Enemy Parameters")]
         [SerializeField] private EnemyParameters enemyParameters;
         [SerializeField] private Transform headTransform;
@@ -36,13 +30,11 @@ namespace _Code.Scripts.Enemy
         private Transform _headTransform;
         private Light _fovLight;
         private NavMeshAgent _agent;
-    
-        public GameObject drop;
         private bool _rotateBody;
 
         private void OnEnable() => Player.OnPlayerDied += PlayerDied;
         private void OnDisable() => Player.OnPlayerDied -= PlayerDied;
-        private void PlayerDied() => _animator.SetBool(PlayerDead, true);
+        private void PlayerDied() => _animator.SetBool(EnemyAnimatorFields.PlayerDead, true);
         
         public void SetDeathZoneActive(bool active) => _deathZone?.gameObject.SetActive(active);
 
@@ -77,7 +69,27 @@ namespace _Code.Scripts.Enemy
             if (_isDead) return;
             DistanceAndVisionToPlayer();
             HearPlayer();
-            _animator?.SetFloat(Speed, _agent?.velocity.magnitude ?? 0);
+            UpdateVelocity();
+        }
+
+        private void UpdateVelocity()
+        {
+            if (!_agent) return;
+            var velocityX = _agent.velocity.x;
+            var velocityZ = _agent.velocity.z;
+            var speed = new Vector2(velocityX, velocityZ).magnitude;
+            var patrolNormalizedSpeed = speed / enemyParameters.speed;
+            float normalized;
+            if (patrolNormalizedSpeed > 1)
+            {
+                normalized = (speed-enemyParameters.speed) / (enemyParameters.chaseSpeed-enemyParameters.speed)/2 + 0.5f;
+                
+            }
+            else
+            {
+                normalized = patrolNormalizedSpeed / 2;
+            }
+            _animator.SetFloat(EnemyAnimatorFields.Speed, Mathf.Clamp01(normalized));
         }
 
         private bool PlayerAvailable()
@@ -92,7 +104,7 @@ namespace _Code.Scripts.Enemy
         {
             if (!PlayerAvailable()) return;
         
-            _animator.SetFloat(ToPlayer, DistanceToPlayer());
+            _animator.SetFloat(EnemyAnimatorFields.ToPlayer, DistanceToPlayer());
 
             Vector3 directionToPlayer = (_player.transform.position - _headTransform.position).normalized;
             float angleToPlayer = Vector3.Angle(_headTransform.forward, directionToPlayer);
@@ -101,29 +113,26 @@ namespace _Code.Scripts.Enemy
             {
                 if (!Physics.Linecast(_headTransform.position, _player.transform.position, enemyParameters.obstacleMask))
                 {
-                    _animator.SetBool(SeePlayer, true);
+                    _animator.SetBool(EnemyAnimatorFields.SeePlayer, true);
                     SetLastPlayerPosition(_player.transform.position);
-                    _gizmosColor = Color.red;
-                    _fovLight.color = Color.red;
                     return;
                 }
             }
 
-            _animator.SetBool(SeePlayer, false);
-            _gizmosColor = Color.green;
-            _fovLight.color = Color.green;
+            _animator.SetBool(EnemyAnimatorFields.SeePlayer, false);
         }
+
+        public void SetFOVColor(Color color)
+        {
+            _fovLight.color = color;
+            _gizmosColor = color;
+        }
+        
         private void HearPlayer()
         {
             if (!PlayerAvailable()) return;
             MovementController playerMovement = _player.GetComponent<MovementController>();
             ListenForSound(_player.transform.position, playerMovement?.GetCurrentNoiseRadius() ?? 0f);
-        }
-    
-
-        public void KillEnemy()
-        {
-        
         }
 
         public void ListenForSound(Vector3 soundPosition, float noiseRadius)
@@ -140,7 +149,8 @@ namespace _Code.Scripts.Enemy
         public void AlertEnemy(Vector3 alertPosition)
         {
             _lastAlertPosition = alertPosition;
-            _animator.SetBool(Alert, true);
+            _animator.SetBool(EnemyAnimatorFields.Alert, true);
+            _animator.SetBool(EnemyAnimatorFields.Search, false);
         }
     
         public void InteractWithInteractable(InteractPoint interactPoint)

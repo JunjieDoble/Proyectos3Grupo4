@@ -5,7 +5,6 @@ namespace _Code.Scripts.Enemy.States
 {
     public class IdleState : StateMachineBehaviour
     {
-        private static readonly int ReachedPoint = Animator.StringToHash("ReachedPoint");
         private NavMeshAgent _agent;
         private EnemyBehaviour _enemyBehaviour;
         private float _time;
@@ -16,6 +15,7 @@ namespace _Code.Scripts.Enemy.States
             _enemyBehaviour = animator.transform.GetComponent<EnemyBehaviour>();
             _time = 0f;
             _agent.isStopped = true;
+            _enemyBehaviour.SetFOVColor(Color.green);
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -23,7 +23,7 @@ namespace _Code.Scripts.Enemy.States
             _time += Time.deltaTime;
             if (_time >= _enemyBehaviour.GetIdleTime())
             {
-                animator.SetBool(ReachedPoint, false);
+                animator.SetBool(EnemyAnimatorFields.ReachedPoint, false);
                 _time = 0f;
             }
         

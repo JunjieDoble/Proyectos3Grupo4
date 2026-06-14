@@ -5,8 +5,6 @@ namespace _Code.Scripts.Enemy.States
 {
     public class SearchState : StateMachineBehaviour
     {
-        private static readonly int Search = Animator.StringToHash("Search");
-        
         private NavMeshAgent _agent;
         private EnemyBehaviour _enemyBehaviour;
         private Vector3 _searchCenterPosition;
@@ -38,6 +36,7 @@ namespace _Code.Scripts.Enemy.States
             _pointsCheckedCount = 0;
             _actionTimer = 0f;
             _isWaiting = false;
+            _enemyBehaviour.SetFOVColor(Color.orange);
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -100,12 +99,12 @@ namespace _Code.Scripts.Enemy.States
         private void ExitSearchState(Animator animator)
         {
             if (_agent != null) _agent.isStopped = true;
-            animator.SetBool(Search, false);
+            animator.SetBool(EnemyAnimatorFields.Search, false);
         }
 
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            animator.SetBool(Search, false);
+            animator.SetBool(EnemyAnimatorFields.Search, false);
         }
     }
 }
