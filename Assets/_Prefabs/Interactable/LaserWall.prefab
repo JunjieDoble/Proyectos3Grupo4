@@ -206,48 +206,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6048653679180122250, guid: 138829a375928b7449ddb3eafb838537, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1979186965301234887}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 138829a375928b7449ddb3eafb838537, type: 3}
 --- !u!4 &1652874474667964890 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6393689620975211056, guid: 138829a375928b7449ddb3eafb838537, type: 3}
   m_PrefabInstance: {fileID: 5641535089519143914}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2142552610179425120 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6048653679180122250, guid: 138829a375928b7449ddb3eafb838537, type: 3}
-  m_PrefabInstance: {fileID: 5641535089519143914}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1979186965301234887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2142552610179425120}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b55bdbe93c64c74aab0b527e64dc251, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Activables.Laser
-  activationSound:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  deactivationSound:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  laser: {fileID: 2142552610179425120}
 --- !u!1001 &7601291900852865456
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -315,48 +280,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6048653679180122250, guid: 138829a375928b7449ddb3eafb838537, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6967970944493949802}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 138829a375928b7449ddb3eafb838537, type: 3}
 --- !u!4 &3587051545460988800 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6393689620975211056, guid: 138829a375928b7449ddb3eafb838537, type: 3}
   m_PrefabInstance: {fileID: 7601291900852865456}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &4218769820508193082 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6048653679180122250, guid: 138829a375928b7449ddb3eafb838537, type: 3}
-  m_PrefabInstance: {fileID: 7601291900852865456}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6967970944493949802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4218769820508193082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b55bdbe93c64c74aab0b527e64dc251, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Activables.Laser
-  activationSound:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  deactivationSound:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  laser: {fileID: 4218769820508193082}
 --- !u!1001 &8244522468154701788
 PrefabInstance:
   m_ObjectHideFlags: 0
