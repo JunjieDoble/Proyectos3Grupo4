@@ -412,6 +412,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Activators.Key
   activables:
   - {fileID: 6590055602248142838}
+  activationSound:
+    Guid:
+      Data1: -3184868
+      Data2: 1304622893
+      Data3: -1928370245
+      Data4: -1279567779
+    Path: event:/Path Connectat
+  deactivationSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!95 &320702967087110833
 Animator:
   serializedVersion: 7
@@ -446,6 +460,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cc1f5c12f164e57a190cf5af65d601b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Activables.AnimationToggle
+  activationSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  deactivationSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!4 &3328362539348857207 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: da4e46ca465126443ac32bc37d86ed0f, type: 3}
