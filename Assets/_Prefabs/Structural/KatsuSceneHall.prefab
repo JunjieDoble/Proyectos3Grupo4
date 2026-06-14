@@ -51,8 +51,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Activators.Connectors.HallConnector
   activables: []
-  checkCenter: {x: 0, y: 2, z: 12}
-  checkHalfExtents: {x: 2, y: 2, z: 1}
+  checkCenter: {x: 0, y: 2.12, z: 12}
+  checkHalfExtents: {x: 1, y: 2, z: 1}
   layerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 950793538807049768}
   - component: {fileID: 2973933983779336884}
   - component: {fileID: 2467875366734161939}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
