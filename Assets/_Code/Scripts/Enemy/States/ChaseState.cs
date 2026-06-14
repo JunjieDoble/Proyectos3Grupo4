@@ -23,6 +23,7 @@ namespace _Code.Scripts.Enemy.States
 
             animator.SetBool(Alert, false);
             animator.SetBool(Search, false);
+            _enemyBehaviour.SetFOVColor(Color.red);
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

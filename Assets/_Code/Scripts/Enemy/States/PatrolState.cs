@@ -30,6 +30,7 @@ namespace _Code.Scripts.Enemy.States
             _pointReached = false;
             _agent.speed = _enemyBehaviour.GetSpeed();
             _agent.stoppingDistance = 1f;
+            _enemyBehaviour.SetFOVColor(Color.green);
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

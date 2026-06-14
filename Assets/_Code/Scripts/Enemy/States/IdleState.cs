@@ -16,6 +16,7 @@ namespace _Code.Scripts.Enemy.States
             _enemyBehaviour = animator.transform.GetComponent<EnemyBehaviour>();
             _time = 0f;
             _agent.isStopped = true;
+            _enemyBehaviour.SetFOVColor(Color.green);
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

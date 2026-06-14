@@ -24,6 +24,7 @@ namespace _Code.Scripts.Enemy.States
             _lastAlertPosition = _enemyBehaviour.GetLastAlertPosition();
             _agent.SetDestination(_lastAlertPosition);
             animator.SetBool(Search, false);
+            _enemyBehaviour.SetFOVColor(Color.yellow);
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

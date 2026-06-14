@@ -36,8 +36,6 @@ namespace _Code.Scripts.Enemy
         private Transform _headTransform;
         private Light _fovLight;
         private NavMeshAgent _agent;
-    
-        public GameObject drop;
         private bool _rotateBody;
 
         private void OnEnable() => Player.OnPlayerDied += PlayerDied;
@@ -77,7 +75,27 @@ namespace _Code.Scripts.Enemy
             if (_isDead) return;
             DistanceAndVisionToPlayer();
             HearPlayer();
-            _animator?.SetFloat(Speed, _agent?.velocity.magnitude ?? 0);
+            UpdateVelocity();
+        }
+
+        private void UpdateVelocity()
+        {
+            if (!_agent) return;
+            var velocityX = _agent.velocity.x;
+            var velocityZ = _agent.velocity.z;
+            var speed = new Vector2(velocityX, velocityZ).magnitude;
+            var patrolNormalizedSpeed = speed / enemyParameters.speed;
+            float normalized;
+            if (patrolNormalizedSpeed > 1)
+            {
+                normalized = (speed-enemyParameters.speed) / (enemyParameters.chaseSpeed-enemyParameters.speed)/2 + 0.5f;
+                
+            }
+            else
+            {
+                normalized = patrolNormalizedSpeed / 2;
+            }
+            _animator.SetFloat(Speed, Mathf.Clamp01(normalized));
         }
 
         private bool PlayerAvailable()
@@ -103,27 +121,24 @@ namespace _Code.Scripts.Enemy
                 {
                     _animator.SetBool(SeePlayer, true);
                     SetLastPlayerPosition(_player.transform.position);
-                    _gizmosColor = Color.red;
-                    _fovLight.color = Color.red;
                     return;
                 }
             }
 
             _animator.SetBool(SeePlayer, false);
-            _gizmosColor = Color.green;
-            _fovLight.color = Color.green;
         }
+
+        public void SetFOVColor(Color color)
+        {
+            _fovLight.color = color;
+            _gizmosColor = color;
+        }
+        
         private void HearPlayer()
         {
             if (!PlayerAvailable()) return;
             MovementController playerMovement = _player.GetComponent<MovementController>();
             ListenForSound(_player.transform.position, playerMovement?.GetCurrentNoiseRadius() ?? 0f);
-        }
-    
-
-        public void KillEnemy()
-        {
-        
         }
 
         public void ListenForSound(Vector3 soundPosition, float noiseRadius)
