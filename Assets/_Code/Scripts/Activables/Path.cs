@@ -11,8 +11,8 @@ namespace _Code.Scripts.Activables
         [Header("References")]
         [SerializeField] private Material activeMaterial;
         [SerializeField] private Material inactiveMaterial;
-        [SerializeField] [ItemCanBeNull] private List<Activable> target;
-        private List<MeshRenderer> pathMeshRenderers;
+        [SerializeField] [ItemCanBeNull] private List<Activable> target = new();
+        private List<MeshRenderer> pathMeshRenderers = new();
         
         private bool _isActive;
         public override bool IsActive()
@@ -31,7 +31,8 @@ namespace _Code.Scripts.Activables
 
         private void Start()
         {
-            if (target.Count > 0 && activators.Count > 0) activators.ForEach(a => target.ForEach(t => t.AddActivator(a)));
+            if (target.Count > 0 && activators.Count > 0) 
+                target.ForEach(a => activators.ForEach(a.AddActivator));
         }
         
         public override void ActivatorUpdate()

@@ -35,7 +35,7 @@ namespace _Code.Scripts.Interactions
         public void OnPlayerRespawn(Vector3 _)
         {
             _currentPickupable?.Reset();
-            _currentInteractable = null;
+            ClearInteractable();
             _currentPickupable = null;
         }
         
@@ -53,10 +53,16 @@ namespace _Code.Scripts.Interactions
             GetComponent<Player>()?.AddController(this);
         }
 
+        void FixedUpdate()
+        {
+            if (!IsEnabled) return;
+            TryRaycastInteract();
+        }
+
         public void OnInteract(InputAction.CallbackContext context)
         {
             if (!IsEnabled) return;
-            if (context.started && TryRaycastInteract()) InteractionStarted();
+            if (context.started && _currentInteractable != null) InteractionStarted();
             if (context.performed && _currentInteractable != null) InteractionPerformed();
             if (context.canceled && _currentInteractable != null) InteractionCanceled();
         }
@@ -94,21 +100,34 @@ namespace _Code.Scripts.Interactions
             return true;
         }
 
-        private bool TryRaycastInteract()
+        private void TryRaycastInteract()
         {
             if (Physics.Raycast(viewOrigin.position, viewOrigin.forward, out var hit, _playerParameters.interactionDistance, interactableMask))
             {
                 var interactable = hit.collider.GetComponentInParent<IInteractable>();
-                if (interactable == null) return false;
+                if (interactable == null)
+                {
+                    ClearInteractable();
+                    return;
+                }
                 _currentInteractable = interactable;
-                return true;
+                _currentInteractable.GameObject.layer = LayerMask.NameToLayer("Outline");
+                return;
             }
-            return false;
+            ClearInteractable();
+        }
+
+        private void ClearInteractable()
+        {
+            if (_currentInteractable != null)
+            {
+                _currentInteractable.GameObject.layer = LayerMask.NameToLayer("Default");
+            }
+            _currentInteractable = null;
         }
 
         private void InteractionStarted()
         {
-            if (_currentInteractable is ILockable lockable && lockable.IsLocked()) return;
             if (_currentInteractable is HoldablePickup holdablePickup)
             {
                 if (_currentPickupable != null) return;
@@ -123,7 +142,7 @@ namespace _Code.Scripts.Interactions
             {
                 holdInteractable.OnHoldCompleted(this);
             }
-            _currentInteractable = null;
+            ClearInteractable();
         }
 
         private void InteractionCanceled()
@@ -132,7 +151,7 @@ namespace _Code.Scripts.Interactions
             {
                 holdInteractable.OnHoldCanceled(this);
             }
-            _currentInteractable = null;
+            ClearInteractable();
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Interactions
+﻿using _Code.Scripts.Interactions;
+
+namespace Interactions
 {
     public interface IHoldInteractable: IInteractable
     {

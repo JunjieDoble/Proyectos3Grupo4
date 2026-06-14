@@ -1,4 +1,5 @@
 ﻿using _Code.Scripts.Character;
+using _Code.Scripts.Interactions;
 using Interactions;
 using UnityEngine;
 using UnityEngine.AI;

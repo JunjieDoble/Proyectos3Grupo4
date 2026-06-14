@@ -1,5 +1,6 @@
 ﻿using System;
 using _Code.Scripts.Gameplay;
+using _Code.Scripts.Interactions;
 using Interactions;
 using UnityEngine;
 using Activator = _Code.Scripts.Bases.Activator;
@@ -14,6 +15,7 @@ namespace _Code.Scripts.Activators
         [SerializeField]
         private FMODUnity.EventReference deactivationSound;
 
+        
         private void OnEnable()
         {
             GameManager.OnPlayerRespawn += DeactivateAll;
@@ -30,6 +32,8 @@ namespace _Code.Scripts.Activators
             _activeTerminal = null;
             onActivatorUpdate?.Invoke();
         }
+
+        public GameObject GameObject => gameObject;
 
         public void Interact(IInteractor interactor)
         {

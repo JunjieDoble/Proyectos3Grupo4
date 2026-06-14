@@ -16,6 +16,8 @@ namespace _Code.Scripts.CheckPoint
         private static Checkpoint CurrentCheckpoint { get; set; }
         private Vector3 _spawnPosition;
         private Player _player;
+        
+        public GameObject GameObject => gameObject;
 
         public void Awake() {
             if (CurrentCheckpoint == null) {

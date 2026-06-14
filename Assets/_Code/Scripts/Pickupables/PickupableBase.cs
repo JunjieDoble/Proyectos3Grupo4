@@ -1,3 +1,4 @@
+using _Code.Scripts.Interactions;
 using Interactions;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ namespace _Code.Scripts.Pickupables
     {
         [SerializeField]
         private FMODUnity.EventReference pickupSound;
-        
+        public GameObject GameObject => gameObject;
         public virtual void Interact(IInteractor interactor)
         {
             PickUp(interactor);

@@ -6,7 +6,7 @@ using UnityEditor;
 
 namespace Rooms
 {
-    public class RoomRotator : MonoBehaviour, IHoldInteractable, ILockable
+    public class RoomRotator : MonoBehaviour, IHoldInteractable
     {
         [SerializeField] private Room targetRoom;
         [SerializeField] private MeshFilter hologramTarget;
@@ -18,7 +18,7 @@ namespace Rooms
         private FMOD.Studio.EventInstance _interactionSoundInstance;
         
         private IInteractor _currentInteractor;
-
+        public GameObject GameObject => gameObject;
         public void Awake()
         {
             if (targetRoom == null) Debug.LogWarning("RoomRotator does not have a targetRoom", this);
@@ -95,14 +95,13 @@ namespace Rooms
 
         public void Interact(IInteractor interactor)
         {
-            if (IsLocked()) return;
             OnHoldStarted(interactor);
             if (!interactionSound.IsNull)
             {
-                this._interactionSoundInstance = FMODUnity.RuntimeManager.CreateInstance(interactionSound);
-                this._interactionSoundInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
-                FMOD.Studio.Bus masterBus = FMODUnity.RuntimeManager.GetBus("bus:/");
-                this._interactionSoundInstance.start();
+                _interactionSoundInstance = FMODUnity.RuntimeManager.CreateInstance(interactionSound);
+                _interactionSoundInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
+                FMODUnity.RuntimeManager.GetBus("bus:/");
+                _interactionSoundInstance.start();
             }
         }
 
@@ -123,10 +122,10 @@ namespace Rooms
             _currentInteractor = null;
             
             
-            if (this._interactionSoundInstance.isValid())
+            if (_interactionSoundInstance.isValid())
             {
-                this._interactionSoundInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-                this._interactionSoundInstance.release();
+                _interactionSoundInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                _interactionSoundInstance.release();
             }
             
         }
@@ -137,31 +136,15 @@ namespace Rooms
 
             _currentInteractor = null;
             
-            if (this._interactionSoundInstance.isValid())
+            if (_interactionSoundInstance.isValid())
             {
-                this._interactionSoundInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-                this._interactionSoundInstance.release();
+                _interactionSoundInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                _interactionSoundInstance.release();
             }
             if (!completionSound.IsNull)
             {
                 FMODUnity.RuntimeManager.PlayOneShot(completionSound, transform.position);
             }
-            
-        }
-
-        public bool IsLocked()
-        {
-            return false;
-        }
-
-        public void Lock()
-        {
-            // TODO: Implement lock
-        }
-
-        public void Unlock()
-        {
-            // TODO: Implement unlock
         }
     }
 }

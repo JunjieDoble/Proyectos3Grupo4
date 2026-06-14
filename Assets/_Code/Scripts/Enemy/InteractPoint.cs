@@ -1,4 +1,5 @@
 ﻿using System;
+using _Code.Scripts.Interactions;
 using Interactions;
 using Unity.VisualScripting;
 using UnityEngine;
