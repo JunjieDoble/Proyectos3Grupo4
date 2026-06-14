@@ -10,6 +10,7 @@ namespace _Code.Scripts.Character
     [DisallowMultipleComponent]
     public class MovementController : MonoBehaviour, IController
     {
+        private static readonly int Speed = Animator.StringToHash("Speed");
         private PlayerParameters _playerParameters;
         private CharacterController _characterController;
         private Vector2 _movementInput;
@@ -20,6 +21,7 @@ namespace _Code.Scripts.Character
         private bool _crouching;
         private bool _grounded;
         private float _coyoteCounter;
+        private Animator _animator;
 
         public bool IsEnabled { get; set; }
         
@@ -30,6 +32,7 @@ namespace _Code.Scripts.Character
             {
                 _playerParameters = ScriptableObject.CreateInstance<PlayerParameters>();
             }
+            _animator = GetComponent<Animator>();
             IsEnabled = false;
             GetComponent<Player>()?.AddController(this);
         }
@@ -76,6 +79,32 @@ namespace _Code.Scripts.Character
         {
             if (!IsEnabled) return;
             SetCharacterHeight();
+            UpdateAnimator();
+        }
+
+        private void UpdateAnimator()
+        {
+            if (!_animator) return;
+            _animator.SetFloat(Speed, CalculateSpeedNormalized());
+        }
+        
+        private float CalculateSpeedNormalized()
+        {
+            var velocityX = _characterController.velocity.x;
+            var velocityZ = _characterController.velocity.z;
+            var speed = new Vector2(velocityX, velocityZ).magnitude;
+            var patrolNormalizedSpeed = speed / _playerParameters.walkSpeed;
+            float normalized;
+            if (patrolNormalizedSpeed > 1)
+            {
+                normalized = (speed-_playerParameters.walkSpeed) / (_playerParameters.runSpeed-_playerParameters.walkSpeed)/2 + 0.5f;
+                
+            }
+            else
+            {
+                normalized = patrolNormalizedSpeed / 2;
+            }
+            return Mathf.Clamp01(normalized);
         }
 
         private void SetCharacterHeight()
