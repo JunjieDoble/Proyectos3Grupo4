@@ -7,7 +7,7 @@ namespace _Code.Scripts.Character
 {
     public class Player : MonoBehaviour, IDie
     {
-
+        public static Player Instance;
         public static Action OnPlayerDied;
 
         [Header("References")]
@@ -27,6 +27,13 @@ namespace _Code.Scripts.Character
         {
             GameManager.OnPause -= DisableControllers;
             GameManager.OnResume -= EnableControllers;
+        }
+
+        public void Awake()
+        {
+            if (Instance != null)
+                Destroy(gameObject);
+            Instance = this;
         }
 
         public void Revive(Vector3 spawnPoint)
