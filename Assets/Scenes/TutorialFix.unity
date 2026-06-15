@@ -29322,7 +29322,7 @@ GameObject:
   m_Component:
   - component: {fileID: 301134412}
   - component: {fileID: 301134413}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88632,7 +88632,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 203d664b3179eb348914cb48aae69321, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: caacaaeb4c35d5d419d5444bdf3b01da, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1001 &838703280
 PrefabInstance:
@@ -97429,6 +97429,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 707479396}
+    - target: {fileID: 2035168898528808023, guid: 83f75d9c2a1491647bcb59a88947091c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2689164698841545538, guid: 83f75d9c2a1491647bcb59a88947091c, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -97457,6 +97461,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 2018628143}
+    - target: {fileID: 5330015830599347881, guid: 83f75d9c2a1491647bcb59a88947091c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5720988109661686367, guid: 83f75d9c2a1491647bcb59a88947091c, type: 3}
       propertyPath: m_Color.b
       value: 0.8078432
@@ -110180,7 +110188,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 73bd3e8bc8e861f4b832be242d0cf353, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 8c9bc7d7f36ed60469641c975bbe23f5, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &1040034486
 GameObject:
@@ -138176,8 +138184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Activators.Connectors.HallConnector
   activables: []
-  checkCenter: {x: 0, y: 5.01, z: -5.3}
-  checkHalfExtents: {x: 4, y: 6, z: 2}
+  checkCenter: {x: 0, y: 11.8, z: -11.96}
+  checkHalfExtents: {x: 4.84, y: 20.1, z: 9.83}
   layerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -204269,6 +204277,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: door_normal_start_2
       objectReference: {fileID: 0}
+    - target: {fileID: 454746452217913913, guid: 7d64882699d6bfd4e88f1cf0536ec866, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 937951389334714499, guid: 7d64882699d6bfd4e88f1cf0536ec866, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -204308,6 +204320,14 @@ PrefabInstance:
     - target: {fileID: 937951389334714499, guid: 7d64882699d6bfd4e88f1cf0536ec866, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3424272304394468609, guid: 7d64882699d6bfd4e88f1cf0536ec866, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6284601351643695804, guid: 7d64882699d6bfd4e88f1cf0536ec866, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1470779416809983755, guid: 27497b960f25614488943797e9d35c29, type: 3}
       propertyPath: m_Mesh
@@ -257602,6 +257622,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1166914497}
+    - target: {fileID: 2035168898528808023, guid: 83f75d9c2a1491647bcb59a88947091c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2634476146205333469, guid: 83f75d9c2a1491647bcb59a88947091c, type: 3}
       propertyPath: m_Type
       value: 0
@@ -257666,6 +257690,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1139962478}
+    - target: {fileID: 5330015830599347881, guid: 83f75d9c2a1491647bcb59a88947091c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5996066615958059223, guid: 83f75d9c2a1491647bcb59a88947091c, type: 3}
       propertyPath: m_Mesh
       value: 
