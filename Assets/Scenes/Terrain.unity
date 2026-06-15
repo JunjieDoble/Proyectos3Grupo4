@@ -93,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000006, guid: 84e06bc7e73b4c84e98cea664a6990f9, type: 2}
+  m_LightingDataAsset: {fileID: 112000006, guid: 91fa508876903a346bf0f8cdcfb3bab8, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -2438,6 +2438,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: fa1738b73ccf38645a2eb01b3d9f3c42, type: 3}
       propertyPath: m_Name
       value: terrain_lowpoly
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fa1738b73ccf38645a2eb01b3d9f3c42, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

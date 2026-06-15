@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
-  m_FogColor: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0, g: 0, b: 0, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.031
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -93,8 +93,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 91fa508876903a346bf0f8cdcfb3bab8, type: 2}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: 8204db4a7ecf4f14a89420883c2f80f5, type: 2}
+  m_LightingDataAsset: {fileID: 112000008, guid: 91fa508876903a346bf0f8cdcfb3bab8, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 301bd7e6162fd1f4085982ad2dc47fe4, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
