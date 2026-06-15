@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3895713266920940413}
   - component: {fileID: 6357475153642532268}
   - component: {fileID: 2101095681764294145}
+  - component: {fileID: 5271902175865568158}
   m_Layer: 6
   m_Name: room_rotator
   m_TagString: Untagged
@@ -153,20 +154,6 @@ MonoBehaviour:
   targetRoom: {fileID: 0}
   hologramTarget: {fileID: 0}
   saveHologramMeshAsset: 0
-  interactionSound:
-    Guid:
-      Data1: 313798453
-      Data2: 1255003557
-      Data3: -2006830934
-      Data4: -598588298
-    Path: event:/Rotation
-  completionSound:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
 --- !u!65 &2101095681764294145
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -188,6 +175,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.6051879, y: 1.4529593, z: 1.6051879}
   m_Center: {x: 0, y: 0.26898682, z: 0}
+--- !u!114 &5271902175865568158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3570583798383184340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1264475921
+      Data2: 1088718259
+      Data3: -1527810410
+      Data4: -632432060
+    Path: event:/Screen Static
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &7570604265261931817
 PrefabInstance:
   m_ObjectHideFlags: 0
