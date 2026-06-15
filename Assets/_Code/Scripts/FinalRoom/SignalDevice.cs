@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _Code.Scripts.Bases;
 using _Code.Scripts.Interactions;
 using Interactions;
@@ -31,6 +32,11 @@ namespace _Code.Scripts.FinalRoom
                 Debug.LogError("SignalDevice is missing required components!");
             }
             _originalLayer = gameObject.layer;
+        }
+
+        private void FixedUpdate()
+        {
+            ActivatorUpdate();
         }
 
         public override void ActivatorUpdate()
