@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using _Code.Scripts.Bases;
 using _Code.Scripts.Interactions;
 using Interactions;
@@ -21,6 +20,7 @@ namespace _Code.Scripts.FinalRoom
         private SignalParticleSystem _signalParticleSystem;
         private int _originalLayer;
         private bool _canSetOutlines = true;
+        private List<Activator> _activators = new();
         
         private void Start()
         {
@@ -36,6 +36,7 @@ namespace _Code.Scripts.FinalRoom
 
         private void FixedUpdate()
         {
+            _activators = activators;
             ActivatorUpdate();
         }
 
