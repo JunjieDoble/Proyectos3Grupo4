@@ -93,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000002, guid: 659188b97f04afb4f8b719d0c088b7db, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 2dfb27c3bda73e74691feeada6a7ae78, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 06f20d465803edd4d86d724867d939e3, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -40257,6 +40257,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1733100216}
+    - target: {fileID: 2608075896726951031, guid: 77a9aefaa19d6074789b40ab8316169f, type: 3}
+      propertyPath: m_ReceiveGI
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2823901670216273367, guid: 77a9aefaa19d6074789b40ab8316169f, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -40365,6 +40369,14 @@ PrefabInstance:
       propertyPath: m_VersionIndex
       value: 1318
       objectReference: {fileID: 0}
+    - target: {fileID: 5473832851719237269, guid: 77a9aefaa19d6074789b40ab8316169f, type: 3}
+      propertyPath: m_ReceiveGI
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5473832851719237269, guid: 77a9aefaa19d6074789b40ab8316169f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8267be36037e96a44b33a417e557fc6d, type: 2}
     - target: {fileID: 5618622223716166331, guid: 77a9aefaa19d6074789b40ab8316169f, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -40693,7 +40705,9 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 740449356}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2512681887497847318, guid: 77a9aefaa19d6074789b40ab8316169f, type: 3}
+    - {fileID: 2243055389655355133, guid: 77a9aefaa19d6074789b40ab8316169f, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6346395358214094863, guid: 77a9aefaa19d6074789b40ab8316169f, type: 3}
     - {fileID: 3261916370363537196, guid: 77a9aefaa19d6074789b40ab8316169f, type: 3}
@@ -42214,6 +42228,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1778327547}
+    - target: {fileID: 2417795929480829859, guid: d1e8c2db18d063849a931b940c5edeb4, type: 3}
+      propertyPath: m_ReceiveGI
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2432832871490910971, guid: d1e8c2db18d063849a931b940c5edeb4, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -42333,6 +42351,10 @@ PrefabInstance:
     - target: {fileID: 5381247508358804321, guid: d1e8c2db18d063849a931b940c5edeb4, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641592348990939457, guid: d1e8c2db18d063849a931b940c5edeb4, type: 3}
+      propertyPath: m_ReceiveGI
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5922076157581967052, guid: d1e8c2db18d063849a931b940c5edeb4, type: 3}
       propertyPath: m_Mesh
@@ -46824,6 +46846,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 577522317}
+    - target: {fileID: 2608075896726951031, guid: 77a9aefaa19d6074789b40ab8316169f, type: 3}
+      propertyPath: m_ReceiveGI
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2823901670216273367, guid: 77a9aefaa19d6074789b40ab8316169f, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -46923,6 +46949,10 @@ PrefabInstance:
     - target: {fileID: 5453914727473328126, guid: 77a9aefaa19d6074789b40ab8316169f, type: 3}
       propertyPath: m_VersionIndex
       value: 1318
+      objectReference: {fileID: 0}
+    - target: {fileID: 5473832851719237269, guid: 77a9aefaa19d6074789b40ab8316169f, type: 3}
+      propertyPath: m_ReceiveGI
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5618622223716166331, guid: 77a9aefaa19d6074789b40ab8316169f, type: 3}
       propertyPath: m_Mesh

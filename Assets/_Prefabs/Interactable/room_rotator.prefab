@@ -11,11 +11,9 @@ GameObject:
   - component: {fileID: 4235234846765831022}
   - component: {fileID: 966382975234759883}
   - component: {fileID: 3066317459696560129}
-  - component: {fileID: 4998442563478253819}
-  - component: {fileID: 3895713266920940413}
   - component: {fileID: 6357475153642532268}
-  - component: {fileID: 2101095681764294145}
   - component: {fileID: 5271902175865568158}
+  - component: {fileID: 5071998737460824515}
   m_Layer: 6
   m_Name: room_rotator
   m_TagString: Untagged
@@ -96,49 +94,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4998442563478253819
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3570583798383184340}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2477511411847689622, guid: 17f605b1042156741816c8c9d32e5a05, type: 3}
---- !u!65 &3895713266920940413
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3570583798383184340}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.5799093, y: 2, z: 1.5799093}
-  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!114 &6357475153642532268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,27 +109,6 @@ MonoBehaviour:
   targetRoom: {fileID: 0}
   hologramTarget: {fileID: 0}
   saveHologramMeshAsset: 0
---- !u!65 &2101095681764294145
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3570583798383184340}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.6051879, y: 1.4529593, z: 1.6051879}
-  m_Center: {x: 0, y: 0.26898682, z: 0}
 --- !u!114 &5271902175865568158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +139,28 @@ MonoBehaviour:
   Params: []
   OverrideAttenuation: 0
   OverrideMinDistance: 1
-  OverrideMaxDistance: 20
+  OverrideMaxDistance: 6
+--- !u!135 &5071998737460824515
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3570583798383184340}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.89042324
+  m_Center: {x: 0, y: 0.3568161, z: 0}
 --- !u!1001 &7570604265261931817
 PrefabInstance:
   m_ObjectHideFlags: 0

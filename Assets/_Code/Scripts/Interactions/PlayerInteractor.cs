@@ -108,17 +108,16 @@ namespace _Code.Scripts.Interactions
                     ClearInteractable();
                     return;
                 }
-
-                if (interactable is SignalDevice signalDevice)
-                {
-                    signalDevice.SetOutlines(true);
-                }
                 _currentInteractable = interactable;
-                if (interactable.GameObject.layer != LayerMask.NameToLayer("Outline"))
+                if (interactable.GameObject.layer != LayerMask.NameToLayer("Outline") && interactable.GameObject.layer != LayerMask.NameToLayer("MiniMap"))
                 {
                     _interactableLayer = interactable.GameObject.layer;
                 }
                 _currentInteractable.GameObject.layer = LayerMask.NameToLayer("Outline");
+                if (interactable is SignalDevice signalDevice)
+                {
+                    signalDevice.SetOutlines(true);
+                }
                 return;
             }
             ClearInteractable();
