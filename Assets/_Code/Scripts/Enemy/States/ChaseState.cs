@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace _Code.Scripts.Enemy.States
@@ -22,6 +22,7 @@ namespace _Code.Scripts.Enemy.States
             animator.SetBool(EnemyAnimatorFields.Alert, false);
             animator.SetBool(EnemyAnimatorFields.Search, false);
             _enemyBehaviour.SetFOVColor(Color.red);
+            _enemyBehaviour.PlayChaseSound();
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

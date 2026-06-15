@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 5064254937695417042}
   - component: {fileID: 7330106130012782466}
   - component: {fileID: 1907286161587861916}
+  - component: {fileID: 8012210542941922435}
+  - component: {fileID: 2796585117030546516}
   m_Layer: 5
   m_Name: ReturnMenuButton
   m_TagString: Untagged
@@ -29,7 +31,7 @@ RectTransform:
   m_GameObject: {fileID: 2431343330737522897}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5625, y: 1.5625, z: 1.5625}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 597242236579759362}
@@ -37,7 +39,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -210}
+  m_AnchoredPosition: {x: 0, y: -306.75}
   m_SizeDelta: {x: 300, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8514843601433245104
@@ -146,6 +148,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7080c0149ef52f4589270b91a209d1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwapTextColorOnHover
+--- !u!114 &8012210542941922435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2431343330737522897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7542fd6bf78b8ab47a178d210d750193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SwapTextFontOnHover
+  hoverFont: {fileID: 11400000, guid: b8deb7238d6f8fd47a21c08ad5184c78, type: 2}
+--- !u!114 &2796585117030546516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2431343330737522897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90c8e49f52aed54479a786b68f177a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSoundEffects
+  hoverSoundEvent:
+    Guid:
+      Data1: -1173662620
+      Data2: 1296036507
+      Data3: -643573832
+      Data4: -486287381
+    Path: event:/ButtonHover
+  clickSoundEvent:
+    Guid:
+      Data1: 188026178
+      Data2: 1179724121
+      Data3: 217947779
+      Data4: 1452509747
+    Path: event:/ButtonClick
 --- !u!1 &3105263515272045539
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,7 +329,7 @@ RectTransform:
   m_GameObject: {fileID: 3865250359727228989}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.765625, y: 0.765625, z: 0.765625}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2004415505199744303}
@@ -328,7 +369,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Main Menu
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b8deb7238d6f8fd47a21c08ad5184c78, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8d03553fe9084a5499d7fad23e2af2ba, type: 2}
   m_sharedMaterial: {fileID: -9147727186944587109, guid: b8deb7238d6f8fd47a21c08ad5184c78, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -359,7 +400,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 17
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -395,7 +436,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &5536934287788596656
@@ -593,7 +634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.19215687}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.65882355}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -662,6 +703,8 @@ GameObject:
   - component: {fileID: 421077315516987340}
   - component: {fileID: 7996571909695256009}
   - component: {fileID: 5292351778107154873}
+  - component: {fileID: 4890659577409209032}
+  - component: {fileID: 2783921053898763143}
   m_Layer: 5
   m_Name: ResumeButton
   m_TagString: Untagged
@@ -678,7 +721,7 @@ RectTransform:
   m_GameObject: {fileID: 7159750065496155298}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5625, y: 1.5625, z: 1.5625}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6312467957397290478}
@@ -686,7 +729,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -60}
+  m_AnchoredPosition: {x: 0, y: -72.375}
   m_SizeDelta: {x: 300, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5613922339461958388
@@ -795,6 +838,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7080c0149ef52f4589270b91a209d1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwapTextColorOnHover
+--- !u!114 &4890659577409209032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7159750065496155298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7542fd6bf78b8ab47a178d210d750193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SwapTextFontOnHover
+  hoverFont: {fileID: 11400000, guid: b8deb7238d6f8fd47a21c08ad5184c78, type: 2}
+--- !u!114 &2783921053898763143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7159750065496155298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90c8e49f52aed54479a786b68f177a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSoundEffects
+  hoverSoundEvent:
+    Guid:
+      Data1: -1173662620
+      Data2: 1296036507
+      Data3: -643573832
+      Data4: -486287381
+    Path: event:/ButtonHover
+  clickSoundEvent:
+    Guid:
+      Data1: 188026178
+      Data2: 1179724121
+      Data3: 217947779
+      Data4: 1452509747
+    Path: event:/ButtonClick
 --- !u!1 &8687867340898925209
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,7 +904,7 @@ RectTransform:
   m_GameObject: {fileID: 8687867340898925209}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.765625, y: 0.765625, z: 0.765625}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8446784948188553609}
@@ -862,7 +944,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Resume
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b8deb7238d6f8fd47a21c08ad5184c78, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8d03553fe9084a5499d7fad23e2af2ba, type: 2}
   m_sharedMaterial: {fileID: -9147727186944587109, guid: b8deb7238d6f8fd47a21c08ad5184c78, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -893,7 +975,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 17
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -929,6 +1011,6 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}

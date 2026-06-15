@@ -14,6 +14,7 @@ namespace _Code.Scripts.Enemy
         [SerializeField] private EnemyParameters enemyParameters;
         [SerializeField] private Transform headTransform;
         [SerializeField] private FMODUnity.EventReference footstepSound;
+        [SerializeField] private FMODUnity.EventReference chaseSound;
     
         [Header("Patrol Settings")]
         [SerializeField] private GameObject[] patrolPoints;
@@ -204,16 +205,14 @@ namespace _Code.Scripts.Enemy
 
         public void PlayFootstep()
         {
-            if (_agent != null)
-            {
-                Vector3 vel = _agent.velocity;
-                float sqrHorizontalSpeed = vel.x * vel.x + vel.z * vel.z;
-                if (sqrHorizontalSpeed < 0.01f) return;
-            }
+            FMODUnity.RuntimeManager.PlayOneShot(footstepSound, transform.position);
+        }
 
-            if (!footstepSound.IsNull)
+        public void PlayChaseSound()
+        {
+            if (!chaseSound.IsNull)
             {
-                FMODUnity.RuntimeManager.PlayOneShot(footstepSound, transform.position);
+                FMODUnity.RuntimeManager.PlayOneShot(chaseSound, transform.position);
             }
         }
     }
