@@ -875,6 +875,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 331934992944342261}
     m_Modifications:
+    - target: {fileID: 7113213559232447835, guid: c6fa4f557dede9645b0c66fe92028eb7, type: 3}
+      propertyPath: activationSound.Path
+      value: event:/Door Open
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113213559232447835, guid: c6fa4f557dede9645b0c66fe92028eb7, type: 3}
+      propertyPath: deactivationSound.Path
+      value: event:/Door Open
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113213559232447835, guid: c6fa4f557dede9645b0c66fe92028eb7, type: 3}
+      propertyPath: activationSound.Guid.Data1
+      value: 1919933410
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113213559232447835, guid: c6fa4f557dede9645b0c66fe92028eb7, type: 3}
+      propertyPath: activationSound.Guid.Data2
+      value: 1107834282
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113213559232447835, guid: c6fa4f557dede9645b0c66fe92028eb7, type: 3}
+      propertyPath: activationSound.Guid.Data3
+      value: 590463374
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113213559232447835, guid: c6fa4f557dede9645b0c66fe92028eb7, type: 3}
+      propertyPath: activationSound.Guid.Data4
+      value: -1133745580
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113213559232447835, guid: c6fa4f557dede9645b0c66fe92028eb7, type: 3}
+      propertyPath: deactivationSound.Guid.Data1
+      value: 1919933410
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113213559232447835, guid: c6fa4f557dede9645b0c66fe92028eb7, type: 3}
+      propertyPath: deactivationSound.Guid.Data2
+      value: 1107834282
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113213559232447835, guid: c6fa4f557dede9645b0c66fe92028eb7, type: 3}
+      propertyPath: deactivationSound.Guid.Data3
+      value: 590463374
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113213559232447835, guid: c6fa4f557dede9645b0c66fe92028eb7, type: 3}
+      propertyPath: deactivationSound.Guid.Data4
+      value: -1133745580
+      objectReference: {fileID: 0}
     - target: {fileID: 8272220279991565712, guid: c6fa4f557dede9645b0c66fe92028eb7, type: 3}
       propertyPath: m_Name
       value: KatsuSceneDoor

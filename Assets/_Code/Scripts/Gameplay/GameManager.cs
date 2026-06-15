@@ -16,6 +16,8 @@ namespace _Code.Scripts.Gameplay
         
         [SerializeField] 
         private GameplayParameters parameters;
+
+        [SerializeField] private bool useCheckpoints;
         public static GameManager Instance;
 
         private GameObject _deathMenu;
@@ -105,11 +107,18 @@ namespace _Code.Scripts.Gameplay
 
         public void RespawnPlayer()
         {
-            OnPlayerRespawn?.Invoke();
-            Checkpoint.RespawnPlayer();
             Time.timeScale = 1f;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            if (useCheckpoints)
+            {
+                OnPlayerRespawn?.Invoke();
+                Checkpoint.RespawnPlayer();
+            }
+            else
+            {
+                StartGame();
+            }
         }
     }
 }
