@@ -13,8 +13,21 @@ public class SwapTextColorOnHover : MonoBehaviour, IPointerEnterHandler, IPointe
     private void Awake()
     {
         textMeshPro = GetComponentInChildren<TextMeshProUGUI>();
-        originalTextColor = textMeshPro.color;
+
+        if (textMeshPro != null)
+        {
+            originalTextColor = textMeshPro.color;
+        }
+
         hoverTextColor = new Color(129f / 255f, 1f, 1f);
+    }
+
+    private void OnDisable()
+    {
+        if (textMeshPro != null)
+        {
+            textMeshPro.color = originalTextColor;
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
