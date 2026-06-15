@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7330106130012782466}
   - component: {fileID: 1907286161587861916}
   - component: {fileID: 8012210542941922435}
+  - component: {fileID: 2796585117030546516}
   m_Layer: 5
   m_Name: ReturnMenuButton
   m_TagString: Untagged
@@ -160,6 +161,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwapTextFontOnHover
   hoverFont: {fileID: 11400000, guid: b8deb7238d6f8fd47a21c08ad5184c78, type: 2}
+--- !u!114 &2796585117030546516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2431343330737522897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90c8e49f52aed54479a786b68f177a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSoundEffects
+  hoverSoundEvent:
+    Guid:
+      Data1: -1173662620
+      Data2: 1296036507
+      Data3: -643573832
+      Data4: -486287381
+    Path: event:/ButtonHover
+  clickSoundEvent:
+    Guid:
+      Data1: 188026178
+      Data2: 1179724121
+      Data3: 217947779
+      Data4: 1452509747
+    Path: event:/ButtonClick
 --- !u!1 &3105263515272045539
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,6 +704,7 @@ GameObject:
   - component: {fileID: 7996571909695256009}
   - component: {fileID: 5292351778107154873}
   - component: {fileID: 4890659577409209032}
+  - component: {fileID: 2783921053898763143}
   m_Layer: 5
   m_Name: ResumeButton
   m_TagString: Untagged
@@ -823,6 +851,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwapTextFontOnHover
   hoverFont: {fileID: 11400000, guid: b8deb7238d6f8fd47a21c08ad5184c78, type: 2}
+--- !u!114 &2783921053898763143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7159750065496155298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90c8e49f52aed54479a786b68f177a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSoundEffects
+  hoverSoundEvent:
+    Guid:
+      Data1: -1173662620
+      Data2: 1296036507
+      Data3: -643573832
+      Data4: -486287381
+    Path: event:/ButtonHover
+  clickSoundEvent:
+    Guid:
+      Data1: 188026178
+      Data2: 1179724121
+      Data3: 217947779
+      Data4: 1452509747
+    Path: event:/ButtonClick
 --- !u!1 &8687867340898925209
 GameObject:
   m_ObjectHideFlags: 0

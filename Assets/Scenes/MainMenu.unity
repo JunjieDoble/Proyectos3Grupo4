@@ -1007,6 +1007,7 @@ GameObject:
   - component: {fileID: 78127515}
   - component: {fileID: 78127518}
   - component: {fileID: 78127519}
+  - component: {fileID: 78127520}
   m_Layer: 5
   m_Name: SettingsButton
   m_TagString: Untagged
@@ -1153,6 +1154,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwapTextFontOnHover
   hoverFont: {fileID: 11400000, guid: b8deb7238d6f8fd47a21c08ad5184c78, type: 2}
+--- !u!114 &78127520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78127513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90c8e49f52aed54479a786b68f177a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSoundEffects
+  hoverSoundEvent:
+    Guid:
+      Data1: -1173662620
+      Data2: 1296036507
+      Data3: -643573832
+      Data4: -486287381
+    Path: event:/ButtonHover
+  clickSoundEvent:
+    Guid:
+      Data1: 188026178
+      Data2: 1179724121
+      Data3: 217947779
+      Data4: 1452509747
+    Path: event:/ButtonClick
 --- !u!4 &79740570 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2557688927099053596, guid: d1e8c2db18d063849a931b940c5edeb4, type: 3}
@@ -4775,6 +4802,8 @@ GameObject:
   - component: {fileID: 429249623}
   - component: {fileID: 429249622}
   - component: {fileID: 429249621}
+  - component: {fileID: 429249626}
+  - component: {fileID: 429249625}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -4908,6 +4937,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429249619}
   m_CullTransparentMesh: 1
+--- !u!114 &429249625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429249619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90c8e49f52aed54479a786b68f177a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSoundEffects
+  hoverSoundEvent:
+    Guid:
+      Data1: -1173662620
+      Data2: 1296036507
+      Data3: -643573832
+      Data4: -486287381
+    Path: event:/ButtonHover
+  clickSoundEvent:
+    Guid:
+      Data1: 188026178
+      Data2: 1179724121
+      Data3: 217947779
+      Data4: 1452509747
+    Path: event:/ButtonClick
+--- !u!114 &429249626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429249619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7542fd6bf78b8ab47a178d210d750193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SwapTextFontOnHover
+  hoverFont: {fileID: 11400000, guid: b8deb7238d6f8fd47a21c08ad5184c78, type: 2}
 --- !u!4 &432849563 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6767032054170494056, guid: 89db5591b46513d48a4d5a7f0efb9c59, type: 3}
@@ -5877,6 +5945,8 @@ GameObject:
   - component: {fileID: 586637627}
   - component: {fileID: 586637626}
   - component: {fileID: 586637625}
+  - component: {fileID: 586637630}
+  - component: {fileID: 586637629}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -6010,6 +6080,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 586637623}
   m_CullTransparentMesh: 1
+--- !u!114 &586637629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586637623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7542fd6bf78b8ab47a178d210d750193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SwapTextFontOnHover
+  hoverFont: {fileID: 11400000, guid: b8deb7238d6f8fd47a21c08ad5184c78, type: 2}
+--- !u!114 &586637630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586637623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90c8e49f52aed54479a786b68f177a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSoundEffects
+  hoverSoundEvent:
+    Guid:
+      Data1: -1173662620
+      Data2: 1296036507
+      Data3: -643573832
+      Data4: -486287381
+    Path: event:/ButtonHover
+  clickSoundEvent:
+    Guid:
+      Data1: 188026178
+      Data2: 1179724121
+      Data3: 217947779
+      Data4: 1452509747
+    Path: event:/ButtonClick
 --- !u!1001 &588839539
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6447,6 +6556,7 @@ GameObject:
   - component: {fileID: 619668755}
   - component: {fileID: 619668758}
   - component: {fileID: 619668759}
+  - component: {fileID: 619668760}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -6593,6 +6703,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwapTextFontOnHover
   hoverFont: {fileID: 11400000, guid: b8deb7238d6f8fd47a21c08ad5184c78, type: 2}
+--- !u!114 &619668760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619668753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90c8e49f52aed54479a786b68f177a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSoundEffects
+  hoverSoundEvent:
+    Guid:
+      Data1: -1173662620
+      Data2: 1296036507
+      Data3: -643573832
+      Data4: -486287381
+    Path: event:/ButtonHover
+  clickSoundEvent:
+    Guid:
+      Data1: 188026178
+      Data2: 1179724121
+      Data3: 217947779
+      Data4: 1452509747
+    Path: event:/ButtonClick
 --- !u!1 &622085046
 GameObject:
   m_ObjectHideFlags: 0
@@ -41447,7 +41583,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Back
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b8deb7238d6f8fd47a21c08ad5184c78, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8d03553fe9084a5499d7fad23e2af2ba, type: 2}
   m_sharedMaterial: {fileID: -9147727186944587109, guid: b8deb7238d6f8fd47a21c08ad5184c78, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -41478,7 +41614,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 17
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -41514,7 +41650,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1590572332
@@ -45352,6 +45488,7 @@ GameObject:
   - component: {fileID: 1967846541}
   - component: {fileID: 1967846544}
   - component: {fileID: 1967846545}
+  - component: {fileID: 1967846546}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -45498,6 +45635,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwapTextFontOnHover
   hoverFont: {fileID: 11400000, guid: b8deb7238d6f8fd47a21c08ad5184c78, type: 2}
+--- !u!114 &1967846546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967846539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90c8e49f52aed54479a786b68f177a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSoundEffects
+  hoverSoundEvent:
+    Guid:
+      Data1: -1173662620
+      Data2: 1296036507
+      Data3: -643573832
+      Data4: -486287381
+    Path: event:/ButtonHover
+  clickSoundEvent:
+    Guid:
+      Data1: 188026178
+      Data2: 1179724121
+      Data3: 217947779
+      Data4: 1452509747
+    Path: event:/ButtonClick
 --- !u!4 &1971253233 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4659003451086915354, guid: 70bf98145e0ae02468101b9d8527ee8c, type: 3}
@@ -46774,6 +46937,7 @@ GameObject:
   - component: {fileID: 2055137832}
   - component: {fileID: 2055137835}
   - component: {fileID: 2055137836}
+  - component: {fileID: 2055137837}
   m_Layer: 5
   m_Name: Credits
   m_TagString: Untagged
@@ -46920,6 +47084,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwapTextFontOnHover
   hoverFont: {fileID: 11400000, guid: b8deb7238d6f8fd47a21c08ad5184c78, type: 2}
+--- !u!114 &2055137837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055137830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90c8e49f52aed54479a786b68f177a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSoundEffects
+  hoverSoundEvent:
+    Guid:
+      Data1: -1173662620
+      Data2: 1296036507
+      Data3: -643573832
+      Data4: -486287381
+    Path: event:/ButtonHover
+  clickSoundEvent:
+    Guid:
+      Data1: 188026178
+      Data2: 1179724121
+      Data3: 217947779
+      Data4: 1452509747
+    Path: event:/ButtonClick
 --- !u!1001 &2055937401
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48122,8 +48312,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Back
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b8deb7238d6f8fd47a21c08ad5184c78, type: 2}
-  m_sharedMaterial: {fileID: -9147727186944587109, guid: b8deb7238d6f8fd47a21c08ad5184c78, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8d03553fe9084a5499d7fad23e2af2ba, type: 2}
+  m_sharedMaterial: {fileID: -7237597538295472980, guid: 8d03553fe9084a5499d7fad23e2af2ba, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -48153,7 +48343,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 17
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -48189,7 +48379,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2139084232
