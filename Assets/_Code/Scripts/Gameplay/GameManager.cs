@@ -3,8 +3,6 @@ using _Code.Scripts.Character;
 using _Code.Scripts.CheckPoint;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using _Code.Scripts.UI;
-using System.Collections;
 
 namespace _Code.Scripts.Gameplay
 {
@@ -64,14 +62,12 @@ namespace _Code.Scripts.Gameplay
 
         public void ReturnToMenu()
         {
-            _deathMenu = null;
-            SceneManager.UnloadSceneAsync("TutorialFix");
-            SceneManager.UnloadSceneAsync("BigRoom");
-            SceneManager.UnloadSceneAsync("Terrain");
-            SceneManager.UnloadSceneAsync("LevelPrototype2LW");
-            SceneManager.UnloadSceneAsync("KatsuLevelFinal");
+            HideDeathMenu();
+            HidePauseMenu();
             SceneManager.LoadScene("MainMenu");
-            Time.timeScale = 1f;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Destroy(gameObject);
         }
 
         public void RegisterDeathMenu(GameObject deathMenu)
@@ -90,6 +86,22 @@ namespace _Code.Scripts.Gameplay
             Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+        }
+
+        private void HideDeathMenu()
+        {
+            _deathMenu?.SetActive(false);
+            Time.timeScale = 1f;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+
+        private void HidePauseMenu()
+        {
+            _pauseMenu?.SetActive(false);
+            Time.timeScale = 1f;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
         
         public void ShowPauseMenu()
