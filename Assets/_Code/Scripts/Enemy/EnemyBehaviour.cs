@@ -1,4 +1,4 @@
-﻿using _Code.Scripts.Character;
+using _Code.Scripts.Character;
 using _Code.Scripts.Interactions;
 using Interactions;
 using UnityEngine;
@@ -13,6 +13,7 @@ namespace _Code.Scripts.Enemy
         [Header("Enemy Parameters")]
         [SerializeField] private EnemyParameters enemyParameters;
         [SerializeField] private Transform headTransform;
+        [SerializeField] private FMODUnity.EventReference footstepSound;
     
         [Header("Patrol Settings")]
         [SerializeField] private GameObject[] patrolPoints;
@@ -199,6 +200,21 @@ namespace _Code.Scripts.Enemy
         public void RotateBody(bool rotate)
         {
             _rotateBody = rotate;
+        }
+
+        public void PlayFootstep()
+        {
+            if (_agent != null)
+            {
+                Vector3 vel = _agent.velocity;
+                float sqrHorizontalSpeed = vel.x * vel.x + vel.z * vel.z;
+                if (sqrHorizontalSpeed < 0.01f) return;
+            }
+
+            if (!footstepSound.IsNull)
+            {
+                FMODUnity.RuntimeManager.PlayOneShot(footstepSound, transform.position);
+            }
         }
     }
 }
