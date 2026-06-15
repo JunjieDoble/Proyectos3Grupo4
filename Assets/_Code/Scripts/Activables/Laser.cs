@@ -15,10 +15,9 @@ namespace _Code.Scripts.Activables
 
         public override void ActivatorUpdate()
         {
-            if (_isActive == IsActive()) return;
             _isActive = IsActive();
             PlayStateSound(_isActive);
-            laser.SetActive(IsActive());
+            laser.SetActive(_isActive);
         }
     }
 }

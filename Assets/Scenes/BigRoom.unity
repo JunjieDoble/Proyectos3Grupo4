@@ -247,7 +247,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1274010291754932526, guid: 729cdc1b94bd0cc4fadfdfb7fef3662d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 477059253}
   m_SourcePrefab: {fileID: 100100000, guid: 729cdc1b94bd0cc4fadfdfb7fef3662d, type: 3}
 --- !u!4 &3765624 stripped
 Transform:
@@ -8495,6 +8498,29 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1938202814594335636, guid: 729cdc1b94bd0cc4fadfdfb7fef3662d, type: 3}
   m_PrefabInstance: {fileID: 477021415}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &477059249 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1274010291754932526, guid: 729cdc1b94bd0cc4fadfdfb7fef3662d, type: 3}
+  m_PrefabInstance: {fileID: 3765623}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &477059253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477059249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c83e69366340496bb83e948f481a1f19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Activators.Connectors.PathConnector
+  activables: []
+  checkCenter: {x: 0, y: 0, z: 0}
+  checkHalfExtents: {x: 1, y: 1, z: 1}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1001 &480449050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14350,6 +14376,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 934765531}
+  - component: {fileID: 934765532}
   m_Layer: 0
   m_Name: path_light_lv3
   m_TagString: Untagged
@@ -14431,6 +14458,38 @@ Transform:
   - {fileID: 3765624}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &934765532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934765530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8e86b2cf96f4e7e8702cbcfd49dafac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Activables.Path
+  activationSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  deactivationSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  activeMaterial: {fileID: 2100000, guid: d4edb6ef7b0b2a249874ad5aa3ba7484, type: 2}
+  inactiveMaterial: {fileID: 2100000, guid: 5fff84cc5b3df1647a3a6d2c14508d28, type: 2}
+  target:
+  - {fileID: 9008695659786695728}
+  - {fileID: 1391846750}
+  - {fileID: 1835018}
 --- !u!1001 &935580995
 PrefabInstance:
   m_ObjectHideFlags: 0
