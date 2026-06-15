@@ -8546,7 +8546,7 @@ PrefabInstance:
     - target: {fileID: 696881495225419021, guid: b671e52c29074e84fa52b7e9480a8f2d, type: 3}
       propertyPath: 'activables.Array.data[2]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1964773414}
     - target: {fileID: 2700867527116540877, guid: b671e52c29074e84fa52b7e9480a8f2d, type: 3}
       propertyPath: m_Name
       value: info_panel_uvs
@@ -96155,7 +96155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5056514002068482639, guid: 4157e1d0ad917a64a90c80a9a078e498, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.8799953
+      value: -3.3799953
       objectReference: {fileID: 0}
     - target: {fileID: 5056514002068482639, guid: 4157e1d0ad917a64a90c80a9a078e498, type: 3}
       propertyPath: m_LocalPosition.z
@@ -131678,6 +131678,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8052942312529772618, guid: 968afbe22f24dd840b2eefafc3055b71, type: 3}
   m_PrefabInstance: {fileID: 590006845}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1964773414 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 287398883039570634, guid: 83f75d9c2a1491647bcb59a88947091c, type: 3}
+  m_PrefabInstance: {fileID: 773843112}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32ad19a512e54fc38475ee284f2d2bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Activables.Door
 --- !u!1001 &1965352044
 PrefabInstance:
   m_ObjectHideFlags: 0
