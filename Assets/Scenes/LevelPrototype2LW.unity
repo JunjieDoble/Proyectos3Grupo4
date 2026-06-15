@@ -22099,6 +22099,13 @@ MonoBehaviour:
   cancelSpeedMultiplier: 2
   rotationDegree: 90
   rotatorVector: {x: 0, y: 1, z: 0}
+  interactionSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1001 &340448514
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58473,6 +58480,13 @@ MonoBehaviour:
   cancelSpeedMultiplier: 2
   rotationDegree: 90
   rotatorVector: {x: 0, y: 1, z: 0}
+  interactionSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!114 &763157383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60403,6 +60417,13 @@ MonoBehaviour:
   cancelSpeedMultiplier: 2
   rotationDegree: 90
   rotatorVector: {x: 0, y: 1, z: 0}
+  interactionSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &788889177
 GameObject:
   m_ObjectHideFlags: 0
@@ -71272,6 +71293,13 @@ MonoBehaviour:
   cancelSpeedMultiplier: 2
   rotationDegree: 90
   rotatorVector: {x: 0, y: 1, z: 0}
+  interactionSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1001 &911683069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -87942,6 +87970,13 @@ MonoBehaviour:
   cancelSpeedMultiplier: 2
   rotationDegree: 90
   rotatorVector: {x: 0, y: 1, z: 0}
+  interactionSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &1092749393 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5090090904891053305, guid: 54c3747c5d669ff4f8a865fb34e33bd6, type: 3}
@@ -118309,6 +118344,13 @@ MonoBehaviour:
   cancelSpeedMultiplier: 2
   rotationDegree: 90
   rotatorVector: {x: 0, y: 1, z: 0}
+  interactionSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1001 &1513088143
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -134724,6 +134766,13 @@ MonoBehaviour:
   cancelSpeedMultiplier: 2
   rotationDegree: 90
   rotatorVector: {x: 0, y: 1, z: 0}
+  interactionSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1001 &1712225834
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -141940,10 +141989,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 763157377}
     m_Modifications:
+    - target: {fileID: 3492582690399675367, guid: c05f60b4916c6d84587eb11faaaccbe2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 647414717}
     - target: {fileID: 3570583798383184340, guid: c05f60b4916c6d84587eb11faaaccbe2, type: 3}
       propertyPath: m_Name
       value: room_rotator
       objectReference: {fileID: 0}
+    - target: {fileID: 3643967687765653263, guid: c05f60b4916c6d84587eb11faaaccbe2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 647414717}
     - target: {fileID: 4235234846765831022, guid: c05f60b4916c6d84587eb11faaaccbe2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.28857425
@@ -141988,6 +142045,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 647414717}
+    - target: {fileID: 5194762989923193341, guid: c05f60b4916c6d84587eb11faaaccbe2, type: 3}
+      propertyPath: m_VersionIndex
+      value: 1992
+      objectReference: {fileID: 0}
     - target: {fileID: 6357475153642532268, guid: c05f60b4916c6d84587eb11faaaccbe2, type: 3}
       propertyPath: targetRoom
       value: 
@@ -163664,6 +163725,13 @@ MonoBehaviour:
   cancelSpeedMultiplier: 2
   rotationDegree: 90
   rotatorVector: {x: 0, y: 1, z: 0}
+  interactionSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1001 &2071936291
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -163672,10 +163740,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 909954238}
     m_Modifications:
+    - target: {fileID: 3492582690399675367, guid: c05f60b4916c6d84587eb11faaaccbe2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 555482127}
     - target: {fileID: 3570583798383184340, guid: c05f60b4916c6d84587eb11faaaccbe2, type: 3}
       propertyPath: m_Name
       value: room_rotator
       objectReference: {fileID: 0}
+    - target: {fileID: 3643967687765653263, guid: c05f60b4916c6d84587eb11faaaccbe2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 555482127}
     - target: {fileID: 4235234846765831022, guid: c05f60b4916c6d84587eb11faaaccbe2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -163720,6 +163796,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 555482127}
+    - target: {fileID: 5194762989923193341, guid: c05f60b4916c6d84587eb11faaaccbe2, type: 3}
+      propertyPath: m_VersionIndex
+      value: 1992
+      objectReference: {fileID: 0}
     - target: {fileID: 6357475153642532268, guid: c05f60b4916c6d84587eb11faaaccbe2, type: 3}
       propertyPath: targetRoom
       value: 
