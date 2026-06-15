@@ -21,7 +21,8 @@ namespace _Code.Scripts.Interactions
         private PlayerParameters _playerParameters;
         private IInteractable _currentInteractable;
         private HoldablePickup _currentPickupable;
-        
+        private int _interactableLayer;
+
         public HoldablePickup CurrentPickupable
         {
             get => _currentPickupable;
@@ -89,13 +90,9 @@ namespace _Code.Scripts.Interactions
         {
             if (_currentPickupable == null) return false;
             Ray ray = new Ray(viewOrigin.position, viewOrigin.forward);
-            if (Physics.Raycast(ray, out var hit, _playerParameters.throwCheckDistance, interactableMask))
+            if (Physics.Raycast(ray, out _, _playerParameters.throwCheckDistance, interactableMask))
             {
-                if (hit.collider.GetComponentInParent<IInteractable>() != null)
-                {
-                    Debug.Log("Cannot throw, object in the way");
-                    return false;
-                }
+                return false;
             }
             return true;
         }
@@ -111,6 +108,10 @@ namespace _Code.Scripts.Interactions
                     return;
                 }
                 _currentInteractable = interactable;
+                if (interactable.GameObject.layer != LayerMask.NameToLayer("Outline"))
+                {
+                    _interactableLayer = interactable.GameObject.layer;
+                }
                 _currentInteractable.GameObject.layer = LayerMask.NameToLayer("Outline");
                 return;
             }
@@ -121,7 +122,11 @@ namespace _Code.Scripts.Interactions
         {
             if (_currentInteractable != null)
             {
-                _currentInteractable.GameObject.layer = LayerMask.NameToLayer("Default");
+                _currentInteractable.GameObject.layer = _interactableLayer;
+            }
+            if (_currentPickupable != null)
+            {
+                _currentPickupable.GameObject.layer = LayerMask.NameToLayer("MiniMap");
             }
             _currentInteractable = null;
         }

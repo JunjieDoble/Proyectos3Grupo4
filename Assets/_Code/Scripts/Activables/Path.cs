@@ -31,8 +31,12 @@ namespace _Code.Scripts.Activables
 
         private void Start()
         {
-            if (target.Count > 0 && activators.Count > 0) 
-                target.ForEach(a => activators.ForEach(a.AddActivator));
+            if (target.Count > 0 && activators.Count > 0)
+                foreach (var activable in target)
+                {
+                    if (!activable) continue;
+                    activators.ForEach(AddActivator);
+                }
         }
         
         public override void ActivatorUpdate()
