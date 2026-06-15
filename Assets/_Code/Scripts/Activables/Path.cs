@@ -32,6 +32,7 @@ namespace _Code.Scripts.Activables
         private void Start()
         {
             if (target.Count == 0 || activators.Count == 0) return;
+            Debug.Log("Path.Start() called");
             foreach (var activable in target)
             {
                 if (!activable) continue;
