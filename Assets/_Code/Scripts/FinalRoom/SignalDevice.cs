@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using _Code.Scripts.Bases;
 using _Code.Scripts.Interactions;
 using Interactions;
-using NUnit.Framework;
 using TMPro;
 using UnityEngine;
 

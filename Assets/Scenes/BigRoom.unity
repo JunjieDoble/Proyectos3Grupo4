@@ -2177,8 +2177,7 @@ MonoBehaviour:
     Path: 
   activeMaterial: {fileID: 2100000, guid: d4edb6ef7b0b2a249874ad5aa3ba7484, type: 2}
   inactiveMaterial: {fileID: 2100000, guid: 5fff84cc5b3df1647a3a6d2c14508d28, type: 2}
-  target:
-  - {fileID: 9008695659786695726}
+  target: []
 --- !u!4 &100119458
 Transform:
   m_ObjectHideFlags: 0
@@ -9916,7 +9915,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c83e69366340496bb83e948f481a1f19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Activators.Connectors.PathConnector
-  activables: []
+  activables:
+  - {fileID: 9008695659786695726}
   checkCenter: {x: 0, y: 0, z: 0}
   checkHalfExtents: {x: 1, y: 1, z: 1}
   layerMask:
@@ -12650,7 +12650,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c83e69366340496bb83e948f481a1f19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Activators.Connectors.PathConnector
-  activables: []
+  activables:
+  - {fileID: 9008695659786695726}
   checkCenter: {x: 0, y: 1.34, z: 0}
   checkHalfExtents: {x: 1, y: 1, z: 1}
   layerMask:
@@ -13202,8 +13203,7 @@ MonoBehaviour:
     Path: 
   activeMaterial: {fileID: 2100000, guid: d4edb6ef7b0b2a249874ad5aa3ba7484, type: 2}
   inactiveMaterial: {fileID: 2100000, guid: 5fff84cc5b3df1647a3a6d2c14508d28, type: 2}
-  target:
-  - {fileID: 9008695659786695726}
+  target: []
 --- !u!1001 &682501973
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16713,8 +16713,7 @@ MonoBehaviour:
     Path: 
   activeMaterial: {fileID: 2100000, guid: d4edb6ef7b0b2a249874ad5aa3ba7484, type: 2}
   inactiveMaterial: {fileID: 2100000, guid: 5fff84cc5b3df1647a3a6d2c14508d28, type: 2}
-  target:
-  - {fileID: 9008695659786695726}
+  target: []
 --- !u!1001 &935580995
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21951,6 +21950,71 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1846939718964643190, guid: c1a74adc58f49bc47aef9de76e4be87a, type: 3}
   m_PrefabInstance: {fileID: 1280722276}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1282400925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1282400927}
+  - component: {fileID: 1282400926}
+  m_Layer: 0
+  m_Name: Reflection Probe (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 65
+  m_IsActive: 1
+--- !u!215 &1282400926
+ReflectionProbe:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282400925}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Type: 0
+  m_Mode: 0
+  m_RefreshMode: 0
+  m_TimeSlicingMode: 0
+  m_Resolution: 128
+  m_UpdateFrequency: 0
+  m_BoxSize: {x: 59.954933, y: 69.14316, z: 60.354015}
+  m_BoxOffset: {x: 0.16924667, y: 4.7292337, z: 0.16245079}
+  m_NearClip: 0.3
+  m_FarClip: 1000
+  m_ShadowDistance: 100
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IntensityMultiplier: 1
+  m_BlendDistance: 1
+  m_HDR: 1
+  m_BoxProjection: 0
+  m_RenderDynamicObjects: 0
+  m_UseOcclusionCulling: 1
+  m_Importance: 1
+  m_CustomBakedTexture: {fileID: 0}
+--- !u!4 &1282400927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282400925}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -98.17, y: 0, z: -86.262}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1286620925
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23572,7 +23636,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c83e69366340496bb83e948f481a1f19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Code.Scripts.Activators.Connectors.PathConnector
-  activables: []
+  activables:
+  - {fileID: 9008695659786695726}
   checkCenter: {x: 0, y: 0, z: 0}
   checkHalfExtents: {x: 1, y: 1, z: 1}
   layerMask:
@@ -43807,13 +43872,45 @@ GameObject:
   - component: {fileID: 6666798635748912205}
   - component: {fileID: 4283426165558019784}
   - component: {fileID: 3961709670483705169}
+  - component: {fileID: 8290676876103947213}
   m_Layer: 6
-  m_Name: single_uvs001
+  m_Name: Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 65
   m_IsActive: 1
+--- !u!114 &8290676876103947213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8290676876103947212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1215770546
+      Data2: 1181687901
+      Data3: 1569528470
+      Data4: 619778659
+    Path: event:/BigRoom
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 50
 --- !u!1 &8298917313835552821
 GameObject:
   m_ObjectHideFlags: 0
@@ -44128,18 +44225,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SignalDevice
   activationSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 2001299893
+      Data2: 1109981459
+      Data3: 1568254605
+      Data4: 1611338722
+    Path: event:/Beam
   deactivationSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 2001299893
+      Data2: 1109981459
+      Data3: 1568254605
+      Data4: 1611338722
+    Path: event:/Beam
   readyToActivateMaterial: {fileID: 2100000, guid: f1c2d8626ac399945a9efaa46fb3f11d, type: 2}
   inactivatedMaterial: {fileID: 2100000, guid: 682d7d0555abbc7488abec4d226591da, type: 2}
   squareHologram: {fileID: 8290676876103947212}
@@ -44321,3 +44418,4 @@ SceneRoots:
   - {fileID: 100119458}
   - {fileID: 679679057}
   - {fileID: 934765531}
+  - {fileID: 1282400927}
