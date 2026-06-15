@@ -6,6 +6,7 @@ public class MinimapCamera : MonoBehaviour
     [Header("References")]
     [SerializeField] private Camera minimapCamera;
     [SerializeField] private Transform player;
+    [SerializeField] private LayerMask checkMask;
 
     private float nearPlaneTarget;
 
@@ -24,7 +25,7 @@ public class MinimapCamera : MonoBehaviour
     private float CalculateNearClipPlane()
     {
         Ray ray = new Ray(player.position + Vector3.up, player.up);
-        if (Physics.Raycast(ray, out RaycastHit hit, (player.position - transform.position).magnitude, LayerMask.GetMask("Default")))
+        if (Physics.Raycast(ray, out RaycastHit hit, (player.position - transform.position).magnitude, checkMask))
         {
             return transform.position.y - hit.point.y;
         }
