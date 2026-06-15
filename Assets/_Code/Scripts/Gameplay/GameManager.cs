@@ -1,9 +1,10 @@
-using System;
+﻿using System;
 using _Code.Scripts.Character;
 using _Code.Scripts.CheckPoint;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using _Code.Scripts.UI;
+using System.Collections;
 
 namespace _Code.Scripts.Gameplay
 {
@@ -46,8 +47,7 @@ namespace _Code.Scripts.Gameplay
 
         public void StartGame()
         {
-            SceneManager.UnloadSceneAsync("MainMenu");
-            SceneManager.LoadScene("TutorialFix");
+            SceneManager.LoadScene("TutorialFix", LoadSceneMode.Single);
             SceneManager.LoadSceneAsync("BigRoom", LoadSceneMode.Additive);
             SceneManager.LoadSceneAsync("Terrain", LoadSceneMode.Additive);
             SceneManager.LoadSceneAsync("LevelPrototype2LW", LoadSceneMode.Additive);
@@ -66,6 +66,7 @@ namespace _Code.Scripts.Gameplay
             SceneManager.UnloadSceneAsync("LevelPrototype2LW");
             SceneManager.UnloadSceneAsync("KatsuLevelFinal");
             SceneManager.LoadScene("MainMenu");
+            Time.timeScale = 1f;
         }
 
         public void RegisterDeathMenu(GameObject deathMenu)
