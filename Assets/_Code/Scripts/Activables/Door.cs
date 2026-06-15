@@ -12,8 +12,8 @@ namespace _Code.Scripts.Activables
         {
             if (_isActive == IsActive()) return;
             _isActive = IsActive();
+            SetDoorOpen(IsActive());            
             PlayStateSound(_isActive);
-            SetDoorOpen(IsActive());
         }
 
         private void SetDoorOpen(bool open)
