@@ -24565,6 +24565,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1938202814594335636, guid: 729cdc1b94bd0cc4fadfdfb7fef3662d, type: 3}
   m_PrefabInstance: {fileID: 1468195557}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1491619441
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5747956447751248614, guid: 9dab36df29ba2674a90c9075a4273fce, type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7324281891904208692, guid: 9dab36df29ba2674a90c9075a4273fce, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -70.71903
+      objectReference: {fileID: 0}
+    - target: {fileID: 7324281891904208692, guid: 9dab36df29ba2674a90c9075a4273fce, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.9999475
+      objectReference: {fileID: 0}
+    - target: {fileID: 7324281891904208692, guid: 9dab36df29ba2674a90c9075a4273fce, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -85.72577
+      objectReference: {fileID: 0}
+    - target: {fileID: 7324281891904208692, guid: 9dab36df29ba2674a90c9075a4273fce, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7324281891904208692, guid: 9dab36df29ba2674a90c9075a4273fce, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7324281891904208692, guid: 9dab36df29ba2674a90c9075a4273fce, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7324281891904208692, guid: 9dab36df29ba2674a90c9075a4273fce, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7324281891904208692, guid: 9dab36df29ba2674a90c9075a4273fce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7324281891904208692, guid: 9dab36df29ba2674a90c9075a4273fce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7324281891904208692, guid: 9dab36df29ba2674a90c9075a4273fce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9dab36df29ba2674a90c9075a4273fce, type: 3}
 --- !u!1001 &1510086040
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43807,13 +43864,45 @@ GameObject:
   - component: {fileID: 6666798635748912205}
   - component: {fileID: 4283426165558019784}
   - component: {fileID: 3961709670483705169}
+  - component: {fileID: 8290676876103947213}
   m_Layer: 6
-  m_Name: single_uvs001
+  m_Name: Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 65
   m_IsActive: 1
+--- !u!114 &8290676876103947213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8290676876103947212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1215770546
+      Data2: 1181687901
+      Data3: 1569528470
+      Data4: 619778659
+    Path: event:/BigRoom
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 50
 --- !u!1 &8298917313835552821
 GameObject:
   m_ObjectHideFlags: 0
@@ -44128,18 +44217,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SignalDevice
   activationSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 2001299893
+      Data2: 1109981459
+      Data3: 1568254605
+      Data4: 1611338722
+    Path: event:/Beam
   deactivationSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 2001299893
+      Data2: 1109981459
+      Data3: 1568254605
+      Data4: 1611338722
+    Path: event:/Beam
   readyToActivateMaterial: {fileID: 2100000, guid: f1c2d8626ac399945a9efaa46fb3f11d, type: 2}
   inactivatedMaterial: {fileID: 2100000, guid: 682d7d0555abbc7488abec4d226591da, type: 2}
   squareHologram: {fileID: 8290676876103947212}
@@ -44321,3 +44410,4 @@ SceneRoots:
   - {fileID: 100119458}
   - {fileID: 679679057}
   - {fileID: 934765531}
+  - {fileID: 1491619441}
