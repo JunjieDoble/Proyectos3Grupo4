@@ -22,6 +22,9 @@ namespace _Code.Scripts.Rooms
         private float rotationDegree = 90;
         [SerializeField]
         private Vector3 rotatorVector = new (0, 1, 0);
+        [SerializeField]
+        private FMODUnity.EventReference interactionSound;
+        private FMOD.Studio.EventInstance _interactionSoundInstance;
         private float rotationSpeed;
         private Quaternion _startRotation; //before hold
         private bool _isRotating;
@@ -48,11 +51,21 @@ namespace _Code.Scripts.Rooms
         {
             GameManager.OnPlayerRespawn -= ResetRoom;
             Checkpoint.OnCheckpointChange -= UpdateOrigin;
+            if (_interactionSoundInstance.isValid())
+            {
+                _interactionSoundInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                _interactionSoundInstance.release();
+            }
         }       
         
         void ResetRoom()
         {
             transform.rotation = _originalRotation;
+            if (_interactionSoundInstance.isValid())
+            {
+                _interactionSoundInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                _interactionSoundInstance.release();
+            }
             OnRoomReset?.Invoke();
         }
         
@@ -95,6 +108,12 @@ namespace _Code.Scripts.Rooms
         private void StartRotation()
         {
             _isRotating = true;
+            if (!interactionSound.IsNull)
+            {
+                _interactionSoundInstance = FMODUnity.RuntimeManager.CreateInstance(interactionSound);
+                _interactionSoundInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
+                _interactionSoundInstance.start();
+            }
             OnStartRotation?.Invoke();
             foreach (Wall wall in _walls)
             {
@@ -107,6 +126,11 @@ namespace _Code.Scripts.Rooms
         {
             transform.rotation = targetRotation;
             _isRotating = false;
+            if (_interactionSoundInstance.isValid())
+            {
+                _interactionSoundInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                _interactionSoundInstance.release();
+            }
             OnEndRotation?.Invoke();
             foreach (Wall wall in _walls)
             {
