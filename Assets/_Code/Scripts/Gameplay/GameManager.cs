@@ -67,7 +67,6 @@ namespace _Code.Scripts.Gameplay
             SceneManager.LoadScene("MainMenu");
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            Destroy(gameObject);
         }
 
         public void RegisterDeathMenu(GameObject deathMenu)
