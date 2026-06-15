@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5931171247363299490
+--- !u!1001 &1908419770242014531
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 079639fb3e72ff24b962e161f3567ab0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 52.15
+      value: -52.42946
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 079639fb3e72ff24b962e161f3567ab0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.00000009676964
+      value: 0.0000007353297
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 079639fb3e72ff24b962e161f3567ab0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 151.1604
+      value: -8.372468
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 079639fb3e72ff24b962e161f3567ab0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -63,34 +63,5 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3681790978099765340, guid: 079639fb3e72ff24b962e161f3567ab0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6372845920979263546}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 079639fb3e72ff24b962e161f3567ab0, type: 3}
---- !u!1 &7014243926379231486 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3681790978099765340, guid: 079639fb3e72ff24b962e161f3567ab0, type: 3}
-  m_PrefabInstance: {fileID: 5931171247363299490}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &6372845920979263546
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7014243926379231486}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.014507083, y: 0.009118021, z: 0.042581808}
-  m_Center: {x: -0.0009010972, y: 0.0012655469, z: 0.021290904}
