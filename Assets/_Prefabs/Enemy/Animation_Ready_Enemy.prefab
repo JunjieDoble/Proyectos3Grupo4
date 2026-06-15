@@ -476,11 +476,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBehaviour
   enemyParameters: {fileID: 11400000, guid: c17d5d8808b33d347982b54bfe3c23c6, type: 2}
   headTransform: {fileID: 1942733508793037237}
+  footstepSound:
+    Guid:
+      Data1: 695548339
+      Data2: 1239389039
+      Data3: 609249718
+      Data4: 131610312
+    Path: event:/Steps
   patrolPoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  drop: {fileID: 0}
 --- !u!114 &1310937504629792972
 MonoBehaviour:
   m_ObjectHideFlags: 0

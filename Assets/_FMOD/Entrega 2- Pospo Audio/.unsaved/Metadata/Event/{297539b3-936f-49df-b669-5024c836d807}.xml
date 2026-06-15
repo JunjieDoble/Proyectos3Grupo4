@@ -96,7 +96,7 @@
 			<value>7</value>
 		</property>
 		<property name="pitch">
-			<value>4</value>
+			<value>5</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{2db46abb-c816-4e54-8996-98ede05482e1}</destination>
@@ -126,9 +126,13 @@
 	<object class="MixerBusEffectChain" id="{e7ea4419-33b6-498a-b4c2-f0002e39540d}">
 		<relationship name="effects">
 			<destination>{f4576e70-aff4-499d-b77b-c73117e06f0d}</destination>
+			<destination>{d1dd9cbc-4401-4544-b390-66e49f138a22}</destination>
+			<destination>{c3fc94b8-f82d-4845-9c8e-2c85800d8351}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{2f5e1f31-1d4a-4edc-bddd-454f6035e55f}" />
 	<object class="MixerBusFader" id="{38845b12-2d82-47f8-a574-4ff1a7e0328d}" />
 	<object class="MixerBusFader" id="{f4576e70-aff4-499d-b77b-c73117e06f0d}" />
+	<object class="SFXReverbEffect" id="{d1dd9cbc-4401-4544-b390-66e49f138a22}" />
+	<object class="PitchShifterEffect" id="{c3fc94b8-f82d-4845-9c8e-2c85800d8351}" />
 </objects>
