@@ -58,7 +58,7 @@ namespace _Code.Scripts.Rooms
         
         void UpdateOrigin()
         {
-            _originalRotation = this._targetRotation;
+            _originalRotation = _targetRotation;
         }
 
         private void FixedUpdate()
