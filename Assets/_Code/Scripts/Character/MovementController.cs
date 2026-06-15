@@ -22,6 +22,11 @@ namespace _Code.Scripts.Character
         private bool _grounded;
         private float _coyoteCounter;
         private Animator _animator;
+        [SerializeField] private FMODUnity.EventReference footstepSound;
+        [SerializeField] private float walkStepInterval = 0.5f;
+        [SerializeField] private float runStepInterval = 0.35f;
+        [SerializeField] private float crouchStepInterval = 0.7f;
+        private float _footstepTimer;
 
         public bool IsEnabled { get; set; }
         
@@ -65,6 +70,7 @@ namespace _Code.Scripts.Character
             CollisionFlags collisionFlags = _characterController.Move(movement);
             CheckCollisionFlags(collisionFlags);
             CheckDeathPosition();
+            HandleFootsteps(deltaTime);
         }
 
         private void CheckDeathPosition()
@@ -245,6 +251,36 @@ namespace _Code.Scripts.Character
             if (_crouching) return _playerParameters.crouchNoiseRadius;
             if (_running) return _playerParameters.runNoiseRadius;
             return _playerParameters.walkNoiseRadius;
+        }
+
+        public void PlayFootstep()
+        {
+            if (!footstepSound.IsNull)
+            {
+                FMODUnity.RuntimeManager.PlayOneShot(footstepSound, transform.position);
+            }
+        }
+
+        private void HandleFootsteps(float deltaTime)
+        {
+            if (!_grounded || _movementInput.sqrMagnitude < 0.01f)
+            {
+                _footstepTimer = 0f;
+                return;
+            }
+
+            _footstepTimer -= deltaTime;
+            if (_footstepTimer <= 0f)
+            {
+                PlayFootstep();
+                
+                if (_crouching)
+                    _footstepTimer = crouchStepInterval;
+                else if (_running)
+                    _footstepTimer = runStepInterval;
+                else
+                    _footstepTimer = walkStepInterval;
+            }
         }
 
         private void OnDrawGizmos() {

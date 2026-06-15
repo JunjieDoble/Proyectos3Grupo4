@@ -7835,7 +7835,6 @@ MonoBehaviour:
   _masterVolumSlider: {fileID: 254552395}
   _musicVolumSlider: {fileID: 842854293}
   _sfxVolumSlider: {fileID: 38508152}
-  defaultVolume: 0.5
 --- !u!1001 &718898661
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10819,14 +10818,14 @@ RectTransform:
   m_GameObject: {fileID: 906986411}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.9442756, y: 0.9442756, z: 0.9442756}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1901548872}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 36.999996}
+  m_AnchoredPosition: {x: 0, y: 55}
   m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &906986413
@@ -10849,8 +10848,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\n\n\nNAIARA GARCIA, PAU CASTELL\xC0\n\n\nLLUC KOOME, MART\xCD SANCHEZ,
-    JUNJIE ZHOU\n\n\nNEREA G\xD3MEZ, KAI VALENZUELA, MART\xCD SANCHEZ, JUNJIE ZHOU"
+  m_text: "\n\n\nNAIARA GARCIA, PAU CASTELL\xC0, LLUC KOOME\n\n\nLLUC KOOME, MART\xCD
+    SANCHEZ, JUNJIE ZHOU\n\n\nNEREA G\xD3MEZ, KAI VALENZUELA, MART\xCD SANCHEZ, JUNJIE
+    ZHOU"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b8deb7238d6f8fd47a21c08ad5184c78, type: 2}
   m_sharedMaterial: {fileID: -9147727186944587109, guid: b8deb7238d6f8fd47a21c08ad5184c78, type: 2}
@@ -11907,14 +11907,14 @@ RectTransform:
   m_GameObject: {fileID: 949409438}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.9442756, y: 0.9442756, z: 0.9442756}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1901548872}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 36.999996}
+  m_AnchoredPosition: {x: 0, y: 55}
   m_SizeDelta: {x: 400, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &949409440
@@ -11941,6 +11941,7 @@ MonoBehaviour:
 
 
     Game design
+
 
 
 
@@ -11978,8 +11979,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.2
-  m_fontSizeBase: 26.2
+  m_fontSize: 26.08
+  m_fontSizeBase: 26.08
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -42066,7 +42067,7 @@ MonoBehaviour:
   m_text: Back
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b8deb7238d6f8fd47a21c08ad5184c78, type: 2}
-  m_sharedMaterial: {fileID: -7237597538295472980, guid: 8d03553fe9084a5499d7fad23e2af2ba, type: 2}
+  m_sharedMaterial: {fileID: -9147727186944587109, guid: b8deb7238d6f8fd47a21c08ad5184c78, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -42132,7 +42133,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1590572332
