@@ -6,9 +6,9 @@ namespace _Code.Scripts.Bases
     public class Activable : MonoBehaviour
     {
         [SerializeField]
-        private FMODUnity.EventReference activationSound;
+        protected FMODUnity.EventReference activationSound;
         [SerializeField]
-        private FMODUnity.EventReference deactivationSound;
+        protected FMODUnity.EventReference deactivationSound;
         
         protected readonly List<Activator> activators = new();
 

@@ -26,11 +26,11 @@ namespace _Code.Scripts.Activators
             GameManager.OnPlayerRespawn -= DeactivateAll;
         }       
 
-        private void DeactivateAll()
+        public static void DeactivateAll()
         {
             _activeTerminal?.SetActive(false);
             _activeTerminal = null;
-            onActivatorUpdate?.Invoke();
+            _activeTerminal?.onActivatorUpdate?.Invoke();
         }
 
         public GameObject GameObject => gameObject;
