@@ -5,7 +5,7 @@
 			<value>Door Open</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{9ab7458f-4dda-42f2-aa8b-050ea68ea1e9}</destination>
@@ -56,7 +56,14 @@
 			<destination>{14616666-bf3b-48d8-9329-67d6a27c60db}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{01c27101-45dc-4a45-bbef-8001cf2bd74f}" />
+	<object class="EventAutomatableProperties" id="{01c27101-45dc-4a45-bbef-8001cf2bd74f}">
+		<property name="minimumDistance">
+			<value>7.20000029</value>
+		</property>
+		<property name="maximumDistance">
+			<value>15</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{f818cc14-5ff1-4e67-b0ef-ea7b426a2098}" />
 	<object class="GroupTrack" id="{8d26e74d-bfe3-4f7e-a248-fa4a6871ca73}">
 		<relationship name="modules">
@@ -103,6 +110,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{b52c406b-3336-4c2e-ad7c-2931ba99ecae}">
+		<property name="volume">
+			<value>-6.5</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -119,6 +129,7 @@
 	<object class="MixerBusEffectChain" id="{102edfcb-8f7e-484c-8837-b05205d84d2b}">
 		<relationship name="effects">
 			<destination>{50dcba04-d632-4cf0-a822-ff3ff4f7f018}</destination>
+			<destination>{3bd9c093-d93b-4950-a6ee-557c03685718}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{e479ca7a-efdc-486d-8228-9ca0a470f943}" />
@@ -139,6 +150,7 @@
 	</object>
 	<object class="MixerBusPanner" id="{9f55c3d9-60ba-4b6b-afe0-21167f8cff58}" />
 	<object class="MixerBusFader" id="{50dcba04-d632-4cf0-a822-ff3ff4f7f018}" />
+	<object class="SpatialiserEffect" id="{3bd9c093-d93b-4950-a6ee-557c03685718}" />
 	<object class="AutomationPoint" id="{59a302c3-e54c-464d-8290-b66c2f93c313}">
 		<property name="position">
 			<value>0.35129749761404389</value>
@@ -159,5 +171,9 @@
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{53c90591-5c55-4fbe-a0b9-e988a1ea0da3}" />
-	<object class="SFXReverbEffect" id="{1a4e7c87-aebd-4041-88a8-eedbacbd11cc}" />
+	<object class="SFXReverbEffect" id="{1a4e7c87-aebd-4041-88a8-eedbacbd11cc}">
+		<property name="decayTime">
+			<value>2900</value>
+		</property>
+	</object>
 </objects>
