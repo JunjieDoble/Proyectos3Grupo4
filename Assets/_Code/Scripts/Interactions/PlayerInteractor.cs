@@ -1,5 +1,4 @@
 using _Code.Scripts.Character;
-using _Code.Scripts.FinalRoom;
 using _Code.Scripts.Pickupables;
 using Interactions;
 using UnityEngine;
@@ -108,11 +107,6 @@ namespace _Code.Scripts.Interactions
                     ClearInteractable();
                     return;
                 }
-
-                if (interactable is SignalDevice signalDevice)
-                {
-                    signalDevice.SetOutlines(true);
-                }
                 _currentInteractable = interactable;
                 if (interactable.GameObject.layer != LayerMask.NameToLayer("Outline"))
                 {
@@ -128,14 +122,7 @@ namespace _Code.Scripts.Interactions
         {
             if (_currentInteractable != null)
             {
-                if (_currentInteractable is SignalDevice signalDevice)
-                {
-                    signalDevice.SetOutlines(false);
-                }
-                else
-                {
-                    _currentInteractable.GameObject.layer = _interactableLayer;
-                }
+                _currentInteractable.GameObject.layer = _interactableLayer;
             }
             if (_currentPickupable != null)
             {

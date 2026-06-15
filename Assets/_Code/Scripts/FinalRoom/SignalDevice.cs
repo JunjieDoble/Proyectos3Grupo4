@@ -1,100 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using _Code.Scripts.Bases;
-using _Code.Scripts.Interactions;
-using Interactions;
+﻿using _Code.Scripts.Bases;
 using NUnit.Framework;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-namespace _Code.Scripts.FinalRoom
+[RequireComponent(typeof(Animator))]
+public class SignalDevice : MonoBehaviour
 {
-    [RequireComponent(typeof(Animator))]
-    public class SignalDevice : Activable, IInteractable
+    [SerializeField] private Material readyToActivateMaterial;
+    [SerializeField] private Material inactivatedMaterial;
+    [SerializeField] private GameObject squareHologram;
+
+    private SignalVFX _signalVFX;
+    private SignalParticleSystem _signalParticleSystem;
+
+    private void Start()
     {
-        private static readonly int Active = Animator.StringToHash("IsActive");
-        [SerializeField] private Material readyToActivateMaterial;
-        [SerializeField] private Material inactivatedMaterial;
-        [SerializeField] private GameObject squareHologram;
-        [SerializeField]
-        private List<Animator> activableComponents;
-        private SignalVFX _signalVFX;
-        private SignalParticleSystem _signalParticleSystem;
-        private int _originalLayer;
-        private bool _canSetOutlines = true;
-        
-        private void Start()
+        _signalVFX = GetComponentInChildren<SignalVFX>();
+        _signalParticleSystem = GetComponentInChildren<SignalParticleSystem>();
+
+        if (_signalVFX == null || _signalParticleSystem == null )
         {
-            _signalVFX = GetComponentInChildren<SignalVFX>();
-            _signalParticleSystem = GetComponentInChildren<SignalParticleSystem>();
-
-            if (_signalVFX == null || _signalParticleSystem == null )
-            {
-                Debug.LogError("SignalDevice is missing required components!");
-            }
-            _originalLayer = gameObject.layer;
+            Debug.LogError("SignalDevice is missing required components!");
         }
+    }
 
-        public override void ActivatorUpdate()
+    public void ActivateSignalDevice()
+    {
+        squareHologram.GetComponent<MeshRenderer>().material = readyToActivateMaterial;
+
+        TextMeshPro[] components = squareHologram.GetComponentsInChildren<TextMeshPro>();
+        foreach (var component in components)
         {
-            if (IsActive())
-            {
-                ActivateSignalDevice();
-            }
+            component.text = "Active";
         }
+    }
 
-        public void ActivateSignalDevice()
-        {
-            Debug.Log("Activating Signal Device");
-            squareHologram.GetComponent<MeshRenderer>().sharedMaterial = readyToActivateMaterial;
+    public void OnSignalParticleStart()
+    {
+        _signalParticleSystem.Activate();
+    }
 
-            TextMeshPro[] components = squareHologram.GetComponentsInChildren<TextMeshPro>();
-            foreach (var component in components)
-            {
-                component.text = "ACTIVE";
-            }
-        }
-
-        public void OnSignalParticleStart()
-        {
-            _signalParticleSystem.Activate();
-        }
-
-        public void OnSignalVFXStart()
-        {
-            _signalVFX.Activate();
-        }
-
-        public GameObject GameObject => gameObject;
-    
-        public void Interact(IInteractor interactor)
-        {
-            if (IsActive())
-            {
-                activableComponents.ForEach(component => component.SetBool(Active, true));
-                _canSetOutlines = false;
-                SetOutlinesRecursively(false);
-            }
-        }
-
-        public void SetOutlines(bool value)
-        {
-            if (!_canSetOutlines) return;
-            SetOutlinesRecursively(value);
-        }
-
-        private void SetOutlinesRecursively(bool value)
-        {
-            if (value && gameObject.layer != LayerMask.NameToLayer("Outline"))
-            {
-                _originalLayer = gameObject.layer;
-            }
-            gameObject.layer = value ? LayerMask.NameToLayer("Outline") : _originalLayer;
-            Transform[] children = GetComponentsInChildren<Transform>();
-            foreach (Transform child in children)
-            {
-                child.gameObject.layer = value ? LayerMask.NameToLayer("Outline") : _originalLayer;
-            }
-        }
+    public void OnSignalVFXStart()
+    {
+        _signalVFX.Activate();
     }
 }
