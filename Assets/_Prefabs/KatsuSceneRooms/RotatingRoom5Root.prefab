@@ -1041,6 +1041,13 @@ MonoBehaviour:
   cancelSpeedMultiplier: 2
   rotationDegree: 90
   rotatorVector: {x: 0, y: 1, z: 0}
+  interactionSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!114 &6937371828531311638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7118,7 +7125,7 @@ PrefabInstance:
     - target: {fileID: 6357475153642532268, guid: c05f60b4916c6d84587eb11faaaccbe2, type: 3}
       propertyPath: hologramTarget
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5053300755061135646}
     - target: {fileID: 6357475153642532268, guid: c05f60b4916c6d84587eb11faaaccbe2, type: 3}
       propertyPath: saveHologramMeshAsset
       value: 1
