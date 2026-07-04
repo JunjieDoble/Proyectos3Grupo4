@@ -94,11 +94,12 @@ namespace _Code.Scripts.FinalRoom
             {
                 _originalLayer = gameObject.layer;
             }
-            gameObject.layer = value ? LayerMask.NameToLayer("Outline") : _originalLayer;
+            int targetLayer = value ? LayerMask.NameToLayer("Outline") : _originalLayer;
+            gameObject.layer = targetLayer;
             Transform[] children = GetComponentsInChildren<Transform>();
             foreach (Transform child in children)
             {
-                child.gameObject.layer = value ? LayerMask.NameToLayer("Outline") : _originalLayer;
+                child.gameObject.layer = targetLayer;
             }
         }
     }

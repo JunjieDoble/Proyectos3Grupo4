@@ -103,20 +103,31 @@ namespace _Code.Scripts.Interactions
             if (Physics.Raycast(viewOrigin.position, viewOrigin.forward, out var hit, _playerParameters.interactionDistance, interactableMask))
             {
                 var interactable = hit.collider.GetComponentInParent<IInteractable>();
+                
                 if (interactable == null)
                 {
                     ClearInteractable();
                     return;
                 }
-                _currentInteractable = interactable;
-                if (interactable.GameObject.layer != LayerMask.NameToLayer("Outline") && interactable.GameObject.layer != LayerMask.NameToLayer("MiniMap"))
+
+                if (_currentInteractable != interactable)
                 {
-                    _interactableLayer = interactable.GameObject.layer;
-                }
-                _currentInteractable.GameObject.layer = LayerMask.NameToLayer("Outline");
-                if (interactable is SignalDevice signalDevice)
-                {
-                    signalDevice.SetOutlines(true);
+                    ClearInteractable();
+                    _currentInteractable = interactable;
+                    
+                    if (interactable.GameObject.layer != LayerMask.NameToLayer("Outline") && interactable.GameObject.layer != LayerMask.NameToLayer("MiniMap"))
+                    {
+                        _interactableLayer = interactable.GameObject.layer;
+                    }
+                    
+                    if (interactable is SignalDevice signalDevice)
+                    {
+                        signalDevice.SetOutlines(true);
+                    }
+                    else
+                    {
+                        _currentInteractable.GameObject.layer = LayerMask.NameToLayer("Outline");
+                    }
                 }
                 return;
             }
@@ -135,12 +146,13 @@ namespace _Code.Scripts.Interactions
                 {
                     _currentInteractable.GameObject.layer = _interactableLayer;
                 }
+                _currentInteractable = null;
             }
+            
             if (_currentPickupable != null)
             {
                 _currentPickupable.GameObject.layer = LayerMask.NameToLayer("MiniMap");
             }
-            _currentInteractable = null;
         }
 
         private void InteractionStarted()

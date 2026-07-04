@@ -79,10 +79,12 @@ namespace _Code.Scripts.Rooms
             RotateRoom();
         }
 
-        public void StartRotate()
+        public void StartRotate(float? degree = null, float? time = null, Vector3? axis = null, float? cancelSpeed = null)
         {
+            if (degree.HasValue) rotationSpeed = degree.Value / (time ?? rotationTime);
+            if (cancelSpeed.HasValue) cancelSpeedMultiplier = cancelSpeed.Value;
             if (!_isRotating) _startRotation = transform.rotation;
-            _targetRotation = _startRotation * Quaternion.AngleAxis(90, rotatorVector);
+            _targetRotation = _startRotation * Quaternion.AngleAxis(degree ?? rotationDegree, axis ?? rotatorVector);
             StartRotation();
         }
 

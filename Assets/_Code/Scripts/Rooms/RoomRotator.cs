@@ -1,38 +1,55 @@
 using _Code.Scripts.Rooms;
 using UnityEngine;
 using Interactions;
-using System.Collections;
+using System;
+using System.Collections.Generic;
 using UnityEditor;
 
 namespace Rooms
 {
+    [Serializable]
+    public class RoomRotatorEntry
+    {
+        public Room room;
+        public float rotationDegree = 90f;
+        public float rotationTime = 1.2f;
+        public Vector3 rotatorVector = new(0, 1, 0);
+        public float cancelSpeedMultiplier = 2f;
+    }
+
     public class RoomRotator : MonoBehaviour, IHoldInteractable
     {
-        [SerializeField] private Room targetRoom;
+        [SerializeField] private List<RoomRotatorEntry> targetRooms = new();
         [SerializeField] private MeshFilter hologramTarget;
         [SerializeField] private bool saveHologramMeshAsset;
+
         private IInteractor _currentInteractor;
         public GameObject GameObject => gameObject;
+
         public void Awake()
         {
-            if (targetRoom == null) Debug.LogWarning("RoomRotator does not have a targetRoom", this);
-            if (hologramTarget == null) Debug.LogWarning("RoomRotator does not have a hologramPivot", this);
-            if (hologramTarget.sharedMesh == null) CreateHologramMesh(saveHologramMeshAsset);
+            if (targetRooms.Count == 0)
+                Debug.LogWarning("RoomRotator does not have any targetRooms", this);
+            if (hologramTarget == null)
+                Debug.LogWarning("RoomRotator does not have a hologramPivot", this);
+            else if (hologramTarget.sharedMesh == null && targetRooms.Count > 0)
+                CreateHologramMesh(0, saveHologramMeshAsset);
         }
 
-        public void CreateHologramMesh(bool saveAsset = false, bool makeNewInstance = true, bool optimize = false)
+        public void CreateHologramMesh(int roomIndex = 0, bool saveAsset = false, bool makeNewInstance = true, bool optimize = false)
         {
-            if (targetRoom == null) return;
+            var firstRoom = (roomIndex >= 0 && roomIndex < targetRooms.Count) ? targetRooms[roomIndex].room : null;
+            if (firstRoom == null) return;
             if (hologramTarget == null) return;
-            
-            var meshFilters = targetRoom.gameObject.GetComponentsInChildren<MeshFilter>();
+
+            var meshFilters = firstRoom.gameObject.GetComponentsInChildren<MeshFilter>();
             if (meshFilters.Length == 0) return;
             var combine = new CombineInstance[meshFilters.Length];
             for (int i = 0; i < meshFilters.Length; i++)
             {
                 if (meshFilters[i].sharedMesh == null) continue;
                 combine[i].mesh = meshFilters[i].sharedMesh;
-                combine[i].transform =targetRoom.transform.worldToLocalMatrix *
+                combine[i].transform = firstRoom.transform.worldToLocalMatrix *
                                        meshFilters[i].transform.localToWorldMatrix;
             }
 
@@ -47,20 +64,20 @@ namespace Rooms
             mesh.vertices = verts;
             mesh.RecalculateBounds();
             mesh.RecalculateNormals();
-            
+
             if (optimize) mesh.Optimize();
-            
+
             hologramTarget.mesh = mesh;
-            hologramTarget.transform.rotation = targetRoom.transform.rotation;
-            
+            hologramTarget.transform.rotation = firstRoom.transform.rotation;
+
         #if UNITY_EDITOR
             if (saveAsset)
-                SaveMesh(hologramTarget.sharedMesh, targetRoom.name + "_Hologram", makeNewInstance);
+                SaveMesh(hologramTarget.sharedMesh, firstRoom.name + "_Hologram", makeNewInstance);
         #endif
-            
+
             Debug.Log("Hologram mesh created");
         }
-        
+
     #if UNITY_EDITOR
         public void SaveMesh(Mesh mesh, string meshName, bool makeNewInstance)
         {
@@ -71,12 +88,12 @@ namespace Rooms
                 System.IO.Directory.CreateDirectory(directoryPath);
                 AssetDatabase.Refresh();
             }
-            
+
             string fullPath = directoryPath + meshName + ".asset";
             fullPath = AssetDatabase.GenerateUniqueAssetPath(fullPath);
-            
+
             Mesh meshToSave = (makeNewInstance) ? Instantiate(mesh) : mesh;
-            
+
             AssetDatabase.CreateAsset(meshToSave, fullPath);
             AssetDatabase.SaveAssets();
         }
@@ -84,18 +101,15 @@ namespace Rooms
 
         public void RotateRoom()
         {
-            targetRoom?.StartRotate();
+            foreach (var entry in targetRooms)
+                entry.room?.StartRotate(entry.rotationDegree, entry.rotationTime, entry.rotatorVector, entry.cancelSpeedMultiplier);
         }
 
-        public void Interact(IInteractor interactor)
-        {
-            OnHoldStarted(interactor);
-        }
+        public void Interact(IInteractor interactor) => OnHoldStarted(interactor);
 
         public void OnHoldStarted(IInteractor interactor)
         {
             if (_currentInteractor != null && _currentInteractor != interactor) return;
-
             _currentInteractor = interactor;
             RotateRoom();
             _currentInteractor = null;
@@ -104,15 +118,14 @@ namespace Rooms
         public void OnHoldCanceled(IInteractor interactor)
         {
             if (_currentInteractor != null && _currentInteractor != interactor) return;
-            targetRoom?.CancelRotate();
-
+            foreach (var entry in targetRooms)
+                entry.room?.CancelRotate();
             _currentInteractor = null;
         }
 
         public void OnHoldCompleted(IInteractor interactor)
         {
             if (_currentInteractor != null && _currentInteractor != interactor) return;
-
             _currentInteractor = null;
         }
     }
