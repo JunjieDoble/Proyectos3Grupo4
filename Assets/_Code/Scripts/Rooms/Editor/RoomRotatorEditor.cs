@@ -26,6 +26,7 @@ public class RoomRotatorEditor : Editor
 
             if (GUILayout.Button($"Save Hologram Mesh — {label}"))
             {
+                Debug.Log($"Button clicked for {label}");
                 rotator.CreateHologramMesh(i, saveAsset: true);
                 EditorUtility.SetDirty(rotator);
             }
