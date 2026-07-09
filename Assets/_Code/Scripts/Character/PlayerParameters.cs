@@ -29,6 +29,7 @@ namespace _Code.Scripts.Character
         
         [Header("Camera")]
         public float mouseSensitivity = 1f;
+        public float controllerSensitivity = 150f;
         public float minPitch = -89f;
         public float maxPitch = 89f;
         
